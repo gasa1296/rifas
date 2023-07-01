@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { FaArrowLeft, FaCheck } from "react-icons/fa";
+import { FaArrowLeft, FaCheck, FaArrowUp } from "react-icons/fa";
+import { useRouter } from 'next/router'
+
+
+
 
 interface Props {
   tabs: {
     label: string;
     Component: any;
   }[];
+  hasHeader?: boolean;
 }
 
-export default function Tabs({ tabs }: Props) {
+export default function Tabs({ tabs, hasHeader = true }: Props) {
   const [step, setStep] = useState(0);
-
+  const router = useRouter()
   const nextStep = (customStep?: number) => {
     if (step < tabs.length - 1) setStep(customStep || step + 1);
   };
@@ -26,19 +31,18 @@ export default function Tabs({ tabs }: Props) {
 
   return (
     <div>
-      <div className="border-bottom  position-relative ">
+      {hasHeader && <div className="border-bottom  position-relative ">
         <div className="mx-3 text-secondary opacity-75 fs-5 d-flex align-items-center position-absolute ">
           <FaArrowLeft size={17} />
-          <p className="m-0 px-2 d-none d-md-block text">Volver al inicio</p>
+          <p style={{ cursor: "pointer" }} className="m-0 px-2 d-none d-md-block text" onClick={() => router.push("/")}>Volver al inicio</p>
         </div>
         <ul className=" d-flex flex-column flex-lg-row  list-unstyled align-items-center justify-content-center">
           {tabs.map((tab, index) => (
             <li
-              className={`mx-3 opacity-75  ${
-                index < step
-                  ? "text-success text-bold fw-medium opacity-100 "
-                  : "text-secondary "
-              } fs-5 d-flex align-items-center  `}
+              className={`mx-3 opacity-75  ${index < step
+                ? "text-success text-bold fw-medium opacity-100 "
+                : "text-secondary "
+                } fs-5 d-flex align-items-center  `}
             >
               <FaCheck size={17} />
               <p className="m-0 px-2">
@@ -47,7 +51,8 @@ export default function Tabs({ tabs }: Props) {
             </li>
           ))}
         </ul>
-      </div>
+      </div>}
+
 
       {renderComponent()}
     </div>
