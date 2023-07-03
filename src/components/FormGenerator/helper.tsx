@@ -1,0 +1,20 @@
+import { Field, FieldType } from "@/types/Component/FormGenerator";
+import InputText from "./Fields/InputText";
+import InputEmail from "./Fields/InputEmail";
+import InputCheckbox from "./Fields/InputCheckbox";
+import InputPassword from "./Fields/InputPassword";
+
+export const getDefaultValues = (fields: Field[]) => {
+  const defaultValues: any = {};
+
+  fields.map((field) => (defaultValues[field.name] = field.default || ""));
+
+  return defaultValues;
+};
+
+export const FieldComponents: FieldType = {
+  text: InputText,
+  email: InputEmail,
+  checkbox: InputCheckbox,
+  password: InputPassword,
+};

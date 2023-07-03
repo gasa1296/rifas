@@ -1,18 +1,23 @@
+import { registerUser } from "@/services/auth";
 import {RootState} from "@/store";
+import { Profile } from "@/types/Model/Profile";
+import { handleError } from "@/utils/handleError";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 const PREFIX: string = "auth";
-export const getAuth = createAsyncThunk(
-  `${PREFIX}/auth`,
+export const Register = createAsyncThunk(
+  `${PREFIX}/register`,
   async (
-    options: undefined,
+    Profile: Profile,
     thunkAPI
   ): Promise<{test: boolean} | undefined> => {
     const {} = (thunkAPI.getState() as RootState).auth;
 
     try {
-      return {test: true};
+
+      const {data} = await registerUser(Profile)
+      return data
     } catch (error) {
-      // thunkAPI.dispatch("123");
+      handleError(error)
     }
   }
 );

@@ -1,10 +1,11 @@
 import {RootState} from "@/store";
 import {createSlice} from "@reduxjs/toolkit";
-import {FAVORITES_EXTRA_REDUCERS} from "./extra-reducers";
+import {REGISTER_EXTRA_REDUCERS} from "./extra-reducers";
 import {authSliceModel} from "@/types/Store/auth";
 
 const initialState: authSliceModel = {
   authenticated: false,
+  loading: false, 
 };
 
 export const authSlice = createSlice({
@@ -12,7 +13,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    FAVORITES_EXTRA_REDUCERS(builder);
+    REGISTER_EXTRA_REDUCERS(builder);
   },
 });
 
