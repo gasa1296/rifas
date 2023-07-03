@@ -11,5 +11,13 @@ export interface FieldType {
   email: any;
   checkbox: any;
   password: any;
+  number: any;
+  title: any;
 }
-export type FieldTypeString = "text" | "email" | "checkbox" | "password";
+export type FieldTypeString =
+  | "text"
+  | "email"
+  | "checkbox"
+  | "password"
+  | "number"
+  | "title";
