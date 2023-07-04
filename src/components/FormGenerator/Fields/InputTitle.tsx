@@ -15,7 +15,7 @@ export default function InputTitle({
 }: Props) {
   return (
     <div>
-      <p className={`${error && "text-danger"}`}>{label}</p>
+      <p className="text-secondary fw-bold fs-3">{label}</p>
     </div>
   );
 }

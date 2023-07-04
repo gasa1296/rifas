@@ -1,15 +1,15 @@
 import React from 'react'
 import Tabs from '../Tab'
 import CreateAccount from '../Registro/CreateAccount';
-import RegistarRifas from './RegistarRifas';
-import CrearCuenta from './CrearCuenta';
+import FinalizarRegristo from "@/components/Registro/FinalizarRegistro"
+import RegistroCuenta from '../Registro/RegistroCuenta';
 
 
 export default function CrearRifas() {
     const tabs = [
-        { label: "Crear una cuenta", Component: CrearCuenta },
-        { label: "Registro una AC", Component: RegistarRifas },
-        { label: "Crear rifa", Component: CreateAccount },
+        { label: "Crear una cuenta", Component: CreateAccount },
+        { label: "Registro una AC", Component: RegistroCuenta },
+        { label: "Crear rifa", Component: FinalizarRegristo },
     ];
 
     return (

@@ -15,16 +15,16 @@ export default function Nav({ home }: any) {
     <div className="position-absolute top-0 w-100 ">
       <ModalLogin show={show} handleClose={handleClose} />
       <nav
-        className={` d-md-flex justify-content-between   align-items-center ${
-          home ? "bg-body-secondary" : ""
-        } py-2`}
+        className={` d-md-flex justify-content-between   align-items-center ${home ? "bg-body-secondary" : ""
+          } py-2`}
       >
-        <div className="mx-5  mw-75 ">
+        <div className="mx-5  mw-75 " style={{ cursor: "pointer" }}
+          onClick={() => router.push("/")}>
           <Image src={logo} alt="fondo" className=" mx-auto d-block" />
         </div>
         <ul className=" d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
           <li
-            className=" mx-4"
+            className=" mx-4 "
             style={{ cursor: "pointer" }}
             onClick={() => router.push("/rifas")}
           >

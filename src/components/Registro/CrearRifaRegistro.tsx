@@ -7,12 +7,12 @@ import ConfirmacionRifa from '../Rifas/ConfirmacionRifa';
 export default function CrearRifaRegistro({ nextStep, backStep }: any) {
     const [step, setStep] = useState(0)
     return (
-        <div>
-            <h2 className="text-center text-secondary">¡Es momento de rifarnos Cuautli!</h2>
+        <div className='mt-5'>
+            <h2 className="text-center text-secondary fs-3 my-4">¡Es momento de rifarnos Cuautli!</h2>
 
-            <div className='mb-3 col-12 col-md-5 m-auto  text-secondary shadow rounded'>
+            <div className=' p-3 mb-3 col-12 col-md-5 m-auto  text-secondary  shadow rounded'>
 
-                <div className=' d-flex justify-content-between align-items-center m-3 rounded  ' onClick={() => setStep(1)}>
+                <div className=' d-flex justify-content-between align-items-center  m-3 rounded  ' onClick={() => setStep(1)}>
                     <button className={`form-control fs-4 text-light bg-secondary  ${step === 1 ? " opacity-50 " : " opacity-100  "}`}>Configura el premio tu rifa  {step === 1 ? <MdKeyboardArrowUp size={30} /> : < MdKeyboardArrowDown size={30} />} </button>
                 </div>
                 {step === 1 && <ConfiguraRifa />}
@@ -30,7 +30,7 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
             </div>
             <div className=' text-dark text-center ' >
-                <button className=" my-2 w-50 btn btn-outline-secondary" type="button" onClick={() => nextStep()}>Ir al inicio</button>
+                <button className=" my-2 w-50 btn btn-outline-secondary" type="button" >Ir al inicio</button>
             </div>
         </div>
     )

@@ -13,7 +13,7 @@ export default function Footer() {
                         <Image src={logo} alt="fondo" className=' ' />
                     </div>
                     <div className="">
-                        <h6 className="">Rifate!</h6>
+                        <h6 className="fs-6">Rifate!</h6>
                         <ul className=" list-unstyled text-secondary ">
                             <li>Inicia una rifa</li>
                             <li>Comprar boletos</li>
@@ -22,14 +22,14 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div>
-                        <h6 className="">Nosotros</h6>
+                        <h6 className="fs-6">Nosotros</h6>
                         <ul className=" list-unstyled text-secondary">
                             <li>Conocenos</li>
                             <li>¿Como funciona?</li>
                         </ul>
                     </div>{" "}
                     <div>
-                        <h6 className="">Legal</h6>
+                        <h6 className="fs-6">Legal</h6>
                         <ul className=" list-unstyled text-secondary">
                             <li>Terminos y condiciones</li>
                             <li>Aviso de privacidad</li>
@@ -37,7 +37,7 @@ export default function Footer() {
                         </ul>
                     </div>{" "}
                     <div>
-                        <h6 className="">Redes!</h6>
+                        <h6 className="fs-6">Redes!</h6>
                         <ul className=" list-unstyled text-secondary">
                             <li>Facebook</li>
                             <li>Twitter</li>
@@ -45,14 +45,14 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="mx-5 text-secondary">
-                    <p className="m-0">Escribenos</p>
+                <div className="mx-5 text-secondary fs-6 ">
+                    <p className="m-0 ">Escribenos</p>
                     <p className="">Contacto@rifaconcausa.org</p>
                 </div>
 
                 <div className=" border-bottom w-auto mx-5  "></div>
 
-                <p className="mx-5 mt-2 text-secondary">2021 .Todos los derechos reservados</p>
+                <p className="mx-5 mt-2 text-secondary fs-6">2021 .Todos los derechos reservados</p>
             </footer>
         </div>
     )

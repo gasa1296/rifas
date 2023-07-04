@@ -5,8 +5,8 @@ import fondo from "@/assets/img/fondo.jpg"
 export default function HomeRifate() {
     return (
         <section className='mx-5 mt-5'>
-            <h5 className=' fw-bold fs-1  text-secondary'>Rifate</h5>
-            <p className='fs-4  text-secondary' >Te estamos esperando, al Igual que ellos nos apoyaran</p>
+            <h5 className=' fw-bold display-2  text-secondary'>Rifate</h5>
+            <p className='fs-1  text-secondary' >Te estamos esperando, al Igual que ellos nos apoyaran</p>
 
             <div className='d-flex flex-wrap '>
                 <div className=" w-25 w-md-75 h-25 mx-2">

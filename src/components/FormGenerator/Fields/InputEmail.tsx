@@ -23,7 +23,7 @@ export default function InputEmail({
         name={name}
         type="email"
         {...register(name, { required })}
-        className={`w-100 form-control my-2  ${error && "border-danger "}`}
+        className={`w-100 form-control my-2 fs-5 ${error && "border-danger "}`}
       />
     </div>
   );
