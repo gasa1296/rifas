@@ -1,19 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
 import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg"
-export default function DonacionesValidacion({ step, setStep }: any) {
+export default function DonacionesValidacion({ nextStep, backStep, initialStep }: any) {
     return (
         <div>
-            {step === 3 && <section className='row m-0' >
+            <section className='row m-0 my-3' >
                 <div className=' col-md-6 col-12   '>
                     <Image src={imagenDonaciones} alt=".." className='w-75 mx-5' />
                 </div>
                 <div className=' col-md-5 col-12  mx-3 text-secondary mx-4 mx-md-0 '>
-                    <h4 className=' lh-sm m-0 text-md-start  text-center'>3 / 3  Premio en validacion</h4>
-                    <p className='m-0 fw-bold fs-5 text-center my-3'>Gracias</p>
-                    <p className="m-0 fw-bold fs-5 text-center">Estamos muy contentos de</p>
-                    <p className="m-0 fw-bold fs-5 text-center">  Conseguir tu valiso apoyo</p>
-                    <p className=" my-2 text-center fw-bold ">¿Cuales son los siguientes pasos?</p>
+                    <h4 className=' lh-sm m-0 text-md-start  text-center fs-3'>3 / 3  Premio en validacion</h4>
+                    <p className='m-0 fw-bold fs-1 text-center my-3'>Gracias</p>
+                    <p className="m-0  lh-1 fw-bold  fs-3 text-center">Estamos muy contentos de</p>
+                    <p className="m-0 fs-3  fw-bold  text-center">  Conseguir tu valiso apoyo</p>
+                    <p className=" my-2 text-center fw-semibold  fs-5 ">¿Cuales son los siguientes pasos?</p>
 
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" />
@@ -45,17 +45,16 @@ export default function DonacionesValidacion({ step, setStep }: any) {
                             Pronto sabras de nosotros en un máximo de 48 hrs
                         </label>
                     </div>
-                    <p className="text-center fw-bold">¡Sigue rifándote!</p>
                     <div className='d-flex justify-content-between  mw-md-50  mt-2 '>
-                        <button className='btn btn-outline-secondary btn-sm w-50 mx-2 ' > Ver catalogo de premios</button>
-                        <button className='btn btn-outline-secondary btn-sm w-50 mx-2 ' onClick={() => setStep(1)}>Ir a donar otro premio</button>
+                        <button className='btn btn-outline-secondary btn-sm w-50 mx-2 fs-6' > Ver catalogo de premios</button>
+                        <button className='btn btn-outline-secondary btn-sm w-50 mx-2 fs-6' onClick={() => initialStep()}>Ir a donar otro premio</button>
 
                     </div>
                 </div>
 
 
 
-            </section >}
+            </section >
         </div>
 
     )

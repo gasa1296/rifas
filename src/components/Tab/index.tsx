@@ -20,14 +20,16 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
     if (step > 0) setStep(customStep || step - 1);
   };
 
+  const initialStep = () => setStep(0)
+
   const renderComponent = () => {
     const Component = tabs[step].Component;
 
-    return <Component nextStep={nextStep} backStep={backStep} />;
+    return <Component nextStep={nextStep} backStep={backStep} initialStep={initialStep} />;
   };
 
   return (
-    <div className=" mx-5 mt-5">
+    <div className=" mx-5 mt-2">
       {hasHeader && (
         <div className="border-bottom  position-relative ">
           <div className=" text-secondary opacity-75 fs-5 d-flex align-items-center position-absolute ">
@@ -43,11 +45,10 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
           <ul className=" d-flex flex-column flex-lg-row  list-unstyled align-items-center justify-content-center">
             {tabs.map((tab, index) => (
               <li
-                className={`mx-3 opacity-75  ${
-                  index < step
-                    ? "text-success text-bold fw-medium opacity-100 "
-                    : "text-secondary "
-                } fs-5 d-flex align-items-center  `}
+                className={`mx-3 opacity-75  ${index < step
+                  ? "text-success text-bold fw-medium opacity-100 "
+                  : "text-secondary "
+                  } fs-5 d-flex align-items-center  `}
               >
                 <FaCheck size={17} />
                 <p className="m-0 px-2">

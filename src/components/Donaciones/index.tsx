@@ -2,14 +2,25 @@ import React, { useState } from 'react';
 import DonacionesDescripcion from './DonacionesDescripcion'
 import DonacionesInformation from './DonacionesInformation'
 import DonacionesValidacion from './DonacionesValidacion'
+import Tabs from "../Tab";
 
 export default function Donacioneshkh() {
-    const [step, setStep] = useState(1)
+
+    const tabs = [
+
+        { label: "Crear una cuenta", Component: DonacionesDescripcion },
+        { label: "Registro una AC", Component: DonacionesInformation },
+        { label: "Crear rifa", Component: DonacionesValidacion },
+    ];
+
     return (
         <div className='my-4'>
-            {step === 1 && <DonacionesDescripcion step={step} setStep={setStep} />}
-            {step === 2 && <DonacionesInformation step={step} setStep={setStep} />}
-            {step === 3 && <DonacionesValidacion step={step} setStep={setStep} />}
+
+
+            <section>
+                <Tabs tabs={tabs} />
+            </section>
+
         </div>
     )
 }

@@ -15,7 +15,7 @@ export default function InputText({
 }: Props) {
   return (
     <div>
-      <label className={`${error && "text-danger"}`} htmlFor={name}>
+      <label className={`${error && "text-danger"} fs-5 text-secondary`} htmlFor={name}>
         {label}
       </label>
       <input

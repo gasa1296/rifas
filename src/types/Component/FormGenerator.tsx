@@ -13,6 +13,9 @@ export interface FieldType {
   password: any;
   number: any;
   title: any;
+  radioButton: any
+  select: any
+  file: any
 }
 export type FieldTypeString =
   | "text"
@@ -20,4 +23,8 @@ export type FieldTypeString =
   | "checkbox"
   | "password"
   | "number"
-  | "title";
+  | "title"
+  | "radioButton"
+  | "select"
+  | "file"
+  ;

@@ -5,6 +5,9 @@ import InputCheckbox from "./Fields/InputCheckbox";
 import InputPassword from "./Fields/InputPassword";
 import InputNumber from "./Fields/InputNumber";
 import InputTitle from "./Fields/InputTitle";
+import InputRadioButton from "./Fields/InputRadioButton";
+import InputSelect from "./Fields/inputSelect";
+import InputFile from "./Fields/InputFile";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
@@ -21,4 +24,7 @@ export const FieldComponents: FieldType = {
   password: InputPassword,
   number: InputNumber,
   title: InputTitle,
+  radioButton: InputRadioButton,
+  select: InputSelect,
+  file: InputFile
 };
