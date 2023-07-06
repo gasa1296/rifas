@@ -5,10 +5,10 @@ import Image from "next/image";
 
 export default function HomeHeader() {
   return (
-    <div>
+    <div className="" style={{ marginBottom: "120px" }}>
       <section
         style={{ minHeight: "768px" }}
-        className="text-center p-5 bg-body-secondary text-secondary "
+        className="text-center p-5 bg-body-secondary text-secondary  "
       >
         <div>
           <Image
@@ -17,7 +17,7 @@ export default function HomeHeader() {
             className="w-50 h-100 mx-auto d-block"
           />
         </div>
-        <h1 className="display-1 m-0">Rifate!</h1>
+        <h1 className="display-1 m-0 fw-bold">¡Rífate!</h1>
         <p className="display-4">Sumate con amor</p>
       </section>
 

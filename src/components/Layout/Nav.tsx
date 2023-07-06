@@ -45,7 +45,7 @@ export default function Nav({ home }: any) {
             Crear Rifa
           </li>
           <li
-            className="mx-4"
+            className="mx-4 "
             style={{ cursor: "pointer" }}
             onClick={() => router.push("/nosotros")}
           >
