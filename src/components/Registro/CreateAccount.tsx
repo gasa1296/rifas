@@ -18,7 +18,7 @@ export default function CreateAccount({ nextStep }: any) {
   const fields: Field[] = [
     {
       label: "Nombre completo",
-      name: "first_name",
+      name: "full_name",
       required: true,
       type: "text",
     },
@@ -28,7 +28,7 @@ export default function CreateAccount({ nextStep }: any) {
       required: true,
       type: "text",
     },
-    { label: "Empresa (Opcional)", name: "enterprise", type: "email" },
+    { label: "Empresa (Opcional)", name: "company_name", type: "text" },
     { label: "Contrasena", name: "password", required: true, type: "password" },
     {
       label: "Confirmar contrasena",
@@ -74,8 +74,7 @@ export default function CreateAccount({ nextStep }: any) {
             O registrate con tus redes sociales
           </p>
           <button className="btn btn-secondary" type="button">
-            {" "}
-            Resgitrate con Facebook
+            Regitrate con Facebook
           </button>
           <button className="btn btn-secondary my-2" type="button">
             Registrate con Google

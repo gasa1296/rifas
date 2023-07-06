@@ -52,8 +52,10 @@ export default function Footer() {
 
                 <div className=" border-bottom border-2 w-auto mx-5  "></div>
 
-                <p className="mx-5 mt-2 text-secondary fs-6">2021 .Todos los derechos reservados</p>
+                <p className="mx-5 mt-2 text-secondary fs-6">
+                    2021 .Todos los derechos reservados
+                </p>
             </footer>
         </div>
-    )
+    );
 }

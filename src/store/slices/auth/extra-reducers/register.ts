@@ -1,5 +1,5 @@
 import {ActionReducerMapBuilder} from "@reduxjs/toolkit";
-import {Register} from "../thunks";
+import {Login, Register} from "../thunks";
 
 export const REGISTER_EXTRA_REDUCERS = (
   builder: ActionReducerMapBuilder<any>
@@ -15,4 +15,18 @@ export const REGISTER_EXTRA_REDUCERS = (
 
     state.loading = false
   });
+
+
+  builder.addCase(Login.pending, (state) => {
+    state.loading = true;
+  });
+
+  builder.addCase(Login.fulfilled, (state, action) => {
+    if (action.payload) {
+      state.authenticated = true
+      state.profile = action.payload
+    }
+    state.loading = false
+  });
+
 };
