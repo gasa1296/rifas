@@ -15,3 +15,10 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+
+.custom-modal .modal-dialog {
+   
+     max-width: 560px; 
+
+}
