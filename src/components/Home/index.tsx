@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import fondo from "@/assets/img/fondo.jpg";
 import imagen from "@/assets/img/imagen.svg";
 import segundaImagen from "@/assets/img/SegundaImagen.svg";
@@ -9,7 +9,15 @@ import HomeHeader from "./HomeHeader";
 import HomeCreateRifa from "./HomeCreateRifa";
 import HomeTestimonios from "./HomeTestimonios";
 import HomeRifate from "./HomeRifate";
+import { useDispatch } from "react-redux";
+import { Raffles } from "@/store/slices/raffles";
 export default function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(Raffles({}) as any);
+  }, []);
+
   return (
     <div className="">
       <HomeHeader />

@@ -1,139 +1,15 @@
 import React from "react";
 import camara from "@/assets/img/camara.png";
-import Image from "next/image";
 import FormGenerator from "../FormGenerator";
-import { Field } from "@/types/Component/FormGenerator";
 import { selectAuthState } from "@/store/slices/auth";
 import { useSelector } from "react-redux";
+import { registerFields } from "./helper";
 export default function RegistroCuenta({ nextStep, backStep }: any) {
   const { loading } = useSelector(selectAuthState);
   const submitData = async () => {
     //await dispatch(Register(data) as any);
     nextStep();
   };
-
-  const fields: Field[] = [
-    {
-      label: " 1 / 2 Datos de asociacion",
-      name: "",
-      type: "title"
-
-    },
-    {
-      label: "Nombre(s) del representante legal*",
-      name: "name",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Apellido Paterno del representante legal*",
-      name: "father_name",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Apellido Materno del representante legal*",
-      required: true,
-      name: "mother_name",
-      type: "text",
-    },
-    {
-      label: "Razón Social*",
-      required: true,
-      name: "business_name",
-      type: "text",
-    },
-    {
-      label: "RFC**",
-      required: true,
-      name: "rfc",
-      type: "text"
-    },
-    {
-      label: "Regimen Fiscal*",
-      required: false,
-      name: "tax_regime",
-      type: "text"
-
-    },
-    {
-      label: "Correo electronico",
-      required: false,
-      name: "Correo_electronico",
-      type: "email"
-
-    },
-    {
-      label: "Teléfono",
-      required: false,
-      name: "phone",
-      type: "number"
-
-    },
-    {
-      label: "Cuenta de PayPal",
-      required: false,
-      name: "paypal_account",
-      type: "text"
-
-    },
-    {
-      label: "Agrega o arrastra tu foto aqui",
-      required: false,
-      name: "imagen",
-      type: "text"
-
-    },
-    {
-      label: " 2 / 2 Dirección Fiscal",
-      name: "fiscal_address",
-      type: "title"
-
-    },
-    {
-      label: " ¿La dirección de la asociación es diferente a la fiscal?",
-      required: false,
-      name: "fiscal_address2",
-      type: "checkbox"
-
-    },
-
-    {
-      label: "Calle y número",
-      required: false,
-      name: "street_number",
-      type: "text"
-
-    },
-    {
-      label: "Código postal",
-      required: false,
-      name: "postal_code",
-      type: "number"
-
-    },
-    {
-      label: "Estado",
-      required: false,
-      name: "select",
-      type: "text"
-
-    },
-    {
-      label: "Municipio",
-      required: false,
-      name: "municipality",
-      type: "text"
-
-    },
-    {
-      label: "RFC**",
-      required: true,
-      name: "rfc",
-      type: "text"
-    },
-
-  ];
 
   return (
     <section className="text-secondary row  ">
@@ -147,16 +23,17 @@ export default function RegistroCuenta({ nextStep, backStep }: any) {
         </p>
       </div>
 
-      <div className="  my-3 text-secondary border  shadow rounded mx-auto px-5" style={{ maxWidth: "600px", width: "100%" }}>
-
+      <div
+        className=" pt-3 my-3 text-secondary border  shadow rounded mx-auto px-5"
+        style={{ maxWidth: "600px", width: "100%" }}
+      >
         <FormGenerator
           buttonText="Registrar"
           submitData={submitData}
-          fields={fields}
+          fields={registerFields}
           loading={loading}
         />
       </div>
-
 
       <div className=" text-dark text-center ">
         <button
@@ -167,6 +44,6 @@ export default function RegistroCuenta({ nextStep, backStep }: any) {
           ir al inicio
         </button>
       </div>
-    </section >
+    </section>
   );
 }
