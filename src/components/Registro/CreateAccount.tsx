@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
+import RegistroCompletado from "./RegistroCompletado";
 
 export default function CreateAccount({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
-
+  const [sucess, setSucces] = useState(false)
   const dispatch = useDispatch();
-
   const submitData = async (data: Profile) => {
-    await dispatch(Register(data) as any);
-    nextStep();
+    const { payload } = await dispatch(Register(data) as any);
+
+    if (payload) {
+      setSucces(true)
+    }
   };
 
   const fields: Field[] = [
@@ -43,6 +46,7 @@ export default function CreateAccount({ nextStep }: any) {
       type: "checkbox",
     },
   ];
+  if (sucess) return (<RegistroCompletado nextStep={nextStep} />)
 
   return (
     <section className="text-secondary row">

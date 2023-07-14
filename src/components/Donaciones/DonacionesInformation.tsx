@@ -5,14 +5,15 @@ import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
-import { Profile } from "@/types/Model/Profile";
+import { Donation, Donation2 } from "@/types/Model/Profile";
+import { setDonationsForm2 } from '@/store/slices/raffles';
 export default function DonacionesInformation({ nextStep, backStep }: any) {
     const { loading } = useSelector(selectAuthState);
 
     const dispatch = useDispatch();
 
-    const submitData = async (data: Profile) => {
-        await dispatch(Register(data) as any);
+    const submitData = async (data: Donation2) => {
+        await dispatch(setDonationsForm2(data) as any);
         nextStep();
 
     }; const fields: Field[] = [
@@ -28,9 +29,24 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
             type: "radioButton",
         },
 
-        { label: "¿Cuál es el precio de tu producto (En pesos MXN)?*", name: "prize_product", required: true, type: "text" },
-        { label: "¿Quieres asignar tu premio a alguna Asociación?", name: "association award", required: false, type: "select" },
-        { label: "¿Quieres asignar tu premio a alguna Asociación?", name: "association award", required: false, type: "file" },
+        {
+            label: "¿Cuál es el precio de tu producto (En pesos MXN)?*",
+            name: "prize_product",
+            required: true, type:
+                "text"
+        },
+        {
+            label: "¿Quieres asignar tu premio a alguna Asociación?",
+            name: "association_award",
+            required: false,
+            type: "select"
+        },
+        {
+            label: "Agrega las fotos de tu premio",
+            name: "association award",
+            required: false,
+            type: "file"
+        },
 
     ];
     return (

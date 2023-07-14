@@ -7,3 +7,11 @@ export const getRaffles = () => {
     method: "GET",
   });
 };
+
+export const createDonations = (donation: any) => {
+  return Api({
+    endpoint: "/associations/",
+    method: "POST",
+    _data: donation
+  });
+};

@@ -8,6 +8,8 @@ const initialState: RaffleInitialState = {
   raffles: [],
   raffle: null,
   loading: true,
+  donationForm1: {},
+  donationFrom2:{},
 };
 
 export const rafflesSlice = createSlice({
@@ -16,9 +18,17 @@ export const rafflesSlice = createSlice({
   reducers: {
 
     setRaffle: (state, action) =>{
-      console.log("first", action.payload)
         state.raffle = state.raffles.find(raffle => raffle.id.toString() === action.payload.toString()) || null
-    }
+    },
+
+    setDonationsForm1:  (state, action) =>{
+        state.donationForm1 = action.payload
+    },
+
+    setDonationsForm2:  (state, action) =>{
+      state.donationFrom2 = action.payload
+  },
+
 
 
   },
@@ -29,7 +39,7 @@ export const rafflesSlice = createSlice({
   },
 });
 
-export const {setRaffle} = rafflesSlice.actions;
+export const {setRaffle,setDonationsForm1,setDonationsForm2} = rafflesSlice.actions;
 export const selectRaffleState = (state: RootState) => state.raffles;
 export default rafflesSlice.reducer;
 export * from "./thunks";

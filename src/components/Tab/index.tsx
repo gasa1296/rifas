@@ -29,7 +29,7 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
   };
 
   return (
-    <div className=" mx-5 mt-2">
+    <div className=" mx-5 mt-5">
       {hasHeader && (
         <div className="border-bottom  position-relative ">
           <div className=" text-secondary opacity-75 fs-5 d-flex align-items-center position-absolute ">

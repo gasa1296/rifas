@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg"
+import { useDispatch } from 'react-redux';
+import { Donations } from '@/store/slices/raffles';
 export default function DonacionesValidacion({ nextStep, backStep, initialStep }: any) {
+
+    const dispatch = useDispatch();
+
+    const submitDonation = async () => {
+        const { payload } = await dispatch(Donations({}) as any)
+
+    }
+
+    useEffect(
+        () => {
+            submitDonation()
+        }, []
+    )
     return (
         <div>
             <section className='row m-0 my-3' >

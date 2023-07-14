@@ -21,7 +21,7 @@ export default function InputSelect({
                 {label}
             </label>
 
-            <select className="form-select form-select-md mb-3 w-100">
+            <select {...register(name, { required })} className="form-select form-select-md mb-3 w-100">
                 <option selected></option>
                 <option value="1"></option>
                 <option value="1">Uno</option>

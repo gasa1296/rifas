@@ -6,14 +6,15 @@ import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
-import { Profile } from "@/types/Model/Profile";
+import { Donation, } from "@/types/Model/Profile";
+import { Donations, setDonationsForm1 } from "@/store/slices/raffles";
 export default function DonacionesDescripcion({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
 
   const dispatch = useDispatch();
 
-  const submitData = async (data: Profile) => {
-    await dispatch(Register(data) as any);
+  const submitData = async (data: Donation) => {
+    await dispatch(setDonationsForm1(data) as any);
     nextStep();
   };
 
@@ -38,7 +39,7 @@ export default function DonacionesDescripcion({ nextStep }: any) {
     },
     {
       label: "¿Que categoria describe tu producto?*",
-      name: "prize_description2",
+      name: "prize_category",
       required: true,
       type: "select",
     },

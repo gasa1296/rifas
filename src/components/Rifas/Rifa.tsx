@@ -24,7 +24,7 @@ export default function Rifa({ href = "/rifas" }: any) {
   return (
     <div className="  " style={{ marginBottom: "120px" }}>
       <section className=" mx-5 mt-5 mb-5">
-        <h3 className=" fw-normal  display-3 text-secondary mt-5 mt-lg-3 ">
+        <h3 className=" fw-normal  display-4 text-secondary mt-5 mt-lg-3 ">
           Rifa Destacada
         </h3>
         <p className="  fs-2 mt-4 mb-5 lh-sm fw-normal text-secondary  ">
