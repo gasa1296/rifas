@@ -6,8 +6,8 @@ import CrearRifaRegistro from "./CrearRifaRegistro";
 import FinalizarRegistro from "./FinalizarRegistro";
 export default function Registro() {
   const tabs = [
-    { label: "Registro una AC", Component: RegistroCuenta },
     { label: "Crear una cuenta", Component: CreateAccount },
+    { label: "Registro una AC", Component: RegistroCuenta },
     { label: "Crear rifa", Component: FinalizarRegistro },
   ];
 

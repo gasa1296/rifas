@@ -6,7 +6,7 @@ import {authSliceModel} from "@/types/Store/auth";
 const initialState: authSliceModel = {
   authenticated: false,
   loading: false, 
-  profile: {},
+  profile: null,
 };
 
 export const authSlice = createSlice({
@@ -16,7 +16,7 @@ export const authSlice = createSlice({
  
     setLogout: (state) =>{ 
       state.authenticated = false 
-      state.profile = {}
+      state.profile = null
        localStorage.removeItem("sessionToken")
        localStorage.removeItem("sessionTokenRefresh")
     }

@@ -8,26 +8,26 @@ export const registerFields: Field[] = [
   },
   {
     label: "Nombre(s) del representante legal*",
-    name: "name",
+    name: "first_name",
     required: true,
     type: "text",
   },
   {
     label: "Apellido Paterno del representante legal*",
-    name: "father_name",
+    name: "last_name",
     required: true,
     type: "text",
   },
   {
     label: "Apellido Materno del representante legal*",
     required: true,
-    name: "mother_name",
+    name: "last_name2",
     type: "text",
   },
   {
     label: "Razón Social*",
     required: true,
-    name: "business_name",
+    name: "association_name",
     type: "text",
   },
   {
@@ -39,13 +39,13 @@ export const registerFields: Field[] = [
   {
     label: "Regimen Fiscal*",
     required: false,
-    name: "tax_regime",
+    name: "regime",
     type: "text",
   },
   {
     label: "Correo electronico",
     required: false,
-    name: "Correo_electronico",
+    name: "email",
     type: "email",
   },
   {
@@ -57,7 +57,7 @@ export const registerFields: Field[] = [
   {
     label: "Cuenta de PayPal",
     required: false,
-    name: "paypal_account",
+    name: "paypal",
     type: "text",
   },
   {
@@ -68,7 +68,7 @@ export const registerFields: Field[] = [
   },
   {
     label: " 2 / 2 Dirección Fiscal",
-    name: "fiscal_address",
+    name: "address",
     type: "title",
   },
   {
@@ -81,31 +81,31 @@ export const registerFields: Field[] = [
   {
     label: "Calle y número",
     required: false,
-    name: "street_number",
+    name: "address",
     type: "text",
   },
   {
     label: "Código postal",
     required: false,
-    name: "postal_code",
+    name: "zip",
     type: "number",
   },
   {
     label: "Estado",
     required: false,
-    name: "select",
+    name: "state",
     type: "text",
   },
   {
     label: "Municipio",
     required: false,
-    name: "municipality",
+    name: "province",
     type: "text",
   },
   {
-    label: "RFC**",
-    required: true,
-    name: "rfc",
+    label: "RFC*",
+    required: false,
+    name: "rfc2",
     type: "text",
   },
 ];

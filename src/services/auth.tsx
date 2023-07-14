@@ -35,3 +35,11 @@ export const refreshToken = (refresh: String) => {
     },
   });
 };
+
+export const createAsociacion = (asociacion: any) => {
+  return Api({
+    endpoint: "/associations/",
+    method: "POST",
+    _data: asociacion,
+  });
+};

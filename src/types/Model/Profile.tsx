@@ -1,5 +1,6 @@
 export interface Profile {
   name: string;
+  email: string;
   enterprise: string;
   password: string;
   confirmPassword: string;

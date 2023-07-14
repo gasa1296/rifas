@@ -1,14 +1,15 @@
 import React from "react";
 import camara from "@/assets/img/camara.png";
 import FormGenerator from "../FormGenerator";
-import { selectAuthState } from "@/store/slices/auth";
-import { useSelector } from "react-redux";
+import { CreateAsociacion, selectAuthState } from "@/store/slices/auth";
+import { useDispatch, useSelector } from "react-redux";
 import { registerFields } from "./helper";
 export default function RegistroCuenta({ nextStep, backStep }: any) {
   const { loading } = useSelector(selectAuthState);
-  const submitData = async () => {
-    //await dispatch(Register(data) as any);
-    nextStep();
+  const dispatch = useDispatch();
+  const submitData = async (data: any) => {
+    const { payload } = await dispatch(CreateAsociacion(data) as any);
+    if (payload) nextStep();
   };
 
   return (

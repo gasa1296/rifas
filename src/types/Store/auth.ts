@@ -1,5 +1,5 @@
 export interface authSliceModel {
-    profile: object; 
+    profile: null | {id: number}; 
     loading: boolean ;
     authenticated: boolean;
 }

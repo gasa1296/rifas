@@ -1,4 +1,4 @@
-import { getUserProfile, loginUser, refreshToken, registerUser } from "@/services/auth";
+import { createAsociacion, getUserProfile, loginUser, refreshToken, registerUser } from "@/services/auth";
 import {RootState} from "@/store";
 import { Auth, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
@@ -14,6 +14,9 @@ export const Register = createAsyncThunk(
     try {
 
       const {data} = await registerUser(Profile)
+
+      await thunkAPI.dispatch(Login({email:Profile.email, password: Profile.password}))
+
       return data
     } catch (error) {
       handleError(error)
@@ -37,6 +40,31 @@ export const Login = createAsyncThunk(
       
 
       return {...data, ...profile.data}
+    } catch (error) {
+      handleError(error)
+    }
+  }
+);
+export const CreateAsociacion = createAsyncThunk(
+  `${PREFIX}/asociacion`,
+  async (
+    Asociacion: any,
+    thunkAPI
+  ): Promise<{} | undefined> => {
+
+    try {
+
+      const {auth} = thunkAPI.getState() as RootState
+      const {id}  = auth.profile || {id: null}
+
+      Asociacion.user = id?.toString() 
+
+      console.log("ASOCIACION", Asociacion)
+      const result = await createAsociacion(Asociacion)
+
+      console.log("RESULT", result)
+
+      return {}
     } catch (error) {
       handleError(error)
     }
