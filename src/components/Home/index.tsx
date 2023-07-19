@@ -16,6 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(Raffles({}) as any);
+    //eslint-disable-next-line
   }, []);
 
   return (

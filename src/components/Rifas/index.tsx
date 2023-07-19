@@ -9,6 +9,8 @@ export default function Rifas() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Raffles({}) as any);
+
+    //eslint-disable-next-line
   }, []);
 
   return (
