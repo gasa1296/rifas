@@ -13,7 +13,7 @@ export default function Rifa({ href = "/rifas" }: any) {
   const router = useRouter();
 
   if (loading) {
-    return <div>loading</div>;
+    return <div></div>;
   }
   const getRouter = (): string => {
     if (router.pathname === "/rifas") return `/rifas/${raffle.id}`;
