@@ -4,8 +4,10 @@ import FormGenerator from "../FormGenerator";
 import { CreateAsociacion, selectAuthState } from "@/store/slices/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { registerFields } from "./helper";
+import { useRouter } from "next/router";
 export default function RegistroCuenta({ nextStep, backStep }: any) {
   const { loading } = useSelector(selectAuthState);
+  const router = useRouter();
   const dispatch = useDispatch();
   const submitData = async (data: any) => {
     const { payload } = await dispatch(CreateAsociacion(data) as any);
@@ -40,7 +42,7 @@ export default function RegistroCuenta({ nextStep, backStep }: any) {
         <button
           className=" my-2 w-50 btn btn-outline-secondary"
           type="button"
-          onClick={() => backStep()}
+          onClick={() => router.push("/")}
         >
           ir al inicio
         </button>

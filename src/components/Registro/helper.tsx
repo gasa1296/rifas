@@ -61,10 +61,11 @@ export const registerFields: Field[] = [
     type: "text",
   },
   {
-    label: "Agrega o arrastra tu foto aqui",
+    label: "Agrega el logotipo de tu asociacion",
     required: false,
     name: "imagen",
-    type: "text",
+    type: "file",
+    maxFile: 1,
   },
   {
     label: " 2 / 2 Dirección Fiscal",

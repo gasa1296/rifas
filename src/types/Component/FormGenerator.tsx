@@ -4,6 +4,8 @@ export interface Field {
   required?: boolean;
   type: FieldTypeString;
   default?: any;
+  options?: { label: string; value: string }[];
+  maxFile?: number;
 }
 
 export interface FieldType {
@@ -13,9 +15,10 @@ export interface FieldType {
   password: any;
   number: any;
   title: any;
-  radioButton: any
-  select: any
-  file: any
+  radioButton: any;
+  select: any;
+  file: any;
+  textarea: any;
 }
 export type FieldTypeString =
   | "text"
@@ -27,4 +30,4 @@ export type FieldTypeString =
   | "radioButton"
   | "select"
   | "file"
-  ;
+  | "textarea";

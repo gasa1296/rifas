@@ -7,6 +7,7 @@ interface Props {
   submitData: (data: any) => void;
   buttonText?: string;
   loading?: boolean;
+  renderButton?: () => JSX.Element;
 }
 
 export default function FormGenerator({
@@ -14,11 +15,14 @@ export default function FormGenerator({
   submitData,
   buttonText = "Enviar",
   loading = false,
+  renderButton,
 }: Props) {
   const {
     handleSubmit,
     register,
     formState: { errors },
+    setValue,
+    watch,
   } = useForm({
     defaultValues: getDefaultValues(fields),
   });
@@ -33,18 +37,22 @@ export default function FormGenerator({
             key={index}
             error={errors[field.name]}
             register={register}
+            setValue={setValue}
             {...field}
           />
         );
       })}
-
-      <button
-        disabled={loading}
-        className="btn btn-secondary w-100 my-4"
-        type="submit"
-      >
-        {buttonText}
-      </button>
+      {renderButton ? (
+        renderButton()
+      ) : (
+        <button
+          disabled={loading}
+          className="btn btn-secondary w-100 my-4"
+          type="submit"
+        >
+          {buttonText}
+        </button>
+      )}
     </form>
   );
 }

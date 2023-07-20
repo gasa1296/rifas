@@ -1,46 +1,51 @@
 import React from "react";
 interface Props {
-    register: any;
-    label: string;
-    name: string;
-    required?: boolean;
-    error?: string;
+  register: any;
+  label: string;
+  name: string;
+  required?: boolean;
+  error?: string;
+  options?: { label: string; value: string }[];
 }
 export default function InputRadioButton({
-    register,
-    label,
-    name,
-    required,
-    error,
+  register,
+  label,
+  name,
+  required,
+  error,
+  options,
 }: Props) {
-    return (
-        <div>
-            <label className={`${error && "text-danger"} fs-5 text-secondary`} htmlFor={name}>
-                {label}
-            </label>
-            {/*      <input
-                id={name}
-                name={name}
-                type="password"
-                {...register(name, { required })}
-                className={`w-100 form-control my-2 fs-5  ${error && "border-danger "}`}
-            />
- */}
-            <div className="d-flex">
-                <div className="input-group w-25 m-2 d-flex">
-                    <div className="input-group-text">
-                        <input className="form-check-input mt-0" type="radio" />
-                    </div>
-                    <input type="text" className="form-control" placeholder='Nuevo' />
-                </div>
-                <div className="input-group w-25 m-2">
-                    <div className="input-group-text">
-                        <input className="form-check-input mt-0" type="radio" />
-                    </div>
-                    <input type="text" className="form-control" placeholder='Usado' />
-                </div>
-            </div>
+  return (
+    <div>
+      <label
+        className={`${error && "text-danger"} fs-5 text-secondary`}
+        htmlFor={name}
+      >
+        {label}
+      </label>
 
-        </div>
-    );
+      <div className="d-flex flex-wrap my-3">
+        {options?.map((option, index) => (
+          <div
+            key={index}
+            className=" btn btn-outline-secondary opacity-75  d-flex align-items-center me-2"
+          >
+            <input
+              {...register(name, { required })}
+              name={name}
+              className="form-check-input mt-0"
+              type="radio"
+              id={`${name}${index + 1}`}
+            />
+            <label
+              className="text-gray m-0 ms-2 "
+              htmlFor={`${name}${index + 1}`}
+            >
+              {option.label}
+            </label>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

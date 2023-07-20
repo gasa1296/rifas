@@ -21,8 +21,12 @@ export default function DonacionesValidacion({
   return (
     <div>
       <section className="row m-0 my-3">
-        <div className=" col-md-6 col-12   ">
-          <Image src={imagenDonaciones} alt=".." className="w-75 mx-5" />
+        <div className=" col-12 col-md-6    ">
+          <Image
+            src={imagenDonaciones}
+            alt="donation"
+            className="w-100 h-auto mx-0 "
+          />
         </div>
         <div className=" col-md-5 col-12  mx-3 text-secondary mx-4 mx-md-0 ">
           <h4 className=" lh-sm m-0 text-md-start  text-center fs-3">

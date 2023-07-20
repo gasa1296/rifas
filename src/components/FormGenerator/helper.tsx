@@ -8,6 +8,7 @@ import InputTitle from "./Fields/InputTitle";
 import InputRadioButton from "./Fields/InputRadioButton";
 import InputSelect from "./Fields/inputSelect";
 import InputFile from "./Fields/InputFile";
+import InputTextarea from "./Fields/InputTextarea";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
@@ -26,5 +27,6 @@ export const FieldComponents: FieldType = {
   title: InputTitle,
   radioButton: InputRadioButton,
   select: InputSelect,
-  file: InputFile
+  file: InputFile,
+  textarea: InputTextarea,
 };

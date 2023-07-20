@@ -30,7 +30,7 @@ export default function Nav({ home }: any) {
         >
           <Image src={logo} alt="fondo" className=" mx-auto d-block" />
         </div>
-        <ul className=" d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
+        <ul className="d-none  d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
           <li
             className=" mx-4 "
             style={{ cursor: "pointer" }}
