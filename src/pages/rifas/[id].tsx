@@ -9,6 +9,7 @@ import { setRaffle } from "@/store/slices/raffles";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import AllRifas from "@/components/Rifas/AllRifas";
 
 export default function RifasDetails() {
   const router = useRouter();
@@ -22,6 +23,8 @@ export default function RifasDetails() {
     { label: "Registro una AC", Component: MetodosPagoRifa },
     { label: "Crear rifa", Component: RifaPago },
     { label: "Crear rifa", Component: PaySuccessful },
+    { label: "Crear rifa", Component: AllRifas },
+
   ];
 
   useEffect(() => {

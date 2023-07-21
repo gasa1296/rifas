@@ -3,6 +3,10 @@ import Image from "next/image";
 import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg";
 import { useDispatch } from "react-redux";
 import { Donations } from "@/store/slices/raffles";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+import { BiHeartCircle } from "react-icons/bi";
+
+
 export default function DonacionesValidacion({
   nextStep,
   backStep,
@@ -20,19 +24,22 @@ export default function DonacionesValidacion({
   }, []);
   return (
     <div>
-      <section className="row m-0 my-3">
-        <div className=" col-12 col-md-6    ">
+      <section className="row m-0 my-3 ">
+        <div className=" col-12 col-lg-6    ">
           <Image
             src={imagenDonaciones}
             alt="donation"
             className="w-100 h-auto mx-0 "
           />
         </div>
-        <div className=" col-md-5 col-12  mx-3 text-secondary mx-4 mx-md-0 ">
-          <h4 className=" lh-sm m-0 text-md-start  text-center fs-3">
+        <div className=" col-lg-5 col-12   text-secondary ms-3 ">
+          <h4 className=" lh-sm m-0 text-lg-start mt-3 mt-lg-0  text-center fs-3">
             3 / 3 Premio en validacion
           </h4>
-          <p className="m-0 fw-bold fs-1 text-center my-3">Gracias</p>
+
+          <BiHeartCircle size={55} className="mx-auto d-block mt-3" />
+
+          <p className="m-0 fw-bold fs-1 text-center ">Gracias</p>
           <p className="m-0  lh-1 fw-bold  fs-3 text-center">
             Estamos muy contentos de
           </p>
@@ -40,76 +47,54 @@ export default function DonacionesValidacion({
             {" "}
             Conseguir tu valiso apoyo
           </p>
-          <p className=" my-2 text-center fw-semibold  fs-5 ">
+          <p className=" mb-4 mt-2 text-center fw-semibold  fs-5 ">
             ¿Cuales son los siguientes pasos?
           </p>
 
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label">
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill size={20} className="m-0 " />
+            <p className="m-0  ms-2">
               Tu premio será sometido a un proceso de revisión
-            </label>
+            </p>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label">
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill size={20} className="m-0 " />
+            <p className="m-0  ms-2">
               Una vez autorizado, te enviaremos un mensaje de confirmación
-            </label>
+            </p>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label">
+
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill size={20} className="m-0 " />
+            <p className="m-0  ms-2">
               tu premio ya será parte del catálogo.
-            </label>
+            </p>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label ">
-              Si seleccionaste alguna asociación será asignado a dicha
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill size={29} className="m-0 " />
+            <p className="m-0 ms-2  ">
+              Si seleccionaste alguna asociación será  asignado a dicha
               asociación para ser elegido en una rifa.
-            </label>
+            </p>
           </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label className="form-check-label ">
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill size={20} className="m-0 " />
+            <p className="m-0  ms-2">
               Pronto sabras de nosotros en un máximo de 48 hrs
-            </label>
+            </p>
           </div>
-          <div className="d-flex justify-content-between  mw-md-50  mt-2 ">
+
+
+          <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
             <button className="btn btn-outline-secondary btn-sm w-50 mx-2 fs-6">
               {" "}
-              Ver catalogo de premios
+              Catalogo de premios
             </button>
             <button
               className="btn btn-outline-secondary btn-sm w-50 mx-2 fs-6"
               onClick={() => initialStep()}
             >
-              Ir a donar otro premio
+              Donar otro premio
             </button>
           </div>
         </div>
