@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from "react";
 import picture from "@/assets/img/picture.png"
 import Image from 'next/image'
+import ModalCausa from "../modal/ModalCausa";
+import ModalPremio from "../modal/ModalPremio";
 export default function ConfiguraRifa({ step, setStep }: any) {
+    const [showCause, setShowCause] = useState(false);
+    const handleCloseCause = () => setShowCause(false);
+    const handleShowCause = () => setShowCause(true);
+
+    const [showPrice, setShowPrice] = useState(false);
+    const handleCloseCPrice = () => setShowPrice(false);
+    const handleShowPrice = () => setShowPrice(true);
     return (
-        <div className='mx-4 row'>
+        <div className='mx-4 '>
+            <ModalCausa showCause={showCause} handleCloseCause={handleCloseCause} />
+            <ModalPremio showPrice={showPrice} handleCloseCPrice={handleCloseCPrice} />
             <p className='text-secondary fs-5'>1. Selecciona una de tus asociaciones a la que quieres apoyar.</p>
-            <div className='col-12 col-md-12 '>
+            <div className='row '>
 
 
                 <label className='text-secondary my-2 '>Seleccionar Asociación Civil</label>
@@ -16,30 +27,19 @@ export default function ConfiguraRifa({ step, setStep }: any) {
                     <option value="3">Tres</option>
                 </select>
                 <p className='text-secondary fs-5'>2. Elige una causa o agrega una nueva</p>
-                <div className='d-md-flex col-12 m-auto '>
-                    <div className='col-6 col-md-5 '>
-                        <Image src={picture} alt='..' className='w-25 h-25 d-block mx-auto' />
-                    </div>
-                    <div className='text-secondary col-12 col-md-7 '>
-                        <h6>Cura contra el ebola</h6>
-                        <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rerum mollitia rem dignissimos quia dolo</p>
-                        <p>monto a recaudar:<p>$790.0000</p></p>
-                        <button className='form-control m-3 text-secondary '>Cambiar causa</button>
-                    </div>
+                <div className='d-lg-flex col-12  m-auto mb-3 '>
+                    <button className="mx-2 btn btn-dark col-lg-6 col-12  " onClick={handleShowCause}>Seleccionar una causa</button>
+                    <button className=" mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3">Agregar una causa</button>
 
                 </div>
                 <p className='text-secondary fs-5'>3. Elige tu premio o agrega uno nuevo</p>
-                <div className='d-md-flex col-12 m-auto '>
-                    <div className='col-6 col-md-5 '>
-                        <Image src={picture} alt='..' className='w-25 h-25 d-block mx-auto' />
-                    </div>
-                    <div className='text-secondary col-12 col-md-7 '>
-                        <h6>Cura contra el ebola</h6>
-                        <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas rerum mollitia rem dignissimos quia dolo</p>
-                        <p>monto a recaudar:<p>$790.0000</p></p>
-                        <button className='form-control m-3 text-secondary '>Cambiar premio</button>
-                    </div>
+                <div className='d-lg-flex col-12 col-lg-12 m-auto mb-3 '>
+                    <button className=" mx-2 btn btn-dark col-lg-6 col-12 " onClick={handleShowPrice}>Seleccionar un premio</button>
+                    <button className="  mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3">Agregar un premio</button>
+
                 </div>
+
+
                 <p className='text-secondary fs-5'>4. Datos de la rifa</p>
                 <label className='text-secondary my-2 '>Monto a recaudar en pesos MXN</label>
                 <input className='form-control   ' type="text" placeholder='$' />

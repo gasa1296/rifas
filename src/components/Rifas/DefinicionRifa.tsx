@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from "react";
 import imagenPrueba from "@/assets/img/imagePrueba.svg"
 import Image from 'next/image'
+
 export default function DefinicionRifa({ step, setStep }: any) {
+
+
+
     return (
         <div className=' row mx-4  '>
             <p className='text-secondary fs-5'>1. Selecciona una de tus asociaciones a la que quieres apoyar.</p>

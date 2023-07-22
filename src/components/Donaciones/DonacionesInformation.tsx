@@ -92,6 +92,7 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
             )}
           />
         </div>
+
       </section>
     </div>
   );
