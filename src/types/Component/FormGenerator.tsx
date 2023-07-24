@@ -4,7 +4,7 @@ export interface Field {
   required?: boolean;
   type: FieldTypeString;
   default?: any;
-  options?: { label: string; value: string }[];
+  options?: { label: string; value: string | number }[];
   maxFile?: number;
 }
 

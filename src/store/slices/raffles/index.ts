@@ -10,6 +10,7 @@ const initialState: RaffleInitialState = {
   loading: true,
   donationForm1: {},
   donationFrom2:{},
+  associations: [],
 };
 
 export const rafflesSlice = createSlice({

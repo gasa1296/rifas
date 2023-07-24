@@ -1,5 +1,5 @@
 
-import { createDonations, getRaffles } from "@/services/raffles";
+import { createDonations, getAssociationsApproveds, getRaffles } from "@/services/raffles";
 import { RootState } from "@/store";
 import { Donation, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
@@ -23,6 +23,22 @@ export const Raffles = createAsyncThunk(
     }
   }
 );
+export const GetAssociations = createAsyncThunk(
+  `${PREFIX}/associations`,
+  async (
+    Profile: any,
+    thunkAPI
+  ): Promise<{} | undefined> => {
+
+    try {
+      const result =  await getAssociationsApproveds(); 
+
+      return result.data
+    } catch (error) {
+      handleError(error)
+    }
+  }
+);
 export const Donations = createAsyncThunk(
   `${PREFIX}/donations`,
   async (
@@ -32,17 +48,24 @@ export const Donations = createAsyncThunk(
 
     try {
 
-      const {raffles} = thunkAPI.getState() as RootState
+      const {raffles, auth} = thunkAPI.getState() as RootState
 
-      console.log(raffles) 
+      const dataDonation = {...raffles.donationForm1,...raffles.donationFrom2, created_by: auth?.profile?.id}
+
+      dataDonation.status = dataDonation.status === "on" ? 1 : 0
+
+
+      dataDonation.association =  Number(dataDonation.association)
+
+      if(dataDonation.association === 0) delete(dataDonation.association)
 
       
-      const dataDonation = {...raffles.donationForm1,...raffles.donationFrom2}
+      dataDonation.category =  Number(dataDonation.category)
        const result =  await createDonations(dataDonation); 
-      console.log(result)
       return result.data 
 
     } catch (error) {
+
       handleError(error)
     }
   }

@@ -13,7 +13,9 @@ import InputTextarea from "./Fields/InputTextarea";
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
 
-  fields.map((field) => (defaultValues[field.name] = field.default || ""));
+  fields.map((field) => {
+    if (field.type !== "title") defaultValues[field.name] = field.default || "";
+  });
 
   return defaultValues;
 };

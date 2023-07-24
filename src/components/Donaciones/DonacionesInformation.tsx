@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
-import { Register, selectAuthState } from "@/store/slices/auth";
-import { Donation, Donation2 } from "@/types/Model/Profile";
-import { setDonationsForm2 } from "@/store/slices/raffles";
+import { selectAuthState } from "@/store/slices/auth";
+import { Donation2 } from "@/types/Model/Profile";
+import {
+  Donations,
+  GetAssociations,
+  selectRaffleState,
+  setDonationsForm2,
+} from "@/store/slices/raffles";
 export default function DonacionesInformation({ nextStep, backStep }: any) {
   const { loading } = useSelector(selectAuthState);
+
+  const { associations } = useSelector(selectRaffleState);
 
   const dispatch = useDispatch();
 
   const submitData = async (data: Donation2) => {
     await dispatch(setDonationsForm2(data) as any);
-    nextStep();
+
+    const { payload } = await dispatch(Donations({}) as any);
+    if (payload) nextStep();
   };
+
   const fields: Field[] = [
     {
       label: "2 / 3  Completa la informacion",
@@ -25,31 +35,30 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
     },
     {
       label: "¿Cual es el la condicion de tu producto?*",
-      name: "product_condition",
+      name: "status",
       required: true,
       type: "radioButton",
       options: [
-        { label: "Nuevo", value: "nuevo" },
-        { label: "Usado", value: "usado" },
+        { label: "Nuevo", value: 0 },
+        { label: "Usado", value: 1 },
       ],
     },
 
     {
       label: "¿Cuál es el precio de tu producto (En pesos MXN)?*",
-      name: "product_price",
+      name: "price",
       required: true,
       type: "number",
     },
     {
       label: "¿Quieres asignar tu premio a alguna Asociación?",
-      name: "product_association",
+      name: "association",
       required: false,
       type: "select",
-      options: [
-        { label: "Asociacion 1", value: "1" },
-        { label: "Asociacion 2", value: "2" },
-        { label: "Asociacion 3", value: "3" },
-      ],
+      options: associations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
     },
     {
       label: "Agrega las fotos de tu premio",
@@ -58,6 +67,11 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
       type: "file",
     },
   ];
+
+  useEffect(() => {
+    dispatch(GetAssociations({}) as any);
+  }, []);
+
   return (
     <div>
       <section className="row m-0 my-3">
@@ -92,7 +106,6 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
             )}
           />
         </div>
-
       </section>
     </div>
   );

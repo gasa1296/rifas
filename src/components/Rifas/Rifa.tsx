@@ -21,8 +21,10 @@ export default function Rifa({ href = "/rifas" }: any) {
   };
   const raffle = raffles[0];
 
+  if (!raffle) return <div className="my-4"></div>;
+
   return (
-    <div className="  " style={{ marginBottom: "120px" }}>
+    <div className="  " style={{ marginBottom: "100px" }}>
       <section className=" mx-5 mt-5 mb-5">
         <h3 className=" fw-normal  display-4 text-secondary mt-5 mt-lg-3 ">
           Rifa Destacada

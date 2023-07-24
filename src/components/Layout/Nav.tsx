@@ -38,20 +38,26 @@ export default function Nav({ home }: any) {
           >
             Rifas
           </li>
-          <li
-            className=" mx-4"
-            style={{ cursor: "pointer" }}
-            onClick={() => router.push("/donaciones")}
-          >
-            Donaciones
-          </li>
-          <li
-            className="mx-4"
-            style={{ cursor: "pointer" }}
-            onClick={() => router.push("/rifas/crear_rifas")}
-          >
-            Crear Rifa
-          </li>
+          {authenticated && (
+            <>
+              {" "}
+              <li
+                className=" mx-4"
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push("/donaciones")}
+              >
+                Donaciones
+              </li>
+              <li
+                className="mx-4"
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push("/rifas/crear_rifas")}
+              >
+                Crear Rifa
+              </li>
+            </>
+          )}
+
           <li
             className="mx-4 "
             style={{ cursor: "pointer" }}
@@ -59,6 +65,7 @@ export default function Nav({ home }: any) {
           >
             Nosotros
           </li>
+
           {authenticated ? (
             <li
               className="mx-4"

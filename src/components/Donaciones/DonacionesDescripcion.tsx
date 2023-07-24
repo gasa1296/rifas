@@ -26,20 +26,20 @@ export default function DonacionesDescripcion({ nextStep }: any) {
     },
     {
       label: "¿Cual es el nombre del premio?*",
-      name: "prize_name",
+      name: "name",
       required: true,
       type: "text",
     },
 
     {
       label: "¿Cual es la descripcion de tu premio?*",
-      name: "prize_description",
+      name: "description",
       required: true,
       type: "textarea",
     },
     {
       label: "¿Que categoria describe tu producto?*",
-      name: "prize_category",
+      name: "category",
       required: true,
       type: "select",
       options: [

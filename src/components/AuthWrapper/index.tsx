@@ -1,14 +1,18 @@
-import { ValidateSession } from "@/store/slices/auth";
+import { ValidateSession, selectAuthState } from "@/store/slices/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { validateAuthPath } from "./helper";
 
 interface Props {
   children: JSX.Element;
 }
 export default function AuthWrapper({ children }: Props) {
   const [loading, setLoading] = useState(true);
+  const { authenticated } = useSelector(selectAuthState);
+
   const router = useRouter();
+
   const dispatch = useDispatch();
 
   const getAuthSession = async () => {
@@ -20,6 +24,12 @@ export default function AuthWrapper({ children }: Props) {
     const { payload } = await dispatch(ValidateSession({}) as any);
     setTimeout(() => setLoading(false), 200);
   };
+
+  useEffect(() => {
+    if (validateAuthPath(router.pathname, authenticated)) router.push("/");
+
+    //eslint-disable-next-line
+  }, [router.pathname, authenticated]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => getAuthSession(), 200);

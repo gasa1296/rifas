@@ -7,10 +7,12 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "@/types/Model/Profile";
 import { Login, selectAuthState } from "@/store/slices/auth";
+import { useRouter } from "next/router";
 
 export default function ModalLogin({ show, handleClose }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
+  const router = useRouter();
   const fields: Field[] = [
     {
       label: "Email",
@@ -28,7 +30,10 @@ export default function ModalLogin({ show, handleClose }: any) {
 
   const submitData = async (data: Auth) => {
     const { payload } = await dispatch(Login(data) as any);
-    if (payload) handleClose();
+    if (payload) {
+      handleClose();
+      router.push("/");
+    }
   };
 
   return (

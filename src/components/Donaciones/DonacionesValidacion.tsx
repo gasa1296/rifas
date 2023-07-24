@@ -6,7 +6,6 @@ import { Donations } from "@/store/slices/raffles";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiHeartCircle } from "react-icons/bi";
 
-
 export default function DonacionesValidacion({
   nextStep,
   backStep,
@@ -14,14 +13,6 @@ export default function DonacionesValidacion({
 }: any) {
   const dispatch = useDispatch();
 
-  const submitDonation = async () => {
-    const { payload } = await dispatch(Donations({}) as any);
-  };
-
-  useEffect(() => {
-    submitDonation();
-    //eslint-disable-next-line
-  }, []);
   return (
     <div>
       <section className="row m-0 my-3 ">
@@ -66,14 +57,12 @@ export default function DonacionesValidacion({
 
           <div className="d-flex justify-content-start  my-3 ">
             <BsFillCheckCircleFill size={20} className="m-0 " />
-            <p className="m-0  ms-2">
-              tu premio ya será parte del catálogo.
-            </p>
+            <p className="m-0  ms-2">tu premio ya será parte del catálogo.</p>
           </div>
           <div className="d-flex justify-content-start  my-3 ">
             <BsFillCheckCircleFill size={29} className="m-0 " />
             <p className="m-0 ms-2  ">
-              Si seleccionaste alguna asociación será  asignado a dicha
+              Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.
             </p>
           </div>
@@ -83,7 +72,6 @@ export default function DonacionesValidacion({
               Pronto sabras de nosotros en un máximo de 48 hrs
             </p>
           </div>
-
 
           <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
             <button className="btn btn-outline-secondary btn-sm w-50 mx-2 fs-6">

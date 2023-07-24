@@ -10,8 +10,15 @@ export const getRaffles = () => {
 
 export const createDonations = (donation: any) => {
   return Api({
-    endpoint: "/associations/",
+    endpoint: "/prizes/",
     method: "POST",
-    _data: donation
+    _data: donation,
+  });
+};
+
+export const getAssociationsApproveds = () => {
+  return Api({
+    endpoint: "/associations/",
+    method: "GET",
   });
 };
