@@ -8,7 +8,7 @@ $white: "#0000";
 export default function Layout({ children, home }: any) {
   return (
     <main
-      className="mx-auto position-relative "
+      className="mx-3 mx-lg-5 position-relative "
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <Nav home={home} />

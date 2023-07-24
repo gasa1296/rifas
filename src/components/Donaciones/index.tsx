@@ -6,6 +6,7 @@ import Tabs from "../Tab";
 
 export default function Donacioneshkh() {
   const tabs = [
+
     { label: "Crear una cuenta", Component: DonacionesDescripcion },
     { label: "Registro una AC", Component: DonacionesInformation },
     { label: "Crear rifa", Component: DonacionesValidacion },

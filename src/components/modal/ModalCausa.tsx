@@ -7,6 +7,7 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "@/types/Model/Profile";
 import { Login, selectAuthState } from "@/store/slices/auth";
+import { createRafflesCause } from "@/store/slices/raffles";
 
 
 export default function ModalCausa({ showCause, setShowCause, handleCloseCause }: any) {
@@ -15,25 +16,26 @@ export default function ModalCausa({ showCause, setShowCause, handleCloseCause }
     const fields: Field[] = [
         {
             label: " ¿Cual es el titulo de la causa?*",
-            name: "case-title",
+            name: "name",
             required: true,
             type: "text",
         },
         {
             label: "¿Cual es la descripcion de la causa?*",
-            name: "case-description",
+            name: "description",
             required: true,
             type: "textarea",
         },
         {
             label: "¿Que categoria describe mejor tu causa?",
-            name: "cause-category",
-            required: true,
+            name: "categories",
+            required: false,
             type: "select",
+            options: [{ label: "1", value: 1 }]
         },
         {
             label: "¿Cual es el monto a recaudar (pesos MXN)?*",
-            name: "amount-collected",
+            name: "goal",
             required: true,
             type: "number",
         },
@@ -46,7 +48,7 @@ export default function ModalCausa({ showCause, setShowCause, handleCloseCause }
     ];
 
     const submitData = async (data: Auth) => {
-        const { payload } = await dispatch(Login(data) as any);
+        const { payload } = await dispatch(createRafflesCause(data) as any);
         if (payload) handleCloseCause();
     };
     return (

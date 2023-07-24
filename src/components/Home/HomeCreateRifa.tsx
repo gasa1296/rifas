@@ -7,7 +7,7 @@ export default function HomeCreateRifa() {
     return (
         <div>
 
-            <section className='row  mx-5 d-flex justify-align-content-between' style={{ marginBottom: "120px" }} >
+            <section className='row  d-flex justify-align-content-between' style={{ marginBottom: "120px" }} >
                 <div className='col-md-4  text-secondary  '>
                     <h5 className=' fw-bold   text-secondary fs-1 display-5'>Aqui comienza la esperanza</h5>
                     <p className='fs-4  text-secondary' >Sigue las instrucciones para crear tu rifa</p>

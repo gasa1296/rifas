@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
 import RegistroCompletado from "./RegistroCompletado";
+import { BsFacebook, BsGoogle } from "react-icons/bs";
 
 export default function CreateAccount({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
@@ -73,14 +74,17 @@ export default function CreateAccount({ nextStep }: any) {
           loading={loading}
         />
 
-        <div className="d-grid gap-2 col-12 mx-auto my-3">
-          <p className="text-center fw-bold mt-2">
+        <div className="d-grid gap-2 col-12 mx-auto ">
+          <p className="text-center fw-bold ">
             O registrate con tus redes sociales
           </p>
-          <button className="btn btn-secondary" type="button">
+          <button className="btn btn-secondary d-flex justify-content-center align-items-center " type="button">
+            <BsFacebook size={18} className="me-3" />
+
             Regitrate con Facebook
           </button>
-          <button className="btn btn-secondary my-2" type="button">
+          <button className="btn btn-secondary d-flex justify-content-center align-items-center my-2" type="button">
+            <BsGoogle size={18} className="me-3" />
             Registrate con Google
           </button>
         </div>

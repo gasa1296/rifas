@@ -4,7 +4,7 @@ import logo from "@/assets/img/logoFooter.svg"
 export default function Footer() {
     return (
         <div>
-            <footer className=" mt-5">
+            <footer className=" mt-5 ">
                 <div className=" border-bottom border-2 w-auto mx-5 mb-3  "></div>
 
                 <div className="d-md-flex text-center text-md-start justify-content-md-between  p-0 mx-5">
@@ -13,7 +13,7 @@ export default function Footer() {
                         <Image src={logo} alt="fondo" className=' ' />
                     </div>
                     <div className="">
-                        <h6 className="fs-6 opacity-75  fw-bold ">¡Rífate!</h6>
+                        <h6 className="fs-6 opacity-75  fw-bold mt-5 mt-lg-0 ">¡Rífate!</h6>
                         <ul className=" list-unstyled text-secondary ">
                             <li>Inicia una rifa</li>
                             <li>Comprar boletos</li>

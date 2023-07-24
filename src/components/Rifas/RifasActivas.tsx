@@ -15,13 +15,13 @@ export default function RifasActivas({ href = "/rifas" }) {
 
   return (
     <div>
-      <section className="mx-5  " style={{ marginBottom: "120px" }}>
+      <section className=" " style={{ marginBottom: "120px" }}>
         <div className="d-flex  m-0  ">
           <p className=" fw-semibold  fs-2  text-secondary lh-1 m-0">
             Rifas activas
           </p>
-          <p className=" fw-bold fs-5  text-secondary ms-3 mt-1 ">
-            {" "}
+          <p className=" fw-bold fs-5  text-secondary ms-3 mt-1  " onClick={() => router.push(`//rifas/allRifas`)} style={{ cursor: "pointer" }}>
+
             ver todas las rifas
           </p>
         </div>

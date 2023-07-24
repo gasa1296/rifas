@@ -22,3 +22,19 @@ export const getAssociationsApproveds = () => {
     method: "GET",
   });
 };
+
+export const createCause = (cause: any) => {
+  return Api({
+    endpoint: "/causes/",
+    method: "POST",
+    _data: cause,
+  });
+};
+
+export const createPrize = (prize: any) => {
+  return Api({
+    endpoint: "/prizes/",
+    method: "POST",
+    _data: prize,
+  });
+};

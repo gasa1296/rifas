@@ -1,5 +1,5 @@
 
-import { createDonations, getAssociationsApproveds, getRaffles } from "@/services/raffles";
+import { createCause, createDonations, createPrize, getAssociationsApproveds, getRaffles } from "@/services/raffles";
 import { RootState } from "@/store";
 import { Donation, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
@@ -66,6 +66,42 @@ export const Donations = createAsyncThunk(
 
     } catch (error) {
 
+      handleError(error)
+    }
+  }
+);
+
+export const createRafflesCause = createAsyncThunk(
+  `${PREFIX}/causes`,
+  async (
+    cause: any,
+    thunkAPI
+  ): Promise<{} | undefined> => {
+
+    try {
+      cause.categories = [Number(cause.categories)]
+      const result =  await createCause(cause); 
+
+      return result.data
+    } catch (error) {
+      handleError(error)
+    }
+  }
+);
+
+export const createRafflesPrize = createAsyncThunk(
+  `${PREFIX}/prizes`,
+  async (
+    prize: any,
+    thunkAPI
+  ): Promise<{} | undefined> => {
+
+    try {
+      prize.categories = [Number(prize.categories)]
+      const result =  await createPrize(prize); 
+
+      return result.data
+    } catch (error) {
       handleError(error)
     }
   }

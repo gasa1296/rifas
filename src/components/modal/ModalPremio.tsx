@@ -7,6 +7,7 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "@/types/Model/Profile";
 import { Login, selectAuthState } from "@/store/slices/auth";
+import { createRafflesPrize } from "@/store/slices/raffles";
 
 export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
     const dispatch = useDispatch();
@@ -14,25 +15,26 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
     const fields: Field[] = [
         {
             label: " ¿Cuál es el nombre del premio?*",
-            name: "name-price",
+            name: "name",
             required: true,
             type: "text",
         },
         {
             label: "¿Cuál es la descripción del  premio?*",
-            name: "price-description",
+            name: "description",
             required: true,
             type: "textarea",
         },
         {
             label: "¿Qué categoría describe tu producto?*",
-            name: "price-category",
+            name: "category",
             required: true,
             type: "select",
+            options: [{ label: "1", value: 1 }]
         },
         {
             label: "¿Cuál es el precio de tu producto (pesos MXN)?*",
-            name: "product-price",
+            name: "value",
             required: true,
             type: "number",
         },
@@ -55,7 +57,7 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
     ];
 
     const submitData = async (data: Auth) => {
-        const { payload } = await dispatch(Login(data) as any);
+        const { payload } = await dispatch(createRafflesPrize(data) as any);
         if (payload) handleCloseCPrice();
     };
     return (

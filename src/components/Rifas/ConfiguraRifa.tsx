@@ -28,14 +28,14 @@ export default function ConfiguraRifa({ step, setStep }: any) {
                 </select>
                 <p className='text-secondary fs-5'>2. Elige una causa o agrega una nueva</p>
                 <div className='d-lg-flex col-12  m-auto mb-3 '>
-                    <button className="mx-2 btn btn-dark col-lg-6 col-12  " onClick={handleShowCause}>Seleccionar una causa</button>
-                    <button className=" mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3">Agregar una causa</button>
+                    <button className="mx-2 btn btn-dark col-lg-6 col-12  " >Seleccionar una causa</button>
+                    <button className=" mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3" onClick={handleShowCause}>Agregar una causa</button>
 
                 </div>
                 <p className='text-secondary fs-5'>3. Elige tu premio o agrega uno nuevo</p>
                 <div className='d-lg-flex col-12 col-lg-12 m-auto mb-3 '>
-                    <button className=" mx-2 btn btn-dark col-lg-6 col-12 " onClick={handleShowPrice}>Seleccionar un premio</button>
-                    <button className="  mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3">Agregar un premio</button>
+                    <button className=" mx-2 btn btn-dark col-lg-6 col-12 " >Seleccionar un premio</button>
+                    <button className="  mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 mt-3" onClick={handleShowPrice}>Agregar un premio</button>
 
                 </div>
 

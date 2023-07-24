@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function HomeTestimonios() {
     return (
         <div>
-            <section className='mx-5' style={{ marginBottom: "120px" }}>
+            <section className='' style={{ marginBottom: "120px" }}>
                 <h5 className=' fw-medium  display-5 text-secondary'>Testimoniales</h5>
                 <p className='fs-2 fw-normal text-secondary w-75' >Decidieron cambiar una realidad y lograron resultados inesperados</p>
 
