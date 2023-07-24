@@ -4,7 +4,7 @@ import logo from "@/assets/img/fondoPremio.svg"
 
 export default function RifasDescription() {
     return (
-        <div className='mx-5 mb-5 '>
+        <div className='  options: [{ label: "1", value: 1 }]ymb-5 mt-5'>
             <h3 className='fs-2 my-2'>Acerca de la rifa</h3>
             <div className=" border-bottom border-2  my-2 w-50  "></div>
             <h5 className=''>¿De que trata?</h5>
