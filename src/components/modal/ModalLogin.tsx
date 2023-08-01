@@ -9,6 +9,8 @@ import { Auth } from "@/types/Model/Profile";
 import { Login, selectAuthState } from "@/store/slices/auth";
 import { useRouter } from "next/router";
 
+import { GoogleLogin } from "react-google-login";
+
 export default function ModalLogin({ show, handleClose }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
@@ -34,6 +36,10 @@ export default function ModalLogin({ show, handleClose }: any) {
       handleClose();
       router.push("/");
     }
+  };
+
+  const responseGoogle = (response: any) => {
+    console.log(response);
   };
 
   return (
@@ -69,7 +75,7 @@ export default function ModalLogin({ show, handleClose }: any) {
             </Button>
           </div>
           <div className="col-6 p-0 ps-2 ">
-            <Button
+            {/*  <Button
               disabled={loading}
               variant="secondary"
               onClick={handleClose}
@@ -77,7 +83,14 @@ export default function ModalLogin({ show, handleClose }: any) {
             >
               <BsGoogle size={18} className="me-3" />
               Continuar con google
-            </Button>
+            </Button> */}
+            <GoogleLogin
+              clientId="388797586221-62o9ph0f22lokf6i4c4apjkstr7t775c.apps.googleusercontent.com"
+              buttonText="Iniciar sesión con Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
           </div>
 
           <h6 className="fw-bold  text-center mt-4">

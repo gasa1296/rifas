@@ -22,7 +22,7 @@ export default function HomeHeader() {
       </section>
 
       <section className="row d-md-flex m-auto mb-5 justify-content-center  mx-md-0  text-secondary ">
-        <div className="col-md-5  pl-5 pe-md-5">
+        <div className="col-md-5 p-0 ">
           <h4 className="display-5 pt-5 pl fw-light">
             Historias increibles Personas como tu
           </h4>
@@ -33,7 +33,7 @@ export default function HomeHeader() {
           </p>
         </div>
 
-        <div className="col-md-5  ">
+        <div className="col-md-5  p-0 ">
           <Image src={historyPeople} alt="fondo" className="w-100 h-100  " />
         </div>
       </section>

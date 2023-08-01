@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg";
@@ -7,9 +7,14 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
 import { Donation } from "@/types/Model/Profile";
-import { setDonationsForm1 } from "@/store/slices/raffles";
+import {
+  getCategories,
+  selectRaffleState,
+  setDonationsForm1,
+} from "@/store/slices/raffles";
 export default function DonacionesDescripcion({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
+  const { prizesCategories } = useSelector(selectRaffleState);
 
   const dispatch = useDispatch();
 
@@ -42,13 +47,17 @@ export default function DonacionesDescripcion({ nextStep }: any) {
       name: "category",
       required: true,
       type: "select",
-      options: [
-        { label: "Categoria 1", value: "1" },
-        { label: "Categoria 2", value: "2" },
-        { label: "Categoria 3", value: "3" },
-      ],
+      options: prizesCategories.map((prize) => ({
+        label: prize.name,
+        value: prize.id,
+      })),
     },
   ];
+
+  useEffect(() => {
+    dispatch(getCategories({}) as any);
+    //eslint-disable-next-line
+  }, []);
   return (
     <div>
       <section className="row m-0 my-3">

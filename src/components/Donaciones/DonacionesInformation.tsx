@@ -46,7 +46,7 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
 
     {
       label: "¿Cuál es el precio de tu producto (En pesos MXN)?*",
-      name: "price",
+      name: "value",
       required: true,
       type: "number",
     },

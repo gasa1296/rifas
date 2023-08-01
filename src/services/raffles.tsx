@@ -38,3 +38,17 @@ export const createPrize = (prize: any) => {
     _data: prize,
   });
 };
+
+export const getCausesCategories = () => {
+  return Api({
+    endpoint: "/cause_category/",
+    method: "GET",
+  });
+};
+
+export const getPrizesCategories = () => {
+  return Api({
+    endpoint: "/prize_category/",
+    method: "GET",
+  });
+};
