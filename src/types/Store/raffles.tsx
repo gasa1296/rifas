@@ -9,4 +9,6 @@ export interface RaffleInitialState {
   donationForm1: Donation | {};
   donationFrom2: any;
   associations: Association[];
+  causesCategories: { id: number; name: string }[];
+  prizesCategories: { id: number; name: string }[];
 }
