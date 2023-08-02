@@ -10,9 +10,10 @@ import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
 
 export default function ModalCausa({
-  showCause,
-  setShowCause,
-  handleCloseCause,
+  show,
+  setShow,
+  handleSubmit,
+  handleClose,
 }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
@@ -54,12 +55,15 @@ export default function ModalCausa({
     },
   ];
 
-  const submitData = async (data: Auth) => {
-    const { payload } = await dispatch(createRafflesCause(data) as any);
-    if (payload) handleCloseCause();
+  const submitData = async (data: any) => {
+    //const { payload } = await dispatch(createRafflesCause(data) as any);
+    //if (payload) {
+    handleSubmit({ title: "Causa creada", name: data.name, message: data.description, goal: data.goal, variant: "success", buttonText: "Cambiar Causa" })
+
+    //}
   };
   return (
-    <Modal show={showCause} onHide={handleCloseCause} className="custom-modal ">
+    <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
           <h4 className="text-secondary ">Crear una causa</h4>
@@ -67,7 +71,7 @@ export default function ModalCausa({
         <div
           style={{ cursor: "pointer" }}
           className="fs-4 text-secondary position-absolute top-0 end-0 mx-3 my-2"
-          onClick={handleCloseCause}
+          onClick={handleClose}
         >
           {" "}
           X
@@ -87,7 +91,7 @@ export default function ModalCausa({
                     <Button
                       disabled={loading}
                       variant="secondary"
-                      onClick={handleCloseCause}
+                      onClick={handleClose}
                       className="w-100 text-dark bg-light"
                     >
                       Cerrar

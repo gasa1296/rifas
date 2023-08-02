@@ -6,6 +6,9 @@ export interface Field {
   default?: any;
   options?: { label: string; value: string | number }[];
   maxFile?: number;
+  ModalComponent?: any;
+  createTitle?: string;
+  selectTitle?: string;
 }
 
 export interface FieldType {
@@ -19,6 +22,11 @@ export interface FieldType {
   select: any;
   file: any;
   textarea: any;
+  selectItems: any;
+  subtitle: any
+  sliser: any
+  custom: any
+  date: any
 }
 export type FieldTypeString =
   | "text"
@@ -30,4 +38,10 @@ export type FieldTypeString =
   | "radioButton"
   | "select"
   | "file"
-  | "textarea";
+  | "textarea"
+  | "selectItems"
+  | "subtitle"
+  | "sliser"
+  | "custom"
+  | "date"
+  ;

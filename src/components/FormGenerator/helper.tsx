@@ -9,6 +9,11 @@ import InputRadioButton from "./Fields/InputRadioButton";
 import InputSelect from "./Fields/inputSelect";
 import InputFile from "./Fields/InputFile";
 import InputTextarea from "./Fields/InputTextarea";
+import InputSelectItems from "./Fields/InputSelectItems";
+import InputSubtitle from "./Fields/InputSubtitle";
+import InputSliser from "./Fields/InputSliser";
+import InputCustom from "../Rifas/InputCustom";
+import InputDate from "./Fields/InputDate";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
@@ -31,4 +36,9 @@ export const FieldComponents: FieldType = {
   select: InputSelect,
   file: InputFile,
   textarea: InputTextarea,
+  selectItems: InputSelectItems,
+  subtitle: InputSubtitle,
+  sliser: InputSliser,
+  custom: InputCustom,
+  date: InputDate
 };

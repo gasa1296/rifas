@@ -9,10 +9,13 @@ import { Auth } from "@/types/Model/Profile";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
 
-export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
+
+export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const { prizesCategories } = useSelector(selectRaffleState);
+
+
   const fields: Field[] = [
     {
       label: " ¿Cuál es el nombre del premio?*",
@@ -29,7 +32,7 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
     {
       label: "¿Qué categoría describe tu producto?*",
       name: "category",
-      required: true,
+      required: false,
       type: "select",
       options: prizesCategories.map((prize) => ({
         label: prize.name,
@@ -60,14 +63,15 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
     },
   ];
 
-  const submitData = async (data: Auth) => {
-    const { payload } = await dispatch(createRafflesPrize(data) as any);
-    if (payload) handleCloseCPrice();
+  const submitData = async (data: any) => {
+    //const { payload } = await dispatch(createRafflesPrize(data) as any);
+    // if (payload)
+    handleSubmit({ title: "Premio SeLeccionado", name: data.name, message: data.description, goal: data.goal, variant: "success", buttonText: "Cambiar Premio" })
   };
   return (
     <Modal
-      show={showPrice}
-      onHide={handleCloseCPrice}
+      show={show}
+      onHide={handleClose}
       className="custom-modal "
     >
       <Modal.Body className="px-4">
@@ -77,7 +81,7 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
         <div
           style={{ cursor: "pointer" }}
           className="fs-4 text-secondary position-absolute top-0 end-0 mx-3 my-2"
-          onClick={handleCloseCPrice}
+          onClick={handleClose}
         >
           X
         </div>
@@ -96,7 +100,7 @@ export default function ModalPremio({ showPrice, handleCloseCPrice }: any) {
                     <Button
                       disabled={loading}
                       variant="secondary"
-                      onClick={handleCloseCPrice}
+                      onClick={handleClose}
                       className="w-100 text-dark bg-light"
                     >
                       Cerrar

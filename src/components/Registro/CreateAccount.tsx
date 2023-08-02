@@ -44,7 +44,7 @@ export default function CreateAccount({ nextStep }: any) {
       label: "He leido y aceptado los terminos",
       name: "accepted",
       required: true,
-      type: "checkbox",
+      type: "checkbox"
     },
   ];
   if (sucess) return (<RegistroCompletado nextStep={nextStep} />)
