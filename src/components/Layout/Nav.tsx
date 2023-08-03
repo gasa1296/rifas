@@ -51,23 +51,22 @@ export default function Nav({ home }: any) {
 
               {authenticated && (
                 <>
+                  <li
+                    className=" mx-4 my-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => router.push("/donaciones")}
+                  >
+                    Donaciones
+                  </li>
                   {profile?.role === 1 && (
                     <li
-                      className=" mx-4 my-2"
+                      className="mx-4 my-2"
                       style={{ cursor: "pointer" }}
-                      onClick={() => router.push("/donaciones")}
+                      onClick={() => router.push("/rifas/crear_rifas")}
                     >
-                      Donaciones
+                      Crear Rifa
                     </li>
                   )}
-
-                  <li
-                    className="mx-4 my-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => router.push("/rifas/crear_rifas")}
-                  >
-                    Crear Rifa
-                  </li>
                 </>
               )}
 
@@ -120,15 +119,6 @@ export default function Nav({ home }: any) {
 
           {authenticated && (
             <>
-              {profile?.role === 1 && (
-                <li
-                  className=" mx-4"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => router.push("/donaciones")}
-                >
-                  Donaciones
-                </li>
-              )}
               <li
                 className=" mx-4"
                 style={{ cursor: "pointer" }}
@@ -136,13 +126,15 @@ export default function Nav({ home }: any) {
               >
                 Donaciones
               </li>
-              <li
-                className="mx-4"
-                style={{ cursor: "pointer" }}
-                onClick={() => router.push("/rifas/crear_rifas")}
-              >
-                Crear Rifa
-              </li>
+              {profile?.role === 1 && (
+                <li
+                  className="mx-4"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => router.push("/rifas/crear_rifas")}
+                >
+                  Crear Rifa
+                </li>
+              )}
             </>
           )}
 
