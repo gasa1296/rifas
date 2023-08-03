@@ -70,6 +70,7 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
 
   useEffect(() => {
     dispatch(GetAssociations({}) as any);
+    //eslint-disable-next-line
   }, []);
 
   return (

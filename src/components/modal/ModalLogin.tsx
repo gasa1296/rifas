@@ -90,6 +90,7 @@ export default function ModalLogin({ show, handleClose }: any) {
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
+              isSignedIn={true}
             />
           </div>
 
