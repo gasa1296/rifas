@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 export const LoginWithGoogle = () => {
   useEffect(() => {
-    window.onGoogleSuccess = (response: any) => {
+    //eslint-disable-next-line
+    (window as any).onGoogleSuccess = (response: any) => {
       console.log("response", response);
       // hit your backend, passing up response.credential
     };
@@ -16,7 +17,7 @@ export const LoginWithGoogle = () => {
 
     return () => {
       // clean up for react lifecycle
-      window.onGoogleSuccess = undefined;
+      (window as any).onGoogleSuccess = undefined;
       document.body.removeChild(script);
     };
   }, []);
