@@ -5,6 +5,7 @@ interface Props {
   name: string;
   required?: boolean;
   error?: any;
+  subLabel: string;
 }
 export default function InputTextarea({
   register,
@@ -12,6 +13,7 @@ export default function InputTextarea({
   name,
   required,
   error,
+  subLabel
 }: Props) {
   return (
     <div>
@@ -21,6 +23,8 @@ export default function InputTextarea({
       >
         {label}
       </label>
+      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
+
       <textarea
         {...register(name, { required })}
         className={`w-100 form-control my-2 fs-5 ${error && "border-danger "}`}

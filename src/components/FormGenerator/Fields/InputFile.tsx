@@ -11,6 +11,7 @@ interface Props {
   error?: any;
   setValue: any;
   maxFile?: number;
+  subLabel: string;
 }
 export default function InputFile({
   label,
@@ -18,6 +19,7 @@ export default function InputFile({
   error,
   setValue,
   maxFile,
+  subLabel,
 }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -49,11 +51,12 @@ export default function InputFile({
   return (
     <div>
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary`}
+        className={`${error && "text-danger"} fs-5 text-secondary mt-2`}
         htmlFor={name}
       >
         {label}
       </label>
+      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
       <input
         id={name}
         name={name}
@@ -63,7 +66,7 @@ export default function InputFile({
         style={{ display: "none" }}
         ref={fileRef}
       />
-      <div className="mt-4 w-100 d-flex flex-wrap">
+      <div className="mt-4 w-100 d-flex flex-wrap ">
         {previews.map((preview, index) => (
           <div className="me-2 mb-2 position-relative " key={index}>
             <Image

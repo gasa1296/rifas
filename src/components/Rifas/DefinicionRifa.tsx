@@ -32,6 +32,7 @@ export default function DefinicionRifa({ step, setStep }: any) {
             type: "date",
 
 
+
         },
         {
             label: " Fecha de Fin",
@@ -48,42 +49,64 @@ export default function DefinicionRifa({ step, setStep }: any) {
             type: "subtitle"
         },
         {
-            label: "Título de la rifa",
+            label: "",
+            subLabel: "Título de la rifa",
             name: "titleRifa",
             required: true,
             type: "text"
         },
         {
-            label: "Escribe la frase promocional de tu rifa",
+            label: "",
+            subLabel: "Escribe la frase promocional de tu rifa",
             name: "frasePromocional",
             required: true,
             type: "text"
         },
         {
-            label: "Escribe la descripción de tu rifa",
+            label: "",
+            subLabel: "Escribe la descripción de tu rifa",
             name: "descripcionRifa",
             required: true,
             type: "textarea"
         },
         {
             label: "3. Método de entrega",
-            name: "seubtitle",
-            type: "subtitle"
-        },
-        {
-            label: "Elige como quieres entregar tu premio",
+            subLabel: "",
             name: "seubtitle",
             type: "subtitle"
         },
 
         {
-            label: "En persona",
+            label: "Elige como quieres entregar tu premio",
+            subLabel: "En persona",
             name: "eleccionPremio",
             required: true,
             type: "radioButton",
+            disabledStyle: true,
+            options: [
+                { label: "En persona", value: 0 },
+                { label: "Envio por paqueteria", value: 1 },
+                { label: "Acordar con el gandador", value: 1 },
+            ],
 
         },
 
+        {
+            label: "Ficha promocional de tu rifa",
+            subLabel: "La ficha promocional se utiliza para promover la rifa en las redes sociales.",
+            required: true,
+            name: "subtitle",
+            type: "file"
+        },
+
+
+        {
+            label: "Banner promocional de tu rifa",
+            subLabel: "El banner promocional se utiliza para promover la rifa en nuestros catálogos y micro sitios",
+            required: true,
+            name: "subtitle",
+            type: "file"
+        },
 
 
     ];
@@ -110,7 +133,7 @@ export default function DefinicionRifa({ step, setStep }: any) {
                         <input type='date' className='' />
                     </div>
                 </div> */}
-                <p className='text-secondary fs-5 mt-3'>2. Información de tu rifa</p>
+                {/*   <p className='text-secondary fs-5 mt-3'>2. Información de tu rifa</p>
                 <label className='text-secondary p-0 '>Título de la rifa</label>
                 <input className='form-control   ' type="text" />
                 <label className='text-secondary p-0 '>Escribe la frase promocional de tu rifa</label>
@@ -130,8 +153,8 @@ export default function DefinicionRifa({ step, setStep }: any) {
                 </div> <div className="form-check">
                     <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                     <label className="form-check-label" >Acordar con el ganador</label>
-                </div>
-                <p className='text-secondary fs-5 p-0 mt-3 m-0 fw-semibold '>Ficha promocional de tu rifa</p>
+                </div> */}
+                {/*  <p className='text-secondary fs-5 p-0 mt-3 m-0 fw-semibold '>Ficha promocional de tu rifa</p>
                 <p className='p-0'>La ficha promocional se utiliza para promover la rifa en las redes sociales.</p>
                 <Image src={imagenPrueba} alt='' className='border border-alert-danger  w-50 h-50 ' />
                 <p className='text-secondary fs-5 p-0 mt-3 m-0 fw-semibold '>Banner promocional de tu rifa</p>
@@ -139,7 +162,7 @@ export default function DefinicionRifa({ step, setStep }: any) {
                 <Image src={imagenPrueba} alt='' className='border border-alert-danger  w-50 h-50 ' />
                 <div className=' w-100 my-5 '>
                     <button className='btn btn-outline-dark  w-100' onClick={() => setStep(3)} > Continuar</button>
-                </div>
+                </div> */}
             </div>
 
         </div>

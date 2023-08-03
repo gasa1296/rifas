@@ -1,5 +1,5 @@
 export interface Field {
-  label: string;
+  label?: string;
   name: string;
   required?: boolean;
   type: FieldTypeString;
@@ -9,6 +9,8 @@ export interface Field {
   ModalComponent?: any;
   createTitle?: string;
   selectTitle?: string;
+  subLabel?: string;
+  disabledStyle?: boolean;
 }
 
 export interface FieldType {

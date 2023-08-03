@@ -6,6 +6,7 @@ interface Props {
   required?: boolean;
   error?: string;
   options?: { label: string; value: string }[];
+  disabledStyle?: boolean;
 }
 export default function InputRadioButton({
   register,
@@ -14,6 +15,7 @@ export default function InputRadioButton({
   required,
   error,
   options,
+  disabledStyle,
 }: Props) {
   return (
     <div>
@@ -23,29 +25,48 @@ export default function InputRadioButton({
       >
         {label}
       </label>
+      {disabledStyle
 
-      <div className="d-flex flex-wrap my-3">
-        {options?.map((option, index) => (
-          <div
-            key={index}
-            className=" btn btn-outline-secondary opacity-75  d-flex align-items-center me-2"
-          >
-            <input
-              {...register(name, { required })}
-              name={name}
-              className="form-check-input mt-0"
-              type="radio"
-              id={`${name}${index + 1}`}
-            />
-            <label
-              className="text-gray m-0 ms-2 "
-              htmlFor={`${name}${index + 1}`}
+        ? <div className="form-check">
+          {options?.map((option, index) => (
+
+            <div key={index}>
+              <input className="form-check-input"   {...register(name, { required })} type="radio" name={name} id={`${name}${index + 1}`} />
+              <label className="form-check-label" htmlFor={`${name}${index + 1}`}>
+                {option.label}
+              </label>
+            </div>
+
+          ))}
+
+        </div>
+
+
+
+        : <div className="d-flex flex-wrap my-3">
+          {options?.map((option, index) => (
+            <div
+              key={index}
+              className=" btn btn-outline-secondary opacity-75  d-flex align-items-center me-2"
             >
-              {option.label}
-            </label>
-          </div>
-        ))}
-      </div>
+              <input
+
+                name={name}
+                className="form-check-input mt-0"
+                type="radio"
+                id={`${name}${index + 1}`}
+              />
+              <label
+                className="text-gray m-0 ms-2 "
+                htmlFor={`${name}${index + 1}`}
+              >
+                {option.label}
+              </label>
+            </div>
+          ))}
+        </div>}
+
+
     </div>
   );
 }

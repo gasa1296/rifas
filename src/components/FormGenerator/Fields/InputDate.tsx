@@ -14,19 +14,17 @@ export default function InputDate({
     error,
 }: Props) {
     return (
-        <div className="">
+        <div className="col-5">
             <label
-                className={`${error && "text-danger"} fs-5 text-secondary`}
+                className={`${error && "text-danger"} fs-5 text-secondary my-2`}
                 htmlFor={name}
             >
                 {label}
             </label>
-            <div className="d-flex   ">
-                <div className='d-flex  '>
-                    <div className='col-5 col-md-7 d-md-flex d-flex ' >
-                        <input type='date' className='' />
-                    </div>
 
+            <div className="d-flex ">
+                <div className='col-5 col-md-7 d-md-flex d-flex ' >
+                    <input type='date' className='' />
                 </div>
             </div>
 

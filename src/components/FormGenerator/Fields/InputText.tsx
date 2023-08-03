@@ -5,6 +5,7 @@ interface Props {
   name: string;
   required?: boolean;
   error?: any;
+  subLabel: string;
 }
 export default function InputText({
   register,
@@ -12,12 +13,15 @@ export default function InputText({
   name,
   required,
   error,
+  subLabel
 }: Props) {
   return (
     <div>
       <label className={`${error && "text-danger"} fs-5 text-secondary `} htmlFor={name}>
         {label}
       </label>
+      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
+
       <input
         id={name}
         name={name}

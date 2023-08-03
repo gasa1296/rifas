@@ -28,7 +28,7 @@ export default function FormGenerator({
   });
 
   return (
-    <form onSubmit={handleSubmit(submitData)}>
+    <form className="" onSubmit={handleSubmit(submitData)}>
       {fields.map((field, index) => {
         const FieldComponent = FieldComponents[field.type];
 

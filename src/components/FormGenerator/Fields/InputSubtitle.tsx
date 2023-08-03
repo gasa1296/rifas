@@ -5,6 +5,7 @@ interface Props {
     name: string;
     required?: boolean;
     error?: any;
+    subLabel: string;
 }
 export default function InputSubtitle({
     register,
@@ -12,10 +13,12 @@ export default function InputSubtitle({
     name,
     required,
     error,
+    subLabel
 }: Props) {
     return (
-        <div>
-            <p className="text-secondary mt-2 fs-5">{label}</p>
-        </div>
+        <section>
+            {label && <label className="text-secondary mt-3 fs-4 fw-medium  ">{label}</label>}
+            {subLabel && <p className=" text-secondary fs-6 mb-0 ">{subLabel}</p>}
+        </section>
     );
 }

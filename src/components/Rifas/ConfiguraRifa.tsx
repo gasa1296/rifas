@@ -71,7 +71,7 @@ export default function ConfiguraRifa({ step, setStep }: any) {
 
     },
     {
-      label: " Tu monto a recaudar tiene que ser mayor al valor del premio ($1,500)más tus gastos de recuperación.Te recomendamos un monto a recaudar de: $2, 100.00",
+      subLabel: "Tu monto a recaudar tiene que ser mayor al valor del premio ($1,500)más tus gastos de recuperación.Te recomendamos un monto a recaudar de: $2, 100.00",
       name: "datos_rifa",
       type: "subtitle"
 
