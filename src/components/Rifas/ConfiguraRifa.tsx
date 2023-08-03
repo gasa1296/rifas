@@ -2,18 +2,27 @@ import React, { useEffect, useState } from "react";
 
 import ModalCausa from "../modal/ModalCausa";
 import ModalPremio from "../modal/ModalPremio";
-import { getCategories, selectRaffleState } from "@/store/slices/raffles";
+import {
+  GetAssociations,
+  getCategories,
+  selectRaffleState,
+} from "@/store/slices/raffles";
 import { useDispatch, useSelector } from "react-redux";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
 export default function ConfiguraRifa({ step, setStep }: any) {
-  const { loading } = useSelector(selectRaffleState);
+  const { loading, associations } = useSelector(selectRaffleState);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories({}) as any);
+    const timeoutId = setTimeout(() => {
+      dispatch(GetAssociations({}) as any);
+      dispatch(getCategories({}) as any);
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
     //eslint-disable-next-line
   }, []);
 
@@ -21,9 +30,13 @@ export default function ConfiguraRifa({ step, setStep }: any) {
   const fields: Field[] = [
     {
       label: " Seleccionar Asociación Civil",
-      name: "company_name",
+      name: "association",
       required: true,
       type: "select",
+      options: associations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
     },
     {
       label: " 2. Elige una causa o agrega una nueva",
