@@ -10,7 +10,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 export default function Nav({ home }: any) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { authenticated } = useSelector(selectAuthState);
+  const { authenticated, profile } = useSelector(selectAuthState);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,8 +21,9 @@ export default function Nav({ home }: any) {
     <div className="position-absolute top-0 w-100 ">
       <ModalLogin show={show} handleClose={handleClose} />
       <nav
-        className={` d-md-flex justify-content-between   align-items-center ${home ? "bg-body-secondary" : ""
-          } py-2`}
+        className={` d-md-flex justify-content-between   align-items-center ${
+          home ? "bg-body-secondary" : ""
+        } py-2`}
       >
         <div
           className="mx-5  mw-75 "
@@ -31,9 +32,14 @@ export default function Nav({ home }: any) {
         >
           <Image src={logo} alt="fondo" className=" mx-auto d-block" />
         </div>
-        <AiOutlineMenu className="d-flex d-md-none position-absolute top-0 end-0 mx-4 mt-4" size={28} style={{ cursor: "pointer" }} onClick={() => setOpen(!open)} />
+        <AiOutlineMenu
+          className="d-flex d-md-none position-absolute top-0 end-0 mx-4 mt-4"
+          size={28}
+          style={{ cursor: "pointer" }}
+          onClick={() => setOpen(!open)}
+        />
         {open && (
-          <div className="position-absolute z-1 flex-column w-100 py-2 text-center top-75 start-0 mt-3  bg-light  shadow p-3 mb-5 bg-body-tertiary">
+          <div className=" d-md-none position-absolute z-1 flex-column w-100 py-2 text-center top-75 start-0 mt-3  bg-light  shadow p-3 mb-5 bg-body-tertiary">
             <ul className="  list-unstyled text-secondary align-items-center justify-content-center m-0">
               <li
                 className=" mx-4 my-2"
@@ -45,14 +51,16 @@ export default function Nav({ home }: any) {
 
               {authenticated && (
                 <>
-                  {" "}
-                  <li
-                    className=" mx-4 my-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => router.push("/donaciones")}
-                  >
-                    Donaciones
-                  </li>
+                  {profile?.role === 1 && (
+                    <li
+                      className=" mx-4 my-2"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => router.push("/donaciones")}
+                    >
+                      Donaciones
+                    </li>
+                  )}
+
                   <li
                     className="mx-4 my-2"
                     style={{ cursor: "pointer" }}
@@ -99,7 +107,8 @@ export default function Nav({ home }: any) {
                 </>
               )}
             </ul>
-          </div>)}
+          </div>
+        )}
         <ul className="d-none  d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
           <li
             className=" mx-4 "
@@ -111,7 +120,15 @@ export default function Nav({ home }: any) {
 
           {authenticated && (
             <>
-              {" "}
+              {profile?.role === 1 && (
+                <li
+                  className=" mx-4"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => router.push("/donaciones")}
+                >
+                  Donaciones
+                </li>
+              )}
               <li
                 className=" mx-4"
                 style={{ cursor: "pointer" }}

@@ -69,6 +69,8 @@ export const createRafflesCause = createAsyncThunk(
   async (cause: any, thunkAPI): Promise<{} | undefined> => {
     try {
       cause.categories = [Number(cause.categories)];
+      cause.association = Number(cause.association);
+
       const result = await createCause(cause);
 
       return result.data;
@@ -82,7 +84,14 @@ export const createRafflesPrize = createAsyncThunk(
   `${PREFIX}/prizes`,
   async (prize: any, thunkAPI): Promise<{} | undefined> => {
     try {
-      prize.categories = [Number(prize.categories)];
+      prize.status = prize.status === "on" ? 1 : 0;
+
+      prize.association = Number(prize.association);
+
+      if (prize.association === 0) delete prize.association;
+
+      prize.category = Number(prize.category);
+
       const result = await createPrize(prize);
 
       return result.data;
