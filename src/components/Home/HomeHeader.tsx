@@ -21,7 +21,7 @@ export default function HomeHeader() {
         <p className="display-4">Sumate con amor</p>
       </section>
 
-      <section className="row d-md-flex m-auto mb-5 justify-content-center  mx-md-0  text-secondary ">
+      <section className="row d-md-flex  mb-5 justify-content-center   text-secondary mx-2 mx-md-0">
         <div className="col-md-5 p-0 ">
           <h4 className="display-5 pt-5 pl fw-light">
             Historias increibles Personas como tu

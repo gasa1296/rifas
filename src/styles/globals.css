@@ -22,3 +22,25 @@ body {
      max-width: 560px; 
 
 }
+
+
+.raffle-container{
+  background:#2A6418 ;
+padding: 2px;
+border-radius: 4px;
+margin-left: 5px;
+margin-right: 5px;
+margin-top: 4px;
+}
+.raffe-container-size{
+  width:59px
+}
+
+.raffle-box{
+width: 55px;
+font-size: 14px;
+background:#2A6418 ;
+color: #fff;
+border: #A2BC9B;
+
+}

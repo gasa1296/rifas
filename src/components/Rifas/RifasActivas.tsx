@@ -40,7 +40,7 @@ export default function RifasActivas({ href = "/rifas" }) {
           {raffles.map((raffle: Raffles, index: number) => (
             <div
               key={index}
-              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0  mx-3  "
+              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 mx-0 mx-md-3  "
               style={{ maxWidth: "309px", width: "100%", height: "" }}
             >
               <Image src={fondo} className="w-100" alt="" />

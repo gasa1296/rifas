@@ -10,11 +10,11 @@ export default function PaySuccessful({ initialStep }: any) {
 
     return (
         <div className=' d-block justify-content-center d-md-flex mt-5'>
-            < div className='col-md-4 col-12 text-secondary  bg-body-secondary opacity-75 p-4 mx-2' >
+            < div className=' col-12 col-lg-6  '>
                 <BuyTickes />
 
             </div >
-            <div className='col-md-5 col-12  mx-4 text-center '>
+            <div className='col-md-4 col-12 mt-3 mt-md-0 text-center '>
                 <BiHeartCircle size={60} />
                 <h3 className="mt-3 mb-3">  Gracias </h3>
                 <p className=" m-0 lh-1 fs-3  ">Estamos muy contentos de </p>

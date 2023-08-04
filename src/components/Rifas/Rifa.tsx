@@ -24,19 +24,19 @@ export default function Rifa({ href = "/rifas" }: any) {
   if (!raffle) return <div className="my-4"></div>;
 
   return (
-    <div className="  " style={{ marginBottom: "100px" }}>
-      <section className=" mx-5 mt-5 mb-5">
+    <div className=" " style={{ marginBottom: "100px" }}>
+      <section className=" mt-5 mb-5">
         <h3 className=" fw-normal  display-4 text-secondary mt-5 mt-lg-3 ">
           Rifa Destacada
         </h3>
-        <p className="  fs-2 mt-4 mb-5 lh-sm fw-normal text-secondary  ">
+        <p className="  fs-2 mt-4 mb-4 lh-sm fw-normal text-secondary  ">
           {raffle.name}
         </p>
-        <div className="d-flex justify-content-between  row ">
+        <div className="d-flex justify-content-center   row ">
           <div className="col-md-6 ">
             <Image src={fondo} alt="fondo" className=" w-100 h-100 m-0" />
           </div>
-          <div className=" col-md-5   me-4 ">
+          <div className=" col-md-5 mx-3 mx-md-4 ">
             <p className=" text-secondary fw-semibold opacity-75 fs-3 mt-4 mt-md-0">
               Recaudado
             </p>

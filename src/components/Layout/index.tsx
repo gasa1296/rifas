@@ -8,12 +8,12 @@ $white: "#0000";
 export default function Layout({ children, home }: any) {
   return (
     <main
-      className="mx-auto position-relative "
+      className=" position-relative  mx-2 mx-lg-5 "
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <div>
         <Nav home={home} />
-        <div className="mx-3 mx-lg-0">{children}</div>
+        <div className="">{children}</div>
         <Footer />
       </div>
     </main>
