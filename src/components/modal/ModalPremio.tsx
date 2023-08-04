@@ -5,16 +5,14 @@ import Button from "react-bootstrap/Button";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
-import { Auth } from "@/types/Model/Profile";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
-
 
 export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const { prizesCategories } = useSelector(selectRaffleState);
-
+  const { associations } = useSelector(selectRaffleState);
 
   const fields: Field[] = [
     {
@@ -46,8 +44,18 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
       type: "number",
     },
     {
+      label: "¿Quieres asignar tu premio a alguna Asociación?",
+      name: "association",
+      required: false,
+      type: "select",
+      options: associations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
+    },
+    {
       label: "¿Cuál es la condición de tu producto?*",
-      name: "product_conditionpremio",
+      name: "status",
       required: true,
       type: "radioButton",
       options: [
@@ -64,16 +72,21 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
   ];
 
   const submitData = async (data: any) => {
-    //const { payload } = await dispatch(createRafflesPrize(data) as any);
-    // if (payload)
-    handleSubmit({ title: "Premio SeLeccionado", name: data.name, message: data.description, goal: data.goal, variant: "success", buttonText: "Cambiar Premio" })
+    const { payload } = await dispatch(createRafflesPrize(data) as any);
+    if (payload) {
+      handleSubmit({
+        title: "Premio SeLeccionado",
+        name: data.name,
+        message: data.description,
+        goal: data.goal,
+        variant: "success",
+        buttonText: "Cambiar Premio",
+      });
+    }
   };
+
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}
-      className="custom-modal "
-    >
+    <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
           <h4 className="text-dark">Donar premio</h4>

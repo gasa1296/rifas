@@ -17,7 +17,7 @@ export default function ModalCausa({
 }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
-  const { causesCategories } = useSelector(selectRaffleState);
+  const { causesCategories, associations } = useSelector(selectRaffleState);
   const fields: Field[] = [
     {
       label: " ¿Cual es el titulo de la causa?*",
@@ -48,6 +48,16 @@ export default function ModalCausa({
       type: "number",
     },
     {
+      label: "¿Quieres asignar tu premio a alguna Asociación?",
+      name: "association",
+      required: true,
+      type: "select",
+      options: associations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
+    },
+    {
       label: "Agrega las fotos de tu causa",
       name: "product_files",
       required: false,
@@ -56,11 +66,16 @@ export default function ModalCausa({
   ];
 
   const submitData = async (data: any) => {
-    //const { payload } = await dispatch(createRafflesCause(data) as any);
-    //if (payload) {
-    handleSubmit({ title: "Causa creada", name: data.name, message: data.description, goal: data.goal, variant: "success", buttonText: "Cambiar Causa" })
-
-    //}
+    const { payload } = await dispatch(createRafflesCause(data) as any);
+    if (payload)
+      return handleSubmit({
+        title: "Causa creada",
+        name: data.name,
+        message: data.description,
+        goal: data.goal,
+        variant: "success",
+        buttonText: "Cambiar Causa",
+      });
   };
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">
