@@ -17,15 +17,15 @@ export default function RifasActivas({ href = "/rifas" }) {
     <div>
       <section className=" " style={{ marginBottom: "120px" }}>
         <div className="d-flex  m-0  ">
-          <p className=" fw-semibold  fs-2  text-secondary lh-1 m-0">
+          <p className=" raffles-title lh-1 m-0">
             Rifas activas
           </p>
-          <p className=" fw-bold fs-5  text-secondary ms-3 mt-1  " onClick={() => router.push(`//rifas/allRifas`)} style={{ cursor: "pointer" }}>
+          <p className=" raffles-subtitle ms-4 mt-1  " onClick={() => router.push(`//rifas/allRifas`)} style={{ cursor: "pointer" }}>
 
-            ver todas las rifas
+            Ver todas las rifas
           </p>
         </div>
-        <div className="  text-secondary d-lg-flex fw-light  fs-5">
+        <div className=" raffles-navbar d-lg-flex fw-light  ">
           <p className="mx-3">Todas</p>
           <p className="mx-3">Animales</p>
           <p className="mx-3">Comunidad</p>
@@ -36,7 +36,7 @@ export default function RifasActivas({ href = "/rifas" }) {
           <p className="mx-3">Salud</p>
           <p className="mx-3">Sustentabilidad</p>
         </div>
-        <div className="d-flex row ">
+        <div className="d-flex row">
           {raffles.map((raffle: Raffles, index: number) => (
             <div
               key={index}
@@ -44,20 +44,19 @@ export default function RifasActivas({ href = "/rifas" }) {
               style={{ maxWidth: "309px", width: "100%", height: "" }}
             >
               <Image src={fondo} className="w-100" alt="" />
-              <div className="p-4">
-                <h6 className="fs-6 fw-semibold  ">{raffle.name}</h6>
-                <p className="card-text fs-6 text-secondary lh-sm">
+              <div className="p-3">
+                <h6 className="raffles-title-card  ">{raffle.name}</h6>
+                <p className="card-text raffles-subtitle-card lh-sm">
                   {raffle.description}
                 </p>
 
-                <p className="card-text fs-6  text-secondary lh-sm  p-0 ">
-                  {" "}
+                <p className="card-text  raffles-subtitle-card  p-0  ">
                   <MdAccessTime size={20} className="mb-1 me-2 opacity-75 " />
                   20% 8,040.00 recaudado
                 </p>
                 <button
                   onClick={() => router.push(`/rifas/${raffle.id}`)}
-                  className="btn fs-6 btn-outline-secondary w-100"
+                  className="btn fs-6 btn-pink w-100"
                 >
                   Comprar boleto
                 </button>
