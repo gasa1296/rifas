@@ -31,6 +31,7 @@ export const LoginWithGoogle = ({ handleClose }: Props) => {
       (window as any).onGoogleSuccess = undefined;
       document.body.removeChild(script);
     };
+    //eslint-disable-next-line
   }, []);
 
   const submitData = async (data: GoogleAuth) => {

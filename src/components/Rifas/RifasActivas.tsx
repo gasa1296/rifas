@@ -6,7 +6,7 @@ import { MdAccessTime } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-import { Raffles } from "@/types/Model/Raffle";
+import { RafflesI } from "@/types/Model/Raffle";
 
 export default function RifasActivas({ href = "/rifas" }) {
   const router = useRouter();
@@ -20,8 +20,11 @@ export default function RifasActivas({ href = "/rifas" }) {
           <p className=" fw-semibold  fs-2  text-secondary lh-1 m-0">
             Rifas activas
           </p>
-          <p className=" fw-bold fs-5  text-secondary ms-3 mt-1  " onClick={() => router.push(`//rifas/allRifas`)} style={{ cursor: "pointer" }}>
-
+          <p
+            className=" fw-bold fs-5  text-secondary ms-3 mt-1  "
+            onClick={() => router.push(`//rifas/allRifas`)}
+            style={{ cursor: "pointer" }}
+          >
             ver todas las rifas
           </p>
         </div>
@@ -37,7 +40,7 @@ export default function RifasActivas({ href = "/rifas" }) {
           <p className="mx-3">Sustentabilidad</p>
         </div>
         <div className="d-flex row ">
-          {raffles.map((raffle: Raffles, index: number) => (
+          {raffles.map((raffle: RafflesI, index: number) => (
             <div
               key={index}
               className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0  mx-3  "
