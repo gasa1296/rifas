@@ -1,4 +1,4 @@
-export interface Raffles {
+export interface RafflesI {
   id: number;
   prize: number | null;
   tickets: [];
@@ -8,5 +8,9 @@ export interface Raffles {
   ticket_number: number;
   ticket_price: number;
   realization_date: string;
-  cause: number;
+  cause: Cause;
+}
+
+export interface Cause {
+  image: string | null;
 }

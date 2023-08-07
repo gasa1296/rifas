@@ -1,10 +1,21 @@
+import { LoginGoogle } from "@/store/slices/auth";
+import { GoogleAuth } from "@/types/Model/Profile";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-export const LoginWithGoogle = () => {
+interface Props {
+  handleClose: () => void;
+}
+
+export const LoginWithGoogle = ({ handleClose }: Props) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   useEffect(() => {
     //eslint-disable-next-line
     (window as any).onGoogleSuccess = (response: any) => {
-      console.log("response", response);
+      submitData(response);
       // hit your backend, passing up response.credential
     };
 
@@ -22,6 +33,14 @@ export const LoginWithGoogle = () => {
     };
   }, []);
 
+  const submitData = async (data: GoogleAuth) => {
+    const { payload } = await dispatch(LoginGoogle(data) as any);
+    if (payload) {
+      handleClose();
+      router.push("/");
+    }
+  };
+
   return (
     <>
       <div
@@ -31,16 +50,18 @@ export const LoginWithGoogle = () => {
         data-context="signin"
         data-ux_mode="popup"
         data-auto_prompt="false"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
       ></div>
 
       <div
         className="g_id_signin"
         data-type="standard"
         data-shape="rectangular"
-        data-theme="filled_blue"
+        data-theme="outline"
         data-text="signin_with"
         data-size="large"
         data-logo_alignment="left"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
       ></div>
     </>
   );

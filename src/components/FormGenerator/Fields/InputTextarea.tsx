@@ -13,7 +13,7 @@ export default function InputTextarea({
   name,
   required,
   error,
-  subLabel
+  subLabel,
 }: Props) {
   return (
     <div>
@@ -23,7 +23,11 @@ export default function InputTextarea({
       >
         {label}
       </label>
-      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
+      {subLabel === "" ? null : (
+        <p className={` text-secondary fs-6 mb-0 ${error && "text-danger"}`}>
+          {subLabel}
+        </p>
+      )}
 
       <textarea
         {...register(name, { required })}

@@ -34,7 +34,7 @@ export default function ModalCausa({
     {
       label: "¿Que categoria describe mejor tu causa?",
       name: "categories",
-      required: false,
+      required: true,
       type: "select",
       options: causesCategories.map((cause) => ({
         label: cause.name,
@@ -67,15 +67,13 @@ export default function ModalCausa({
 
   const submitData = async (data: any) => {
     const { payload } = await dispatch(createRafflesCause(data) as any);
-    if (payload)
+    if (payload) {
+      delete payload.image;
       return handleSubmit({
-        title: "Causa creada",
-        name: data.name,
-        message: data.description,
-        goal: data.goal,
-        variant: "success",
-        buttonText: "Cambiar Causa",
+        type: "cause",
+        ...payload,
       });
+    }
   };
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">
@@ -98,7 +96,7 @@ export default function ModalCausa({
             fields={fields}
             submitData={submitData}
             loading={loading}
-            renderButton={() => (
+            renderButton={(handleSend) => (
               <section className="row w-100 mx-auto mt-5   ">
                 <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
                 <div className="d-flex justify-content-end mt-3">
@@ -106,7 +104,10 @@ export default function ModalCausa({
                     <Button
                       disabled={loading}
                       variant="secondary"
-                      onClick={handleClose}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleClose();
+                      }}
                       className="w-100 text-dark bg-light"
                     >
                       Cerrar
@@ -117,6 +118,10 @@ export default function ModalCausa({
                       disabled={loading}
                       variant="secondary"
                       type="submit"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSend();
+                      }}
                       className="w-100 btn btn-danger"
                     >
                       Guardar causa

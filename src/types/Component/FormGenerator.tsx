@@ -7,10 +7,12 @@ export interface Field {
   options?: { label: string; value: string | number }[];
   maxFile?: number;
   ModalComponent?: any;
+  Component?: any;
   createTitle?: string;
   selectTitle?: string;
   subLabel?: string;
   disabledStyle?: boolean;
+  maxRange?: number;
 }
 
 export interface FieldType {
@@ -25,10 +27,10 @@ export interface FieldType {
   file: any;
   textarea: any;
   selectItems: any;
-  subtitle: any
-  sliser: any
-  custom: any
-  date: any
+  subtitle: any;
+  sliser: any;
+  custom: any;
+  date: any;
 }
 export type FieldTypeString =
   | "text"
@@ -45,5 +47,12 @@ export type FieldTypeString =
   | "subtitle"
   | "sliser"
   | "custom"
-  | "date"
-  ;
+  | "date";
+
+export interface SelectedItems {
+  type: "cause" | "prize";
+  name: string;
+  description: string;
+  goal: number;
+  value: number;
+}

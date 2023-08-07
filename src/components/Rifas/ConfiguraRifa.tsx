@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
-export default function ConfiguraRifa({ step, setStep }: any) {
+import ResumeRaffle from "./ResumeRaffle";
+export default function ConfiguraRifa({ handleChangeRaffle }: any) {
   const { loading, associations } = useSelector(selectRaffleState);
 
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ export default function ConfiguraRifa({ step, setStep }: any) {
     //eslint-disable-next-line
   }, []);
 
-  const submitData = async (data: Profile) => { };
+  const submitData = async (data: Profile) => {
+    handleChangeRaffle(data);
+  };
   const fields: Field[] = [
     {
       label: " Seleccionar Asociación Civil",
@@ -40,7 +43,7 @@ export default function ConfiguraRifa({ step, setStep }: any) {
     },
     {
       label: " 2. Elige una causa o agrega una nueva",
-      name: "causa",
+      name: "cause",
       required: true,
       type: "selectItems",
       createTitle: "Agregar una causa",
@@ -49,7 +52,7 @@ export default function ConfiguraRifa({ step, setStep }: any) {
     },
     {
       label: "3. Elige tu premio o agrega uno nuevo",
-      name: "prieze",
+      name: "prize",
       required: true,
       type: "selectItems",
       createTitle: "Agregar un premio",
@@ -64,31 +67,35 @@ export default function ConfiguraRifa({ step, setStep }: any) {
     {
       label: " Monto a recaudar en pesos MXN",
       required: true,
-      name: "datos_rifa",
+      name: "price",
       type: "number",
     },
     {
-      subLabel: "Tu monto a recaudar tiene que ser mayor al valor del premio ($1,500)más tus gastos de recuperación.Te recomendamos un monto a recaudar de: $2, 100.00",
+      subLabel:
+        "Tu monto a recaudar tiene que ser mayor al valor del premio ($1,500)más tus gastos de recuperación.Te recomendamos un monto a recaudar de: $2, 100.00",
       name: "datos_rifa",
       type: "subtitle",
     },
     {
       label: "  Selecciona el número de boletos para tu rifa",
-      name: "sliserRifa",
+      name: "ticket_number",
       required: true,
       type: "sliser",
+      maxRange: 1000,
     },
     {
       label: " Costo por boleto",
-      name: "sliserRifa",
+      name: "ticket_price",
       required: true,
       type: "sliser",
+      maxRange: 10000,
     },
 
     {
       label: "5. Calculadora del costo por boleto",
       name: "calculatorRifas",
       type: "custom",
+      Component: ResumeRaffle,
     },
   ];
   return (

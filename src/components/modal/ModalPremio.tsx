@@ -30,7 +30,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
     {
       label: "¿Qué categoría describe tu producto?*",
       name: "category",
-      required: false,
+      required: true,
       type: "select",
       options: prizesCategories.map((prize) => ({
         label: prize.name,
@@ -74,13 +74,10 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
   const submitData = async (data: any) => {
     const { payload } = await dispatch(createRafflesPrize(data) as any);
     if (payload) {
-      handleSubmit({
-        title: "Premio SeLeccionado",
-        name: data.name,
-        message: data.description,
-        goal: data.goal,
-        variant: "success",
-        buttonText: "Cambiar Premio",
+      delete payload.image;
+      return handleSubmit({
+        type: "prize",
+        ...payload,
       });
     }
   };
@@ -100,12 +97,10 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
         </div>
         <div className="mt-4">
           <FormGenerator
-            /*    buttonText="Iniciar sesion" */
-
             fields={fields}
             submitData={submitData}
             loading={loading}
-            renderButton={() => (
+            renderButton={(handleSend) => (
               <section className="row w-100 mx-auto mt-5   ">
                 <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
                 <div className="d-flex justify-content-end mt-3">
@@ -125,6 +120,10 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
                       variant="secondary"
                       type="submit"
                       className="w-100 btn btn-danger"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleSend();
+                      }}
                     >
                       Guardar causa
                     </Button>

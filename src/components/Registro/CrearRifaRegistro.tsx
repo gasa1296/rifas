@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { AiFillDollarCircle } from "react-icons/ai";
@@ -8,9 +8,10 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import ConfiguraRifa from "../Rifas/ConfiguraRifa";
 import DefinicionRifa from "../Rifas/DefinicionRifa";
 import ConfirmacionRifa from "../Rifas/ConfirmacionRifa";
-<div>
-
-</div>
+import { useDispatch } from "react-redux";
+import { createRaffle } from "@/store/slices/raffles";
+import { RafflesI } from "@/types/Model/Raffle";
+<div></div>;
 
 const StepIcon = (step: number, currentStep: number) => {
   if (step === currentStep) return <MdKeyboardArrowUp size={30} />;
@@ -18,13 +19,27 @@ const StepIcon = (step: number, currentStep: number) => {
 };
 
 export default function CrearRifaRegistro({ nextStep, backStep }: any) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
+  const [raffle, setRaffle] = useState({});
+  const dispatch = useDispatch();
 
-  const handleClickStep = (newStep: number) => {
-    if (step === newStep) return setStep(0);
-
-    setStep(newStep);
+  const handleChangeRaffle = (data: any) => {
+    setRaffle({ ...raffle, ...data });
+    setStep((prev) => prev + 1);
   };
+
+  const handleSubmit = async () => {
+    const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
+    if (payload) {
+      //handleClose();
+    }
+  };
+
+  useEffect(() => {
+    if (step === 3) handleSubmit();
+
+    //eslint-disable-next-line
+  }, [step]);
 
   return (
     <div className="">
@@ -32,61 +47,60 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
         ¡Es momento de rifarnos Cuautli!
       </h2>
 
-      <div className="  mb-3 col-12 col-lg-5 m-auto  text-secondary  ">
-        <div className=" d-flex justify-content-between align-items-center    " onClick={() => handleClickStep(1)}>
+      <div className="  mb-3 col-12 col-lg-8 m-auto  text-secondary  ">
+        <div className=" d-flex justify-content-between align-items-center    ">
           <button
-            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "}`}>
-            <div> <AiFillDollarCircle size={25} className="me-2" />
-              Configura el premio tu rifa</div>
-            <div className="m-0">
-              {StepIcon(step, 1)}
-            </div>
-
-          </button>
-        </div>
-        {step === 1 && <ConfiguraRifa />}
-
-        <div
-          className=" d-flex justify-content-between align-items-center  mt-4 "
-          onClick={() => handleClickStep(2)}
-        >
-          <button
-            className={`form-control fs-4  text-light bg-secondary d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center  ${
+              step === 1 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
-              <HiOutlineClipboardList />  Define los datos de tu rifa
+              <AiFillDollarCircle size={25} className="me-2" />
+              Configura el premio tu rifa
             </div>
-            <div className="m-0">
-              {StepIcon(step, 2)}
-            </div>
+            <div className="m-0">{StepIcon(step, 1)}</div>
+          </button>
+        </div>
+        {step === 1 && (
+          <ConfiguraRifa handleChangeRaffle={handleChangeRaffle} />
+        )}
 
+        <div className=" d-flex justify-content-between align-items-center  mt-4 ">
+          <button
+            className={`form-control fs-4  text-light bg-secondary d-flex justify-content-between align-item-center ${
+              step === 2 ? " opacity-50 " : " opacity-100  "
+            }`}
+          >
+            <div>
+              <HiOutlineClipboardList /> Define los datos de tu rifa
+            </div>
+            <div className="m-0">{StepIcon(step, 2)}</div>
           </button>
         </div>
 
-        {step === 2 && <DefinicionRifa />}
+        {step === 2 && (
+          <DefinicionRifa handleChangeRaffle={handleChangeRaffle} />
+        )}
 
-        <div
-          className=" d-flex justify-content-around align-items-center  bg-secondary mt-4  "
-          onClick={() => handleClickStep(3)}
-        >
+        <div className=" d-flex justify-content-around align-items-center  bg-secondary mt-4  ">
           <button
-            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center ${
+              step === 3 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
-              <FaHandHoldingHeart />     Confirmación de la rifa
+              <FaHandHoldingHeart /> Confirmación de la rifa
             </div>
-            <div className="m-0">
-              {StepIcon(step, 3)}
-            </div>
-
+            <div className="m-0">{StepIcon(step, 3)}</div>
           </button>
         </div>
         {step === 3 && <ConfirmacionRifa />}
       </div>
       <div className=" text-dark text-center col-12">
-        <button className=" my-2  btn btn-outline-secondary col-11  col-md-4" type="button" >
+        <button
+          className=" my-2  btn btn-outline-secondary col-11  col-md-4"
+          type="button"
+        >
           Ir al inicio
         </button>
       </div>

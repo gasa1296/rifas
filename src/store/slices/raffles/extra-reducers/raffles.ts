@@ -1,5 +1,5 @@
-import {ActionReducerMapBuilder} from "@reduxjs/toolkit";
-import { GetAssociations, Raffles } from "../thunks";
+import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { GetAssociations, Raffles, createRaffle } from "../thunks";
 
 export const RAFFLES_EXTRA_REDUCERS = (
   builder: ActionReducerMapBuilder<any>
@@ -13,19 +13,20 @@ export const RAFFLES_EXTRA_REDUCERS = (
       state.raffles = action.payload;
     }
 
-    state.loading = false
+    state.loading = false;
   });
-
-
 
   builder.addCase(GetAssociations.fulfilled, (state, action) => {
     if (action.payload) {
       state.associations = action.payload;
     }
-
   });
 
+  builder.addCase(createRaffle.pending, (state) => {
+    state.loading = true;
+  });
 
-  
-
+  builder.addCase(createRaffle.fulfilled, (state, action) => {
+    state.loading = false;
+  });
 };

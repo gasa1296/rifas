@@ -13,21 +13,30 @@ export default function InputText({
   name,
   required,
   error,
-  subLabel
+  subLabel,
 }: Props) {
   return (
     <div>
-      <label className={`${error && "text-danger"} fs-5 text-secondary `} htmlFor={name}>
+      <label
+        className={`${error && "text-danger"} fs-5 text-secondary `}
+        htmlFor={name}
+      >
         {label}
       </label>
-      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
+      {subLabel === "" ? null : (
+        <p className={` text-secondary fs-6 mb-0 ${error && "text-danger"}`}>
+          {subLabel}
+        </p>
+      )}
 
       <input
         id={name}
         name={name}
         type="text"
         {...register(name, { required })}
-        className={`w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "}`}
+        className={`w-100 form-control my-2 fs-5 m-0 ${
+          error && "border-danger "
+        }`}
       />
     </div>
   );

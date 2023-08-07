@@ -12,16 +12,19 @@ export interface Auth {
 }
 
 export interface Donation {
-
   prize_name: string;
   prize_description: string;
   prize_category: string;
-
 }
 export interface Donation2 {
-
   product_condition: string;
   prize_product: string;
   association_award: string;
+}
 
+export interface GoogleAuth {
+  clientId: string;
+  client_id: string;
+  credential: string;
+  select_by: string;
 }

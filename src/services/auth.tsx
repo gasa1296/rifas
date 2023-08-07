@@ -1,4 +1,4 @@
-import { Auth, Profile } from "@/types/Model/Profile";
+import { Auth, GoogleAuth, Profile } from "@/types/Model/Profile";
 import { Api } from ".";
 
 export const registerUser = (profile: Profile) => {
@@ -13,6 +13,15 @@ export const registerUser = (profile: Profile) => {
 export const loginUser = (auth: Auth) => {
   return Api({
     endpoint: "/auth/JWT",
+    method: "POST",
+    _data: {
+      ...auth,
+    },
+  });
+};
+export const loginGoogleUser = (auth: GoogleAuth) => {
+  return Api({
+    endpoint: "/profile/google/",
     method: "POST",
     _data: {
       ...auth,
