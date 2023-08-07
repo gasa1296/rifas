@@ -1,97 +1,107 @@
-import { createAsociacion, getUserProfile, loginUser, refreshToken, registerUser } from "@/services/auth";
-import {RootState} from "@/store";
-import { Auth, Profile } from "@/types/Model/Profile";
+import {
+  createAsociacion,
+  getUserProfile,
+  loginGoogleUser,
+  loginUser,
+  refreshToken,
+  registerUser,
+} from "@/services/auth";
+import { RootState } from "@/store";
+import { Auth, GoogleAuth, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 const PREFIX: string = "auth";
 export const Register = createAsyncThunk(
   `${PREFIX}/register`,
   async (
     Profile: Profile,
     thunkAPI
-  ): Promise<{test: boolean} | undefined> => {
-
+  ): Promise<{ test: boolean } | undefined> => {
     try {
+      const { data } = await registerUser(Profile);
 
-      const {data} = await registerUser(Profile)
+      await thunkAPI.dispatch(
+        Login({ email: Profile.email, password: Profile.password })
+      );
 
-      await thunkAPI.dispatch(Login({email:Profile.email, password: Profile.password}))
-
-      return data
+      return data;
     } catch (error) {
-      handleError(error)
+      handleError(error);
     }
   }
 );
 export const Login = createAsyncThunk(
   `${PREFIX}/login`,
-  async (
-    auth: Auth,
-    thunkAPI
-  ): Promise<{test: boolean} | undefined> => {
-
+  async (auth: Auth, thunkAPI): Promise<{ test: boolean } | undefined> => {
     try {
+      const { data } = await loginUser(auth);
+      await localStorage.setItem("sessionToken", data.access);
+      await localStorage.setItem("sessionTokenRefresh", data.refresh);
 
-      const {data} = await loginUser(auth)
-      await localStorage.setItem('sessionToken', data.access)
-      await localStorage.setItem('sessionTokenRefresh', data.refresh)
+      const profile = await getUserProfile();
 
-      const profile = await getUserProfile()
-      
-
-      return {...data, ...profile.data}
+      return { ...data, ...profile.data };
     } catch (error) {
-      handleError(error)
+      handleError(error);
+    }
+  }
+);
+export const LoginGoogle = createAsyncThunk(
+  `${PREFIX}/login`,
+  async (
+    auth: GoogleAuth,
+    thunkAPI
+  ): Promise<{ test: boolean } | undefined> => {
+    try {
+      const { data } = await loginGoogleUser(auth);
+      await localStorage.setItem("sessionToken", data.access);
+      await localStorage.setItem("sessionTokenRefresh", data.refresh);
+
+      const profile = await getUserProfile();
+
+      return { ...data, ...profile.data };
+    } catch (error) {
+      handleError(error);
     }
   }
 );
 export const CreateAsociacion = createAsyncThunk(
   `${PREFIX}/asociacion`,
-  async (
-    Asociacion: any,
-    thunkAPI
-  ): Promise<{} | undefined> => {
-
+  async (Asociacion: any, thunkAPI): Promise<{} | undefined> => {
     try {
+      const { auth } = thunkAPI.getState() as RootState;
+      const { id } = auth.profile || { id: null };
 
-      const {auth} = thunkAPI.getState() as RootState
-      const {id}  = auth.profile || {id: null}
+      Asociacion.user = id?.toString();
 
-      Asociacion.user = id?.toString() 
+      console.log("ASOCIACION", Asociacion);
+      const result = await createAsociacion(Asociacion);
 
-      console.log("ASOCIACION", Asociacion)
-      const result = await createAsociacion(Asociacion)
+      console.log("RESULT", result);
 
-      console.log("RESULT", result)
-
-      return {}
+      return {};
     } catch (error) {
-      handleError(error)
+      handleError(error);
     }
   }
 );
 export const ValidateSession = createAsyncThunk(
   `${PREFIX}/login`,
-  async (
-    auth: any,
-    thunkAPI
-  ): Promise<{test: boolean} | undefined> => {
-
+  async (auth: any, thunkAPI): Promise<{ test: boolean } | undefined> => {
     try {
+      const access = await localStorage.getItem("sessionToken");
+      const refresh = await localStorage.getItem("sessionTokenRefresh");
 
-      const access = await localStorage.getItem("sessionToken")
-      const refresh = await localStorage.getItem("sessionTokenRefresh")
-
-      const profile = await getUserProfile()
+      const profile = await getUserProfile();
       //const {data} = await refreshToken(refresh || '')
 
-      const data ={refresh, access}
+      const data = { refresh, access };
 
-      return {...data, ...profile.data}
+      return { ...data, ...profile.data };
     } catch (error) {
       //handleError(error)
-      await localStorage.removeItem("sessionToken")
-      await localStorage.removeItem("sessionTokenRefresh")
+      await localStorage.removeItem("sessionToken");
+      await localStorage.removeItem("sessionTokenRefresh");
     }
   }
 );

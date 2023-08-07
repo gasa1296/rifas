@@ -1,5 +1,6 @@
 import { Auth, Profile } from "@/types/Model/Profile";
 import { Api } from ".";
+import { RafflesI } from "@/types/Model/Raffle";
 
 export const getRaffles = () => {
   return Api({
@@ -18,7 +19,7 @@ export const createDonations = (donation: any) => {
 
 export const getAssociationsApproveds = () => {
   return Api({
-    endpoint: "/associations/",
+    endpoint: "/associations/approveds",
     method: "GET",
   });
 };
@@ -50,5 +51,12 @@ export const getPrizesCategories = () => {
   return Api({
     endpoint: "/prize_category/",
     method: "GET",
+  });
+};
+export const createNewRaffle = (raffle: RafflesI) => {
+  return Api({
+    endpoint: "/raffles/",
+    method: "POST",
+    _data: raffle,
   });
 };

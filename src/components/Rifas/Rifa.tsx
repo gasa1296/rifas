@@ -2,10 +2,13 @@ import Image from "next/image";
 import fondo from "@/assets/img/fondoRifas.svg";
 import BoletosRifas from "./BoletosRifas";
 import { BiLoaderAlt } from "react-icons/bi";
-import { BsFacebook, BsTwitter, BsWhatsapp, BsFillShareFill } from "react-icons/bs";
+import {
+  BsFacebook,
+  BsTwitter,
+  BsWhatsapp,
+  BsFillShareFill,
+} from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-
-
 
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -30,12 +33,8 @@ export default function Rifa({ href = "/rifas" }: any) {
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
       <section className=" mt-5 mb-5">
-        <h3 className="  raffle-title mt-5 mt-lg-3 ">
-          Rifa Destacada
-        </h3>
-        <p className=" raffe-text mt-2 mb-3   ">
-          {raffle.name}
-        </p>
+        <h3 className="  raffle-title mt-5 mt-lg-3 ">Rifa Destacada</h3>
+        <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-center   row ">
           <div className="col-md-6   ">
             <Image src={fondo} alt="fondo" className=" w-100 h-100 " />
@@ -44,10 +43,16 @@ export default function Rifa({ href = "/rifas" }: any) {
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
               Recaudado
             </p>
-            <div className="d-flex  mb-0">''
-              <BiLoaderAlt size={46} className=" mt-2 me-2  " color={"#00C851"} />
+            <div className="d-flex  mb-0">
+              <BiLoaderAlt
+                size={46}
+                className=" mt-2 me-2  "
+                color={"#00C851"}
+              />
               <p className=" raffle-container-textinformation  ">30%</p>
-              <p className=" ms-4 raffle-container-textinformation  ">$24,409.00</p>
+              <p className=" ms-4 raffle-container-textinformation  ">
+                $24,409.00
+              </p>
             </div>
             <p className="raffle-container-title   fs-3">
               La meta es de {raffle.ticket_number * raffle.ticket_price} MXN
@@ -57,13 +62,17 @@ export default function Rifa({ href = "/rifas" }: any) {
 
             <div className="d-flex  justify-content-between text-start me-3   ">
               <div className="">
-                <h6 className=" raffle-container-textinformation2">Costo por boleto</h6>
+                <h6 className=" raffle-container-textinformation2">
+                  Costo por boleto
+                </h6>
                 <p className=" raffle-container-value  ">
                   ${raffle.ticket_price}
                 </p>
               </div>
               <div>
-                <h6 className="raffle-container-textinformation2">Numero de boletos</h6>
+                <h6 className="raffle-container-textinformation2">
+                  Numero de boletos
+                </h6>
                 <p className="raffle-container-value ">
                   {raffle.ticket_number}
                 </p>
@@ -87,10 +96,10 @@ export default function Rifa({ href = "/rifas" }: any) {
 
             <div className="d-flex  justify-content-between text-start me-3   ">
               <div className="">
-                <h6 className=" raffle-container-finish">La rifa termina en:</h6>
-                <p className=" raffle-container-value  ">
-                  59 dias
-                </p>
+                <h6 className=" raffle-container-finish">
+                  La rifa termina en:
+                </h6>
+                <p className=" raffle-container-value  ">59 dias</p>
               </div>
               <div>
                 <h6 className="raffle-container-finish">Compartir:</h6>
@@ -101,8 +110,6 @@ export default function Rifa({ href = "/rifas" }: any) {
                 <BsFillShareFill color=" #C3286D" size={25} className="mx-2" />
               </div>
             </div>
-
-
           </div>
         </div>
       </section>

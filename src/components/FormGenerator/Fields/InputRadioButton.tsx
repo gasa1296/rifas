@@ -25,32 +25,37 @@ export default function InputRadioButton({
       >
         {label}
       </label>
-      {disabledStyle
-
-        ? <div className="form-check">
+      {disabledStyle ? (
+        <div className="form-check">
           {options?.map((option, index) => (
-
             <div key={index}>
-              <input className="form-check-input"   {...register(name, { required })} type="radio" name={name} id={`${name}${index + 1}`} />
-              <label className="form-check-label" htmlFor={`${name}${index + 1}`}>
+              <input
+                className="form-check-input"
+                value={option.value}
+                {...register(name, { required })}
+                type="radio"
+                name={name}
+                id={`${name}${index + 1}`}
+              />
+              <label
+                className="form-check-label"
+                htmlFor={`${name}${index + 1}`}
+              >
                 {option.label}
               </label>
             </div>
-
           ))}
-
         </div>
-
-
-
-        : <div className="d-flex flex-wrap my-3">
+      ) : (
+        <div className="d-flex flex-wrap my-3">
           {options?.map((option, index) => (
             <div
               key={index}
               className=" btn btn-outline-secondary opacity-75  d-flex align-items-center me-2"
             >
               <input
-
+                value={option.value}
+                {...register(name, { required })}
                 name={name}
                 className="form-check-input mt-0"
                 type="radio"
@@ -64,9 +69,8 @@ export default function InputRadioButton({
               </label>
             </div>
           ))}
-        </div>}
-
-
+        </div>
+      )}
     </div>
   );
 }

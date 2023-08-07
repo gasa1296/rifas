@@ -7,7 +7,7 @@ interface Props {
   submitData: (data: any) => void;
   buttonText?: string;
   loading?: boolean;
-  renderButton?: () => JSX.Element;
+  renderButton?: (param: any) => JSX.Element;
 }
 
 export default function FormGenerator({
@@ -38,12 +38,13 @@ export default function FormGenerator({
             error={errors[field.name]}
             register={register}
             setValue={setValue}
+            watch={watch}
             {...field}
           />
         );
       })}
       {renderButton ? (
-        renderButton()
+        renderButton(handleSubmit(submitData))
       ) : (
         <button
           disabled={loading}

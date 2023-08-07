@@ -39,10 +39,6 @@ export default function ModalLogin({ show, handleClose }: any) {
     }
   };
 
-  const responseGoogle = (response: any) => {
-    console.log(response);
-  };
-
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal">
       <Modal.Body className="px-4">
@@ -76,7 +72,7 @@ export default function ModalLogin({ show, handleClose }: any) {
             </Button>
           </div>
           <div className="col-6 p-0 ps-2 ">
-            <LoginWithGoogle />
+            <LoginWithGoogle handleClose={handleClose} />
           </div>
 
           <h6 className="fw-bold  text-center mt-4">

@@ -6,16 +6,17 @@ import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
 import RegistroCompletado from "./RegistroCompletado";
 import { BsFacebook, BsGoogle } from "react-icons/bs";
+import { LoginWithGoogle } from "../Login/LoginWithGoogle";
 
 export default function CreateAccount({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
-  const [sucess, setSucces] = useState(false)
+  const [sucess, setSucces] = useState(false);
   const dispatch = useDispatch();
   const submitData = async (data: Profile) => {
     const { payload } = await dispatch(Register(data) as any);
 
     if (payload) {
-      setSucces(true)
+      setSucces(true);
     }
   };
 
@@ -44,10 +45,10 @@ export default function CreateAccount({ nextStep }: any) {
       label: "He leido y aceptado los terminos",
       name: "accepted",
       required: true,
-      type: "checkbox"
+      type: "checkbox",
     },
   ];
-  if (sucess) return (<RegistroCompletado nextStep={nextStep} />)
+  if (sucess) return <RegistroCompletado nextStep={nextStep} />;
 
   return (
     <section className="text-secondary row">
@@ -78,15 +79,16 @@ export default function CreateAccount({ nextStep }: any) {
           <p className="text-center fw-bold ">
             O registrate con tus redes sociales
           </p>
-          <button className="btn btn-secondary d-flex justify-content-center align-items-center " type="button">
+          {/*   <button
+            className="btn btn-secondary d-flex justify-content-center align-items-center "
+            type="button"
+          >
             <BsFacebook size={18} className="me-3" />
-
             Regitrate con Facebook
-          </button>
-          <button className="btn btn-secondary d-flex justify-content-center align-items-center my-2" type="button">
-            <BsGoogle size={18} className="me-3" />
-            Registrate con Google
-          </button>
+          </button> */}
+          <div className="col-12 mx-auto mb-4">
+            <LoginWithGoogle handleClose={() => {}} />
+          </div>
         </div>
       </div>
     </section>

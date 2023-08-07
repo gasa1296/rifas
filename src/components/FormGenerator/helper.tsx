@@ -12,14 +12,20 @@ import InputTextarea from "./Fields/InputTextarea";
 import InputSelectItems from "./Fields/InputSelectItems";
 import InputSubtitle from "./Fields/InputSubtitle";
 import InputSliser from "./Fields/InputSliser";
-import InputCustom from "../Rifas/InputCustom";
+
 import InputDate from "./Fields/InputDate";
+import InputCustom from "./Fields/InputCustom";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
 
   fields.map((field) => {
-    if (field.type !== "title") defaultValues[field.name] = field.default || "";
+    if (
+      field.type !== "title" &&
+      field.type !== "custom" &&
+      field.type !== "subtitle"
+    )
+      defaultValues[field.name] = field.default || "";
   });
 
   return defaultValues;
@@ -40,5 +46,5 @@ export const FieldComponents: FieldType = {
   subtitle: InputSubtitle,
   sliser: InputSliser,
   custom: InputCustom,
-  date: InputDate
+  date: InputDate,
 };

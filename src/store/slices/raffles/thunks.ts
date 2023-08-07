@@ -1,6 +1,7 @@
 import {
   createCause,
   createDonations,
+  createNewRaffle,
   createPrize,
   getAssociationsApproveds,
   getCausesCategories,
@@ -8,11 +9,11 @@ import {
   getRaffles,
 } from "@/services/raffles";
 import { RootState } from "@/store";
-import { Donation, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Console } from "console";
+
 import { setCausesCategories, setPrizesCategories } from ".";
+import { RafflesI } from "@/types/Model/Raffle";
 const PREFIX: string = "raffles";
 
 export const Raffles = createAsyncThunk(
@@ -112,6 +113,18 @@ export const getCategories = createAsyncThunk(
       thunkAPI.dispatch(setPrizesCategories(prizesResult.data.results));
 
       return {};
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+export const createRaffle = createAsyncThunk(
+  `${PREFIX}/create-raffles`,
+  async (raffle: RafflesI, thunkAPI): Promise<{} | undefined> => {
+    try {
+      const raffleResult = await createNewRaffle(raffle);
+
+      return raffleResult.data;
     } catch (error) {
       handleError(error);
     }
