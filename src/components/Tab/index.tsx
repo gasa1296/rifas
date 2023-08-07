@@ -35,7 +35,7 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
   };
 
   return (
-    <div className=" mx-5 mt-5">
+    <div className=" mx-2">
       {hasHeader && (
         <div className="border-bottom  position-relative ">
           <div className=" text-secondary opacity-75 fs-5 d-flex align-items-center position-absolute ">
@@ -52,11 +52,10 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
             {tabs.map((tab, index) => (
               <li
                 key={index}
-                className={`mx-3 opacity-75  ${
-                  index < step
-                    ? "text-success text-bold fw-medium opacity-100 "
-                    : "text-secondary "
-                } fs-5 d-flex align-items-center  `}
+                className={`mx-3 opacity-75  ${index < step
+                  ? "text-success text-bold fw-medium opacity-100 "
+                  : "text-secondary "
+                  } fs-5 d-flex align-items-center  `}
               >
                 <FaCheck size={17} />
                 <p className="m-0 px-2">

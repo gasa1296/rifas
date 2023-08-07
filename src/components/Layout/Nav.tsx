@@ -21,9 +21,8 @@ export default function Nav({ home }: any) {
     <div className="position-absolute top-0 w-100 ">
       <ModalLogin show={show} handleClose={handleClose} />
       <nav
-        className={` d-md-flex justify-content-between   align-items-center ${
-          home ? "bg-body-secondary" : ""
-        } py-2`}
+        className={` d-md-flex justify-content-between   align-items-center ${home ? "bg-body-light" : ""
+          } mt-1`}
       >
         <div
           className="mx-5  mw-75 "
@@ -39,7 +38,7 @@ export default function Nav({ home }: any) {
           onClick={() => setOpen(!open)}
         />
         {open && (
-          <div className=" d-md-none position-absolute z-1 flex-column w-100 py-2 text-center top-75 start-0 mt-3  bg-light  shadow p-3 mb-5 bg-body-tertiary">
+          <div className="home-navbar d-md-none position-absolute z-1 flex-column w-100 py-2 text-center top-75 start-0 mt-3  bg-light  shadow p-3 mb-5 bg-body-tertiary">
             <ul className="  list-unstyled text-secondary align-items-center justify-content-center m-0">
               <li
                 className=" mx-4 my-2"
@@ -108,7 +107,7 @@ export default function Nav({ home }: any) {
             </ul>
           </div>
         )}
-        <ul className="d-none  d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
+        <ul className="d-none  home-navbar d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
           <li
             className=" mx-4 "
             style={{ cursor: "pointer" }}

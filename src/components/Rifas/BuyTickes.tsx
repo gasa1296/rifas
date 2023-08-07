@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function BuyTickes() {
     return (
-        <div>
-            <p className='fs-4 text-secondary fw-bold '>¡Hola!¡Soy Emiliano , ayúdame a vencer el cáncer!</p>
+        <div className="text-secondary   bg-body-secondary opacity-75  p-3 p-md-4"  >
+            <p className='fs-4 text-secondary fw-bold '  >¡Hola!¡Soy Emiliano , ayúdame a vencer el cáncer!</p>
             <p className=' text-secondary fs-5 '>Recaudado</p>
             <div className='d-flex'>
                 <p className='  fs-3 fw-bold '>30%</p>
@@ -22,6 +22,6 @@ export default function BuyTickes() {
                     <p className='text-secondary '>64</p>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

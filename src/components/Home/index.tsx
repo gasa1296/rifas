@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="">
+    <div className="m-0">
       <HomeHeader />
       <Rifa />
       <RifasActivas />
