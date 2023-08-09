@@ -1,6 +1,8 @@
 import React from 'react'
 import logoPaypal from "@/assets/img/paypal.svg"
 import logoMercadoPago from "@/assets/img/mercadoPago.svg"
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+
 import Image from 'next/image'
 import BuyTickes from './BuyTickes'
 export default function RifaPago({ nextStep, backStep }: any) {
@@ -31,8 +33,8 @@ export default function RifaPago({ nextStep, backStep }: any) {
                         </div>
                     </div>
                     <div className='d-flex justify-content-between mt-3   '>
-                        <button className='btn btn-outline-secondary btn-sm px-2 rounded-2 fw-fw-semibold  ' onClick={() => backStep()}> Regresar</button>
-                        <button className='btn btn-outline-secondary btn-sm px-2 rounded-2 ' onClick={() => nextStep()}> Proceder al pago</button>
+                        <button className='btn btn-border-pink btn-sm px-2 rounded-2 fw-fw-semibold  ' onClick={() => backStep()}> <AiOutlineArrowLeft /> Regresar</button>
+                        <button className='btn btn-pink btn-sm px-2 rounded-2 ' onClick={() => nextStep()}> Proceder al pago <AiOutlineArrowRight /></button>
 
                     </div>
                 </div>

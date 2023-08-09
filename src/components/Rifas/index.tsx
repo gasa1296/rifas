@@ -4,6 +4,7 @@ import RifasActivas from "./RifasActivas";
 import RifasDescription from "./RifasDescription";
 import { Raffles } from "@/store/slices/raffles";
 import { useDispatch } from "react-redux";
+import AllRifas from "./AllRifas";
 
 export default function Rifas() {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ export default function Rifas() {
   }, []);
 
   return (
-    <div>
+    <div className="mx-0 mx-lg-4">
       <Rifa />
-      <RifasDescription />
+      <RifasDescription />  *
       <RifasActivas />
     </div>
   );

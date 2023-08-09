@@ -81,7 +81,7 @@ export default function Rifa({ href = "/rifas" }: any) {
             <div className="d-flex ">
               <button
                 className="btn btn-pink btn-sm border col-5  "
-                onClick={() => router.push(getRouter())}
+                onClick={() => router.push(`/rifas/${raffle.id}`)}
               >
                 Comprar boletos
               </button>

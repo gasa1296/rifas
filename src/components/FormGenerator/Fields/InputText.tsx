@@ -18,7 +18,7 @@ export default function InputText({
   return (
     <div>
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary `}
+        className={`${error && "text-danger"} title-form-generator`}
         htmlFor={name}
       >
         {label}
@@ -34,9 +34,8 @@ export default function InputText({
         name={name}
         type="text"
         {...register(name, { required })}
-        className={`w-100 form-control my-2 fs-5 m-0 ${
-          error && "border-danger "
-        }`}
+        className={`w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "
+          }`}
       />
     </div>
   );

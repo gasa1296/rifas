@@ -77,7 +77,7 @@ export default function DonacionesDescripcion({ nextStep }: any) {
             renderButton={() => (
               <div className="d-flex justify-content-end w-100 ">
                 <button
-                  className="btn btn-outline-secondary btn-sm px-5 fs-6  "
+                  className="btn btn-pink btn-sm px-5 fs-6 mt-3 "
                   type="submit"
                 >
                   Continuar

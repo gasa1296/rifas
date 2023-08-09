@@ -17,8 +17,8 @@ export default function InputSubtitle({
 }: Props) {
     return (
         <section>
-            {label && <label className="text-secondary mt-3 fs-4 fw-medium  ">{label}</label>}
-            {subLabel && <p className=" text-secondary fs-6 mb-0 ">{subLabel}</p>}
+            {label && <label className="opacity-75 mt-3 fs-4 fw-medium ">{label}</label>}
+            {subLabel && <p className=" subtitle-form-generator mb-0 ">{subLabel}</p>}
         </section>
     );
 }

@@ -53,7 +53,7 @@ export default function InputSelectItems({
   return (
     <div className="">
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary `}
+        className={`${error && "text-danger"} opacity-75 mt-3 fs-4 fw-medium `}
         htmlFor={name}
       >
         {label}
@@ -67,11 +67,11 @@ export default function InputSelectItems({
         <SelectedComponent selectedItem={selected} setSelected={setSelected} />
       ) : (
         <div className="d-lg-flex col-12  m-auto mb-3 mt-2  ">
-          <button className=" btn btn-dark col-12 col-lg-6 mt-lg-0  my-4 ">
+          <button className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ">
             {selectTitle}
           </button>
           <button
-            className=" mx-2 btn btn-light border col-12 col-lg-6 mt-lg-0 my-4"
+            className=" mx-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-4"
             onClick={handleShow}
           >
             {createTitle}

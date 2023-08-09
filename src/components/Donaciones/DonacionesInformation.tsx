@@ -90,15 +90,15 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
             fields={fields}
             loading={loading}
             renderButton={() => (
-              <div className="d-flex justify-content-between pt-4 w-100 ">
+              <div className="d-flex justify-content-between  w-100 mt-4 ">
                 <button
-                  className="btn btn-outline-secondary btn-sm w-25  "
+                  className="btn btn-border-pink btn-sm w-25  "
                   onClick={() => backStep()}
                 >
                   Regresar
                 </button>
                 <button
-                  className="btn btn-outline-secondary btn-sm px-5 fs-6  "
+                  className="btn btn-pink btn-sm px-5 fs-6  "
                   type="submit"
                 >
                   Continuar

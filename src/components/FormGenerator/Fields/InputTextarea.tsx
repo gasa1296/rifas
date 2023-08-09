@@ -18,7 +18,7 @@ export default function InputTextarea({
   return (
     <div>
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary`}
+        className={`${error && "text-danger"} title-form-generator`}
         htmlFor={name}
       >
         {label}

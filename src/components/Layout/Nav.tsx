@@ -43,7 +43,7 @@ export default function Nav({ home }: any) {
               <li
                 className=" mx-4 my-2"
                 style={{ cursor: "pointer" }}
-                onClick={() => router.push("/rifas")}
+                onClick={() => router.push("/rifas/allRifas")}
               >
                 Rifas
               </li>
@@ -111,7 +111,7 @@ export default function Nav({ home }: any) {
           <li
             className=" mx-4 "
             style={{ cursor: "pointer" }}
-            onClick={() => router.push("/rifas")}
+            onClick={() => router.push("/rifas/allRifas")}
           >
             Rifas
           </li>

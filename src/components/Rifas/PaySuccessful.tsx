@@ -21,7 +21,7 @@ export default function PaySuccessful({ initialStep }: any) {
                 <p className="  m-0 lh-1 fs-3 ">conseguir tu valioso amor </p>
                 <p className=" m-0  lh-1 fs-3  "> para gente hermosa</p>
 
-                <button onClick={() => router.push("/rifas/allRifas")} className='text-secondary btn btn-light border border-light-subtle  border-2 w-50 p-3 mt-5'>Volver a Rifas</button>
+                <button onClick={() => router.push("/rifas")} className='text-secondary btn btn-light border border-light-subtle  border-2 w-50 p-3 mt-5'>Volver a Rifas</button>
             </div>
 
 

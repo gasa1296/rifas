@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdHeight } from 'react-icons/md'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import logoPaypal from "@/assets/img/paypal.svg"
 import logoMercadoPago from "@/assets/img/mercadoPago.svg"
 import Image from 'next/image'
@@ -14,7 +14,7 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
 
                 </div >
                 <div className='col-md-5 col-sm-12 col-12 mt-3 mt-lg-0 ms-0 ms-md-4 '>
-                    <p className=' fs-4 fw-bold opacity-75'>2 / 3 Elige el metodo de pago</p>
+                    <p className=' donaciones-title'>2 / 3 Elige el metodo de pago</p>
                     <p className='text-secondary'>Introduce el código de tu cupón</p>
                     <div className=' d-block d-md-flex'>
                         <input type='text' placeholder='Código de tu cupón' className='form-control opacity-50' />
@@ -37,9 +37,9 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
                         </div>
 
                     </button>
-                    <div className='d-flex justify-content-between mt-5 justify-content-lg-center    '>
-                        <button className='btn btn-outline-secondary btn-sm  px-4 rounded-2 ' onClick={() => backStep()}> Regresar</button>
-                        <button className='btn btn-outline-secondary btn-sm px-4 rounded-2 mx-2 mx-sm-0 ' onClick={() => nextStep()}> Continuar</button>
+                    <div className='d-flex justify-content-between mt-5 justify-content-lg-betweem    '>
+                        <button className='btn btn-border-pink btn-sm  px-4 rounded-2 ' onClick={() => backStep()}> <AiOutlineArrowLeft /> Regresar</button>
+                        <button className='btn btn-pink btn-sm px-4 rounded-2 mx-2 mx-sm-0 ' onClick={() => nextStep()}> Continuar <AiOutlineArrowRight /></button>
 
                     </div>
                 </div>

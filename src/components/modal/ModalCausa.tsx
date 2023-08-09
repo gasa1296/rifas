@@ -79,7 +79,7 @@ export default function ModalCausa({
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
-          <h4 className="text-secondary ">Crear una causa</h4>
+          <h4 className="title-Modal mx-0 ">Crear una causa</h4>
         </Modal.Header>
         <div
           style={{ cursor: "pointer" }}
@@ -122,7 +122,7 @@ export default function ModalCausa({
                         e.preventDefault();
                         handleSend();
                       }}
-                      className="w-100 btn btn-danger"
+                      className="w-100 btn btn-pink"
                     >
                       Guardar causa
                     </Button>

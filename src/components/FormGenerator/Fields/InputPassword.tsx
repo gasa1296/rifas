@@ -15,7 +15,7 @@ export default function InputPassword({
 }: Props) {
   return (
     <div>
-      <label className={`${error && "text-danger"} fs-5 text-secondary`} htmlFor={name}>
+      <label className={`${error && "text-danger"} title-form-generator`} htmlFor={name}>
         {label}
       </label>
       <input

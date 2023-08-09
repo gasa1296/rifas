@@ -43,33 +43,31 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
   return (
     <div className="">
-      <h2 className="text-center text-secondary fs-3 my-4">
+      <h2 className="title-page-rifaRegistro my-4">
         ¡Es momento de rifarnos Cuautli!
       </h2>
 
-      <div className="  mb-3 col-12 col-lg-8 m-auto  text-secondary  ">
-        <div className=" d-flex justify-content-between align-items-center    ">
+      <div className="  mb-3 col-12 col-lg-8 m-auto  ">
+        <div className=" d-flex justify-content-between align-items-center    border " onClick={() => { }}>
           <button
-            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center  ${
-              step === 1 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
-            <div>
+            <div className="text-fondo-container">
               <AiFillDollarCircle size={25} className="me-2" />
               Configura el premio tu rifa
             </div>
-            <div className="m-0">{StepIcon(step, 1)}</div>
+            <div className="m-0">{StepIcon(step, 1)}</div >
           </button>
         </div>
         {step === 1 && (
           <ConfiguraRifa handleChangeRaffle={handleChangeRaffle} />
         )}
 
-        <div className=" d-flex justify-content-between align-items-center  mt-4 ">
+        <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
-            className={`form-control fs-4  text-light bg-secondary d-flex justify-content-between align-item-center ${
-              step === 2 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               <HiOutlineClipboardList /> Define los datos de tu rifa
@@ -82,11 +80,10 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
           <DefinicionRifa handleChangeRaffle={handleChangeRaffle} />
         )}
 
-        <div className=" d-flex justify-content-around align-items-center  bg-secondary mt-4  ">
+        <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
-            className={`form-control fs-4 text-light bg-secondary d-flex justify-content-between align-item-center ${
-              step === 3 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               <FaHandHoldingHeart /> Confirmación de la rifa

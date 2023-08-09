@@ -24,65 +24,51 @@ export default function DonacionesValidacion({
           />
         </div>
         <div className=" col-lg-5 col-12   text-secondary ms-3 ">
-          <h4 className=" lh-sm m-0 text-lg-start mt-3 mt-lg-0  text-center fs-3">
+          <h4 className=" lh-sm m-0 text-lg-start mt-3 mt-lg-0 donaciones-title">
             3 / 3 Premio en validacion
           </h4>
 
-          <BiHeartCircle size={55} className="mx-auto d-block mt-3" />
+          <BiHeartCircle size={55} className="mx-auto d-block mt-3" color={"C3286D"} />
 
-          <p className="m-0 fw-bold fs-1 text-center ">Gracias</p>
-          <p className="m-0  lh-1 fw-bold  fs-3 text-center">
-            Estamos muy contentos de
-          </p>
-          <p className="m-0 fs-3  fw-bold  text-center">
-            {" "}
-            Conseguir tu valiso apoyo
-          </p>
-          <p className=" mb-4 mt-2 text-center fw-semibold  fs-5 ">
-            ¿Cuales son los siguientes pasos?
-          </p>
+          <p className="m-0 tanks-donaciones-validacion text-center ">Gracias</p>
+          <p className="m-0  information-donacionesValidacion text-center">Estamos muy contentos de </p>
+          <p className="m-0 fs-3  information-donacionesValidacion text-center">Conseguir tu valiso apoyo</p>
+          <p className=" mb-4  stepsToFollow-donaciones mt-3 ">¿Cuales son los siguientes pasos?</p>
 
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={20} className="m-0 " />
-            <p className="m-0  ms-2">
+            <BsFillCheckCircleFill size={20} className="m-0 " color={" 313131"} />
+            <p className="m-0 text-donaciones-validacion ms-2">
               Tu premio será sometido a un proceso de revisión
             </p>
           </div>
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={20} className="m-0 " />
-            <p className="m-0  ms-2">
-              Una vez autorizado, te enviaremos un mensaje de confirmación
+            <BsFillCheckCircleFill size={29} className="m-0 " color={" 313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2">
+              Una vez autorizado, te enviaremos un mensaje de confirmación y tu premio ya será parte del catálogo.
             </p>
           </div>
 
+
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={20} className="m-0 " />
-            <p className="m-0  ms-2">tu premio ya será parte del catálogo.</p>
-          </div>
-          <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={29} className="m-0 " />
-            <p className="m-0 ms-2  ">
+            <BsFillCheckCircleFill size={29} className="m-0 " color={" 313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2  ">
               Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.
             </p>
           </div>
-          <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={20} className="m-0 " />
-            <p className="m-0  ms-2">
-              Pronto sabras de nosotros en un máximo de 48 hrs
-            </p>
-          </div>
+          <p className="m-0 text-donaciones-validacion text-center mt-4" > Sabrás de nosotros en un máximo de 48 hrs</p>
+          <p className="m-0 text-donaciones-validacion  text-center"> ¡Sigue Rifandote!</p>
 
           <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
-            <button className="btn btn-outline-secondary btn-sm w-50 mx-2 fs-6">
+            <button className="btn btn-border-pink btn-sm w-50 mx-2 fs-6">
               {" "}
-              Catalogo de premios
+              Ver catálogo de premios
             </button>
             <button
-              className="btn btn-outline-secondary btn-sm w-50 mx-2 fs-6"
+              className="btn btn-pink btn-sm w-50 mx-2 fs-6"
               onClick={() => initialStep()}
             >
-              Donar otro premio
+              Ir a  donar otro premio
             </button>
           </div>
         </div>

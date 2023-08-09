@@ -86,7 +86,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
-          <h4 className="text-dark">Donar premio</h4>
+          <h4 className="title-Modal">Donar premio</h4>
         </Modal.Header>
         <div
           style={{ cursor: "pointer" }}
@@ -119,13 +119,13 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
                       disabled={loading}
                       variant="secondary"
                       type="submit"
-                      className="w-100 btn btn-danger"
+                      className="w-100 btn btn-pink"
                       onClick={(e) => {
                         e.preventDefault();
                         handleSend();
                       }}
                     >
-                      Guardar causa
+                      Guardar premio
                     </Button>
                   </div>
                 </div>

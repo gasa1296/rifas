@@ -16,7 +16,7 @@ export default function InputDate({
   return (
     <div className="col-5">
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary my-2`}
+        className={`${error && "text-danger"} title-form-generator my-2`}
         htmlFor={name}
       >
         {label}
@@ -26,9 +26,8 @@ export default function InputDate({
         <div className="col-5 col-md-7 d-md-flex d-flex ">
           <input
             type="datetime-local"
-            className={`w-100 form-control my-2 fs-5 m-0 ${
-              error && "border-danger "
-            }`}
+            className={`w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "
+              }`}
             {...register(name, { required })}
           />
         </div>

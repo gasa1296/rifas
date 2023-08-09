@@ -18,7 +18,7 @@ export default function InputSelect({
   return (
     <div>
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary `}
+        className={`${error && "text-danger"} title-form-generator `}
         htmlFor={name}
       >
         {label}
@@ -26,9 +26,8 @@ export default function InputSelect({
 
       <select
         {...register(name, { required })}
-        className={`form-select form-select-md my-2 fs-5 w-100 ${
-          error && "border-danger "
-        }`}
+        className={`form-select form-select-md my-2 fs-5 w-100 ${error && "border-danger "
+          }`}
       >
         <option selected></option>
         {options?.map((option, index) => (

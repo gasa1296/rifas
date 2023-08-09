@@ -22,11 +22,14 @@ export default function Home() {
   return (
     <div className="m-0">
       <HomeHeader />
-      <Rifa />
-      <RifasActivas />
-      <HomeCreateRifa />
-      <HomeTestimonios />
-      <HomeRifate />
+      <div className="mx-2 mx-lg-5 ">
+        <Rifa />
+        <RifasActivas />
+        <HomeCreateRifa />
+        <HomeTestimonios />
+        <HomeRifate />
+      </div>
+
     </div>
   );
 }

@@ -100,7 +100,7 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
   ];
   return (
     <div className="px-4 shadow ">
-      <p className="text-secondary mt-2 fs-5">
+      <p className="opacity-75 mt-3 fs-4 fw-medium">
         1. Selecciona una de tus asociaciones a la que quieres apoyar.
       </p>
       <FormGenerator

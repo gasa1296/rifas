@@ -48,7 +48,7 @@ export default function FormGenerator({
       ) : (
         <button
           disabled={loading}
-          className="btn btn-secondary w-100 my-4"
+          className="btn btn-pink w-100 my-4"
           type="submit"
         >
           {buttonText}

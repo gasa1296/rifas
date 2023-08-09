@@ -51,12 +51,12 @@ export default function InputFile({
   return (
     <div>
       <label
-        className={`${error && "text-danger"} fs-5 text-secondary mt-2`}
+        className={`${error && "text-danger"} title-form-generator  mt-2`}
         htmlFor={name}
       >
         {label}
       </label>
-      {subLabel === "" ? null : <p className=" text-secondary fs-6 mb-0">{subLabel}</p>}
+      {subLabel === "" ? null : <p className="  fs-6 mb-0">{subLabel}</p>}
       <input
         id={name}
         name={name}
@@ -83,7 +83,7 @@ export default function InputFile({
                 e.preventDefault();
                 onDelete(index);
               }}
-              className="btn position-absolute top-0 end-0 btn-danger mt-2 me-2 p-1 pt-0"
+              className="btn position-absolute top-0 end-0  mt-2 me-2 p-1 pt-0"
             >
               <AiFillCloseCircle size={20} color="white" />
             </button>
@@ -99,7 +99,7 @@ export default function InputFile({
           }}
         >
           <AiFillCamera size={40} color="#313131" />
-          <p className="text-secondary fs-6">
+          <p className=" fs-6">
             Agrega o arrastra tus fotos aquí
           </p>
         </button>

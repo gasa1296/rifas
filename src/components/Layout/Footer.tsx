@@ -4,8 +4,7 @@ import logo from "@/assets/img/logoFooter.svg"
 export default function Footer() {
     return (
         <div>
-            <footer className=" mt-5 ">
-                <div className=" border-bottom border-2 w-auto mx-5 mb-3  "></div>
+            <footer className=" mt-5 footer-fondo p-4  ">
 
                 <div className="d-md-flex text-center text-md-start justify-content-md-between  p-0 mx-5">
 
@@ -13,8 +12,8 @@ export default function Footer() {
                         <Image src={logo} alt="fondo" className=' ' />
                     </div>
                     <div className="">
-                        <h6 className="fs-6 opacity-75  fw-bold mt-5 mt-lg-0 ">¡Rífate!</h6>
-                        <ul className=" list-unstyled text-secondary ">
+                        <h6 className=".footer-title mt-5 mt-lg-0 ">¡Rífate!</h6>
+                        <ul className=" list-unstyled footer-information ">
                             <li>Inicia una rifa</li>
                             <li>Comprar boletos</li>
                             <li>Haz una donacion</li>
@@ -22,23 +21,23 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div>
-                        <h6 className="fs-6 opacity-75  fw-bold">Nosotros</h6>
-                        <ul className=" list-unstyled text-secondary">
+                        <h6 className=".footer-title">Nosotros</h6>
+                        <ul className=" list-unstyled footer-information">
                             <li>Conocenos</li>
                             <li>¿Como funciona?</li>
                         </ul>
                     </div>{" "}
                     <div>
-                        <h6 className="fs-6 opacity-75  fw-bold">Legal</h6>
-                        <ul className=" list-unstyled text-secondary">
+                        <h6 className=".footer-title">Legal</h6>
+                        <ul className=" list-unstyled footer-information">
                             <li>Terminos y condiciones</li>
                             <li>Aviso de privacidad</li>
                             <li>Preguntan frecuentes</li>
                         </ul>
                     </div>{" "}
                     <div>
-                        <h6 className="fs-6 opacity-75  fw-bold">Redes!</h6>
-                        <ul className=" list-unstyled text-secondary">
+                        <h6 className=".footer-title">Redes</h6>
+                        <ul className=" list-unstyled footer-information">
                             <li>Facebook</li>
                             <li>Twitter</li>
                             <li>Youtube</li>
@@ -46,15 +45,15 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="mx-5 text-secondary fs-6 ">
-                    <p className="m-0 fw-medium opacity-75  ">Escribenos</p>
-                    <p className="fw-medium opacity-75">Contacto@rifaconcausa.org</p>
+                    <p className="m-0 footer-text ">Escribenos</p>
+                    <p className="footer-text">Contacto@rifaconcausa.org</p>
                 </div>
 
-                <div className=" border-bottom border-2 w-auto mx-5  "></div>
-
-                <p className="mx-5 mt-2 text-secondary fs-6">
-                    2021 .Todos los derechos reservados
-                </p>
+                <div className=" border-bottom border-1 border-black opacity-25 w-auto mx-5  "></div>
+                <div className='d-flex  justify-content-between mt-3'>
+                    <p className="mx-5 footer-text">2023. Rifa con Causa Todos los derechos reservados</p>
+                    <p className='footer-text d-flex'>Creado por <p className='mx-2 fw-bold'>Keep in Touch</p> ¡hacemos que las cosas sucedan!</p>
+                </div>
             </footer>
         </div>
     );
