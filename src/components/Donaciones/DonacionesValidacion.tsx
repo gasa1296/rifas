@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
-import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg";
+import imagenDonaciones from "@/assets/img/Premio-donar.jpg";
 import { useDispatch } from "react-redux";
 import { Donations } from "@/store/slices/raffles";
 import { BsFillCheckCircleFill } from "react-icons/bs";

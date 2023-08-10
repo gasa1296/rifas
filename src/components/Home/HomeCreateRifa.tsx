@@ -1,13 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import fondo from "@/assets/img/FondoRifaDestacada.svg"
+import fondo from "@/assets/img/Comienza-la-historia.png"
 
 
 export default function HomeCreateRifa() {
     return (
-        <div>
+        <div className=' mx-3 mx-lg-5'>
 
-            <section className='row  d-flex justify-align-content-between' style={{ marginBottom: "120px" }} >
+            <section className='row m-0 d-flex justify-align-content-between' style={{ marginBottom: "120px" }} >
                 <div className='col-md-4  text-secondary  '>
                     <h5 className=' home-title-createRaffle'>¡Aqui comienza la esperanza!</h5>
                     <p className='home-subtitle-create' >Sigue las instrucciones para crear tu rifa</p>
@@ -19,9 +19,9 @@ export default function HomeCreateRifa() {
                     <a href="#" className="btn fs-6 btn-pink w-75 fw-normal ">Iniciar Rifa</a>
 
                 </div>
-                <div className='col-md-7 mt-4 mt-lg-1  m-auto  '>
+                <div className='col-md-7 mt-4 mt-lg-1  '>
                     <div className='col-md-12'>
-                        <Image src={fondo} alt="fondo" className='w-100 h-100 d-block mx-auto' />
+                        <Image src={fondo} alt="fondo" className='w-100 h-100 d-block mx-auto ' />
                     </div>
                 </div>
             </section>

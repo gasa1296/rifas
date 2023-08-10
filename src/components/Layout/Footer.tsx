@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import logo from "@/assets/img/logoFooter.svg"
+import logo from "@/assets/img/logo-rifa-footer.png"
 export default function Footer() {
     return (
         <div>
@@ -8,7 +8,7 @@ export default function Footer() {
 
                 <div className="d-md-flex text-center text-md-start justify-content-md-between  p-0 mx-5">
 
-                    <div className=" mw-100  ">
+                    <div className=" mw-100   ">
                         <Image src={logo} alt="fondo" className=' ' />
                     </div>
                     <div className="">

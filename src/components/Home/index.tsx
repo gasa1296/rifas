@@ -11,6 +11,7 @@ import HomeTestimonios from "./HomeTestimonios";
 import HomeRifate from "./HomeRifate";
 import { useDispatch } from "react-redux";
 import { Raffles } from "@/store/slices/raffles";
+import HomeParticipating from "./HomeParticipating";
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -20,15 +21,14 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="m-0">
+    <div className="">
       <HomeHeader />
-      <div className="mx-2 mx-lg-5 ">
-        <Rifa />
-        <RifasActivas />
-        <HomeCreateRifa />
-        <HomeTestimonios />
-        <HomeRifate />
-      </div>
+      <Rifa />
+      <RifasActivas />
+      <HomeCreateRifa />
+      <HomeParticipating />
+      <HomeTestimonios />
+      <HomeRifate />
 
     </div>
   );

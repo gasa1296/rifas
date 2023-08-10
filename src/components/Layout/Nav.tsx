@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "@/assets/img/Logo.svg";
+import logo from "@/assets/img/logo-rifa-menu.png";
 import ModalLogin from "../modal/ModalLogin";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";

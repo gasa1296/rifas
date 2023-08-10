@@ -15,7 +15,7 @@ export default function RifasActivas({ href = "/rifas" }) {
 
   return (
     <div>
-      <section className=" " style={{ marginBottom: "120px" }}>
+      <section className=" mx-3 mx-lg-5" style={{ marginBottom: "120px" }}>
         <div className="d-flex  m-0  ">
           <p className=" raffles-title lh-1 m-0">
             Rifas activas

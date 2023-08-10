@@ -7,13 +7,13 @@ import Image from 'next/image'
 import BuyTickes from './BuyTickes'
 export default function RifaPago({ nextStep, backStep }: any) {
     return (
-        <div className=' d-block justify-content-center d-md-flex mt-5 '>
+        <div className=' d-block justify-content-center d-md-flex mt-5  '>
             <div className='d-block justify-content-center d-lg-flex '>
-                < div className=' col-12 col-lg-6  '>
+                < div className=' col-12 col-lg-8  me-0 me-lg-3'>
                     <BuyTickes />
 
                 </div >
-                <div className='col-md-5 col-12 mx-0 mx-md-4'>
+                <div className='col-md-5 col-sm-12 col-12 mt-3 mt-lg-0 ms-0 ms-md-4  '>
                     <p className=' fw-lighter  fs-4 fw-bold opacity-75 mt-3 mt-lg-0'>3 / 3 Efectua el pago</p>
                     <p className='text-secondary m-0'>Confirma y paga tus boletos</p>
                     <div className='d-flex text-secondary  mt-3 '>

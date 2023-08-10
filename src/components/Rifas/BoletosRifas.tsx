@@ -8,7 +8,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 export default function BoletosRifas({ nextStep, backStep }: any) {
 
     return (
-        <div className='d-block justify-content-center d-lg-flex mx-5 mt-5 '>
+        <div className='d-block justify-content-center d-lg-flex  mt-5  '>
 
 
             < div className=' col-12 col-lg-6  '>
@@ -17,7 +17,7 @@ export default function BoletosRifas({ nextStep, backStep }: any) {
             </div >
 
 
-            <div className=' col-lg-5 col-12 ms-3  ' >
+            <div className=' col-lg-5 col-12 ms-4  ' >
                 <p className='donaciones-title mt-3 mt-md-0'>1 / 3 Selecciona tus boletos</p>
                 <p className='text-secondary '>Da clic para seleccionar tus boletos</p>
                 <div className='flex-wrap d-flex  rounded  '>

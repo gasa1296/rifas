@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 
-import imagenDonaciones from "@/assets/img/ImagenDonaciones.svg";
+import imagenDonaciones from "@/assets/img/Premio-donar.jpg";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
