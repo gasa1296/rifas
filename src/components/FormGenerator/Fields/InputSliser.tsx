@@ -64,7 +64,7 @@ export default function InputSliser({
                   borderRadius: "4px",
                   background: getTrackBackground({
                     values: range,
-                    colors: ["#548BF4", "#ccc"],
+                    colors: ["#C3286D", "#ccc"],
                     min: MIN,
                     max: MAX,
                   }),
@@ -88,7 +88,7 @@ export default function InputSliser({
                 justifyContent: "center",
                 alignItems: "center",
                 boxShadow: "0px 2px 6px #AAA",
-                color: isDragged ? "#548BF4" : "inherit",
+                color: isDragged ? "#C3286D" : "inherit",
               }}
             >
               {range[0]}

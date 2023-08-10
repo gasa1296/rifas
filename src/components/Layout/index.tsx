@@ -8,7 +8,7 @@ $white: "#0000";
 export default function Layout({ children, home }: any) {
   return (
     <main
-      className=" position-relative  "
+      className=" position-relative mx-auto"
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <div>

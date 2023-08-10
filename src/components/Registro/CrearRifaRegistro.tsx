@@ -48,16 +48,20 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
       </h2>
 
       <div className="  mb-3 col-12 col-lg-8 m-auto  ">
-        <div className=" d-flex justify-content-between align-items-center    border " onClick={() => { }}>
+        <div
+          className=" d-flex justify-content-between align-items-center    "
+          onClick={() => {}}
+        >
           <button
-            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
+              step === 1 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div className="text-fondo-container">
               <AiFillDollarCircle size={25} className="me-2" />
               Configura el premio tu rifa
             </div>
-            <div className="m-0">{StepIcon(step, 1)}</div >
+            <div className="m-0">{StepIcon(step, 1)}</div>
           </button>
         </div>
         {step === 1 && (
@@ -66,8 +70,9 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
-            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
+              step === 2 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
               <HiOutlineClipboardList /> Define los datos de tu rifa
@@ -82,8 +87,9 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
-            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
+              step === 3 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
               <FaHandHoldingHeart /> Confirmación de la rifa

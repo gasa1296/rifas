@@ -122,6 +122,7 @@ export const createRaffle = createAsyncThunk(
   `${PREFIX}/create-raffles`,
   async (raffle: RafflesI, thunkAPI): Promise<{} | undefined> => {
     try {
+      if (typeof raffle?.prize === "object") raffle.prize = raffle?.prize?.id;
       const raffleResult = await createNewRaffle(raffle);
 
       return raffleResult.data;

@@ -1,6 +1,6 @@
 export interface RafflesI {
   id: number;
-  prize: number | null;
+  prize: Prize | number;
   tickets: [];
   name: string;
   description: string;
@@ -8,9 +8,13 @@ export interface RafflesI {
   ticket_number: number;
   ticket_price: number;
   realization_date: string;
-  cause: Cause;
+  cause: Cause | number;
 }
 
 export interface Cause {
   image: string | null;
+  id: number;
+}
+export interface Prize {
+  id: number;
 }
