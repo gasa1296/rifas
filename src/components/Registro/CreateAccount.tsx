@@ -34,9 +34,9 @@ export default function CreateAccount({ nextStep }: any) {
       type: "text",
     },
     { label: "Empresa (Opcional)", name: "company_name", type: "text" },
-    { label: "Contrasena", name: "password", required: true, type: "password" },
+    { label: "Contraseña", name: "password", required: true, type: "password" },
     {
-      label: "Confirmar contrasena",
+      label: "Confirmar Contraseña",
       name: "confirmarContrasena",
       required: true,
       type: "password",
@@ -53,19 +53,17 @@ export default function CreateAccount({ nextStep }: any) {
   return (
     <section className="text-secondary row">
       <div className="col-md-8  col-12 mx-auto mt-5">
-        <h2 className="text-center text-secondary fw-normal mx-md-5 ">
-          Para comenzar a rifarte necesitas crear una cuenta.
-        </h2>
-        <p className="text-center fw-light  fs-4 mt-3 mx-md-5">
-          si eres una asociacion o quieres donar un premio es necesario crear
-          una cuenta
+        <h2 className="text-center title-CreateAccount mx-md-5 ">Para comenzar a rifarte necesitas crear una cuenta.</h2>
+        <h2 className="text-center title-CreateAccount mx-md-5 "> Crear una cuenta.</h2>
+        <p className="text-center text-CreateAccount mt-3 mx-md-5">
+          Es necesario crear una cuenta para apoyar alguna rifa, donar un premio o si eres una asociación y quieres crear tus rifas.
         </p>
       </div>
       <div
         className="  my-3 text-secondary shadow rounded mx-auto px-5"
         style={{ maxWidth: "600px", width: "100%" }}
       >
-        <p className=" text-center text-secondary fw-semibold my-3 fs-4">
+        <p className=" text-center title-registro-CreateAcount my-3 ">
           Registra tu cuenta
         </p>
         <FormGenerator
@@ -87,7 +85,7 @@ export default function CreateAccount({ nextStep }: any) {
             Regitrate con Facebook
           </button> */}
           <div className="col-12 mx-auto mb-4">
-            <LoginWithGoogle handleClose={() => {}} />
+            <LoginWithGoogle handleClose={() => { }} />
           </div>
         </div>
       </div>

@@ -1,8 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from "@/assets/img/logo-rifa-footer.png"
+import { useRouter } from "next/router";
+
 export default function Footer() {
+    const router = useRouter();
     return (
+
+
         <div>
             <footer className=" mt-5 footer-fondo p-4  ">
 
@@ -25,6 +30,8 @@ export default function Footer() {
                         <ul className=" list-unstyled footer-information">
                             <li>Conocenos</li>
                             <li>¿Como funciona?</li>
+                            <li onClick={() => router.push("/contacto")} className='button-contacto'>   ¿Necesitas ayuda?</li>
+
                         </ul>
                     </div>{" "}
                     <div>

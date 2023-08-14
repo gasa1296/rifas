@@ -36,13 +36,13 @@ export default function DonacionesValidacion({
           <p className=" mb-4  stepsToFollow-donaciones mt-3 ">¿Cuales son los siguientes pasos?</p>
 
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={20} className="m-0 " color={" 313131"} />
-            <p className="m-0 text-donaciones-validacion ms-2">
+            <BsFillCheckCircleFill size={21} className="m-0 " color={" 313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2">
               Tu premio será sometido a un proceso de revisión
             </p>
           </div>
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={29} className="m-0 " color={" 313131"} />
+            <BsFillCheckCircleFill size={30} className="m-0 " color={" 313131"} />
             <p className="m-0  text-donaciones-validacion ms-2">
               Una vez autorizado, te enviaremos un mensaje de confirmación y tu premio ya será parte del catálogo.
             </p>
@@ -50,7 +50,7 @@ export default function DonacionesValidacion({
 
 
           <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={29} className="m-0 " color={" 313131"} />
+            <BsFillCheckCircleFill size={30} className="m-0 " color={" 313131"} />
             <p className="m-0  text-donaciones-validacion ms-2  ">
               Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.

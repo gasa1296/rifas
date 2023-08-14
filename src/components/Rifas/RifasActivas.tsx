@@ -27,25 +27,25 @@ export default function RifasActivas({ href = "/rifas" }) {
 
           </p>
         </div>
-        <div className=" raffles-navbar d-lg-flex fw-light  ">
-          <p className="mx-3">Todas</p>
-          <p className="mx-3">Animales</p>
-          <p className="mx-3">Comunidad</p>
-          <p className="mx-3">Cultura</p>
-          <p className="mx-3">Deporte</p>
-          <p className="mx-3">Educacion</p>
-          <p className="mx-3">Emergencia</p>
-          <p className="mx-3">Salud</p>
-          <p className="mx-3">Sustentabilidad</p>
+        <div className=" raffles-navbar d-lg-flex fw-light my-3 ">
+          <p className="me-5">Todas</p>
+          <p className="me-5">Animales</p>
+          <p className="me-5">Comunidad</p>
+          <p className="me-5">Cultura</p>
+          <p className="me-5">Deporte</p>
+          <p className="me-5">Educacion</p>
+          <p className="me-5">Emergencia</p>
+          <p className="me-5">Salud</p>
+          <p className="me-5">Sustentabilidad</p>
         </div>
 
-        <div className="d-flex row ">
+        <div className="d-flex row m-0">
           {raffles.map((raffle: RafflesI, index: number) => (
 
 
             <div
               key={index}
-              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 mx-0 mx-md-3  "
+              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-0 me-lg-3  "
               style={{ maxWidth: "309px", width: "100%", height: "" }}
             >
               <Image src={fondo} className="w-100" alt="" />

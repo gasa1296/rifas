@@ -173,8 +173,6 @@ opacity: 1;
 
 
 
-
-
 /*header*/
 .header-background img{
 width: 100%;
@@ -195,7 +193,7 @@ margin-top: 280px;
 .header-icono{
   position: absolute;
   z-index: 10;
-  right: 6px;
+  right: 35px;
   cursor: pointer;
 }
 
@@ -231,7 +229,7 @@ font-weight: lighter !important ;
 .fondo-destacada{
   position: absolute;
   width: 99.9%;
-  height: 650px;
+  height: 750px;
  }
 
 
@@ -285,7 +283,7 @@ z-index: 10;
 letter-spacing: var(--unnamed-character-spacing-0);
 text-align: left;
 letter-spacing: 0px;
-color: #5C5C5C;
+color: #707070;
 font-size: 24px;
 font-weight: bold;
 opacity: 1;
@@ -294,12 +292,11 @@ z-index: 10;
 }
 
 .raffle-container-value{
-letter-spacing: var(--unnamed-character-spacing-0);
-text-align: left;
-letter-spacing: 0px;
-color: #939393;
-font-weight: 600;
-font-size: 24px;
+  letter-spacing: 0px;
+  color: #939393;
+  opacity: 1;
+font-weight: normal;
+font-size: 25px;
 opacity: 1;
 position: relative;
 z-index: 10;
@@ -341,10 +338,8 @@ font-size: 16px !important;
 }
 
 .raffle-container-finish{
-letter-spacing: var(--unnamed-character-spacing-0);
 text-align: left;
 letter-spacing: 0px;
-font-family: Arial, Helvetica, sans-serif;
 font-size: 24px;
 font-weight: normal;
 color: #5C5C5C;
@@ -357,14 +352,14 @@ z-index: 10;
 
 .raffles-title{
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-784b5f);
   text-align: left;
 }
 .raffles-subtitle{
 font-size: 20px;
-font-weight: bold;
+font-weight: 600;
 color: var(--unnamed-color-707070);
 text-align: left;
 letter-spacing: 0px;
@@ -376,6 +371,7 @@ letter-spacing: 0px;
   letter-spacing: var(--unnamed-character-spacing-0);
   color: #707070;
 text-align: left;
+
 }
 
 
@@ -395,8 +391,38 @@ color: #989797;
 opacity: 1;
 }
 
+
+/* all rifas*/
+.container-AllRifas{
+  background: #CEA2B61A 0% 0% no-repeat padding-box;
+  border: 1px solid #70707000;
+  opacity: 1;
+}
+
+.title-AllRifas{
+ font-size: 60px;
+ font-weight: 600; 
+ letter-spacing: 0px;
+color: #784B5F;
+opacity: 1;
+}
+.subtitle-AllRifas{
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  color: #707070;
+opacity: 1;}
+
+.text-AllRifas{
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;}
+
+
 /* comprar boletos-*/
-/*boletos rifas*/
+/*buy tickes*/
 
 .fondo-buy-tickes{
   position: absolute;
@@ -457,6 +483,92 @@ z-index: 10;
 z-index: 10;
 cursor: pointer;
 }
+
+/* boletos rifas*/
+.subtitle-boletosaRifa{
+  font-size: 20px;
+  font-weight: normal;
+letter-spacing: 0px;
+color: #5C5C5C;
+opacity: 1;
+}
+
+.value-boletosRifas{
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #5C5C5C;
+opacity: 1;
+}
+/*Metodos de pago rifa*/
+
+.input-placeholder{
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: #C1C1C1;
+opacity: 1;
+border: 1px solid #707070;
+border-radius: 6px;
+}
+
+
+.placeholder-button{
+  letter-spacing: 0px;
+color: #00C851;
+opacity: 1;
+font-size: 20px;
+font-weight: normal;
+}
+
+.boletos{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #5C5C5C;
+}
+
+.value-metodosPago{
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #5C5C5C;
+opacity: 1;
+}
+
+
+/* pay sucessful*/
+
+.tank-paySucessfull{
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0px;
+color: #784B5F;
+opacity: 1;
+}
+.text-paySucessful{
+  letter-spacing: 0px;
+color: #784B5F;
+opacity: 1;
+font-size: 20px;
+font-weight: 600;
+}
+.value-paySucessful{
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #784B5F;
+}
+
+
+.share-paySucessfull{
+  letter-spacing: 0px;
+color: #5C5C5C;
+opacity: 1;
+font-size: 20px;
+font-weight: normal;
+}
+
 
 /* home create rifa*/
 
@@ -553,7 +665,6 @@ opacity: 1
  .fondo-testimoniales{
   position: absolute;
   width: 99.9%;
-
   height: 550px;
  }
 
@@ -620,34 +731,7 @@ color: #707070;
 opacity: 1;
 }
 
-/*footer*/
 
-.footer-fondo{
-  background: #F8F8F8 0% 0% no-repeat padding-box;
-opacity: 1;
-}
-.footer-title{
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0px;
-color: #5D5D5D;
-opacity: 1;
-}
-.footer-information{
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0px;
-color: #8D8D8D;
-opacity: 1;
-}
-
-.footer-text{
-  font-size: 14px;
-  font-weight: 600;
-letter-spacing: 0px;
-color: #939393;
-opacity: 1;
-}
 
 
 /* pagina donaciones*/
@@ -670,7 +754,7 @@ opacity: 1;
 }
 .information-donacionesValidacion{
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0px;
 color: #784B5F;
 opacity: 1;
@@ -693,6 +777,36 @@ text-align: center;
 color: #212121;
 opacity: 1;
 }
+
+/*Resgistro*/
+
+/*create Account*/
+
+.title-CreateAccount{
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  color: #784B5F;
+
+}
+
+.text-CreateAccount{
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+}
+
+.title-registro-CreateAcount{
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+}
+
+
 
 
 /*crear rifa registro*/
@@ -729,7 +843,92 @@ opacity: 1;
 
 }
 
+/*footer*/
 
+.footer-fondo{
+  background: #F8F8F8 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+.footer-title{
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0px;
+color: #5D5D5D;
+opacity: 1;
+}
+.footer-information{
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+color: #8D8D8D;
+opacity: 1;
+}
+
+.footer-text{
+  font-size: 14px;
+  font-weight: 600;
+letter-spacing: 0px;
+color: #939393;
+opacity: 1;
+}
+
+.button-contacto{
+  cursor: pointer;
+}
+
+/*contacto*/
+.container-contacto{
+  background: #C3286D;
+text-align: center;
+padding: 20px;
+}
+
+.contacto{
+  letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+font-size: 46px;
+font-weight: 600;
+}
+
+.help-contacto{
+  font-size: 32px;
+  font-weight: normal;;
+  letter-spacing: 0px;
+  letter-spacing: 0px;
+  color: #373A3C;
+  opacity: 1;}
+  
+  .informacion{
+    letter-spacing: 0px;
+    color: #373A3C;
+    opacity: 1;
+    font-size: 20px;
+    font-weight: normal;
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+/*TABS*/
+
+.title-tabs{
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+}
+.Title-tabs2{
+  font-size: 18px;
+font-weight: 400;
+  letter-spacing: 0px;
+color: #707070;
+}
 
 /* css del label del form generator*/
 

@@ -2,7 +2,8 @@ import React from 'react'
 import BuyTickes from './BuyTickes'
 import Image from 'next/image'
 import { useRouter } from "next/router";
-
+import { BsFacebook, BsTwitter, BsWhatsapp, BsFillShareFill, } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
 import { BiHeartCircle } from "react-icons/bi";
 
 export default function PaySuccessful({ initialStep }: any) {
@@ -10,22 +11,34 @@ export default function PaySuccessful({ initialStep }: any) {
 
     return (
         <div className=' d-block justify-content-center d-md-flex mt-5'>
-            < div className=' col-12 col-lg-6  '>
+            < div className=' col-12 col-lg-5  '>
                 <BuyTickes />
 
             </div >
-            <div className='col-md-4 col-12 mt-3 mt-md-0 text-center '>
-                <BiHeartCircle size={60} />
-                <h3 className="mt-3 mb-3">  Gracias </h3>
-                <p className=" m-0 lh-1 fs-3  ">Estamos muy contentos de </p>
-                <p className="  m-0 lh-1 fs-3 ">conseguir tu valioso amor </p>
-                <p className=" m-0  lh-1 fs-3  "> para gente hermosa</p>
-
-                <button onClick={() => router.push("/rifas")} className='text-secondary btn btn-light border border-light-subtle  border-2 w-50 p-3 mt-5'>Volver a Rifas</button>
+            <div className='col-md-6 col-12 mt-3 mt-md-0 text-center '>
+                <BiHeartCircle size={60} color='#C3286D' />
+                <h3 className="my-2 tank-paySucessfull">  Gracias </h3>
+                <p className=" m-0  text-paySucessful ">Estamos muy contentos de conseguir tu valioso amor</p>
+                <p className=" mb-3   text-paySucessful"> para gente hermosa</p>
+                <p className=" m-0  d-flex justify-content-center  text-paySucessful"> Número de boletos adquiridos: <p className='value-paySucessful m-0'>3</p></p>
+                <p className=" m-0  d-flex justify-content-center  text-paySucessful "> Total pagado: <p className='value-paySucessful m-0'>  3</p></p>
+                <p className=" m-0 d-flex justify-content-center  text-paySucessful"> Número de referencia: <p className='value-paySucessful m-0'>3</p></p>
+                <p className=" mt-3 mb-0  text-paySucessful ">Ayúdanos a compartir en tus redes sociales y más gente se una a la causa.</p>
+                <div>
+                    <h6 className=" text-center share-paySucessfull ">Compartir:</h6>
+                    <BsFacebook color=" #C3286D" size={25} className="mx-2" />
+                    <BsTwitter color=" #C3286D" size={25} className="mx-2" />
+                    <MdEmail color=" #C3286D" size={25} className="mx-2" />
+                    <BsWhatsapp color=" #C3286D" size={25} className="mx-2" />
+                    <BsFillShareFill color=" #C3286D" size={25} className="mx-2" />
+                </div>
+                <button onClick={() => router.push("/rifas")} className='mt-3 btn btn-border-pink  w-50 '>Ver todas las rifas disponible</button>
             </div>
 
-
         </div>
+
+
+
     )
 
 }

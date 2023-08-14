@@ -27,17 +27,17 @@ export default function Rifa({ href = "/rifas" }: any) {
   if (!raffle) return <div className="my-4"></div>;
 
   return (
-    <div className="  " style={{ marginBottom: "100px" }}>
+    <div className=" " style={{ marginBottom: "100px" }}>
       <Image src={fondoDestacada} alt='fondodestacada' className=' fondo-destacada' />
 
-      <section className=" mt-5 mb-5 mx-3 mx-lg-5 container-destacada ">
+      <section className=" mt-5 mb-5 mx-3 mx-lg-5 container-destacada  p-4">
         <h3 className="  raffle-title mt-5 mt-lg-3 ">Rifa Destacada</h3>
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
-        <div className="d-flex justify-content-center  row ">
-          <div className="col-lg-6  position-relative ">
+        <div className="d-flex justify-content-between row m-0">
+          <div className="col-lg-6  position-relative m-0 ">
             <Image src={fondo} alt="fondo" className=" w-100 h-100 " />
           </div>
-          <div className=" col-md-5 mx-3 mx-md-4  ">
+          <div className=" col-lg-6  ">
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
               Recaudado
             </p>
@@ -76,15 +76,15 @@ export default function Rifa({ href = "/rifas" }: any) {
                 </p>
               </div>
             </div>
-            <div className="d-flex ">
+            <div className="d-flex justify-content-center ">
               <button
-                className="btn btn-pink btn-sm border col-5 button-rifaDestacada  "
+                className="btn btn-pink btn-sm border col-6 button-rifaDestacada  "
                 onClick={() => router.push(`/rifas/${raffle.id}`)}
               >
                 Comprar boletos
               </button>
               <button
-                className="btn btn-border-pink btn-sm col-5  ms-4  button-rifaDestacada "
+                className="btn btn-border-pink btn-sm col-6 ms-1    button-rifaDestacada "
                 onClick={() => router.push(getRouter())}
               >
                 Ver detalles
@@ -101,11 +101,12 @@ export default function Rifa({ href = "/rifas" }: any) {
               </div>
               <div>
                 <h6 className="raffle-container-finish">Compartir:</h6>
-                <BsFacebook color=" #C3286D" size={25} className="mx-2" />
-                <BsTwitter color=" #C3286D" size={25} className="mx-2" />
-                <MdEmail color=" #C3286D" size={25} className="mx-2" />
-                <BsWhatsapp color=" #C3286D" size={25} className="mx-2" />
-                <BsFillShareFill color=" #C3286D" size={25} className="mx-2" />
+
+                <BsFacebook color=" #C3286D" size={25} className="mx- position-relative 2" />
+                <BsTwitter color=" #C3286D" size={25} className="mx-2  position-relative " />
+                <MdEmail color=" #C3286D" size={25} className="mx-2  position-relative " />
+                <BsWhatsapp color=" #C3286D" size={25} className="mx-2  position-relative " />
+                <BsFillShareFill color=" #C3286D" size={25} className="mx-2  position-relative " />
               </div>
             </div>
           </div>

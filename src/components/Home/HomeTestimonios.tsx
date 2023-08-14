@@ -17,7 +17,7 @@ export default function HomeTestimonios() {
                         <p className='home-title-container-testimonios' >Ayudame a escuchar</p>
 
                         <p className='home-subtitle-container-testimonios' >Mas de $350.000 pesos recaudados</p>
-                        <p className='home-information-container-testimonios'>Ethical aute vinyl, 90’s keytar big mood cred ad reprehenderit. Taiyaki gluten-free kinfolk mumblecore post-ironic taxidermy godard. Small batch lorem praxis, duis twee activated charcoal farm-to-table meh laboris tbh. Deep v craft beer post-ironic kale chips small batch subway tile ethical actually ut. Trust fund snackwave polaroid, pinterest hell of cupidatat pop-up lumbersexual consectetur tofu hashtag. Mukbang celiac Brooklyn readymade cillum same leggings consectetur dolor.</p>
+                        <p className='home-information-container-testimonios'>Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.</p>
                         <p className='home-subtitle-container-testimonios' >APAC A.C</p>
 
                     </div>

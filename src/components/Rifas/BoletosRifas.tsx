@@ -19,7 +19,7 @@ export default function BoletosRifas({ nextStep, backStep }: any) {
 
             <div className=' col-lg-5 col-12 ms-4  ' >
                 <p className='donaciones-title mt-3 mt-md-0'>1 / 3 Selecciona tus boletos</p>
-                <p className='text-secondary '>Da clic para seleccionar tus boletos</p>
+                <p className='subtitle-boletosaRifa '>Da clic para seleccionar tus boletos</p>
                 <div className='flex-wrap d-flex  rounded  '>
                     <div className='raffle-container' >
                         <div className='lh-sm  border-1 border rounded-1 text-center raffle-box  '>5656</div>
@@ -35,14 +35,14 @@ export default function BoletosRifas({ nextStep, backStep }: any) {
                     </div>
 
                 </div>
-                <div className=" border-bottom my-2 w-75"></div>
+                <div className=" border-bottom my-2 w-100"></div>
                 <div className='d-flex justify-content-between mt-3 m-2  '>
-                    <div className='mx-4'>
-                        <p className=' fs-5 opacity-75 '>Total a pagar</p>
-                        <p className='fw-semibold opacity-75  fw-bolder '>$ 21,600.00</p>
+                    <div className=''>
+                        <p className=' subtitle-boletosaRifa '>Total a pagar</p>
+                        <p className='value-boletosRifas '>$ 21,600.00</p>
                     </div>
                     <div className=' '>
-                        <p className='fs-5 opacity-75'>Boletos selecionados: 1</p>
+                        <p className='subtitle-boletosaRifa'>Boletos selecionados: 1</p>
                         <div className='raffle-container raffe-container-size ' >
                             <div className='lh-sm  border-1 border rounded-1 text-center raffle-box  '>5656</div>
                         </div>

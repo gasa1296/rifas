@@ -9,12 +9,11 @@ import RifasActivas from './RifasActivas';
 export default function AllRifas() {
     return (
         <div className=''>
-            <div className='d-block d-lg-flex   justify-content-center   '>
+            <div className='d-block d-lg-flex   justify-content-center container-AllRifas   '>
                 <div className=' col-12 col-lg-5 '>
-                    <p className=' title-participating mt-5 mt-lg-4 '>¡Rífate! </p>
-                    <p className='fw-normal display-6 opacity-75 my-4'> Y súmate con amor</p>
-                    <p className='fw-semibold fs-5 opacity-75 m-0'>Aquí encontraras las historias con las Que te puedes rifar las</p>
-                    <p className='fw-semibold fs-5 opacity-75 m-0 '>  Que te puedes rifar</p>
+                    <p className=' title-AllRifas mt-5 mt-lg-4 '>¡Rífate! </p>
+                    <p className='subtitle-AllRifas'> Y súmate con amor</p>
+                    <p className='text-AllRifas m-0 lh-2'>Aquí encontraras las historias con las que te puedes rifar!</p>
 
                 </div>
                 <div className='mx-5 mt-2 col-12 col-lg-5 '>
