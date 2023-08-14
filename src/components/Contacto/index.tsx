@@ -59,7 +59,7 @@ export default function index() {
                     />
 
                 </div>
-                <div className=" col-12 col-lg-4 ms-5">
+                <div className=" col-12 col-lg-4 mt-5 mt-lg-0 text-center text-lg-start  ms-0 ms-lg-5">
                     <h2 className="help-contacto">¿Necesitas ayuda?</h2>
                     <h2 className="help-contacto">Contáctanos</h2>
                     <p className="informacion mt-0 mt-lg-4"><MdEmail color="#C3286D" className="me-3" />contact@info.com</p>

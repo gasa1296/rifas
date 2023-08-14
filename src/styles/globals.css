@@ -807,6 +807,60 @@ opacity: 1;
 }
 
 
+/*registro sucessfull*/
+
+.tittle-registroSucessfull{
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0px;
+color: #784B5F;
+
+opacity: 1;
+}
+
+.subtitle-registroSucessfull{
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+
+}
+
+.text-registroSucessfull{
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+
+}
+.createRegistro{
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+font-size: 16px;
+font-weight: 400;
+}
+
+.btn-purple{
+background: #784B5F 0% 0% no-repeat padding-box !important;
+border-radius: 4px  !important;
+opacity: 1 !important;
+color: #FFFFFF !important;
+font-size: 16px !important;
+}
+.volver-inicio{
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+font-size: 16px;
+font-weight: bold;
+border-bottom: 1px solid #707070;
+cursor: pointer;
+text-align: center !important;
+}
+
 
 
 /*crear rifa registro*/
