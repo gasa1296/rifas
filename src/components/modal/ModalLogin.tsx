@@ -16,6 +16,7 @@ export default function ModalLogin({ show, handleClose }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const router = useRouter();
+
   const fields: Field[] = [
     {
       label: "Email",
@@ -80,8 +81,8 @@ export default function ModalLogin({ show, handleClose }: any) {
           </h6>
         </div>
         <div className=" border-bottom border-2 my-3  "></div>
-        <h6 className="fw-bold  text-center ">
-          ¿No tienes una cuenta? Registrate aqui{" "}
+        <h6 onClick={() => router.push("/registro")} className="fw-bold  text-center registroAqui" style-={{ cursor: "pointer" }}>
+          ¿No tienes una cuenta? Registrate aqui
         </h6>
         <h6 className="fw-bold text-center mb-3">
           ¿Porque necesito una cuenta?{" "}
