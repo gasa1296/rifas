@@ -1,6 +1,7 @@
 import React from "react";
 import fondo from "@/assets/img/fondoRifaActivas.svg";
 import Image from "next/image";
+import fondoRifasActivas from "@/assets/img/gal-microsite-apac2.jpg";
 import { MdAccessTime } from "react-icons/md";
 
 import { useRouter } from "next/router";
@@ -48,7 +49,7 @@ export default function RifasActivas({ href = "/rifas" }) {
               className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-0 me-lg-3  "
               style={{ maxWidth: "309px", width: "100%", height: "" }}
             >
-              <Image src={fondo} className="w-100" alt="" />
+              <Image src={fondoRifasActivas} className="w-100 h-50" alt="" />
               <div className="p-3">
                 <h6 className="raffles-title-card  ">{raffle.name}</h6>
                 <p className="card-text raffles-subtitle-card lh-sm">

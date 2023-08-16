@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function HomeTestimonios() {
     return (
-        <div className=' ' style={{ marginTop: "130px" }}>
+        <div className='pt-2 ' style={{ marginTop: "130px" }}>
             <Image src={testimnialesFondo} alt='fondoTestimoniales' className=' fondo-testimoniales' />
 
             <section className='row m-0 mx-3 mx-lg-5 p-2 ' style={{ marginBottom: "120px" }}>

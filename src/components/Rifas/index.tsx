@@ -15,9 +15,9 @@ export default function Rifas() {
   }, []);
 
   return (
-    <div className="mx-0 mx-lg-4">
+    <div className="background-rifa">
       <Rifa />
-      <RifasDescription />  *
+      <RifasDescription />
       <RifasActivas />
     </div>
   );

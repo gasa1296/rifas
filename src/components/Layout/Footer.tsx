@@ -57,9 +57,9 @@ export default function Footer() {
                 </div>
 
                 <div className=" border-bottom border-1 border-black opacity-25 w-auto mx-5  "></div>
-                <div className='d-flex  justify-content-between mt-3'>
+                <div className='d-block d-lg-flex justify-content-between mt-3'>
                     <p className="mx-5 footer-text">2023. Rifa con Causa Todos los derechos reservados</p>
-                    <p className='footer-text d-flex'>Creado por <p className='mx-2 fw-bold'>Keep in Touch</p> ¡hacemos que las cosas sucedan!</p>
+                    <p className='footer-text d-flex '>Creado por <p className='mx-2 fw-bold'>Keep in Touch</p> ¡hacemos que las cosas sucedan!</p>
                 </div>
             </footer>
         </div>
