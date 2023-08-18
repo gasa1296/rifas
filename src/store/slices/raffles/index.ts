@@ -1,7 +1,7 @@
 import { RootState } from "@/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { RAFFLES_EXTRA_REDUCERS } from "./extra-reducers";
-import { authSliceModel } from "@/types/Store/auth";
+
 import { RaffleInitialState } from "@/types/Store/raffles";
 
 const initialState: RaffleInitialState = {
@@ -13,6 +13,7 @@ const initialState: RaffleInitialState = {
   associations: [],
   causesCategories: [],
   prizesCategories: [],
+  selectedTickets: [],
 };
 
 export const rafflesSlice = createSlice({
@@ -20,10 +21,7 @@ export const rafflesSlice = createSlice({
   initialState,
   reducers: {
     setRaffle: (state, action) => {
-      state.raffle =
-        state.raffles.find(
-          (raffle) => raffle.id.toString() === action.payload.toString()
-        ) || null;
+      state.raffle = action.payload;
     },
 
     setDonationsForm1: (state, action) => {
@@ -40,6 +38,9 @@ export const rafflesSlice = createSlice({
     setPrizesCategories: (state, action) => {
       state.prizesCategories = action.payload;
     },
+    setSelectedTicket: (state, action) => {
+      state.selectedTickets = action.payload;
+    },
   },
   extraReducers: (builder) => {
     RAFFLES_EXTRA_REDUCERS(builder);
@@ -48,6 +49,7 @@ export const rafflesSlice = createSlice({
 
 export const {
   setRaffle,
+  setSelectedTicket,
   setDonationsForm1,
   setDonationsForm2,
   setPrizesCategories,

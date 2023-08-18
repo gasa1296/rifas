@@ -6,13 +6,15 @@ import {
   getAssociationsApproveds,
   getCausesCategories,
   getPrizesCategories,
+  getRaffle,
+  getRaffleTickets,
   getRaffles,
 } from "@/services/raffles";
 import { RootState } from "@/store";
 import { handleError } from "@/utils/handleError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { setCausesCategories, setPrizesCategories } from ".";
+import { setCausesCategories, setPrizesCategories, setRaffle } from ".";
 import { RafflesI } from "@/types/Model/Raffle";
 const PREFIX: string = "raffles";
 
@@ -39,6 +41,25 @@ export const GetAssociations = createAsyncThunk(
     }
   }
 );
+export const GetRaffle = createAsyncThunk(
+  `${PREFIX}/raffle`,
+  async (raffleId: string | string[], thunkAPI): Promise<{} | undefined> => {
+    try {
+      thunkAPI.dispatch(setRaffle(null));
+      const result = await getRaffle(raffleId);
+      const raffleTickets = await getRaffleTickets(raffleId);
+
+      thunkAPI.dispatch(
+        setRaffle({ ...result.data, ticketUnavailable: raffleTickets.data })
+      );
+
+      return result.data;
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+
 export const Donations = createAsyncThunk(
   `${PREFIX}/donations`,
   async (donation: any, thunkAPI): Promise<{} | undefined> => {
@@ -123,6 +144,7 @@ export const createRaffle = createAsyncThunk(
   async (raffle: RafflesI, thunkAPI): Promise<{} | undefined> => {
     try {
       if (typeof raffle?.prize === "object") raffle.prize = raffle?.prize?.id;
+      if (typeof raffle?.cause === "object") raffle.cause = raffle?.cause?.id;
       const raffleResult = await createNewRaffle(raffle);
 
       return raffleResult.data;

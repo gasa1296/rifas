@@ -8,9 +8,11 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import ConfiguraRifa from "../Rifas/ConfiguraRifa";
 import DefinicionRifa from "../Rifas/DefinicionRifa";
 import ConfirmacionRifa from "../Rifas/ConfirmacionRifa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createRaffle } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
+import { selectAuthState } from "@/store/slices/auth";
+import CreateAsociacion from "./CrearAsociacion";
 <div></div>;
 
 const StepIcon = (step: number, currentStep: number) => {
@@ -22,6 +24,8 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
   const dispatch = useDispatch();
+  const { profile } = useSelector(selectAuthState);
+  const canCreateRaffle = profile?.role === 1;
 
   const handleChangeRaffle = (data: any) => {
     setRaffle({ ...raffle, ...data });
@@ -41,8 +45,10 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
     //eslint-disable-next-line
   }, [step]);
 
+  if (!canCreateRaffle) return <CreateAsociacion />;
+
   return (
-    <div className="">
+    <div className="mx-4">
       <h2 className="title-page-rifaRegistro my-4">
         ¡Es momento de rifarnos Cuautli!
       </h2>

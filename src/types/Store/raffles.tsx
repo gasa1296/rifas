@@ -11,4 +11,5 @@ export interface RaffleInitialState {
   associations: Association[];
   causesCategories: { id: number; name: string }[];
   prizesCategories: { id: number; name: string }[];
+  selectedTickets: number[];
 }

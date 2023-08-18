@@ -9,32 +9,34 @@ import HomeHistory from "./HomeHistory";
 
 export default function HomeHeader() {
   return (
-    <section>
-      <div className="position-relative" style={{ marginBottom: "120px" }}>
-        <div className=" header-background border">
+    <section className="mt-4">
+      <div className="position-relative">
+        <section
+          style={{ minHeight: "640px" }}
+          className="text-center m-0 position-relative  "
+        >
           <Image
             src={Header}
             alt="fondo"
-            className="w-100"
+            className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
           />
-        </div>
-        <div>
-          <section style={{ minHeight: "640px" }} className="text-center m-0 " >
-            <div>
-              <Image src={rifate} alt="fondoRifate" className="w-25 h-25 home-header-rifate   " /></div>
-            <p className=" home-header-title  lh-1 m-0 ">La primer plataforma de rifas en America Latina</p>
-            <p className=" home-header-title  lh-1 m-0 ">  enfocada en apoyar causas sociales</p>
-            < BsWhatsapp color=" #00C851" size={30} className="header-icono " />
+          <Image
+            src={rifate}
+            alt="fondoRifate"
+            className="w-25 h-25 home-header-rifate   "
+          />
 
-          </section>
-
-
-        </div>
+          <p className=" home-header-title  lh-1 m-0 ">
+            La primer plataforma de rifas en America Latina
+          </p>
+          <p className=" home-header-title  lh-1 m-0 ">
+            enfocada en apoyar causas sociales
+          </p>
+          <BsWhatsapp color=" #00C851" size={30} className="header-icono " />
+        </section>
 
         <HomeHistory />
-      </div >
-
-    </section >
-
+      </div>
+    </section>
   );
 }

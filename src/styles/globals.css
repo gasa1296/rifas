@@ -32,13 +32,17 @@ body {
 
 
 .raffle-container{
-  background:#2A6418 ;
+  background:#878787 ;
 padding: 2px;
 border-radius: 4px;
-margin-left: 5px;
+
 margin-right: 5px;
 margin-top: 4px;
 }
+.raffle-container-success{
+  background:#2A6418 ;
+}
+
 .raffe-container-size{
   width:59px
 }
@@ -46,10 +50,13 @@ margin-top: 4px;
 .raffle-box{
 width: 55px;
 font-size: 14px;
-background:#2A6418 ;
+background:#878787 ;
 color: #fff;
 border: #A2BC9B;
 
+}
+.raffle-box-success{
+background:#2A6418 ;
 }
 
 
@@ -193,8 +200,8 @@ margin-top: 280px;
 .header-icono{
   position: absolute;
   z-index: 10;
-  right: 35px;
-  bottom: 430px;
+  right: 20px;
+  bottom: 20px;
   cursor: pointer;
 }
 
@@ -884,7 +891,7 @@ color: #707070;
 opacity: 1;
 font-size: 16px;
 font-weight: bold;
-border-bottom: 1px solid #707070;
+text-decoration: underline;
 cursor: pointer;
 text-align: center !important;
 }
@@ -961,6 +968,7 @@ opacity: 1;
 /*contacto*/
 .container-contacto{
   background: #C3286D;
+  border-radius:5px;
 text-align: center;
 padding: 20px;
 }

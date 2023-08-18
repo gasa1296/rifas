@@ -8,6 +8,18 @@ export const getRaffles = () => {
     method: "GET",
   });
 };
+export const getRaffle = (id: String | string[]) => {
+  return Api({
+    endpoint: `/raffles/${id}`,
+    method: "GET",
+  });
+};
+export const getRaffleTickets = (id: String | string[]) => {
+  return Api({
+    endpoint: `/raffles/${id}/tickets`,
+    method: "GET",
+  });
+};
 
 export const createDonations = (donation: any) => {
   return Api({
