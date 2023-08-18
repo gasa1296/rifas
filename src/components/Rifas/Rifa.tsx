@@ -3,7 +3,12 @@ import fondo from "@/assets/img/Rifa-destacada-portada.jpg";
 import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
 import BoletosRifas from "./BoletosRifas";
 import { BiLoaderAlt } from "react-icons/bi";
-import { BsFacebook, BsTwitter, BsWhatsapp, BsFillShareFill, } from "react-icons/bs";
+import {
+  BsFacebook,
+  BsTwitter,
+  BsWhatsapp,
+  BsFillShareFill,
+} from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
 import { useState } from "react";
@@ -28,9 +33,12 @@ export default function Rifa({ href = "/rifas" }: any) {
 
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
-      <Image src={fondoDestacada} alt='fondodestacada' className=' fondo-destacada' />
-
-      <section className=" mt-5 mb-5 mx-3 mx-lg-5 container-destacada  p-4">
+      <section className=" mt-5 mb-5 mx-3 mx-lg-5 container-destacada position-relative p-4">
+        <Image
+          src={fondoDestacada}
+          alt="fondodestacada"
+          className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
+        />
         <h3 className="  raffle-title mt-5 mt-lg-3 ">Rifa Destacada</h3>
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-between row m-0">
@@ -58,7 +66,7 @@ export default function Rifa({ href = "/rifas" }: any) {
 
             <div className=" border-bottom border-2  my-2 position-relative "></div>
 
-            <div className="d-flex  justify-content-between text-start me-3   ">
+            <div className="d-flex  justify-content-between text-start me-3 pt-3  ">
               <div className="">
                 <h6 className=" raffle-container-textinformation2">
                   Costo por boleto
@@ -102,11 +110,31 @@ export default function Rifa({ href = "/rifas" }: any) {
               <div>
                 <h6 className="raffle-container-finish">Compartir:</h6>
 
-                <BsFacebook color=" #C3286D" size={25} className="mx- position-relative 2" />
-                <BsTwitter color=" #C3286D" size={25} className="mx-2  position-relative " />
-                <MdEmail color=" #C3286D" size={25} className="mx-2  position-relative " />
-                <BsWhatsapp color=" #C3286D" size={25} className="mx-2  position-relative " />
-                <BsFillShareFill color=" #C3286D" size={25} className="mx-2  position-relative " />
+                <BsFacebook
+                  color=" #C3286D"
+                  size={25}
+                  className="mx- position-relative 2"
+                />
+                <BsTwitter
+                  color=" #C3286D"
+                  size={25}
+                  className="mx-2  position-relative "
+                />
+                <MdEmail
+                  color=" #C3286D"
+                  size={25}
+                  className="mx-2  position-relative "
+                />
+                <BsWhatsapp
+                  color=" #C3286D"
+                  size={25}
+                  className="mx-2  position-relative "
+                />
+                <BsFillShareFill
+                  color=" #C3286D"
+                  size={25}
+                  className="mx-2  position-relative "
+                />
               </div>
             </div>
           </div>

@@ -18,17 +18,17 @@ export default function RifasActivas({ href = "/rifas" }) {
     <div>
       <section className=" mx-3 mx-lg-5" style={{ marginBottom: "120px" }}>
         <div className="d-flex  m-0  ">
-          <p className=" raffles-title lh-1 m-0">
-            Rifas activas
-          </p>
+          <p className=" raffles-title lh-1 m-0">Rifas activas</p>
 
-          <p className=" raffles-subtitle ms-4 mt-1  " onClick={() => router.push(`/rifas/allRifas`)} style={{ cursor: "pointer" }}>
-
+          <p
+            className=" raffles-subtitle ms-4 mt-1  "
+            onClick={() => router.push(`/rifas/allRifas`)}
+            style={{ cursor: "pointer" }}
+          >
             Ver todas las rifas
-
           </p>
         </div>
-        <div className=" raffles-navbar d-lg-flex fw-light my-3 ">
+        <div className=" raffles-navbar d-flex flex-wrap fw-light my-3 ">
           <p className="me-5">Todas</p>
           <p className="me-5">Animales</p>
           <p className="me-5">Comunidad</p>
@@ -42,8 +42,6 @@ export default function RifasActivas({ href = "/rifas" }) {
 
         <div className="d-flex row m-0">
           {raffles.map((raffle: RafflesI, index: number) => (
-
-
             <div
               key={index}
               className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-0 me-lg-3  "

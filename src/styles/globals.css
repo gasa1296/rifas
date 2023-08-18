@@ -193,8 +193,8 @@ margin-top: 280px;
 .header-icono{
   position: absolute;
   z-index: 10;
-  right: 35px;
-  bottom: 430px;
+  right: 20px;
+  bottom: 20px;
   cursor: pointer;
 }
 
@@ -876,7 +876,7 @@ color: #707070;
 opacity: 1;
 font-size: 16px;
 font-weight: bold;
-border-bottom: 1px solid #707070;
+text-decoration: underline;
 cursor: pointer;
 text-align: center !important;
 }
