@@ -9,6 +9,8 @@ import {
   BsWhatsapp,
   BsFillShareFill,
 } from "react-icons/bs";
+import { LuCalendarDays } from "react-icons/lu";
+
 import { MdEmail } from "react-icons/md";
 
 import { useState } from "react";
@@ -71,7 +73,7 @@ export default function Rifa({ href = "/rifas" }: any) {
                 <h6 className=" raffle-container-textinformation2">
                   Costo por boleto
                 </h6>
-                <p className=" raffle-container-value  ">
+                <p className=" raffle-container-value fw-semibold  ">
                   ${raffle.ticket_price}
                 </p>
               </div>
@@ -79,7 +81,7 @@ export default function Rifa({ href = "/rifas" }: any) {
                 <h6 className="raffle-container-textinformation2">
                   Numero de boletos
                 </h6>
-                <p className="raffle-container-value ">
+                <p className="raffle-container-value fw-semibold  ">
                   {raffle.ticket_number}
                 </p>
               </div>
@@ -105,7 +107,9 @@ export default function Rifa({ href = "/rifas" }: any) {
                 <h6 className=" raffle-container-finish">
                   La rifa termina en:
                 </h6>
-                <p className=" raffle-container-value  ">59 dias</p>
+                <p className=" raffle-container-value lh-1  m-0 fw-bold">
+                  <LuCalendarDays color="#5C5C5C" className="mb-1" /> 59 dias
+                </p>
               </div>
               <div>
                 <h6 className="raffle-container-finish">Compartir:</h6>
