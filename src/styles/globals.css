@@ -436,7 +436,7 @@ opacity: 1;
 
 .title-AllRifas{
  font-size: 60px;
- font-weight: 600; 
+ font-weight: 500; 
  letter-spacing: 0px;
 color: #784B5F;
 opacity: 1;
@@ -561,6 +561,12 @@ font-weight: normal;
   font-weight: bold;
   letter-spacing: 0px;
 color: #5C5C5C;
+}
+.time-boletos{
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 0px;
+color:  #C3286D;;
 }
 
 .value-metodosPago{
@@ -747,11 +753,22 @@ color: #707070;
 opacity: 1;
 }
 
+.circle-homeTestimonios{
+  width: 18px !important;
+  height: 18px !important;
+  margin: auto;
+  border-color: #272c29;
+  border-radius: 50%;
+  background: #C3286D 0% 0% no-repeat padding-box;
+  opacity: 1;
+  cursor: pointer;
+}
+
 /* Home rifate*/
 
 .home-title-rifate{
   font-size: 70px;
-  font-weight: 600;
+  font-weight: 500;
 text-align: center;
 letter-spacing: 0px;
 color: #784B5F;
@@ -806,7 +823,7 @@ text-align: center;
 }
 
 .text-donaciones-validacion{
-  font-size: 16px;
+  font-size: 15px;
   font-weight: normal;
   letter-spacing: 0px;
 color: #212121;
@@ -1070,4 +1087,56 @@ opacity: 1;}
 .registroAqui{
 cursor: pointer;
 
+}
+
+/*modal notification*/
+
+.container-modalNotification{
+  position: absolute;
+  top: 0px;
+  right: 0;
+  max-width: 313px;
+  width: 100%;
+  height: 500px;
+  z-index: 1000;
+  margin-top: 60px;
+  background-color: #F6F7F9;
+}
+.notification{
+color: #131111;
+
+}
+.leido-notification{
+  color: #8BE6B2;
+  font-weight: 600;
+  font-size: 15px;
+}
+.contenedor{
+  background: #fff;
+}
+
+.name-notifications{
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+.parraf-notifications{
+  font-size: 12px;
+}
+
+/* 
+.size-imagenNotifications{
+  width: 100px;
+  height: 100px;
+} */
+
+
+
+/*tamano ico*/
+
+.size-icon{
+  width: 30px;
+  height: 30px;
+  margin: none;
 }

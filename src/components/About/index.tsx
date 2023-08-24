@@ -18,8 +18,8 @@ export default function About() {
   const router = useRouter();
 
   return (
-    <section className=" m-0 ">
-      <div className="d-block justify-content-center d-lg-flex  fondo-nosotros  p-3 row m-0 ">
+    <section className=" m-0 c ">
+      <div className=" justify-content-center d-lg-flex  fondo-nosotros  p-3 row m-0 ">
         <div className=" col-12 col-lg-6 pt-2 ">
           <Image
             src={imagenNosotros}
@@ -69,8 +69,8 @@ export default function About() {
             className="size-vision-mision-img  p-0 "
             alt="vision"
           />
-          <h6 className="  title-vision-mision my-3">Vision</h6>
-          <p className="  text-vision-mision">
+          <h6 className="  title-vision-mision my-3 text-lg-start  text-center">Visión</h6>
+          <p className="  text-vision-mision text-lg-start  text-center">
             {" "}
             Creemos que hemos sido afortunados dentro de la rifa de la vida.
             Queremos aportar de regreso a la sociedad, a los menos favorecidos,
@@ -79,7 +79,7 @@ export default function About() {
             innovación. Y lo queremos hacer simple, para todos.
           </p>
           <button
-            className="btn btn-pink btn-sm px-5 fs-6 mt-2  "
+            className="btn btn-pink btn-sm fs-6 mt-2 col-12 col-lg-7  "
             type="submit"
           >
             Comenzar a rifarme
@@ -91,15 +91,15 @@ export default function About() {
             className="size-vision-mision-img  "
             alt="mision"
           />
-          <h6 className="title-vision-mision my-3">Mision</h6>
-          <p className="text-vision-mision">
+          <h6 className="title-vision-mision my-3 text-lg-start  text-center">Misión</h6>
+          <p className="text-vision-mision text-lg-start  text-center">
             Establecernos como la primera y principal plataforma electrónica de
             generación de eventos (sorteos) privados para beneficencia en el
             mercado mexicano y latinoamericano. Ser la mejor opción para
             nuestros usuarios en base a resultados, simplicidad, transparencia y
             satisfacción de clientes.
           </p>
-          <button className="btn btn-pink btn-sm px-5 fs-6 mt-2 " type="submit">
+          <button className="btn btn-pink btn-sm col-12 col-lg-7  fs-6 mt-2 " type="submit">
             Comenzar a rifarme
           </button>
         </div>

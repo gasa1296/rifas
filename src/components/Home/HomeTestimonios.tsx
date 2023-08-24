@@ -39,7 +39,15 @@ export default function HomeTestimonios() {
             </div>
           </div>
         </div>
+        <div className="d-flex mt-5 justify-content-center ">
+          {` `}
+          <div className={`circle-homeTestimonios border mx-2`}></div>
+          <div className="circle-homeTestimonios bg-light  border mx-2"></div>
+          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
+          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
+        </div>
       </section>
+
     </div>
   );
 }

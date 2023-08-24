@@ -44,7 +44,7 @@ export default function RifasActivas({ href = "/rifas" }) {
           {raffles.map((raffle: RafflesI, index: number) => (
             <div
               key={index}
-              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-0 me-lg-3  "
+              className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-3 me-lg-3  "
               style={{ maxWidth: "309px", width: "100%", height: "" }}
             >
               <Image src={fondoRifasActivas} className="w-100 h-50" alt="" />
@@ -68,7 +68,14 @@ export default function RifasActivas({ href = "/rifas" }) {
             </div>
           ))}
         </div>
+        <div className="d-flex justify-content-center mt-5 ">
+          <div className="circle-homeTestimonios border mx-2"></div>
+          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
+          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
+          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
+        </div>
       </section>
+
     </div>
   );
 }

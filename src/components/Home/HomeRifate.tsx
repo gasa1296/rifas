@@ -9,7 +9,7 @@ import fondo4 from "@/assets/img/emprendedor-4.jpg"
 export default function HomeRifate() {
     return (
         <section className=' mt-5' style={{ marginBottom: "120px", }}>
-            <h5 className=' home-title-rifate text-center'>¡Rífate Tambien!</h5>
+            <h5 className=' home-title-rifate text-center'>¡Rífate también!</h5>
             <p className=' my-2 home-text-rifate  text-center' >¡Te estamos esperando,al Igual que ellos nos apoyaran!</p>
 
             <div className='d-flex justify-content-center  flex-wrap row m-0'>

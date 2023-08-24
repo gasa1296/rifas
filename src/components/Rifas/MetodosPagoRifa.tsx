@@ -7,13 +7,13 @@ import BuyTickes from './BuyTickes'
 export default function MetodosPagoRifa({ nextStep, backStep }: any) {
     return (
         <section>
-            <div className=' d-block justify-content-center d-md-flex mt-5'>
+            <div className=' d-block justify-content-center d-md-flex mt-5 mx-3 mx-lg-0 '>
 
                 < div className=' col-12 col-lg-5   '>
                     <BuyTickes />
 
                 </div >
-                <div className='col-md-5 col-sm-12 col-12 mt-3 mt-lg-0 ms-0 ms-md-4 '>
+                <div className='col-lg-5 col-sm-12 col-12 mt-3 mt-lg-0 ms-0 ms-md-4  '>
                     <p className=' donaciones-title'>2 / 3 Elige el metodo de pago</p>
                     <p className='subtitle-boletosaRifa mb-1'>Introduce el código de tu cupón</p>
                     <div className=' d-block d-md-flex'>
@@ -40,7 +40,7 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
                     </button>
                     <div className=" border-bottom my-2 w-100"></div>
 
-                    <p className='boletos m-0'> Boletos reservados por: 10:0 min</p>
+                    <p className='boletos m-0 d-flex'> Boletos reservados por: <p className='time-boletos'>10:00min</p></p>
                     <div className='d-flex justify-content-between '>
                         <p className='subtitle-boletosaRifa m-0'>Total</p>
                         <p className='m-0 value-metodosPago' >$ 21,600.00</p>

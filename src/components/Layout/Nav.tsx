@@ -5,12 +5,17 @@ import ModalLogin from "../modal/ModalLogin";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState, setLogout } from "@/store/slices/auth";
+import { IoIosNotifications } from "react-icons/io";
+
+import ModalNotification from "../modal/ModalNotification";
+
 import ResponsiveNav from "./ResponsiveNav";
 
 export default function Nav({ home }: any) {
   const router = useRouter();
   const dispatch = useDispatch();
   const { authenticated, profile } = useSelector(selectAuthState);
+  const [showNotification, setShowNotification] = useState(false);
 
   const [show, setShow] = useState(false);
 
@@ -28,6 +33,7 @@ export default function Nav({ home }: any) {
     { label: "Donaciones", path: "/donaciones" },
     { label: "Crear Rifa", path: "/rifas/crear_rifas" },
     { label: "Nosotros", path: "/nosotros" },
+    { label: "Perfil", path: "/perfil", Icon: IoIosNotifications, onClick: () => setShowNotification(!showNotification) },
     { label: "Cerrar sesion", path: "/", onClick: () => dispatch(setLogout()) },
   ];
 
@@ -35,6 +41,7 @@ export default function Nav({ home }: any) {
 
   return (
     <div className="position-absolute top-0 w-100 ">
+      <ModalNotification showNotification={showNotification} setShowNotification={setShowNotification} />
       <ModalLogin show={show} handleClose={handleClose} />
       <nav className="d-md-flex justify-content-between align-items-center mt-2">
         <div
@@ -50,13 +57,13 @@ export default function Nav({ home }: any) {
           {selectOptions.map((option, index) => (
             <li
               key={index}
-              className=" mx-4 my-2"
+              className=" mx-3 my-2"
               style={{ cursor: "pointer" }}
               onClick={() =>
                 option.onClick ? option.onClick() : router.push(option.path)
               }
             >
-              {option.label}
+              {option.Icon ? <option.Icon className=" size-icon m-0" /> : option.label}
             </li>
           ))}
         </ul>

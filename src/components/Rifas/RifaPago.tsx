@@ -7,7 +7,7 @@ import Image from 'next/image'
 import BuyTickes from './BuyTickes'
 export default function RifaPago({ nextStep, backStep }: any) {
     return (
-        <div className=' d-block justify-content-center d-md-flex mt-5  '>
+        <div className=' d-block justify-content-center d-md-flex mt-5 mx-3 mx-lg-0  '>
             <div className='d-block justify-content-center d-lg-flex '>
                 < div className=' col-12 col-lg-8  me-0 me-lg-3'>
                     <BuyTickes />

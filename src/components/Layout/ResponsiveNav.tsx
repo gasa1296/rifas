@@ -4,7 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 interface Props {
-  selectOptions: { label: string; path: string; onClick?: () => void }[];
+  selectOptions: { label: string; path: string; onClick?: () => void, Icon?: any }[];
 }
 export default function ResponsiveNav({ selectOptions }: Props) {
   const router = useRouter();
@@ -29,7 +29,8 @@ export default function ResponsiveNav({ selectOptions }: Props) {
                   option.onClick ? option.onClick() : router.push(option.path)
                 }
               >
-                {option.label}
+                {option.Icon ? <option.Icon className="me-2" /> : option.label}
+
               </li>
             ))}
           </ul>
