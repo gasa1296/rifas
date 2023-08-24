@@ -81,14 +81,30 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       name: "ticket_number",
       required: true,
       type: "sliser",
-      maxRange: 1000,
+      marks: {
+        0: "1",
+        1: "5",
+        2: "50",
+        3: "100",
+        4: "1000",
+        5: "5000",
+        6: "10000",
+      },
     },
     {
       label: " Costo por boleto",
       name: "ticket_price",
       required: true,
       type: "sliser",
-      maxRange: 10000,
+      marks: {
+        0: "1",
+        1: "5",
+        2: "50",
+        3: "100",
+        4: "1000",
+        5: "5000",
+        6: "10000",
+      },
     },
 
     {

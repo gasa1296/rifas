@@ -2,7 +2,6 @@ import {
   createCause,
   createDonations,
   createNewRaffle,
-  createPrize,
   getAssociationsApproveds,
   getCausesCategories,
   getPrizesCategories,
@@ -114,7 +113,7 @@ export const createRafflesPrize = createAsyncThunk(
 
       prize.category = Number(prize.category);
 
-      const result = await createPrize(prize);
+      const result = await createDonations(prize);
 
       return result.data;
     } catch (error) {
@@ -143,8 +142,10 @@ export const createRaffle = createAsyncThunk(
   `${PREFIX}/create-raffles`,
   async (raffle: RafflesI, thunkAPI): Promise<{} | undefined> => {
     try {
-      if (typeof raffle?.prize === "object") raffle.prize = raffle?.prize?.id;
-      if (typeof raffle?.cause === "object") raffle.cause = raffle?.cause?.id;
+      if (typeof raffle?.prize === "object")
+        raffle.prize = raffle?.prize?.id.toString();
+      if (typeof raffle?.cause === "object")
+        raffle.cause = raffle?.cause?.id.toString();
       const raffleResult = await createNewRaffle(raffle);
 
       return raffleResult.data;

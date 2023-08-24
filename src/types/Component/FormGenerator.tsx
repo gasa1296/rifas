@@ -12,7 +12,7 @@ export interface Field {
   selectTitle?: string;
   subLabel?: string;
   disabledStyle?: boolean;
-  maxRange?: number;
+  marks?: any;
 }
 
 export interface FieldType {
@@ -55,4 +55,5 @@ export interface SelectedItems {
   description: string;
   goal: number;
   value: number;
+  image?: string;
 }

@@ -74,10 +74,7 @@ export const CreateAsociacion = createAsyncThunk(
 
       Asociacion.user = id?.toString();
 
-      console.log("ASOCIACION", Asociacion);
       const result = await createAsociacion(Asociacion);
-
-      console.log("RESULT", result);
 
       return {};
     } catch (error) {

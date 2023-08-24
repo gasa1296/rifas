@@ -44,6 +44,10 @@ export default function InputFile({
   };
 
   const onDelete = (index: number): void => {
+    setValue(
+      name,
+      files.filter((_, key) => key !== index)
+    );
     setPreviews((prev) => prev.filter((_, key) => key !== index));
     setFiles((prev) => prev.filter((_, key) => key !== index));
   };
@@ -99,9 +103,7 @@ export default function InputFile({
           }}
         >
           <AiFillCamera size={40} color="#313131" />
-          <p className=" fs-6">
-            Agrega o arrastra tus fotos aquí
-          </p>
+          <p className=" fs-6">Agrega o arrastra tus fotos aquí</p>
         </button>
       </div>
     </div>

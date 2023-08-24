@@ -81,7 +81,7 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       subLabel:
         "La ficha promocional se utiliza para promover la rifa en las redes sociales.",
       required: true,
-      name: "file",
+      name: "image",
       type: "file",
     },
 
@@ -90,7 +90,7 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       subLabel:
         "El banner promocional se utiliza para promover la rifa en nuestros catálogos y micro sitios",
       required: true,
-      name: "file",
+      name: "banner",
       type: "file",
     },
   ];

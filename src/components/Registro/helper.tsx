@@ -63,7 +63,7 @@ export const registerFields: Field[] = [
   {
     label: "Agrega el logotipo de tu asociacion",
     required: false,
-    name: "imagen",
+    name: "image",
     type: "file",
     maxFile: 1,
   },
