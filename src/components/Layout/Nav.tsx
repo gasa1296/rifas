@@ -11,7 +11,11 @@ import ModalNotification from "../modal/ModalNotification";
 
 import ResponsiveNav from "./ResponsiveNav";
 
+
 export default function Nav({ home }: any) {
+
+
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { authenticated, profile } = useSelector(selectAuthState);
@@ -41,7 +45,8 @@ export default function Nav({ home }: any) {
 
   return (
     <div className="position-absolute top-0 w-100 ">
-      <ModalNotification showNotification={showNotification} setShowNotification={setShowNotification} />
+      {showNotification && <ModalNotification showNotification={showNotification} />}
+
       <ModalLogin show={show} handleClose={handleClose} />
       <nav className="d-md-flex justify-content-between align-items-center mt-2">
         <div

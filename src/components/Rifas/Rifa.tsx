@@ -41,7 +41,7 @@ export default function Rifa({ href = "/rifas" }: any) {
           alt="fondodestacada"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
         />
-        <h3 className="  raffle-title mt-5 mt-lg-3 ">Rifa Destacada</h3>
+        <h3 className="  raffle-title mt-5 mt-md-3 ">Rifa Destacada</h3>
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-between row m-0">
           <div className="col-lg-6  position-relative m-0 ">
@@ -51,14 +51,14 @@ export default function Rifa({ href = "/rifas" }: any) {
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
               Recaudado
             </p>
-            <div className="d-flex  mb-0">
+            <div className="d-lg-flex d-block mb-0">
               <BiLoaderAlt
                 size={46}
                 className=" mt-2 me-2 position-relative "
                 color={"#00C851"}
               />
               <p className=" raffle-container-textinformation  ">30%</p>
-              <p className=" ms-4 raffle-container-textinformation  ">
+              <p className=" ms-0 ms-lg-4 raffle-container-textinformation  ">
                 $24,409.00
               </p>
             </div>

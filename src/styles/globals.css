@@ -1100,23 +1100,25 @@ cursor: pointer;
   height: 500px;
   z-index: 1000;
   margin-top: 60px;
-  background-color: #F6F7F9;
+  background: #F6F7F8 0% 0% no-repeat padding-box;
+  border: 1px solid #70707026;
 }
 .notification{
 color: #131111;
+font-size: 14px;
 
 }
 .leido-notification{
   color: #8BE6B2;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
 }
 .contenedor{
   background: #fff;
 }
 
 .name-notifications{
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0px;
 }
