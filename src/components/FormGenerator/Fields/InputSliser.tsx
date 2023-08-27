@@ -21,7 +21,7 @@ export default function InputSliser({
   marks,
 }: Props) {
   const handleChange = (value: any) => {
-    setValue(name, value);
+    setValue(name, marks[value]);
   };
 
   return (
