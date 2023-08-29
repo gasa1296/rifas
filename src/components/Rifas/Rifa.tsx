@@ -63,7 +63,8 @@ export default function Rifa({ href = "/rifas" }: any) {
               </p>
             </div>
             <p className="raffle-container-title   fs-3">
-              La meta es de {raffle.ticket_number * raffle.ticket_price} MXN
+              La meta es de{" "}
+              {Number(raffle.ticket_number) * Number(raffle.ticket_price)} MXN
             </p>
 
             <div className=" border-bottom border-2  my-2 position-relative "></div>

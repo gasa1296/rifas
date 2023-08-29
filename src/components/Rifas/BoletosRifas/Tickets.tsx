@@ -7,7 +7,7 @@ export default function Tickets() {
   const { raffle, selectedTickets } = useSelector(selectRaffleState);
   // Generate an array of ticket numbers
   const ticketNumbers = Array.from(
-    { length: raffle?.ticket_number ?? 0 },
+    { length: Number(raffle?.ticket_number) ?? 0 },
     (_, i) => i + 1
   );
 

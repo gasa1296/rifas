@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 export default function TicketReview() {
   const { raffle, selectedTickets } = useSelector(selectRaffleState);
 
-  const totalPrice = selectedTickets.length * (raffle?.ticket_price || 0);
+  const totalPrice =
+    selectedTickets.length * (Number(raffle?.ticket_price) || 0);
   return (
     <>
       <div className=" border-bottom my-2 w-100"></div>

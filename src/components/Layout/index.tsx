@@ -12,7 +12,7 @@ export default function Layout({ children, home }: any) {
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <div>
-        <Nav home={home} />
+        <Nav />
         <div className="">{children}</div>
         <Footer />
       </div>
