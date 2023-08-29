@@ -1,7 +1,7 @@
 import Image from "next/image";
 import fondo from "@/assets/img/Rifa-destacada-portada.jpg";
 import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
-import BoletosRifas from "./BoletosRifas";
+
 import { BiLoaderAlt } from "react-icons/bi";
 import {
   BsFacebook,
@@ -13,7 +13,6 @@ import { LuCalendarDays } from "react-icons/lu";
 
 import { MdEmail } from "react-icons/md";
 
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
