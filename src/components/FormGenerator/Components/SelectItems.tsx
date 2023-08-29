@@ -13,8 +13,15 @@ export const Cause = ({ selectedItem, setSelected }: Props) => {
     <div>
       <p className="m-0 mt-2">Causa seleccionada</p>
       <div className="d-flex mt-2  ">
-        <Image src={LogoRifas} alt="logorifas" className="me-4" />
-        <div>
+        <Image
+          src={selectedItem.image || LogoRifas}
+          alt="logorifas"
+          width={150}
+          height={150}
+          style={{ objectFit: "cover" }}
+          className="rounded"
+        />
+        <div className="ms-3">
           <h6 className="lh-1  fw-bold">{selectedItem.name}</h6>
           <p className="m-0 lh-sm">{selectedItem?.description}</p>
           <p className="m-0 lh-sm pt-1">
@@ -38,13 +45,19 @@ export const Cause = ({ selectedItem, setSelected }: Props) => {
 };
 
 export const Prize = ({ selectedItem }: Props) => {
-  console.log("first", selectedItem);
   return (
     <div>
       <p className="m-0 mt-2">Premio seleccionado</p>
       <div className="d-flex mt-2  ">
-        <Image src={LogoRifas} alt="logorifas" className="me-4 " />
-        <div className=" ">
+        <Image
+          src={selectedItem.image || LogoRifas}
+          alt="logorifas2"
+          width={150}
+          height={150}
+          style={{ objectFit: "cover" }}
+          className="rounded"
+        />
+        <div className="ms-3">
           <h6 className="lh-1 fw-bold ">{selectedItem.name}</h6>
           <p className="m-0 lh-sm">{selectedItem?.description}</p>
           <p className="m-0 lh-sm pt-1">

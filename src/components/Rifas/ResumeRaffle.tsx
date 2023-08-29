@@ -1,5 +1,5 @@
 import { parseNumber } from "@/utils/ParseNumber";
-import React from "react";
+import React, { useEffect } from "react";
 interface Props {
   register: any;
   label: string;
@@ -25,15 +25,21 @@ export default function ResumeRaffle({
       </label>
       <div className="d-flex justify-content-between  border-bottom  text-secondary  shadow-sm p-2  ">
         <p className="m-0 text-calculadora-boletos">Número de boletos</p>
-        <p className="m-0 value-calculadora-boletos">{parseNumber(values.ticket_number)}</p>
+        <p className="m-0 value-calculadora-boletos">
+          {parseNumber(values.ticket_number)}
+        </p>
       </div>
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2  ">
         <p className="m-0 text-calculadora-boletos">Costo por boleto</p>
-        <p className="m-0 value-calculadora-boletos">$ {parseNumber(values.ticket_price)}</p>
+        <p className="m-0 value-calculadora-boletos">
+          $ {parseNumber(values.ticket_price)}
+        </p>
       </div>{" "}
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2 ">
         <p className="m-0 text-calculadora-boletos">Monto a recaudar</p>
-        <p className="m-0 value-calculadora-boletos">$ 0.00</p>
+        <p className="m-0 value-calculadora-boletos">
+          $ {parseNumber(values.price)}
+        </p>
       </div>{" "}
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2 ">
         <p className="m-0 text-calculadora-boletos">Valor del premio</p>

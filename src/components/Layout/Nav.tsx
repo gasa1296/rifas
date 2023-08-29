@@ -10,16 +10,16 @@ import { IoIosNotifications } from "react-icons/io";
 import ModalNotification from "../modal/ModalNotification";
 
 import ResponsiveNav from "./ResponsiveNav";
+import { useNotificationStore } from "@/store/zustand/NotificationStore";
 
-
-export default function Nav({ home }: any) {
-
-
-
+export default function Nav() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { authenticated, profile } = useSelector(selectAuthState);
   const [showNotification, setShowNotification] = useState(false);
+  const notificationsSize = useNotificationStore(
+    (state) => state.notificationsSize
+  );
 
   const [show, setShow] = useState(false);
 
@@ -37,7 +37,12 @@ export default function Nav({ home }: any) {
     { label: "Donaciones", path: "/donaciones" },
     { label: "Crear Rifa", path: "/rifas/crear_rifas" },
     { label: "Nosotros", path: "/nosotros" },
-    { label: "Perfil", path: "/perfil", Icon: IoIosNotifications, onClick: () => setShowNotification(!showNotification) },
+    {
+      label: "Perfil",
+      path: "/perfil",
+      Icon: IoIosNotifications,
+      onClick: () => setShowNotification(!showNotification),
+    },
     { label: "Cerrar sesion", path: "/", onClick: () => dispatch(setLogout()) },
   ];
 
@@ -45,7 +50,9 @@ export default function Nav({ home }: any) {
 
   return (
     <div className="position-absolute top-0 w-100 ">
-      {showNotification && <ModalNotification showNotification={showNotification} />}
+      {showNotification && (
+        <ModalNotification showNotification={showNotification} />
+      )}
 
       <ModalLogin show={show} handleClose={handleClose} />
       <nav className="d-md-flex justify-content-between align-items-center mt-2">
@@ -59,7 +66,7 @@ export default function Nav({ home }: any) {
         <ResponsiveNav selectOptions={selectOptions} />
 
         <ul className="d-none  home-navbar d-md-flex  list-unstyled text-secondary align-items-center justify-content-center m-0">
-          {selectOptions.map((option, index) => (
+          {selectOptions.map((option: any, index) => (
             <li
               key={index}
               className=" mx-3 my-2"
@@ -68,7 +75,16 @@ export default function Nav({ home }: any) {
                 option.onClick ? option.onClick() : router.push(option.path)
               }
             >
-              {option.Icon ? <option.Icon className=" size-icon m-0" /> : option.label}
+              {option.Icon ? (
+                <div className="position-relative">
+                  <div className="notification-active">
+                    {notificationsSize}{" "}
+                  </div>
+                  <option.Icon className=" size-icon m-0" />{" "}
+                </div>
+              ) : (
+                option.label
+              )}
             </li>
           ))}
         </ul>

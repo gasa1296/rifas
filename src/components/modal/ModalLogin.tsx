@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 
 /* import { GoogleLogin } from "react-google-login"; */
 import { LoginWithGoogle } from "../Login/LoginWithGoogle";
+import LoginWithFacebook from "../Login/LoginWithFacebook";
 
 export default function ModalLogin({ show, handleClose }: any) {
   const dispatch = useDispatch();
@@ -60,28 +61,21 @@ export default function ModalLogin({ show, handleClose }: any) {
           submitData={submitData}
           loading={loading}
         />
-        <div className="row w-100 mx-auto">
-          <div className="col-6 p-0 pe-2 ">
-            <Button
-              disabled={loading}
-              variant="secondary"
-              onClick={handleClose}
-              className="w-100"
-            >
-              <BsFacebook size={18} className="me-3" />
-              Continuar con facebook
-            </Button>
-          </div>
-          <div className="col-6 p-0 ps-2 ">
+
+        <div className="col-12 mx-auto d-flex justify-content-around  mb-4">
+          <LoginWithFacebook />
+
+          <div>
             <LoginWithGoogle handleClose={handleClose} />
           </div>
-
-          <h6 className="fw-bold  text-center mt-4">
-            ¿Olvidaste tu Contraseña?
-          </h6>
         </div>
+
         <div className=" border-bottom border-2 my-3  "></div>
-        <h6 onClick={() => router.push("/registro")} className="fw-bold  text-center registroAqui" style-={{ cursor: "pointer" }}>
+        <h6
+          onClick={() => router.push("/registro")}
+          className="fw-bold  text-center registroAqui"
+          style-={{ cursor: "pointer" }}
+        >
           ¿No tienes una cuenta? Registrate aqui
         </h6>
         <h6 className="fw-bold text-center mb-3">

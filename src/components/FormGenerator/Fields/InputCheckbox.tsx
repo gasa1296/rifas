@@ -23,7 +23,9 @@ export default function InputText({
         className={` form-check-input ${error && "border-danger"} fs-5`}
       />
       <label
-        className={`form-check-label title-form-generator  ${error && "text-danger "}`}
+        className={`ms-2 form-check-label title-form-generator  ${
+          error && "text-danger "
+        }`}
         htmlFor={name}
       >
         {label}

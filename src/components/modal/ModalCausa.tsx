@@ -59,7 +59,7 @@ export default function ModalCausa({
     },
     {
       label: "Agrega las fotos de tu causa",
-      name: "product_files",
+      name: "image",
       required: false,
       type: "file",
     },
@@ -68,7 +68,6 @@ export default function ModalCausa({
   const submitData = async (data: any) => {
     const { payload } = await dispatch(createRafflesCause(data) as any);
     if (payload) {
-      delete payload.image;
       return handleSubmit({
         type: "cause",
         ...payload,

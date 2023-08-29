@@ -15,6 +15,7 @@ import InputSliser from "./Fields/InputSliser";
 
 import InputDate from "./Fields/InputDate";
 import InputCustom from "./Fields/InputCustom";
+import InputRange from "./Fields/InputRange";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
@@ -47,4 +48,5 @@ export const FieldComponents: FieldType = {
   sliser: InputSliser,
   custom: InputCustom,
   date: InputDate,
+  range: InputRange,
 };

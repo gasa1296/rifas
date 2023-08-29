@@ -1,6 +1,9 @@
 import { Auth, Profile } from "@/types/Model/Profile";
 import { Api } from ".";
 import { RafflesI } from "@/types/Model/Raffle";
+import axios from "axios";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 
 export const getRaffles = () => {
   return Api({
@@ -22,10 +25,20 @@ export const getRaffleTickets = (id: String | string[]) => {
 };
 
 export const createDonations = (donation: any) => {
-  return Api({
-    endpoint: "/prizes/",
-    method: "POST",
-    _data: donation,
+  const formData = new FormData();
+  formData.append("name", donation.name);
+  formData.append("description", donation.description);
+  formData.append("category", donation.category);
+  formData.append("status", donation.status);
+  formData.append("value", donation.value);
+  formData.append("association", donation.association);
+  if (donation.image[0]) formData.append("image", donation.image[0]);
+
+  return axios.post(baseUrl + "/prizes/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
   });
 };
 
@@ -37,18 +50,19 @@ export const getAssociationsApproveds = () => {
 };
 
 export const createCause = (cause: any) => {
-  return Api({
-    endpoint: "/causes/",
-    method: "POST",
-    _data: cause,
-  });
-};
+  const formData = new FormData();
+  formData.append("name", cause.name);
+  formData.append("description", cause.description);
+  formData.append("categories", cause.categories);
+  formData.append("goal", cause.goal);
+  formData.append("association", cause.association);
+  if (cause.image[0]) formData.append("image", cause.image[0]);
 
-export const createPrize = (prize: any) => {
-  return Api({
-    endpoint: "/prizes/",
-    method: "POST",
-    _data: prize,
+  return axios.post(baseUrl + "/causes/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
   });
 };
 
@@ -66,9 +80,27 @@ export const getPrizesCategories = () => {
   });
 };
 export const createNewRaffle = (raffle: RafflesI) => {
-  return Api({
-    endpoint: "/raffles/",
-    method: "POST",
-    _data: raffle,
+  const formData = new FormData();
+  formData.append("name", raffle.name);
+  formData.append("description", raffle.description);
+  formData.append("association", raffle.association);
+  formData.append("delivery_type", raffle.delivery_type);
+  formData.append("end_date", raffle.end_date);
+  formData.append("price", raffle.price);
+  if (typeof raffle.cause === "string") formData.append("cause", raffle.cause);
+  if (typeof raffle.prize === "string") formData.append("prize", raffle.prize);
+  formData.append("short_description", raffle.short_description);
+  formData.append("start_date", raffle.start_date);
+  formData.append("ticket_number", raffle.ticket_number);
+  formData.append("ticket_price", raffle.ticket_price);
+
+  if (raffle.banner[0]) formData.append("banner", raffle.banner[0]);
+  if (raffle.image[0]) formData.append("image", raffle.image[0]);
+
+  return axios.post(baseUrl + "/raffles/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
   });
 };

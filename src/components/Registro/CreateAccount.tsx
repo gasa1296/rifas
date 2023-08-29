@@ -4,19 +4,19 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
-import RegistroCompletado from "./RegistroCompletado";
-import { BsFacebook, BsGoogle } from "react-icons/bs";
+
 import { LoginWithGoogle } from "../Login/LoginWithGoogle";
+import LoginWithFacebook from "../Login/LoginWithFacebook";
 
 export default function CreateAccount({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
-  const [sucess, setSucces] = useState(false);
+
   const dispatch = useDispatch();
   const submitData = async (data: Profile) => {
     const { payload } = await dispatch(Register(data) as any);
 
     if (payload) {
-      setSucces(true);
+      nextStep();
     }
   };
 
@@ -48,15 +48,20 @@ export default function CreateAccount({ nextStep }: any) {
       type: "checkbox",
     },
   ];
-  if (sucess) return <RegistroCompletado nextStep={nextStep} />;
 
   return (
     <section className="text-secondary row">
       <div className="col-md-8  col-12 mx-auto mt-5">
-        <h2 className="text-center title-CreateAccount mx-md-5 ">Para comenzar a rifarte necesitas crear una cuenta.</h2>
-        <h2 className="text-center title-CreateAccount mx-md-5 "> Crear una cuenta.</h2>
+        <h2 className="text-center title-CreateAccount mx-md-5 ">
+          Para comenzar a rifarte necesitas crear una cuenta.
+        </h2>
+        <h2 className="text-center title-CreateAccount mx-md-5 ">
+          {" "}
+          Crear una cuenta.
+        </h2>
         <p className="text-center text-CreateAccount mt-3 mx-md-5">
-          Es necesario crear una cuenta para apoyar alguna rifa, donar un premio o si eres una asociación y quieres crear tus rifas.
+          Es necesario crear una cuenta para apoyar alguna rifa, donar un premio
+          o si eres una asociación y quieres crear tus rifas.
         </p>
       </div>
       <div
@@ -77,15 +82,13 @@ export default function CreateAccount({ nextStep }: any) {
           <p className="text-center fw-bold ">
             O registrate con tus redes sociales
           </p>
-          {/*   <button
-            className="btn btn-secondary d-flex justify-content-center align-items-center "
-            type="button"
-          >
-            <BsFacebook size={18} className="me-3" />
-            Regitrate con Facebook
-          </button> */}
-          <div className="col-12 mx-auto mb-4">
-            <LoginWithGoogle handleClose={() => { }} />
+
+          <div className="col-12 mx-auto d-flex justify-content-around  mb-4">
+            <LoginWithFacebook />
+
+            <div>
+              <LoginWithGoogle handleClose={() => {}} />
+            </div>
           </div>
         </div>
       </div>

@@ -1,14 +1,21 @@
 export interface RafflesI {
   id: number;
-  prize: Prize | number;
+  prize: Prize | string;
   tickets: [];
   name: string;
   description: string;
-  image: string | null;
-  ticket_number: number;
-  ticket_price: number;
   realization_date: string;
-  cause: Cause | number;
+  cause: Cause | string;
+  association: string;
+  banner: any;
+  image: any;
+  start_date: string;
+  end_date: string;
+  delivery_type: string;
+  short_description: string;
+  price: string;
+  ticket_number: string;
+  ticket_price: string;
 }
 
 export interface Cause {

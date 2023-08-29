@@ -62,7 +62,7 @@ export default function DonacionesInformation({ nextStep, backStep }: any) {
     },
     {
       label: "Agrega las fotos de tu premio",
-      name: "product_files",
+      name: "image",
       required: false,
       type: "file",
     },

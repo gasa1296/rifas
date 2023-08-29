@@ -58,6 +58,13 @@ export default function InputSelectItems({
       >
         {label}
       </label>
+      <input
+        id={name}
+        name={name}
+        type="text"
+        {...register(name, { required })}
+        className="d-none"
+      />
       <ModalComponent
         handleSubmit={handleSubmit}
         show={show}

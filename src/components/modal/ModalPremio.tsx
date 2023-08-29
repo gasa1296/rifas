@@ -65,7 +65,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
     },
     {
       label: "Agrega las fotos de tu premio",
-      name: "product_files",
+      name: "image",
       required: false,
       type: "file",
     },
@@ -74,7 +74,6 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
   const submitData = async (data: any) => {
     const { payload } = await dispatch(createRafflesPrize(data) as any);
     if (payload) {
-      delete payload.image;
       return handleSubmit({
         type: "prize",
         ...payload,

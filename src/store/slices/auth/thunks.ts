@@ -74,10 +74,7 @@ export const CreateAsociacion = createAsyncThunk(
 
       Asociacion.user = id?.toString();
 
-      console.log("ASOCIACION", Asociacion);
       const result = await createAsociacion(Asociacion);
-
-      console.log("RESULT", result);
 
       return {};
     } catch (error) {
@@ -93,7 +90,6 @@ export const ValidateSession = createAsyncThunk(
       const refresh = await localStorage.getItem("sessionTokenRefresh");
 
       const profile = await getUserProfile();
-      //const {data} = await refreshToken(refresh || '')
 
       const data = { refresh, access };
 
