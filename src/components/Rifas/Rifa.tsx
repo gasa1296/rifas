@@ -16,7 +16,7 @@ import { MdEmail } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-export default function Rifa({ href = "/rifas" }: any) {
+export default function Rifa() {
   const { raffles, loading } = useSelector(selectRaffleState);
 
   const router = useRouter();
