@@ -90,7 +90,6 @@ export const ValidateSession = createAsyncThunk(
       const refresh = await localStorage.getItem("sessionTokenRefresh");
 
       const profile = await getUserProfile();
-      //const {data} = await refreshToken(refresh || '')
 
       const data = { refresh, access };
 

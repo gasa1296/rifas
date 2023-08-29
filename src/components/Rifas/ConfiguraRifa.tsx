@@ -69,6 +69,9 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       required: true,
       name: "price",
       type: "number",
+      customChange: ({ setValue, newValue, values }: any) => {
+        setValue("ticket_price", newValue / (values["ticket_number"] || 0));
+      },
     },
     {
       subLabel:
@@ -81,6 +84,9 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       name: "ticket_number",
       required: true,
       type: "sliser",
+      customChange: ({ setValue, newValue, values }: any) => {
+        setValue("ticket_price", (values["price"] || 0) / newValue);
+      },
       marks: {
         0: "1",
         1: "5",
@@ -95,15 +101,10 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       label: " Costo por boleto",
       name: "ticket_price",
       required: true,
-      type: "sliser",
-      marks: {
-        0: "1",
-        1: "5",
-        2: "50",
-        3: "100",
-        4: "1000",
-        5: "5000",
-        6: "10000",
+      type: "range",
+      maxRange: 100000,
+      customChange: ({ setValue, newValue, values }: any) => {
+        setValue("price", (values["ticket_number"] || 0) * newValue);
       },
     },
 

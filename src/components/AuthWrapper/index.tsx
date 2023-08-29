@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { validateAuthPath } from "./helper";
+import { useNotificationStore } from "@/store/zustand/NotificationStore";
 
 interface Props {
   children: JSX.Element;
@@ -10,6 +11,9 @@ interface Props {
 export default function AuthWrapper({ children }: Props) {
   const [loading, setLoading] = useState(true);
   const { authenticated } = useSelector(selectAuthState);
+  const getNotifications = useNotificationStore(
+    (state) => state.getNotifications
+  );
 
   const router = useRouter();
 
@@ -38,6 +42,16 @@ export default function AuthWrapper({ children }: Props) {
 
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      authenticated && getNotifications();
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+
+    //eslint-disable-next-line
+  }, [authenticated]);
 
   if (loading) return <> </>;
 

@@ -9,6 +9,8 @@ interface Props {
   error?: string;
   marks?: any;
   setValue: any;
+  watch: any;
+  customChange: any;
 }
 
 export default function InputSliser({
@@ -19,9 +21,13 @@ export default function InputSliser({
   register,
   required,
   marks,
+  customChange,
+  watch,
 }: Props) {
+  const values: any = watch();
   const handleChange = (value: any) => {
     setValue(name, marks[value]);
+    customChange({ setValue, newValue: marks[value], values });
   };
 
   return (

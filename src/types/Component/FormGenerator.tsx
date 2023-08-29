@@ -13,6 +13,8 @@ export interface Field {
   subLabel?: string;
   disabledStyle?: boolean;
   marks?: any;
+  maxRange?: number;
+  customChange?: any;
 }
 
 export interface FieldType {
@@ -31,6 +33,7 @@ export interface FieldType {
   sliser: any;
   custom: any;
   date: any;
+  range: any;
 }
 export type FieldTypeString =
   | "text"
@@ -47,7 +50,8 @@ export type FieldTypeString =
   | "subtitle"
   | "sliser"
   | "custom"
-  | "date";
+  | "date"
+  | "range";
 
 export interface SelectedItems {
   type: "cause" | "prize";
