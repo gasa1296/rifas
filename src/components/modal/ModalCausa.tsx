@@ -8,12 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "@/types/Model/Profile";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
+import ModalSelectCausa from "./ModalSelectCausa";
 
 export default function ModalCausa({
   show,
   setShow,
   handleSubmit,
   handleClose,
+  activeSelect
 }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
@@ -78,7 +80,8 @@ export default function ModalCausa({
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
-          <h4 className="title-Modal mx-0 ">Crear una causa</h4>
+          {!activeSelect && <h4 className="title-Modal mx-0 ">Crear una causa</h4>}
+          {activeSelect && <h4 className="title-Modal mx-0 ">Seleccionar causa</h4>}
         </Modal.Header>
         <div
           style={{ cursor: "pointer" }}
@@ -88,7 +91,7 @@ export default function ModalCausa({
           {" "}
           X
         </div>
-        <div className="mt-4">
+        {!activeSelect && <div className="mt-4">
           <FormGenerator
             /*    buttonText="Iniciar sesion" */
 
@@ -130,7 +133,10 @@ export default function ModalCausa({
               </section>
             )}
           />
-        </div>
+
+        </div>}
+
+        {activeSelect && <ModalSelectCausa />}
       </Modal.Body>
     </Modal>
   );

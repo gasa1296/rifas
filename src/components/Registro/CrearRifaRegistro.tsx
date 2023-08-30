@@ -56,12 +56,11 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
       <div className="  mb-3 col-12 col-lg-8 m-auto  ">
         <div
           className=" d-flex justify-content-between align-items-center    "
-          onClick={() => {}}
+          onClick={() => { }}
         >
           <button
-            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
-              step === 1 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div className="text-fondo-container">
               <AiFillDollarCircle size={25} className="me-2" />
@@ -76,9 +75,8 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
-            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
-              step === 2 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               <HiOutlineClipboardList /> Define los datos de tu rifa
@@ -93,9 +91,8 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
-            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
-              step === 3 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               <FaHandHoldingHeart /> Confirmación de la rifa
@@ -107,7 +104,7 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
       </div>
       <div className=" text-dark text-center col-12">
         <button
-          className=" my-2  btn btn-outline-secondary col-11  col-md-4"
+          className=" my-2  btn btn-border-pink col-11  col-md-7"
           type="button"
         >
           Ir al inicio
