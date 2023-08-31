@@ -135,7 +135,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit, activeSel
           />
         </div>}
 
-        {activeSelect && <ModalSelectPremio />}
+        {activeSelect && <ModalSelectPremio handleSubmit={handleSubmit} />}
 
 
       </Modal.Body>

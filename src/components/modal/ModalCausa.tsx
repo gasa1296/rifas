@@ -15,11 +15,15 @@ export default function ModalCausa({
   setShow,
   handleSubmit,
   handleClose,
-  activeSelect
+  activeSelect,
 }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const { causesCategories, associations } = useSelector(selectRaffleState);
+
+
+
+
   const fields: Field[] = [
     {
       label: " ¿Cual es el titulo de la causa?*",
@@ -136,7 +140,7 @@ export default function ModalCausa({
 
         </div>}
 
-        {activeSelect && <ModalSelectCausa />}
+        {activeSelect && <ModalSelectCausa handleSubmit={handleSubmit} />}
       </Modal.Body>
     </Modal>
   );

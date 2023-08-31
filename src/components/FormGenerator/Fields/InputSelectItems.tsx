@@ -84,7 +84,7 @@ export default function InputSelectItems({
             {selectTitle}
           </button>
           <button
-            className=" mx-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-4"
+            className=" mx-0 mx-lg-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-0 my-lg-4"
             onClick={handleShow}
           >
             {createTitle}
