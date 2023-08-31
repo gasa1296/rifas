@@ -41,7 +41,7 @@ export const getUserProfile = () => {
 };
 export const refreshToken = (refresh: String) => {
   return Api({
-    endpoint: "/auth/JWT/refresh",
+    endpoint: "/auth/JWT/refresh/",
     method: "POST",
     _data: {
       refresh,

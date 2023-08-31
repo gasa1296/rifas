@@ -50,7 +50,7 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
   return (
     <div className="mx-4">
       <h2 className="title-page-rifaRegistro my-4">
-        ¡Es momento de rifarnos Cuautli!
+        ¡Es momento de rifarnos {profile.full_name}!
       </h2>
 
       <div className="  mb-3 col-12 col-lg-8 m-auto  ">

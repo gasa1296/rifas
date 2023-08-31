@@ -90,8 +90,6 @@ export default function ModalCausa({
         </div>
         <div className="mt-4">
           <FormGenerator
-            /*    buttonText="Iniciar sesion" */
-
             fields={fields}
             submitData={submitData}
             loading={loading}
