@@ -79,6 +79,7 @@ export default function About() {
             innovación. Y lo queremos hacer simple, para todos.
           </p>
           <button
+            onClick={() => router.push("/rifas/crear_rifas")}
             className="btn btn-pink btn-sm fs-6 mt-2 col-12 col-lg-7  "
             type="submit"
           >

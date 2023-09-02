@@ -10,13 +10,13 @@ export default function AllRifas() {
     return (
         <div className=''>
             <div className='d-block d-lg-flex   justify-content-center container-AllRifas   '>
-                <div className=' col-12 col-lg-5  mt-5'>
+                <div className=' col-12 col-lg-5  mt-5 mx-2 mx-lg-0'>
                     <p className=' title-AllRifas mt-5 mt-lg-4 lh-1 '>¡Rífate! </p>
                     <p className='subtitle-AllRifas lh-1'> Y súmate con amor</p>
                     <p className='text-AllRifas m-0 lh-2'>Aquí encontraras las historias con las que te puedes rifar!</p>
 
                 </div>
-                <div className='mx-5 mt-2 col-12 col-lg-5 '>
+                <div className='mx-0 mx-lg-5 mt-2 col-12 col-lg-5 '>
                     <Image src={fondoAllRifas} alt='fondoAllrifas' className='w-100 h-100 ' />
                 </div>
             </div>
