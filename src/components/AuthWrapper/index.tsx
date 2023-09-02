@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { validateAuthPath } from "./helper";
 import { useNotificationStore } from "@/store/zustand/NotificationStore";
+import { useCausesStore } from "@/store/zustand/CausesStore";
+import { usePremioStore } from "@/store/zustand/PremioStore";
 
 interface Props {
   children: JSX.Element;
@@ -13,6 +15,12 @@ export default function AuthWrapper({ children }: Props) {
   const { authenticated } = useSelector(selectAuthState);
   const getNotifications = useNotificationStore(
     (state) => state.getNotifications
+  );
+  const getCauses = useCausesStore(
+    (state) => state.getCauses
+  );
+  const getPremio = usePremioStore(
+    (state) => state.getPremio
   );
 
   const router = useRouter();
@@ -52,6 +60,29 @@ export default function AuthWrapper({ children }: Props) {
 
     //eslint-disable-next-line
   }, [authenticated]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      authenticated && getCauses();
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+
+    //eslint-disable-next-line
+  }, [authenticated]);
+
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      authenticated && getPremio();
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+
+    //eslint-disable-next-line
+  }, [authenticated]);
+
+  console.log("loading", loading);
 
   if (loading) return <> </>;
 

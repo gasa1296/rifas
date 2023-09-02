@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mercadopago/sdk-react": "^0.0.14",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",

@@ -14,6 +14,8 @@ const initialState: RaffleInitialState = {
   causesCategories: [],
   prizesCategories: [],
   selectedTickets: [],
+  selectedPaymentMethod: null,
+  selectedWallet: false,
 };
 
 export const rafflesSlice = createSlice({
@@ -41,6 +43,17 @@ export const rafflesSlice = createSlice({
     setSelectedTicket: (state, action) => {
       state.selectedTickets = action.payload;
     },
+    setSelectedPaymentMethod: (state, action) => {
+      state.selectedPaymentMethod = action.payload;
+    },
+    setSelectedWallet: (state, action) => {
+      state.selectedWallet = action.payload;
+    },
+    resetBuyRaffle: (state) => {
+      state.selectedTickets = [];
+      state.selectedPaymentMethod = null;
+      state.selectedWallet = false;
+    },
   },
   extraReducers: (builder) => {
     RAFFLES_EXTRA_REDUCERS(builder);
@@ -54,6 +67,9 @@ export const {
   setDonationsForm2,
   setPrizesCategories,
   setCausesCategories,
+  setSelectedPaymentMethod,
+  setSelectedWallet,
+  resetBuyRaffle,
 } = rafflesSlice.actions;
 export const selectRaffleState = (state: RootState) => state.raffles;
 export default rafflesSlice.reducer;

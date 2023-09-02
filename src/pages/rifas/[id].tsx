@@ -4,7 +4,11 @@ import MetodosPagoRifa from "@/components/Rifas/MetodosPagoRifa";
 import RifaPago from "@/components/Rifas/RifaPago";
 import PaySuccessful from "@/components/Rifas/PaySuccessful";
 import Tabs from "@/components/Tab";
-import { GetRaffle, selectRaffleState } from "@/store/slices/raffles";
+import {
+  GetRaffle,
+  resetBuyRaffle,
+  selectRaffleState,
+} from "@/store/slices/raffles";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +36,10 @@ export default function RifasDetails() {
       200
     );
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      dispatch(resetBuyRaffle());
+      clearTimeout(timeoutId);
+    };
 
     //eslint-disable-next-line
   }, []);

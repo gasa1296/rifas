@@ -7,8 +7,9 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
+import ModalSelectPremio from "./ModalSelectPremio";
 
-export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
+export default function ModalPremio({ show, handleClose, handleSubmit, activeSelect }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const { prizesCategories } = useSelector(selectRaffleState);
@@ -85,7 +86,8 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
-          <h4 className="title-Modal">Donar premio</h4>
+          {!activeSelect && <h4 className="title-Modal">Donar premio</h4>}
+          {activeSelect && <h4 className="title-Modal">Seleccionar premio</h4>}
         </Modal.Header>
         <div
           style={{ cursor: "pointer" }}
@@ -94,7 +96,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
         >
           X
         </div>
-        <div className="mt-4">
+        {!activeSelect && <div className="mt-4">
           <FormGenerator
             fields={fields}
             submitData={submitData}
@@ -131,7 +133,11 @@ export default function ModalPremio({ show, handleClose, handleSubmit }: any) {
               </section>
             )}
           />
-        </div>
+        </div>}
+
+        {activeSelect && <ModalSelectPremio handleSubmit={handleSubmit} />}
+
+
       </Modal.Body>
     </Modal>
   );

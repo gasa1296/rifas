@@ -32,12 +32,14 @@ export default function InputSelectItems({
   setValue,
 }: Props) {
   const [show, setShow] = useState(false);
+  const [activeSelect, setActiveSelect] = useState(false)
   const [selected, setSelected] = useState<null | SelectedItems>(null);
 
   const SelectedComponent = types[selected?.type || "cause"];
 
   const handleClose = () => {
     setShow(false);
+    setActiveSelect(false)
   };
   const handleShow = (e: any) => {
     e.preventDefault();
@@ -66,6 +68,7 @@ export default function InputSelectItems({
         className="d-none"
       />
       <ModalComponent
+        activeSelect={activeSelect}
         handleSubmit={handleSubmit}
         show={show}
         handleClose={handleClose}
@@ -74,11 +77,14 @@ export default function InputSelectItems({
         <SelectedComponent selectedItem={selected} setSelected={setSelected} />
       ) : (
         <div className="d-lg-flex col-12  m-auto mb-3 mt-2  ">
-          <button className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ">
+          <button onClick={(e) => {
+            handleShow(e);
+            setActiveSelect(true)
+          }} className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ">
             {selectTitle}
           </button>
           <button
-            className=" mx-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-4"
+            className=" mx-0 mx-lg-2 btn btn-withe  col-12 col-lg-6 mt-lg-0 my-0 my-lg-4"
             onClick={handleShow}
           >
             {createTitle}

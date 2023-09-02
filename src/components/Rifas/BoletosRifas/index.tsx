@@ -13,13 +13,17 @@ export default function BoletosRifas({ nextStep }: any) {
     nextStep();
   };
 
+  const { selectedTickets } = useSelector(selectRaffleState);
+
+  const disableButton = selectedTickets.length === 0;
+
   return (
-    <div className="d-block justify-content-center d-lg-flex  mt-5 mx-2 mx-lg-0  ">
+    <div className="d-block justify-content-center d-lg-flex  mt-5 mx-3 mx-lg-0  ">
       <div className=" col-12 col-lg-6  ">
         <BuyTickes />
       </div>
 
-      <div className=" col-lg-6 col-12   ms-0 mx-lg-3">
+      <div className=" col-lg-6 col-12 pt-5 pt-lg-0  ms-0 mx-lg-3">
         <p className="donaciones-title mt-3 mt-md-0">
           1 / 3 Selecciona tus boletos
         </p>
@@ -31,10 +35,10 @@ export default function BoletosRifas({ nextStep }: any) {
 
         <div className="d-flex justify-content-end mt-4 ">
           <button
+            disabled={disableButton}
             className="btn btn-pink btn-sm border rounded-1 px-3 "
             onClick={handleSubmit}
           >
-            {" "}
             Continuar <AiOutlineArrowRight />
           </button>
         </div>
