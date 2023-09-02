@@ -16,8 +16,14 @@ import { MdEmail } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
+import { useState } from "react";
 export default function Rifa() {
   const { raffles, loading } = useSelector(selectRaffleState);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleClick = () => {
+    setIsVisible(false);
+  };
 
   const router = useRouter();
 
@@ -34,13 +40,13 @@ export default function Rifa() {
 
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
-      <section className=" mt-5 mb-5 mx-3 mx-lg-5 container-destacada position-relative p-4">
+      <section className=" mt-5 mb-5 mx-0 mx-lg-5 container-destacada position-relative p-4">
         <Image
           src={fondoDestacada}
           alt="fondodestacada"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
         />
-        <h3 className="  raffle-title mt-5 mt-md-3 ">Rifa Destacada</h3>
+        <h3 className=" raffle-title mt-5 mt-md-3 ">Rifa Destacada</h3>
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-between row m-0">
           <div className="col-lg-6  position-relative m-0 ">
@@ -94,8 +100,9 @@ export default function Rifa() {
                 Comprar boletos
               </button>
               <button
-                className="btn btn-border-pink btn-sm col-6 ms-1    button-rifaDestacada "
+                className="btn btn-border-pink btn-sm col-6 ms-1   button-rifaDestacada "
                 onClick={() => router.push(getRouter())}
+
               >
                 Ver detalles
               </button>

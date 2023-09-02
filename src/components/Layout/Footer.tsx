@@ -41,6 +41,7 @@ export default function Footer() {
               <li>Terminos y condiciones</li>
               <li>Aviso de privacidad</li>
               <li>Preguntan frecuentes</li>
+              <li>Reportar rifa</li>
             </ul>
           </div>{" "}
           <div>
