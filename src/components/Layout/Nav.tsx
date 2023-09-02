@@ -50,9 +50,10 @@ export default function Nav() {
 
   return (
     <div className="position-absolute top-0 w-100 ">
-      {showNotification && (
-        <ModalNotification showNotification={showNotification} />
-      )}
+      <ModalNotification
+        showNotification={showNotification}
+        setShowNotification={setShowNotification}
+      />
 
       <ModalLogin show={show} handleClose={handleClose} />
       <nav className="d-md-flex justify-content-between align-items-center mt-2">
@@ -77,10 +78,8 @@ export default function Nav() {
             >
               {option.Icon ? (
                 <div className="position-relative">
-                  <div className="notification-active">
-                    {notificationsSize}{" "}
-                  </div>
-                  <option.Icon className=" size-icon m-0" />{" "}
+                  <div className="notification-active">{notificationsSize}</div>
+                  <option.Icon className=" size-icon m-0" />
                 </div>
               ) : (
                 option.label

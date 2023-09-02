@@ -44,7 +44,7 @@ export const Cause = ({ selectedItem, setSelected }: Props) => {
   );
 };
 
-export const Prize = ({ selectedItem }: Props) => {
+export const Prize = ({ selectedItem, setSelected }: Props) => {
   return (
     <div>
       <p className="m-0 mt-2">Premio seleccionado</p>
@@ -69,8 +69,9 @@ export const Prize = ({ selectedItem }: Props) => {
 
           <button
             className="btn btn-pink  mt-3  mb-4"
-            onClick={() => {
-              //setprize(null);
+            onClick={(e) => {
+              e.preventDefault();
+              setSelected(null);
             }}
           >
             Cambiar premio

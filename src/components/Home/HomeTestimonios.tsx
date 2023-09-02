@@ -4,6 +4,36 @@ import testimnialesFondo from "@/assets/img/bg-testomoniales.png";
 import Image from "next/image";
 
 export default function HomeTestimonios() {
+  const testimonios = [
+    {
+      title:
+        "Decidieron cambiar una realidad y lograron resultados inesperados",
+      label: "Ayudame a escuchar",
+      subtitle: "Mas de $350.000 pesos recaudados",
+      information:
+        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
+      footer: "APAC A.C",
+    },
+    {
+      title:
+        "Decidieron cambiar una realidad y lograron resultados inesperados",
+      label: "Ayudame a escuchar",
+      subtitle: "Mas de $350.000 pesos recaudados",
+      information:
+        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
+      footer: "APAC A.C",
+    },
+    {
+      title:
+        "Decidieron cambiar una realidad y lograron resultados inesperados",
+      label: "Ayudame a escuchar",
+      subtitle: "Mas de $350.000 pesos recaudados",
+      information:
+        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
+      footer: "APAC A.C",
+    },
+  ];
+
   return (
     <div className="pt-5 ">
       <section className="row m-0 mx-3 mx-lg-5 p-2 position-relative p-5 rounded ">
@@ -47,7 +77,6 @@ export default function HomeTestimonios() {
           <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
         </div>
       </section>
-
     </div>
   );
 }

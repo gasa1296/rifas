@@ -316,7 +316,9 @@ z-index: 10;
   position: relative;
   z-index: 10;
 }
-
+.bg-pink{
+  background-color: #C3286D;
+}
 .btn-pink {
   background: var(--unnamed-color-c3286d) 0% 0% no-repeat padding-box !important;
 background: #C3286D 0% 0% no-repeat padding-box !important;

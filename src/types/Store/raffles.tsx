@@ -1,7 +1,7 @@
 import { Association } from "../Model/Association";
 import { Donation } from "../Model/Profile";
 import { RafflesI } from "../Model/Raffle";
-
+type Imethods = "paypal" | "mercadopago";
 export interface RaffleInitialState {
   loading: boolean;
   raffles: RafflesI[];
@@ -12,4 +12,6 @@ export interface RaffleInitialState {
   causesCategories: { id: number; name: string }[];
   prizesCategories: { id: number; name: string }[];
   selectedTickets: number[];
+  selectedPaymentMethod: Imethods | null;
+  selectedWallet: boolean;
 }

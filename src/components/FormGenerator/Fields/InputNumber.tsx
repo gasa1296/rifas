@@ -36,7 +36,8 @@ export default function InputNumber({
         className={`w-100 form-control my-2 fs-5 ${error && "border-danger "}`}
         onChange={(e) => {
           setValue(name, e.target.value);
-          customChange({ setValue, newValue: e.target.value, values });
+          customChange &&
+            customChange({ setValue, newValue: e.target.value, values });
         }}
       />
     </div>

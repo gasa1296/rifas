@@ -23,6 +23,8 @@ const StepIcon = (step: number, currentStep: number) => {
 export default function CrearRifaRegistro({ nextStep, backStep }: any) {
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
+  const [finalRaffle, setFinalRaffle] = useState({});
+
   const dispatch = useDispatch();
   const { profile } = useSelector(selectAuthState);
   const canCreateRaffle = profile?.role === 1;
@@ -35,7 +37,9 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
   const handleSubmit = async () => {
     const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
     if (payload) {
-      //handleClose();
+      setFinalRaffle({ raffle, finalRaffle: payload });
+    } else {
+      setStep(1);
     }
   };
 
@@ -50,17 +54,18 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
   return (
     <div className="mx-4">
       <h2 className="title-page-rifaRegistro my-4">
-        ¡Es momento de rifarnos Cuautli!
+        ¡Es momento de rifarnos {profile.full_name}!
       </h2>
 
       <div className="  mb-3 col-12 col-lg-8 m-auto  ">
         <div
           className=" d-flex justify-content-between align-items-center    "
-          onClick={() => { }}
+          onClick={() => {}}
         >
           <button
-            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
+              step === 1 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div className="text-fondo-container">
               <AiFillDollarCircle size={25} className="me-2" />
@@ -75,8 +80,9 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-between align-items-center  mt-4  ">
           <button
-            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
+              step === 2 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
               <HiOutlineClipboardList /> Define los datos de tu rifa
@@ -91,8 +97,9 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
         <div className=" d-flex justify-content-around align-items-center   mt-4   ">
           <button
-            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
-              }`}
+            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
+              step === 3 ? " opacity-50 " : " opacity-100  "
+            }`}
           >
             <div>
               <FaHandHoldingHeart /> Confirmación de la rifa
@@ -100,7 +107,7 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
             <div className="m-0">{StepIcon(step, 3)}</div>
           </button>
         </div>
-        {step === 3 && <ConfirmacionRifa />}
+        {step === 3 && <ConfirmacionRifa finalRaffle={finalRaffle} />}
       </div>
       <div className=" text-dark text-center col-12">
         <button
