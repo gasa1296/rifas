@@ -5,6 +5,7 @@ import RifasDescription from "./RifasDescription";
 import { Raffles } from "@/store/slices/raffles";
 import { useDispatch } from "react-redux";
 import AllRifas from "./AllRifas";
+import RifaDetails from "./RifaDetails";
 
 export default function Rifas() {
   const dispatch = useDispatch();
@@ -15,9 +16,13 @@ export default function Rifas() {
   }, []);
 
   return (
-    <div className="background-rifa">
-      <Rifa />
-      <RifasDescription />
+    <div className="">
+      <div className="background-rifa">
+        <RifaDetails />
+        <RifasDescription />
+      </div>
+
+
       <RifasActivas />
     </div>
   );

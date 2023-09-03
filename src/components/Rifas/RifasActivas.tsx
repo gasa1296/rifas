@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import fondoRifasActivas from "@/assets/img/gal-microsite-apac2.jpg";
 import { MdAccessTime } from "react-icons/md";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -13,12 +14,14 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 
 export default function RifasActivas({ all }: { all?: boolean }) {
+  const slider = React.useRef(null);
   const settings = {
     dots: true,
     infinite: false,
-    speed: 500,
-    slidesToShow: 1,
+    speed: 600,
+    slidesToShow: 4,
     slidesToScroll: 1,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
@@ -45,7 +48,7 @@ export default function RifasActivas({ all }: { all?: boolean }) {
   const { raffles } = useSelector(selectRaffleState);
 
   return (
-    <div>
+    <div className="mt-3  ">
       <section
         className={` mx-3 ${!all && "mx-lg-5"} `}
         style={{ marginBottom: "120px" }}
@@ -74,54 +77,49 @@ export default function RifasActivas({ all }: { all?: boolean }) {
           <p className="me-5">Salud</p>
           <p className="me-5">Sustentabilidad</p>
         </div>
-        <Slider {...settings}>
-          <div className="d-flex row m-0  py-2">
+        <div className="px-2 px-md-5 position-relative  ">
+          <button className="position-absolute  buttonPrevious-RifasActivas " onClick={() => slider?.current?.slickPrev()}><IoIosArrowBack color="#C3286D" className="iconPreviousNext" /></button>
+          <Slider ref={slider} {...settings} className=" ">
             {[...raffles, ...raffles, ...raffles, ...raffles].map(
               (raffle: RafflesI, index: number) => (
-                <div
-                  key={index}
-                  className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-3 me-lg-3  "
-                  style={{ maxWidth: "309px", width: "100%", height: "" }}
-                >
-                  <Image
-                    src={fondoRifasActivas}
-                    className="w-100 h-50"
-                    alt=""
-                  />
-                  <div className="p-3">
-                    <h6 className="raffles-title-card  ">{raffle.name}</h6>
-                    <p className="card-text raffles-subtitle-card lh-sm">
-                      {raffle.description}
-                    </p>
+                <div key={index} className="col-3 col-lg-2   mt-4 mt-md-0 py-3  " style={{ maxWidth: "309px", width: "100%", height: "" }}>
+                  <div className="mx-2 shadow">
+                    <Image
+                      src={fondoRifasActivas}
+                      className="w-100 h-50"
+                      alt=""
+                    />
+                    <div className="p-3 px-3">
+                      <h6 className="raffles-title-card  ">{raffle.name}</h6>
+                      <p className="card-text raffles-subtitle-card lh-sm">
+                        {raffle.description}
+                      </p>
 
-                    <p className="card-text  raffles-subtitle-card  p-0  ">
-                      <MdAccessTime
-                        size={20}
-                        className="mb-1 me-2 opacity-75 "
-                      />
-                      20% 8,040.00 recaudado
-                    </p>
-                    <button
-                      onClick={() => router.push(`/rifas/${raffle.id}`)}
-                      className="btn fs-6 btn-pink w-100"
-                    >
-                      Comprar boleto
-                    </button>
+                      <p className="card-text  raffles-subtitle-card  p-0  ">
+                        <MdAccessTime
+                          size={20}
+                          className="mb-1 me-2 opacity-75 "
+                        />
+                        20% 8,040.00 recaudado
+                      </p>
+                      <button
+                        onClick={() => router.push(`/rifas/${raffle.id}`)}
+                        className="btn fs-6 btn-pink w-100"
+                      >
+                        Comprar boleto
+                      </button>
+                    </div>
                   </div>
+
                 </div>
               )
             )}
-          </div>
-        </Slider>
+          </Slider>
+          <button className="position-absolute  buttonNext-RifasActivas " onClick={() => slider?.current?.slickNext()}><IoIosArrowForward color="#C3286D" className="iconPreviousNext" /></button>
 
-        {/* 
-        <div className="d-flex justify-content-center mt-5 ">
-          <div className="circle-homeTestimonios border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-        </div> */}
+        </div>
+
       </section>
-    </div>
+    </div >
   );
 }

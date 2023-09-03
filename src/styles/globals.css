@@ -409,6 +409,10 @@ color: #939393;
 opacity: 1
  }
 
+ .fondoRifaDescriptions{
+  position: absolute;
+ }
+
 
 /* rifas activas*/
 
@@ -450,6 +454,68 @@ color: #000000;
   font-weight: 600;
   letter-spacing: 0px;
 color: #989797;
+opacity: 1;
+}
+
+.buttonPrevious-RifasActivas{
+  position: absolute;
+  left:0;
+  top: 35%;
+  border: none;
+  background-color: transparent;
+  
+}
+
+.iconPreviousNext{
+  height: 60px;
+  width: 50px;
+}
+
+@media (max-width: 968px) {
+  .buttonPrevious-RifasActivas {
+    position: absolute;
+    left:0;
+    top: 0;
+    margin-left: -30px;
+  }
+  .buttonNext-RifasActivas{
+    position: absolute;
+    right: 0 ;
+    top: 0;
+    margin-right: -30px;
+  }
+  .iconPreviousNext {
+    height:460px;
+  width: 45px;
+
+
+  }
+}
+
+.buttonNext-RifasActivas{
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  right: 0;
+  bottom: 50%;
+}
+
+/*Rifs details*/
+
+.title-RifaDetails{
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+
+.subtitle-RifaDetails{
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+color: #707070;
 opacity: 1;
 }
 

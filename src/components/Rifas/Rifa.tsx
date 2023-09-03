@@ -41,9 +41,8 @@ export default function Rifa({ all }: { all?: boolean }) {
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
       <section
-        className={` mt-5 mb-5 mx-0 ${
-          !all && "mx-lg-5"
-        } container-destacada position-relative p-4`}
+        className={` mt-5 mb-5 mx-0 ${!all && "mx-lg-5"
+          } container-destacada position-relative p-4`}
       >
         {!all && (
           <Image
