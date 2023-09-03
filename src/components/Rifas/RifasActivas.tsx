@@ -74,6 +74,7 @@ export default function RifasActivas({ all }: { all?: boolean }) {
           <p className="me-5">Salud</p>
           <p className="me-5">Sustentabilidad</p>
         </div>
+
         <Slider {...settings}>
           <div className="d-flex row m-0  py-2">
             {[...raffles, ...raffles, ...raffles, ...raffles].map(

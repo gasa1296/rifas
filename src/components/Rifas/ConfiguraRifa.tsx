@@ -20,7 +20,6 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       dispatch(GetAssociations({}) as any);
-      dispatch(getCategories({}) as any);
     }, 200);
 
     return () => clearTimeout(timeoutId);

@@ -13,6 +13,8 @@ import {
   setSelectedPaymentMethod,
   setSelectedWallet,
 } from "@/store/slices/raffles";
+import { validateCoupon } from "@/store/slices/raffles";
+import { toast } from "react-hot-toast";
 
 type Imethods = "paypal" | "mercadopago";
 export default function MetodosPagoRifa({ nextStep, backStep }: any) {
@@ -27,6 +29,12 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
     dispatch(setSelectedPaymentMethod(method));
   };
 
+  const handleApplyCupon = async () => {
+    const { payload } = await dispatch(validateCoupon(cupon) as any);
+
+    if (!payload) return toast.error("Cupon invalido");
+    else toast.success("Cupon aplicado");
+  };
   const disableButton = selectedPaymentMethod === null;
 
   return (
@@ -48,7 +56,10 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
               placeholder="Código de tu cupón"
               className="form-control input-placeholder opacity-75 "
             />
-            <button className="form-control btn-border-pink mx-0 mx-md-3  w-50 mt-3 mt-md-0">
+            <button
+              onClick={handleApplyCupon}
+              className="form-control btn-border-pink mx-0 mx-md-3  w-50 mt-3 mt-md-0"
+            >
               Aplicar
             </button>
           </div>

@@ -24,6 +24,13 @@ export const getRaffleTickets = (id: String | string[]) => {
   });
 };
 
+export const validateApplyCoupon = (coupon: String, raffleId: Number) => {
+  return Api({
+    endpoint: `/buying/${coupon}/get_coupon?id=${raffleId}`,
+    method: "GET",
+  });
+};
+
 export const createDonations = (donation: any) => {
   const formData = new FormData();
   formData.append("name", donation.name);

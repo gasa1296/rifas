@@ -8,6 +8,7 @@ import {
   getRaffle,
   getRaffleTickets,
   getRaffles,
+  validateApplyCoupon,
 } from "@/services/raffles";
 import { RootState } from "@/store";
 import { handleError } from "@/utils/handleError";
@@ -152,6 +153,24 @@ export const createRaffle = createAsyncThunk(
       return raffleResult.data;
     } catch (error) {
       handleError(error);
+    }
+  }
+);
+
+export const validateCoupon = createAsyncThunk(
+  `${PREFIX}/validate-coupon`,
+  async (coupon: string, thunkAPI): Promise<{} | undefined> => {
+    try {
+      const { raffles } = thunkAPI.getState() as RootState;
+
+      const result = await validateApplyCoupon(
+        coupon,
+        raffles?.raffle?.id || 0
+      );
+
+      return result.data;
+    } catch (error) {
+      //handleError(error);
     }
   }
 );
