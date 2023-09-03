@@ -38,7 +38,7 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
   };
 
   return (
-    <div className="mx-0 mx-lg-4 mt-4">
+    <div className="mx-0 mx-md-4 mt-4">
       {hasHeader && (
         <div className="border-bottom  position-relative ">
           <div className=" title-tabs d-flex align-items-center position-absolute  ">

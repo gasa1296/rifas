@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import fondo from "@/assets/img/Comienza-la-historia.png";
+import { useRouter } from "next/router";
 
 export default function HomeCreateRifa() {
+  const router = useRouter();
+
   return (
     <div className=" mx-3 mx-lg-5">
       <section
@@ -33,7 +36,7 @@ export default function HomeCreateRifa() {
           </p>
           <a
             href="#"
-            className="btn fs-6 btn-pink w-100 fw-normal mt-5 mx-auto"
+            className="btn fs-6 btn-pink w-100 fw-normal mt-5 mx-auto" onClick={() => router.push("/rifas/crear_rifas")}
           >
             Iniciar Rifa
           </a>

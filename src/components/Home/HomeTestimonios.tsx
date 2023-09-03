@@ -1,9 +1,41 @@
 import React from "react";
 import fondo from "@/assets/img/Testimonial-img.jpg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import testimnialesFondo from "@/assets/img/bg-testomoniales.png";
 import Image from "next/image";
 
 export default function HomeTestimonios() {
+
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
+  };
+
   const testimonios = [
     {
       title:
@@ -18,7 +50,7 @@ export default function HomeTestimonios() {
       title:
         "Decidieron cambiar una realidad y lograron resultados inesperados",
       label: "Ayudame a escuchar",
-      subtitle: "Mas de $350.000 pesos recaudados",
+      subtitle: "hhhh",
       information:
         "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
       footer: "APAC A.C",
@@ -27,7 +59,7 @@ export default function HomeTestimonios() {
       title:
         "Decidieron cambiar una realidad y lograron resultados inesperados",
       label: "Ayudame a escuchar",
-      subtitle: "Mas de $350.000 pesos recaudados",
+      subtitle: "Mas de $3",
       information:
         "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
       footer: "APAC A.C",
@@ -36,46 +68,55 @@ export default function HomeTestimonios() {
 
   return (
     <div className="pt-5 ">
-      <section className="row m-0 mx-3 mx-lg-5 p-2 position-relative p-5 rounded ">
+      <section className="row m-0 mx-0 mx-lg-5  position-relative p-5 rounded ">
         <Image
           src={testimnialesFondo}
           alt="fondoTestimoniales"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
         />
         <h5 className=" home-title-testimonios">Testimoniales</h5>
-        <p className="home-subtitle-testimonios ">
-          Decidieron cambiar una realidad y lograron resultados inesperados
-        </p>
+        <Slider {...settings}>
+          {testimonios.map((testimonio, index) =>
+            <div className="py-3">
+              <p className="home-subtitle-testimonios ">
+                {testimonio.title}
+              </p>
 
-        <div className=" d-flex justify-content-between row ">
-          <div className=" col-12 col-lg-5 mt-4 me-5  text-start ">
-            <p className="home-title-container-testimonios">
-              Ayudame a escuchar
-            </p>
+              <div className=" d-flex justify-content-between row ">
+                <div className=" col-12 col-lg-5 mt-4 me-5  text-start ">
+                  <p className="home-title-container-testimonios">
 
-            <p className="home-subtitle-container-testimonios">
-              Mas de $350.000 pesos recaudados
-            </p>
-            <p className="home-information-container-testimonios">
-              Hoy, me siento profundamente agradecido por cada uno de ustedes
-              que donó o compartió mi historia Sin su ayuda, no estaría aquí,
-              disfrutando nuevamente de los sonidos que dan color a mi vida.
-            </p>
-            <p className="home-subtitle-container-testimonios">APAC A.C</p>
-          </div>
-          <div className="col-10 col-lg-5 mt-4  ">
-            <div className="">
-              <Image src={fondo} alt="fondo" className="w-100 h-75 " />
+                    {testimonio.label}
+                  </p>
+
+                  <p className="home-subtitle-container-testimonios">
+                    {testimonio.subtitle}
+                  </p>
+                  <p className="home-information-container-testimonios">
+                    {testimonio.information}
+                  </p>
+                  <p className="home-subtitle-container-testimonios">{testimonio.footer}</p>
+                </div>
+                <div className="col-10 col-lg-5 mt-4  ">
+                  <div className="">
+                    <Image src={fondo} alt="fondo" className="w-100 h-75 " />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="d-flex mt-5 justify-content-center ">
+
+          )}
+
+        </Slider>
+
+
+        {/*   <div className="d-flex mt-5 justify-content-center ">
           {` `}
           <div className={`circle-homeTestimonios border mx-2`}></div>
           <div className="circle-homeTestimonios bg-light  border mx-2"></div>
           <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
           <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

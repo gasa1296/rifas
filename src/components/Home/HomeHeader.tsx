@@ -32,7 +32,11 @@ export default function HomeHeader() {
           <p className=" home-header-title  lh-1 m-0 ">
             enfocada en apoyar causas sociales
           </p>
-          <BsWhatsapp color=" #00C851" size={30} className="header-icono " />
+          <div className="icon-whatsapp ">
+
+            <BsWhatsapp color=" white" size={40} className="header-icono " />
+          </div>
+
         </section>
 
         <HomeHistory />

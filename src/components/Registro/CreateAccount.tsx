@@ -50,47 +50,51 @@ export default function CreateAccount({ nextStep }: any) {
   ];
 
   return (
-    <section className="text-secondary row">
-      <div className="col-md-8  col-12 mx-auto mt-5">
-        <h2 className="text-center title-CreateAccount mx-md-5 ">
+    <section className="text-secondary row m-0">
+      <div className="col-md-8  col-12 mx-0 mx-md-auto mt-5 ">
+        <h2 className="text-center title-CreateAccount mx-md-5 mx-0">
           Para comenzar a rifarte necesitas crear una cuenta.
         </h2>
         <h2 className="text-center title-CreateAccount mx-md-5 ">
           {" "}
           Crear una cuenta.
         </h2>
-        <p className="text-center text-CreateAccount mt-3 mx-md-5">
+        <p className="text-center text-CreateAccount mt-0 mx-md-5">
           Es necesario crear una cuenta para apoyar alguna rifa, donar un premio
           o si eres una asociación y quieres crear tus rifas.
         </p>
       </div>
       <div
-        className="  my-3 text-secondary shadow rounded mx-auto px-5"
-        style={{ maxWidth: "600px", width: "100%" }}
-      >
-        <p className=" text-center title-registro-CreateAcount my-3 ">
+        className=" col-md-8  m-auto  col-12  justify-content-center  d-flex my-3 text-secondary shadow rounded  px-3 " style={{ maxWidth: "600px", width: "100%" }}>
+        <div><p className=" text-center title-registro-CreateAcount my-3 ">
           Registra tu cuenta
         </p>
-        <FormGenerator
-          buttonText="Registrar"
-          submitData={submitData}
-          fields={fields}
-          loading={loading}
-        />
+          <FormGenerator
+            buttonText="Registrar"
+            submitData={submitData}
+            fields={fields}
+            loading={loading}
+          />
 
-        <div className="d-grid gap-2 col-12 mx-auto ">
-          <p className="text-center fw-bold ">
-            O registrate con tus redes sociales
-          </p>
+          <div className="  ">
+            <p className="text-center fw-bold ">
+              O registrate con tus redes sociales
+            </p>
 
-          <div className="col-12 mx-auto d-flex justify-content-around  mb-4">
-            <LoginWithFacebook />
 
-            <div>
-              <LoginWithGoogle handleClose={() => {}} />
+            <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
+              <div className="my-2 my-md-0 mx-3">   <LoginWithFacebook /></div>
+
+
+
+              <div className=" mt-1 mt-md-0 mx-2 ">
+                <LoginWithGoogle handleClose={() => { }} />
+              </div>
             </div>
-          </div>
-        </div>
+          </div></div>
+
+
+
       </div>
     </section>
   );

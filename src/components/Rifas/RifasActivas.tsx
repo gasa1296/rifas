@@ -16,17 +16,17 @@ export default function RifasActivas({ href = "/rifas" }) {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -102,17 +102,9 @@ export default function RifasActivas({ href = "/rifas" }) {
             ))}
           </div>
 
+
         </Slider>
 
-
-
-        {/* 
-        <div className="d-flex justify-content-center mt-5 ">
-          <div className="circle-homeTestimonios border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-          <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
-        </div> */}
       </section>
 
     </div >

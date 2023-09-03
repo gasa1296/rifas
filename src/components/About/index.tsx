@@ -18,7 +18,7 @@ export default function About() {
   const router = useRouter();
 
   return (
-    <section className=" m-0 c ">
+    <section className=" m-0  ">
       <div className=" justify-content-center d-lg-flex  fondo-nosotros  p-3 row m-0 ">
         <div className=" col-12 col-lg-6 pt-2 ">
           <Image
@@ -62,11 +62,11 @@ export default function About() {
         </div>
       </div>
 
-      <section className="d-lg-flex d-block justify-content-center  mt-5">
-        <div className="col-12 col-lg-5  container-img">
+      <section className="d-lg-flex d-block justify-content-center mx-4 mx-lg-0  mt-5">
+        <div className="col-12 col-lg-5  mx-0 mx-lg-4">
           <Image
             src={vision}
-            className="size-vision-mision-img  p-0 "
+            className=" w-100 h-50 p-0 "
             alt="vision"
           />
           <h6 className="  title-vision-mision my-3 text-lg-start  text-center">Visión</h6>
@@ -86,10 +86,10 @@ export default function About() {
             Comenzar a rifarme
           </button>
         </div>
-        <div className="col-12 col-lg-5 mt-5 mt-lg-0 ">
+        <div className="col-12 col-lg-5 mt-5 mt-lg-0 mx-0 mx-lg-4 ">
           <Image
             src={mision}
-            className="size-vision-mision-img  "
+            className=" w-100 h-50 p-0  "
             alt="mision"
           />
           <h6 className="title-vision-mision my-3 text-lg-start  text-center">Misión</h6>
