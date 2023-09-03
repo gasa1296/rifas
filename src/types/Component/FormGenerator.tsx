@@ -34,6 +34,7 @@ export interface FieldType {
   custom: any;
   date: any;
   range: any;
+  captchap: any;
 }
 export type FieldTypeString =
   | "text"
@@ -51,7 +52,8 @@ export type FieldTypeString =
   | "sliser"
   | "custom"
   | "date"
-  | "range";
+  | "range"
+  | "captchap";
 
 export interface SelectedItems {
   type: "cause" | "prize";

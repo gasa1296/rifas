@@ -11,19 +11,6 @@ export default function Paypal({ totalPay }: { totalPay: number }) {
 
   const createOrder = (data: any, actions: any) => {
     // Crea una orden de PayPal
-    console.log(
-      "fir123123st",
-      actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: totalPay,
-              currency_code: "MXN",
-            },
-          },
-        ],
-      })
-    );
 
     return actions.order.create({
       purchase_units: [
@@ -57,9 +44,7 @@ export default function Paypal({ totalPay }: { totalPay: number }) {
     <section className=" pt-5 pt-lg-0 ">
       <PayPalScriptProvider
         options={{
-          "client-id":
-            "ASF-bf0D1FnxEfK1y7M30-1nyba4Evbv0h7CEEmBloTYG0-dpiY6YQ-COxNvqmU2fqzuPTH9Su5MWgRe",
-          currency: "MXN",
+          clientId: process.env.NEXT_PUBLIC_PAYPAL_ID || "",
         }}
       >
         <PayPalButtons

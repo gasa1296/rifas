@@ -1,5 +1,5 @@
-import { initMercadoPago, Payment } from "@mercadopago/sdk-react";
-initMercadoPago("TEST-18bdd1a9-b7d0-49be-98ba-4697332e1d3f");
+/* import { initMercadoPago, Payment } from "@mercadopago/sdk-react"; */
+/* initMercadoPago("TEST-18bdd1a9-b7d0-49be-98ba-4697332e1d3f"); */
 export function MercadoPagoButton({ totalPay }: { totalPay: number }) {
   const initialization = {
     amount: totalPay,
@@ -7,7 +7,7 @@ export function MercadoPagoButton({ totalPay }: { totalPay: number }) {
   };
   const customization = {
     paymentMethods: {
-      ticket: "all",
+      ticket: ["all"],
       creditCard: "all",
       debitCard: "all",
       mercadoPago: "all",
@@ -47,13 +47,13 @@ export function MercadoPagoButton({ totalPay }: { totalPay: number }) {
 
   return (
     <>
-      <Payment
+      {/* <Payment
         initialization={initialization}
         customization={customization}
         onSubmit={onSubmit}
         onReady={onReady}
         onError={onError}
-      />
+      /> */}
     </>
   );
 }

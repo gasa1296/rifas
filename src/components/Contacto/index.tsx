@@ -42,6 +42,12 @@ export default function Contacto() {
       required: true,
       type: "textarea",
     },
+    {
+      label: "Confirma que no eres un robot",
+      name: "captchap",
+      required: true,
+      type: "captchap",
+    },
   ];
   return (
     <div className="mx-4 ">
