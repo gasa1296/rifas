@@ -1,12 +1,11 @@
 import Layout from "@/components/Layout";
-import Rifas from "@/components/Rifas";
+import Registro from "@/components/Registro";
+import AllRifas from "@/components/Rifas/AllRifas";
 import React from "react";
-
-export default function RifaPage() {
-  return <div>
-    <Layout >
-      <Rifas />
+export default function allRifas() {
+  return (
+    <Layout>
+      <AllRifas />
     </Layout>
-
-  </div>;
+  );
 }

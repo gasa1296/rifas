@@ -12,8 +12,7 @@ import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 
-export default function RifasActivas({ href = "/rifas" }) {
-
+export default function RifasActivas({ all }: { all?: boolean }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -41,25 +40,28 @@ export default function RifasActivas({ href = "/rifas" }) {
     ],
   };
 
-
-
   const router = useRouter();
 
   const { raffles } = useSelector(selectRaffleState);
 
   return (
     <div>
-      <section className=" mx-3 mx-lg-5" style={{ marginBottom: "120px" }}>
+      <section
+        className={` mx-3 ${!all && "mx-lg-5"} `}
+        style={{ marginBottom: "120px" }}
+      >
         <div className="d-flex  m-0  ">
           <p className=" raffles-title lh-1 m-0">Rifas activas</p>
 
-          <p
-            className=" raffles-subtitle ms-4 mt-1  "
-            onClick={() => router.push(`/rifas/allRifas`)}
-            style={{ cursor: "pointer" }}
-          >
-            Ver todas las rifas
-          </p>
+          {!all && (
+            <p
+              className=" raffles-subtitle ms-4 mt-1  "
+              onClick={() => router.push(`/rifas`)}
+              style={{ cursor: "pointer" }}
+            >
+              Ver todas las rifas
+            </p>
+          )}
         </div>
         <div className=" raffles-navbar d-flex flex-wrap fw-light my-3 ">
           <p className="me-5">Todas</p>
@@ -101,10 +103,7 @@ export default function RifasActivas({ href = "/rifas" }) {
               </div>
             ))}
           </div>
-
         </Slider>
-
-
 
         {/* 
         <div className="d-flex justify-content-center mt-5 ">
@@ -114,7 +113,6 @@ export default function RifasActivas({ href = "/rifas" }) {
           <div className="circle-homeTestimonios  bg-light  border mx-2"></div>
         </div> */}
       </section>
-
-    </div >
+    </div>
   );
 }

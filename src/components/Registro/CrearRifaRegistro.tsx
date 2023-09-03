@@ -13,6 +13,7 @@ import { createRaffle } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 import { selectAuthState } from "@/store/slices/auth";
 import CreateAsociacion from "./CrearAsociacion";
+import { useRouter } from "next/router";
 <div></div>;
 
 const StepIcon = (step: number, currentStep: number) => {
@@ -21,9 +22,9 @@ const StepIcon = (step: number, currentStep: number) => {
 };
 
 export default function CrearRifaRegistro({ nextStep, backStep }: any) {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
-  const [finalRaffle, setFinalRaffle] = useState({});
 
   const dispatch = useDispatch();
   const { profile } = useSelector(selectAuthState);
@@ -36,11 +37,7 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
   const handleSubmit = async () => {
     const { payload } = await dispatch(createRaffle(raffle as RafflesI) as any);
-    if (payload) {
-      setFinalRaffle({ raffle, finalRaffle: payload });
-    } else {
-      setStep(1);
-    }
+    if (!payload) setStep(1);
   };
 
   useEffect(() => {
@@ -48,6 +45,11 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
 
     //eslint-disable-next-line
   }, [step]);
+
+  const resetRaffle = () => {
+    setStep(1);
+    setRaffle({});
+  };
 
   if (!canCreateRaffle) return <CreateAsociacion />;
 
@@ -107,10 +109,13 @@ export default function CrearRifaRegistro({ nextStep, backStep }: any) {
             <div className="m-0">{StepIcon(step, 3)}</div>
           </button>
         </div>
-        {step === 3 && <ConfirmacionRifa finalRaffle={finalRaffle} />}
+        {step === 3 && (
+          <ConfirmacionRifa resetRaffle={resetRaffle} raffle={raffle} />
+        )}
       </div>
       <div className=" text-dark text-center col-12">
         <button
+          onClick={() => router.push("/")}
           className=" my-2  btn btn-border-pink col-11  col-md-7"
           type="button"
         >

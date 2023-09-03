@@ -6,22 +6,30 @@ interface CausesStore {
   isLoading: boolean;
   causes: any[];
   error: boolean;
-  getCauses: () => Promise<void>;
+  getCauses: (pagination: number) => Promise<void>;
+  resetCauses: () => void;
+  paginacion: number | null;
 }
 
 export const useCausesStore = create<CausesStore>((set) => ({
   isLoading: false,
   causes: [],
   error: false,
-
-  getCauses: async () => {
+  paginacion: 1,
+  getCauses: async (pagination: number) => {
     set({ isLoading: true });
 
-    const { data } = await getCausesStore();
+    const { data } = await getCausesStore(pagination || 1);
 
-    set({
-        causes: data,
+    const nextPagination = data.next ? pagination + 1 : null;
+
+    set((state) => ({
+      causes: pagination === 1 ? data : [...state.causes, ...data],
       isLoading: false,
-    });
+      paginacion: nextPagination,
+    }));
+  },
+  resetCauses: () => {
+    set({ causes: [] });
   },
 }));

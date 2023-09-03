@@ -29,7 +29,7 @@ export default function Tickets() {
   return (
     <ul
       className="flex-wrap d-flex justify-content-center rounded list-unstyled   "
-      style={{ height: "400px", overflowY: "scroll" }}
+      style={{ height: "300px", overflowY: "scroll" }}
     >
       {ticketNumbers.map((ticketNumber) => {
         const findTicket = selectedTickets.find(

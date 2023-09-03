@@ -70,7 +70,7 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       name: "price",
       type: "number",
       customChange: ({ setValue, newValue, values }: any) => {
-        setValue("ticket_price", newValue / (values["ticket_number"] || 0));
+        setValue("ticket_price", newValue / (values["ticket_number"] || 1));
       },
     },
     {
@@ -90,11 +90,16 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       marks: {
         0: "1",
         1: "5",
-        2: "50",
-        3: "100",
-        4: "1000",
-        5: "5000",
-        6: "10000",
+        2: "10",
+        3: "25",
+        4: "50",
+        5: "100",
+        6: "250",
+        7: "500",
+        8: "1000",
+        9: "2500",
+        10: "5000",
+        11: "10000",
       },
     },
     {

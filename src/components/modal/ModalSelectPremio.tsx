@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import LogoRifas from "@/assets/img/logoRifas.svg";
 import Image from "next/image";
-import { useNotificationStore } from "@/store/zustand/NotificationStore";
+
 import { usePremioStore } from "@/store/zustand/PremioStore";
 import { parseNumber } from "@/utils/ParseNumber";
+import { useInView } from "react-intersection-observer";
 
 export default function ModalSelectPremio({ handleSubmit }: any) {
-  const isLoading = useNotificationStore((state) => state.isLoading);
-  const error = useNotificationStore((state) => state.error);
-  const premio = usePremioStore((state) => state.premio);
+  const { isLoading, error, premio, getPremio, paginacion } = usePremioStore();
+
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Cambia a false si necesitas que se dispare más de una vez
+  });
+
+  useEffect(() => {
+    if (inView) {
+      paginacion && getPremio(paginacion);
+    }
+
+    //eslint-disable-next-line
+  }, [inView]);
 
   return (
-    <section className=" ">
+    <section>
       <div className="d-flex  mt-3 mt-lg-4 row">
-        {!!isLoading && <p className="m-0">Cargando...</p>}
+        {!!isLoading && !premio.length && <p className="m-0">Cargando...</p>}
         {!!error && (
           <p className="m-0 text-danger ">Error al cargar las notificaciones</p>
         )}
-        {!isLoading &&
-          !error &&
+        {!error &&
           premio.map((premio: any, index: number) => (
             <div key={index} className="d-flex row mt-3 mt-lg-4 ">
               <div className="col-10 col-sm-4  mx-auto mx-sm-0    p-0 ">
@@ -27,6 +37,8 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
                   src={premio.image || LogoRifas}
                   alt="fondo"
                   className="w-100 h-100  rounded "
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="ms-3 ms-lg-3 col-8 col-sm-7  mx-auto  mt-3 mt-lg-0">
@@ -52,6 +64,8 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
               </div>
             </div>
           ))}
+
+        <div ref={ref} />
       </div>
     </section>
   );

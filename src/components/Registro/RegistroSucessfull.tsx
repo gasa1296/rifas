@@ -21,7 +21,7 @@ export default function RegistroSucessfull({ nextStep }: any) {
             premio.
           </p>
           <button
-            onClick={() => router.push("/rifas/allRifas")}
+            onClick={() => router.push("/rifas")}
             className="btn btn-border-pink col-12 mt-5 "
           >
             Participar en una rifa

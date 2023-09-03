@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { useState } from "react";
-export default function Rifa() {
+export default function Rifa({ all }: { all?: boolean }) {
   const { raffles, loading } = useSelector(selectRaffleState);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -40,12 +40,19 @@ export default function Rifa() {
 
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
-      <section className=" mt-5 mb-5 mx-0 mx-lg-5 container-destacada position-relative p-4">
-        <Image
-          src={fondoDestacada}
-          alt="fondodestacada"
-          className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
-        />
+      <section
+        className={` mt-5 mb-5 mx-0 ${
+          !all && "mx-lg-5"
+        } container-destacada position-relative p-4`}
+      >
+        {!all && (
+          <Image
+            src={fondoDestacada}
+            alt="fondodestacada"
+            className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
+          />
+        )}
+
         <h3 className=" raffle-title mt-5 mt-md-3 ">Rifa Destacada</h3>
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-between row m-0">
@@ -92,17 +99,17 @@ export default function Rifa() {
                 </p>
               </div>
             </div>
-            <div className="d-flex justify-content-center ">
+            <div className="d-flex justify-content-start ">
               <button
                 className="btn btn-pink btn-sm border col-6 button-rifaDestacada  "
                 onClick={() => router.push(`/rifas/${raffle.id}`)}
               >
                 Comprar boletos
               </button>
+
               <button
                 className="btn btn-border-pink btn-sm col-6 ms-1   button-rifaDestacada "
                 onClick={() => router.push(getRouter())}
-
               >
                 Ver detalles
               </button>

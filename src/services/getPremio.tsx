@@ -1,8 +1,8 @@
 import { Api } from ".";
 
-export const getPremioStore = () => {
-    return Api({
-        endpoint: `/prizes/`,
-        method: "GET",
-    });
+export const getPremioStore = (pagination: number) => {
+  return Api({
+    endpoint: `/prizes/?page=${pagination}`,
+    method: "GET",
+  });
 };
