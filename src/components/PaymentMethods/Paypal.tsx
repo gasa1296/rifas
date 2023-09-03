@@ -38,6 +38,7 @@ export default function Paypal({ totalPay }: { totalPay: number }) {
       wallet: selectedWallet,
       tickets: selectedTickets,
     });
+    //eslint-disable-next-line
   }, []);
 
   return (
