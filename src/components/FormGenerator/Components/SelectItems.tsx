@@ -6,9 +6,10 @@ import Image from "next/image";
 interface Props {
   selectedItem: SelectedItems;
   setSelected: any;
+  resetValue?: any;
 }
 
-export const Cause = ({ selectedItem, setSelected }: Props) => {
+export const Cause = ({ selectedItem, resetValue }: Props) => {
   return (
     <div>
       <p className="m-0 mt-2">Causa seleccionada</p>
@@ -33,7 +34,7 @@ export const Cause = ({ selectedItem, setSelected }: Props) => {
             className="btn btn-pink  mt-3  mb-4"
             onClick={(e) => {
               e.preventDefault();
-              setSelected(null);
+              resetValue();
             }}
           >
             Cambiar causa
@@ -44,7 +45,7 @@ export const Cause = ({ selectedItem, setSelected }: Props) => {
   );
 };
 
-export const Prize = ({ selectedItem, setSelected }: Props) => {
+export const Prize = ({ selectedItem, resetValue }: Props) => {
   return (
     <div>
       <p className="m-0 mt-2">Premio seleccionado</p>
@@ -71,7 +72,7 @@ export const Prize = ({ selectedItem, setSelected }: Props) => {
             className="btn btn-pink  mt-3  mb-4"
             onClick={(e) => {
               e.preventDefault();
-              setSelected(null);
+              resetValue();
             }}
           >
             Cambiar premio

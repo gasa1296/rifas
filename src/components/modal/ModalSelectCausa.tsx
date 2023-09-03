@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LogoRifas from "@/assets/img/logoRifas.svg";
 import Image from "next/image";
-import { useNotificationStore } from "@/store/zustand/NotificationStore";
 import { useCausesStore } from "@/store/zustand/CausesStore";
+import { useInView } from "react-intersection-observer";
 
 export default function ModalSelectCausa({ handleSubmit }: any) {
-  const isLoading = useNotificationStore((state) => state.isLoading);
-  const error = useNotificationStore((state) => state.error);
-  const causes = useCausesStore((state) => state.causes);
+  const { isLoading, error, causes, getCauses, paginacion } = useCausesStore();
+
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Cambia a false si necesitas que se dispare más de una vez
+  });
+
+  useEffect(() => {
+    if (inView) {
+      paginacion && getCauses(paginacion);
+    }
+
+    //eslint-disable-next-line
+  }, [inView]);
 
   return (
     <section className="">
@@ -49,6 +59,8 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
               </div>
             </div>
           ))}
+
+        <div ref={ref} />
       </div>
     </section>
   );

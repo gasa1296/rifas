@@ -32,14 +32,14 @@ export default function InputSelectItems({
   setValue,
 }: Props) {
   const [show, setShow] = useState(false);
-  const [activeSelect, setActiveSelect] = useState(false)
+  const [activeSelect, setActiveSelect] = useState(false);
   const [selected, setSelected] = useState<null | SelectedItems>(null);
 
   const SelectedComponent = types[selected?.type || "cause"];
 
   const handleClose = () => {
     setShow(false);
-    setActiveSelect(false)
+    setActiveSelect(false);
   };
   const handleShow = (e: any) => {
     e.preventDefault();
@@ -52,6 +52,12 @@ export default function InputSelectItems({
     setValue(name, data);
     setShow(false);
   };
+
+  const resetValue = () => {
+    setSelected(null);
+    setValue(name, null);
+  };
+
   return (
     <div className="">
       <label
@@ -74,13 +80,16 @@ export default function InputSelectItems({
         handleClose={handleClose}
       />
       {selected ? (
-        <SelectedComponent selectedItem={selected} setSelected={setSelected} />
+        <SelectedComponent selectedItem={selected} resetValue={resetValue} />
       ) : (
         <div className="d-lg-flex col-12  m-auto mb-3 mt-2  ">
-          <button onClick={(e) => {
-            handleShow(e);
-            setActiveSelect(true)
-          }} className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 ">
+          <button
+            onClick={(e) => {
+              handleShow(e);
+              setActiveSelect(true);
+            }}
+            className=" btn btn-pink col-12 col-lg-6 mt-lg-0  my-4 "
+          >
             {selectTitle}
           </button>
           <button

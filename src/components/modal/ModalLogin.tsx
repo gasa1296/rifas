@@ -20,13 +20,13 @@ export default function ModalLogin({ show, handleClose }: any) {
 
   const fields: Field[] = [
     {
-      label: "Email",
+      label: "Correo electrónico",
       name: "email",
       required: true,
       type: "email",
     },
     {
-      label: "password",
+      label: "Contraseña",
       name: "password",
       required: true,
       type: "password",
@@ -74,7 +74,10 @@ export default function ModalLogin({ show, handleClose }: any) {
         </div>
         <div className=" border-bottom border-2 my-3  "></div>
         <h6
-          onClick={() => router.push("/registro")}
+          onClick={() => {
+            handleClose();
+            router.push("/registro");
+          }}
           className="fw-bold  text-center registroAqui"
           style-={{ cursor: "pointer" }}
         >

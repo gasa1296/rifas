@@ -43,15 +43,21 @@ export default function ResumeRaffle({
       </div>{" "}
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2 ">
         <p className="m-0 text-calculadora-boletos">Valor del premio</p>
-        <p className="m-0 value-calculadora-boletos">$ 0.00</p>
+        <p className="m-0 value-calculadora-boletos">
+          $ {parseNumber(values?.prize?.value || 0)}
+        </p>
       </div>{" "}
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2 ">
         <p className="m-0 text-calculadora-boletos">Cuota de recuperación</p>
-        <p className="m-0 value-calculadora-boletos">$ 0.00</p>
+        <p className="m-0 value-calculadora-boletos">
+          $ {parseNumber(values.price - values.price * 0.8)}
+        </p>
       </div>{" "}
       <div className="d-flex justify-content-between  border-bottom  text-secondary shadow-sm p-2 ">
         <p className="m-0 text-calculadora-boletos">Ingreso total generado</p>
-        <p className="m-0 value-calculadora-boletos">$ 0.00</p>
+        <p className="m-0 value-calculadora-boletos">
+          $ {parseNumber(values.price - values.price * 0.2)}
+        </p>
       </div>
       <div className=" w-100 mb-3 mt-3 "></div>
     </div>

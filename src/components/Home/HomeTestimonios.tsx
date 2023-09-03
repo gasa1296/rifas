@@ -7,8 +7,6 @@ import testimnialesFondo from "@/assets/img/bg-testomoniales.png";
 import Image from "next/image";
 
 export default function HomeTestimonios() {
-
-
   const settings = {
     dots: true,
     infinite: false,
@@ -68,24 +66,21 @@ export default function HomeTestimonios() {
 
   return (
     <div className="pt-5 ">
-      <section className="row m-0 mx-0 mx-lg-5  position-relative p-5 rounded ">
+      <section className="row m-0 mx-0 mx-lg-5  position-relative  rounded pb-5">
         <Image
           src={testimnialesFondo}
           alt="fondoTestimoniales"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
         />
-        <h5 className=" home-title-testimonios">Testimoniales</h5>
+        <h5 className=" home-title-testimonios pt-5 ps-5">Testimoniales</h5>
         <Slider {...settings}>
-          {testimonios.map((testimonio, index) =>
-            <div className="py-3">
-              <p className="home-subtitle-testimonios ">
-                {testimonio.title}
-              </p>
+          {testimonios.map((testimonio, index) => (
+            <div key={index} className="py-3 p-5">
+              <p className="home-subtitle-testimonios ">{testimonio.title}</p>
 
               <div className=" d-flex justify-content-between row ">
                 <div className=" col-12 col-lg-5 mt-4 me-5  text-start ">
                   <p className="home-title-container-testimonios">
-
                     {testimonio.label}
                   </p>
 
@@ -95,7 +90,9 @@ export default function HomeTestimonios() {
                   <p className="home-information-container-testimonios">
                     {testimonio.information}
                   </p>
-                  <p className="home-subtitle-container-testimonios">{testimonio.footer}</p>
+                  <p className="home-subtitle-container-testimonios">
+                    {testimonio.footer}
+                  </p>
                 </div>
                 <div className="col-10 col-lg-5 mt-4  ">
                   <div className="">
@@ -104,11 +101,8 @@ export default function HomeTestimonios() {
                 </div>
               </div>
             </div>
-
-          )}
-
+          ))}
         </Slider>
-
 
         {/*   <div className="d-flex mt-5 justify-content-center ">
           {` `}

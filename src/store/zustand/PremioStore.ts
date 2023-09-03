@@ -6,23 +6,31 @@ interface PremioStore {
   isLoading: boolean;
   premio: any[];
   error: boolean;
-  getPremio: () => Promise<void>;
+  getPremio: (pagination: number) => Promise<void>;
+  resetPremio: () => void;
+  paginacion: number | null;
 }
 
 export const usePremioStore = create<PremioStore>((set) => ({
   isLoading: false,
   premio: [],
   error: false,
-
-  getPremio: async () => {
+  paginacion: 1,
+  getPremio: async (pagination: number) => {
     set({ isLoading: true });
 
-    const { data } = await getPremioStore();
-    console.log("first", data)
+    const { data } = await getPremioStore(pagination || 1);
 
-    set({
-        premio: data.results,
+    const nextPagination = data.next ? pagination + 1 : null;
+
+    set((state) => ({
+      premio:
+        pagination === 1 ? data.results : [...state.premio, ...data.results],
       isLoading: false,
-    });
+      paginacion: nextPagination,
+    }));
+  },
+  resetPremio: () => {
+    set({ premio: [], paginacion: 1 });
   },
 }));
