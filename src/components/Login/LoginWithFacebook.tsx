@@ -16,13 +16,13 @@ export default function LoginWithFacebook() {
           onClick={() => {
             renderProps.onClick();
           }}
-          className="btn btn-primary"
+          className="btn btn-primary "
           style={{
             backgroundColor: "#3b5998",
             border: "none",
           }}
         >
-          <BsFacebook size={18} className="me-3" />
+          <BsFacebook size={18} className="me-2 me-lg-3" />
           Continuar con facebook
         </button>
       )}

@@ -55,7 +55,7 @@ export const LoginWithGoogle = ({ handleClose }: Props) => {
       ></div>
 
       <div
-        className="g_id_signin"
+        className="g_id_signin "
         data-type="standard"
         data-shape="rectangular"
         data-theme="outline"

@@ -15,17 +15,17 @@ import { RafflesI } from "@/types/Model/Raffle";
 export default function RifasActivas({ all }: { all?: boolean }) {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -76,32 +76,41 @@ export default function RifasActivas({ all }: { all?: boolean }) {
         </div>
         <Slider {...settings}>
           <div className="d-flex row m-0  py-2">
-            {raffles.map((raffle: RafflesI, index: number) => (
-              <div
-                key={index}
-                className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-3 me-lg-3  "
-                style={{ maxWidth: "309px", width: "100%", height: "" }}
-              >
-                <Image src={fondoRifasActivas} className="w-100 h-50" alt="" />
-                <div className="p-3">
-                  <h6 className="raffles-title-card  ">{raffle.name}</h6>
-                  <p className="card-text raffles-subtitle-card lh-sm">
-                    {raffle.description}
-                  </p>
+            {[...raffles, ...raffles, ...raffles, ...raffles].map(
+              (raffle: RafflesI, index: number) => (
+                <div
+                  key={index}
+                  className="col-3 col-lg-2 shadow  p-0  mt-4 mt-md-0 me-3 me-lg-3  "
+                  style={{ maxWidth: "309px", width: "100%", height: "" }}
+                >
+                  <Image
+                    src={fondoRifasActivas}
+                    className="w-100 h-50"
+                    alt=""
+                  />
+                  <div className="p-3">
+                    <h6 className="raffles-title-card  ">{raffle.name}</h6>
+                    <p className="card-text raffles-subtitle-card lh-sm">
+                      {raffle.description}
+                    </p>
 
-                  <p className="card-text  raffles-subtitle-card  p-0  ">
-                    <MdAccessTime size={20} className="mb-1 me-2 opacity-75 " />
-                    20% 8,040.00 recaudado
-                  </p>
-                  <button
-                    onClick={() => router.push(`/rifas/${raffle.id}`)}
-                    className="btn fs-6 btn-pink w-100"
-                  >
-                    Comprar boleto
-                  </button>
+                    <p className="card-text  raffles-subtitle-card  p-0  ">
+                      <MdAccessTime
+                        size={20}
+                        className="mb-1 me-2 opacity-75 "
+                      />
+                      20% 8,040.00 recaudado
+                    </p>
+                    <button
+                      onClick={() => router.push(`/rifas/${raffle.id}`)}
+                      className="btn fs-6 btn-pink w-100"
+                    >
+                      Comprar boleto
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </Slider>
 

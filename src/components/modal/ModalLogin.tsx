@@ -61,15 +61,17 @@ export default function ModalLogin({ show, handleClose }: any) {
           submitData={submitData}
           loading={loading}
         />
+        {/*  */}
 
-        <div className="col-12 mx-auto d-flex justify-content-around  mb-4">
-          <LoginWithFacebook />
+        <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
+          <div className="my-2 my-md-0 mx-3">   <LoginWithFacebook /></div>
 
-          <div>
-            <LoginWithGoogle handleClose={handleClose} />
+
+
+          <div className=" mt-1 mt-md-0 mx-2 ">
+            <LoginWithGoogle handleClose={() => { }} />
           </div>
         </div>
-
         <div className=" border-bottom border-2 my-3  "></div>
         <h6
           onClick={() => {

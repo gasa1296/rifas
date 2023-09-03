@@ -1,8 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import fondo from "@/assets/img/Comienza-la-historia.png";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectAuthState } from "@/store/slices/auth";
 
 export default function HomeCreateRifa() {
+  const router = useRouter();
+
+  const { authenticated } = useSelector(selectAuthState);
+
+  const route = authenticated ? "/rifas/crear_rifas" : "/registro";
+
   return (
     <div className=" mx-3 mx-lg-5">
       <section
@@ -31,12 +40,12 @@ export default function HomeCreateRifa() {
             Una vez enviada sera revisada por nuestro equipo para hacer
             recomendaciones o si esta lista para publicarse
           </p>
-          <a
-            href="#"
+          <button
             className="btn fs-6 btn-pink w-100 fw-normal mt-5 mx-auto"
+            onClick={() => router.push(route)}
           >
             Iniciar Rifa
-          </a>
+          </button>
         </div>
         <div className="col-12 col-lg-7 mt-4 mt-lg-1  ">
           <div className="col-md-12">

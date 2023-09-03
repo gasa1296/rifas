@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "@/assets/img/logo-rifa-footer.png";
+
 import { useRouter } from "next/router";
 
 export default function Footer() {
@@ -15,10 +16,10 @@ export default function Footer() {
           <div className="">
             <h6 className=".footer-title mt-5 mt-md-0 ">¡Rífate!</h6>
             <ul className=" list-unstyled footer-information ">
-              <li>Inicia una rifa</li>
-              <li>Comprar boletos</li>
-              <li>Haz una donacion</li>
-              <li>Crear una cuenta</li>
+              <li className="listas-footer" onClick={() => router.push("/rifas")}>Inicia una rifa</li>
+              <li className="listas-footer" onClick={() => router.push(`/rifas`)} >Comprar boletos</li>
+              <li className="listas-footer" onClick={() => router.push("/donaciones")}>Haz una donacion</li>
+              <li className="listas-footer" onClick={() => router.push("/registro")}>Crear una cuenta</li>
             </ul>
           </div>
           <div>
