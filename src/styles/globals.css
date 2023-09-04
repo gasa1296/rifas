@@ -1128,11 +1128,17 @@ opacity: 1;
 }
 
 /*contacto*/
-.container-contacto{
-  background: #C3286D;
-  border-radius:5px;
-text-align: center;
-padding: 20px;
+
+.fondoContacto{
+  
+}
+@media (max-width: 968px) {
+  .fondoContacto{
+    height: 8%;
+  }
+  .contacto{
+    font-size: 25px;
+  }
 }
 
 .contacto{
@@ -1141,6 +1147,7 @@ color: #FFFFFF;
 opacity: 1;
 font-size: 46px;
 font-weight: 600;
+
 }
 
 .help-contacto{
