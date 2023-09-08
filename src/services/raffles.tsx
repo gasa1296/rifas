@@ -23,11 +23,18 @@ export const getRaffleTickets = (id: String | string[]) => {
     method: "GET",
   });
 };
+export const getPrizebyId = (id: String | string[]) => {
+  return Api({
+    endpoint: `/prizes/${id}/`,
+    method: "GET",
+  });
+};
 
 export const validateApplyCoupon = (coupon: String, raffleId: Number) => {
   return Api({
-    endpoint: `/buying/${coupon}/get_coupon?id=${raffleId}`,
-    method: "GET",
+    endpoint: `/buying/${raffleId}/get_coupon/`,
+    method: "POST",
+    _data: { coupon },
   });
 };
 

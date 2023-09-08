@@ -32,8 +32,7 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
   const handleApplyCupon = async () => {
     const { payload } = await dispatch(validateCoupon(cupon) as any);
 
-    if (!payload) return toast.error("Cupon invalido");
-    else toast.success("Cupon aplicado");
+    if (payload) return toast.success("Cupon aplicado");
   };
   const disableButton = selectedPaymentMethod === null;
 

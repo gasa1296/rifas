@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { selectAuthState } from "@/store/slices/auth";
 import { MercadoPagoButton } from "../PaymentMethods/Mercadopago";
+import { parseNumber } from "@/utils/ParseNumber";
 
 export default function PaySuccessful({ initialStep }: any) {
   const router = useRouter();
@@ -31,8 +32,6 @@ export default function PaySuccessful({ initialStep }: any) {
 
   const totalPay = walletAccount > totalPrice ? 0 : totalPrice - walletAccount;
 
-  console.log("first", selectedPaymentMethod);
-
   if (!success && selectedPaymentMethod === "paypal")
     return (
       <div className="  d-block justify-content-center d-lg-flex mt-5 mx-3 mx-lg-0 ">
@@ -40,7 +39,7 @@ export default function PaySuccessful({ initialStep }: any) {
           <BuyTickes />
         </div>
         <div className="col-lg-6 col-12 mt-3 mt-md-0 text-center px-5 mx-auto">
-          <Paypal totalPay={totalPay} />
+          <Paypal setSuccess={setSuccess} totalPay={totalPay} />
         </div>
       </div>
     );
@@ -51,7 +50,7 @@ export default function PaySuccessful({ initialStep }: any) {
           <BuyTickes />
         </div>
         <div className="col-lg-6 col-12 mt-3 mt-md-0 text-center px-5 mx-auto">
-          <MercadoPagoButton totalPay={totalPay} />
+          <MercadoPagoButton setSuccess={setSuccess} totalPay={totalPay} />
         </div>
       </div>
     );
@@ -71,18 +70,21 @@ export default function PaySuccessful({ initialStep }: any) {
         <p className=" m-0  d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de boletos adquiridos:{" "}
-          <p className="value-paySucessful m-0">3</p>
+          <p className="value-paySucessful m-0">{selectedTickets.length}</p>
         </p>
         <p className=" m-0  d-flex justify-content-center  text-paySucessful m-0 ">
           {" "}
           Total pagado:{" "}
-          <p className="value-paySucessful m-0"> $20,000.00 MXN</p>
+          <p className="value-paySucessful m-0">
+            {" "}
+            $ {parseNumber(totalPay)} MXN
+          </p>
         </p>
-        <p className=" m-0 d-flex justify-content-center  text-paySucessful">
+        {/* <p className=" m-0 d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de referencia:{" "}
           <p className="value-paySucessful m-0">t8zbvmk6.</p>
-        </p>
+        </p> */}
         <p className=" mt-3 mb-0  text-paySucessful ">
           Ayúdanos a compartir en tus redes sociales y más gente se una a la
           causa.

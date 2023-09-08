@@ -25,6 +25,8 @@ export default function InputCaptchap({
     setValue(name, response);
   }
 
+  console.log("Test", process.env.NEXT_PUBLIC_CAPTCHAP_ID || "");
+
   return (
     <div>
       <label
