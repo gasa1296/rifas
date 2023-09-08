@@ -463,8 +463,19 @@ opacity: 1;
   top: 35%;
   border: none;
   background-color: transparent;
+    z-index: 1000;
   
 }
+
+.buttonNext-RifasActivas{
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  right: 0;
+  bottom: 50%;
+  z-index: 1000;
+}
+
 
 .iconPreviousNext{
   height: 60px;
@@ -492,13 +503,6 @@ opacity: 1;
   }
 }
 
-.buttonNext-RifasActivas{
-  position: absolute;
-  border: none;
-  background-color: transparent;
-  right: 0;
-  bottom: 50%;
-}
 
 /*Rifs details*/
 

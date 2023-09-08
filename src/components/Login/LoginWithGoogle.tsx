@@ -46,7 +46,7 @@ export const LoginWithGoogle = ({ handleClose }: Props) => {
     <>
       <div
         id="g_id_onload"
-        data-client_id="388797586221-62o9ph0f22lokf6i4c4apjkstr7t775c.apps.googleusercontent.com"
+        data-client_id={process.env.NEXT_PUBLIC_GOOGLE_ID}
         data-callback="onGoogleSuccess" // as defined above
         data-context="signin"
         data-ux_mode="popup"

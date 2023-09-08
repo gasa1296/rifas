@@ -7,24 +7,18 @@ import Image from "next/image";
 import BuyTickes from "./BuyTickes";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-import { selectAuthState } from "@/store/slices/auth";
+
 import { parseNumber } from "@/utils/ParseNumber";
-import Paypal from "../PaymentMethods/Paypal";
+
+import useTotalValue from "@/hooks/useTotalValue";
 export default function RifaPago({ nextStep, backStep }: any) {
-  const [success, setSuccess] = React.useState(false);
-  const { raffle, selectedPaymentMethod, selectedTickets, selectedWallet } =
+  const { selectedPaymentMethod, selectedTickets } =
     useSelector(selectRaffleState);
-  const { profile } = useSelector(selectAuthState);
 
   const Icon =
     selectedPaymentMethod === "paypal" ? logoPaypal : logoMercadoPago;
 
-  const walletAccount = selectedWallet ? Number(profile?.wallet.value) : 0;
-
-  const totalPrice =
-    selectedTickets.length * (Number(raffle?.ticket_price) || 0);
-
-  const totalPay = walletAccount > totalPrice ? 0 : totalPrice - walletAccount;
+  const { totalPay } = useTotalValue();
 
   return (
     <div className="d-block justify-content-center d-lg-flex  mt-5 mx-3 mx-lg-0   ">

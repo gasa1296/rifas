@@ -26,34 +26,50 @@ export default function Tickets() {
     dispatch(setSelectedTicket([...selectedTickets, ticketNumber]) as any);
   };
 
+  const filterTickets = (ticketsNumbers: number[], ticketsUsed: any) => {
+    const availableTickets: number[] = [];
+
+    ticketsNumbers.forEach((ticketNumber) => {
+      const findTicket = ticketsUsed.find(
+        (ticket: any) => ticket.number === ticketNumber
+      );
+      if (!findTicket) {
+        availableTickets.push(ticketNumber);
+      }
+    });
+    return availableTickets;
+  };
+
   return (
     <ul
       className="flex-wrap d-flex justify-content-center rounded list-unstyled   "
       style={{ height: "300px", overflowY: "scroll" }}
     >
-      {ticketNumbers.map((ticketNumber) => {
-        const findTicket = selectedTickets.find(
-          (ticket) => ticket === ticketNumber
-        );
-        return (
-          <li
-            onClick={() => handleSelectTicket(ticketNumber)}
-            className={`raffle-container ${
-              findTicket ? "raffle-container-success" : ""
-            }`}
-            style={{ cursor: "pointer" }}
-            key={ticketNumber}
-          >
-            <div
-              className={`lh-sm  border-1 border rounded-1 text-center raffle-box ${
-                findTicket ? "raffle-box-success" : ""
-              } `}
+      {filterTickets(ticketNumbers, raffle?.tickets || []).map(
+        (ticketNumber) => {
+          const findTicket = selectedTickets.find(
+            (ticket) => ticket === ticketNumber
+          );
+          return (
+            <li
+              onClick={() => handleSelectTicket(ticketNumber)}
+              className={`raffle-container ${
+                findTicket ? "raffle-container-success" : ""
+              }`}
+              style={{ cursor: "pointer" }}
+              key={ticketNumber}
             >
-              {ticketNumber}
-            </div>
-          </li>
-        );
-      })}
+              <div
+                className={`lh-sm  border-1 border rounded-1 text-center raffle-box ${
+                  findTicket ? "raffle-box-success" : ""
+                } `}
+              >
+                {ticketNumber}
+              </div>
+            </li>
+          );
+        }
+      )}
     </ul>
   );
 }

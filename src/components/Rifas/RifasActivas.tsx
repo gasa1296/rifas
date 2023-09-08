@@ -14,7 +14,10 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
 
 export default function RifasActivas({ all }: { all?: boolean }) {
-  const slider = React.useRef(null);
+  const slider = React.useRef<any>(null);
+  const { raffles, causesCategories } = useSelector(selectRaffleState);
+  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = React.useState<any>(null);
   const settings = {
     dots: true,
     infinite: false,
@@ -43,9 +46,9 @@ export default function RifasActivas({ all }: { all?: boolean }) {
     ],
   };
 
-  const router = useRouter();
-
-  const { raffles } = useSelector(selectRaffleState);
+  const filterRaffles = raffles.filter(
+    (raffle) => !selectedCategory || raffle.category === selectedCategory
+  );
 
   return (
     <div className="mt-3  ">
@@ -67,59 +70,85 @@ export default function RifasActivas({ all }: { all?: boolean }) {
           )}
         </div>
         <div className=" raffles-navbar d-flex flex-wrap fw-light my-3 ">
-          <p className="me-5">Todas</p>
-          <p className="me-5">Animales</p>
-          <p className="me-5">Comunidad</p>
-          <p className="me-5">Cultura</p>
-          <p className="me-5">Deporte</p>
-          <p className="me-5">Educacion</p>
-          <p className="me-5">Emergencia</p>
-          <p className="me-5">Salud</p>
-          <p className="me-5">Sustentabilidad</p>
+          <p
+            style={{ cursor: "pointer" }}
+            onClick={() => setSelectedCategory(null)}
+            className="me-5"
+          >
+            Todas
+          </p>
+          {causesCategories?.map((category, index) => (
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => setSelectedCategory(category.id)}
+              key={index}
+              className="me-5"
+            >
+              {category.name}
+            </p>
+          ))}
         </div>
         <div className="px-2 px-md-5 position-relative  ">
-          <button className="position-absolute  buttonPrevious-RifasActivas " onClick={() => slider?.current?.slickPrev()}><IoIosArrowBack color="#C3286D" className="iconPreviousNext" /></button>
+          <button
+            className="position-absolute  buttonPrevious-RifasActivas "
+            onClick={() => {
+              slider?.current?.slickPrev();
+            }}
+          >
+            <IoIosArrowBack color="#C3286D" className="iconPreviousNext" />
+          </button>
           <Slider ref={slider} {...settings} className=" ">
-            {[...raffles, ...raffles, ...raffles, ...raffles].map(
-              (raffle: RafflesI, index: number) => (
-                <div key={index} className="col-3 col-lg-2   mt-4 mt-md-0 py-3  " style={{ maxWidth: "309px", width: "100%", height: "" }}>
-                  <div className="mx-2 shadow">
-                    <Image
-                      src={fondoRifasActivas}
-                      className="w-100 h-50"
-                      alt=""
-                    />
-                    <div className="p-3 px-3">
-                      <h6 className="raffles-title-card  ">{raffle.name}</h6>
-                      <p className="card-text raffles-subtitle-card lh-sm">
-                        {raffle.description}
-                      </p>
+            {[
+              ...filterRaffles,
+              ...filterRaffles,
+              ...filterRaffles,
+              ...filterRaffles,
+            ].map((raffle: RafflesI, index: number) => (
+              <div
+                key={index}
+                className="col-3 col-lg-2   mt-4 mt-md-0 py-3  "
+                style={{ maxWidth: "309px", width: "100%", height: "" }}
+              >
+                <div className="mx-2 shadow">
+                  <Image
+                    src={fondoRifasActivas}
+                    className="w-100 h-50"
+                    alt=""
+                  />
+                  <div className="p-3 px-3">
+                    <h6 className="raffles-title-card  ">{raffle.name}</h6>
+                    <p className="card-text raffles-subtitle-card lh-sm">
+                      {raffle.description}
+                    </p>
 
-                      <p className="card-text  raffles-subtitle-card  p-0  ">
-                        <MdAccessTime
-                          size={20}
-                          className="mb-1 me-2 opacity-75 "
-                        />
-                        20% 8,040.00 recaudado
-                      </p>
-                      <button
-                        onClick={() => router.push(`/rifas/${raffle.id}`)}
-                        className="btn fs-6 btn-pink w-100"
-                      >
-                        Comprar boleto
-                      </button>
-                    </div>
+                    <p className="card-text  raffles-subtitle-card  p-0  ">
+                      <MdAccessTime
+                        size={20}
+                        className="mb-1 me-2 opacity-75 "
+                      />
+                      20% 8,040.00 recaudado
+                    </p>
+                    <button
+                      onClick={() => router.push(`/rifas/${raffle.id}`)}
+                      className="btn fs-6 btn-pink w-100"
+                    >
+                      Comprar boleto
+                    </button>
                   </div>
-
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </Slider>
-          <button className="position-absolute  buttonNext-RifasActivas " onClick={() => slider?.current?.slickNext()}><IoIosArrowForward color="#C3286D" className="iconPreviousNext" /></button>
-
+          <button
+            className="position-absolute  buttonNext-RifasActivas "
+            onClick={() => {
+              slider?.current?.slickNext();
+            }}
+          >
+            <IoIosArrowForward color="#C3286D" className="iconPreviousNext" />
+          </button>
         </div>
-
       </section>
-    </div >
+    </div>
   );
 }

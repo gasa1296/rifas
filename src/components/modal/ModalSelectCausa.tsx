@@ -26,8 +26,7 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
         {!!error && (
           <p className="m-0 text-danger ">Error al cargar las notificaciones</p>
         )}
-        {!isLoading &&
-          !error &&
+        {!error &&
           causes.map((causes: any, index: number) => (
             <div key={index} className="d-flex my-4 px-3 row">
               <div className="col-10 col-sm-4 p-0 ">

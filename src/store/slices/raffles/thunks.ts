@@ -4,10 +4,12 @@ import {
   createNewRaffle,
   getAssociationsApproveds,
   getCausesCategories,
+  getPrizebyId,
   getPrizesCategories,
   getRaffle,
   getRaffleTickets,
   getRaffles,
+  validateApplyCoupon,
 } from "@/services/raffles";
 import { RootState } from "@/store";
 import { handleError } from "@/utils/handleError";
@@ -15,6 +17,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { setCausesCategories, setPrizesCategories, setRaffle } from ".";
 import { RafflesI } from "@/types/Model/Raffle";
+import { deleteReservedTickets, getReservedTickets } from "@/services/Payments";
 const PREFIX: string = "raffles";
 
 export const Raffles = createAsyncThunk(
@@ -34,7 +37,7 @@ export const GetAssociations = createAsyncThunk(
     try {
       const result = await getAssociationsApproveds();
 
-      return result.data;
+      return result.data.results;
     } catch (error) {
       handleError(error);
     }
@@ -46,10 +49,16 @@ export const GetRaffle = createAsyncThunk(
     try {
       thunkAPI.dispatch(setRaffle(null));
       const result = await getRaffle(raffleId);
+
       const raffleTickets = await getRaffleTickets(raffleId);
+      const prize = await getPrizebyId(result.data.prize);
 
       thunkAPI.dispatch(
-        setRaffle({ ...result.data, ticketUnavailable: raffleTickets.data })
+        setRaffle({
+          ...result.data,
+          ticketUnavailable: raffleTickets.data,
+          prizeData: prize.data,
+        })
       );
 
       return result.data;
@@ -150,6 +159,24 @@ export const createRaffle = createAsyncThunk(
       const raffleResult = await createNewRaffle(payload);
 
       return raffleResult.data;
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+
+export const validateCoupon = createAsyncThunk(
+  `${PREFIX}/validate-coupon`,
+  async (coupon: string, thunkAPI): Promise<{} | undefined> => {
+    try {
+      const { raffles } = thunkAPI.getState() as RootState;
+
+      const result = await validateApplyCoupon(
+        coupon,
+        raffles?.raffle?.id || 0
+      );
+
+      return result.data;
     } catch (error) {
       handleError(error);
     }

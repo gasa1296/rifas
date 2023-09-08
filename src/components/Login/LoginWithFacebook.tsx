@@ -8,7 +8,7 @@ export default function LoginWithFacebook() {
 
   return (
     <FacebookLogin
-      appId="679244714108869"
+      appId={process.env.NEXT_PUBLIC_FACEBOOK_ID || ""}
       fields="name,email,picture"
       callback={handleFacebookResponse}
       render={(renderProps: any) => (

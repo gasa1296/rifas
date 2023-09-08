@@ -47,6 +47,12 @@ export default function CreateAccount({ nextStep }: any) {
       required: true,
       type: "checkbox",
     },
+    {
+      label: "Confirma que no eres un robot",
+      name: "captchap",
+      required: true,
+      type: "captchap",
+    },
   ];
 
   return (
@@ -65,10 +71,13 @@ export default function CreateAccount({ nextStep }: any) {
         </p>
       </div>
       <div
-        className=" col-md-8  m-auto  col-12  justify-content-center  d-flex my-3 text-secondary shadow rounded  px-3 " style={{ maxWidth: "600px", width: "100%" }}>
-        <div><p className=" text-center title-registro-CreateAcount my-3 ">
-          Registra tu cuenta
-        </p>
+        className=" col-md-8  m-auto  col-12  justify-content-center  d-flex my-3 text-secondary shadow rounded  px-3 "
+        style={{ maxWidth: "600px", width: "100%" }}
+      >
+        <div>
+          <p className=" text-center title-registro-CreateAcount my-3 ">
+            Registra tu cuenta
+          </p>
           <FormGenerator
             buttonText="Registrar"
             submitData={submitData}
@@ -81,20 +90,17 @@ export default function CreateAccount({ nextStep }: any) {
               O registrate con tus redes sociales
             </p>
 
-
-            <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
-              <div className="my-2 my-md-0 mx-3">   <LoginWithFacebook /></div>
-
-
+            <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4">
+              <div className="my-2 my-md-0 mx-3">
+                <LoginWithFacebook />
+              </div>
 
               <div className=" mt-1 mt-md-0 mx-2 ">
-                <LoginWithGoogle handleClose={() => { }} />
+                <LoginWithGoogle handleClose={() => {}} />
               </div>
             </div>
-          </div></div>
-
-
-
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -16,6 +16,7 @@ const initialState: RaffleInitialState = {
   selectedTickets: [],
   selectedPaymentMethod: null,
   selectedWallet: false,
+  coupon: null,
 };
 
 export const rafflesSlice = createSlice({
@@ -53,6 +54,7 @@ export const rafflesSlice = createSlice({
       state.selectedTickets = [];
       state.selectedPaymentMethod = null;
       state.selectedWallet = false;
+      state.coupon = null;
     },
   },
   extraReducers: (builder) => {

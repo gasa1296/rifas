@@ -15,12 +15,13 @@ import ResumeRaffle from "./ResumeRaffle";
 export default function ConfiguraRifa({ handleChangeRaffle }: any) {
   const { loading, associations } = useSelector(selectRaffleState);
 
+  console.log("Teasdads", associations);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       dispatch(GetAssociations({}) as any);
-      dispatch(getCategories({}) as any);
     }, 200);
 
     return () => clearTimeout(timeoutId);
@@ -36,7 +37,7 @@ export default function ConfiguraRifa({ handleChangeRaffle }: any) {
       name: "association",
       required: true,
       type: "select",
-      options: associations.map((association) => ({
+      options: associations?.map((association) => ({
         label: association.association_name,
         value: association.id,
       })),
