@@ -1279,6 +1279,11 @@ font-size: 14px;
   font-size: 12px;
 }
 
+/*modal contacto*/
+.password{
+  cursor: pointer;
+}
+
 /* 
 .size-imagenNotifications{
   width: 100px;
