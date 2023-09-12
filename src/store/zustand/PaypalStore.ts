@@ -14,11 +14,14 @@ interface PaypalPayment {
   isLoading: boolean;
   payment: any;
   error: boolean;
+  payId: string;
   setPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setPaymentCapture: (
     raffleId: number,
     price: number,
-    order: string
+    order: string,
+    coupon: string,
+    wallet: boolean
   ) => Promise<void>;
   getPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setMercadopagoCapture: (
@@ -29,7 +32,9 @@ interface PaypalPayment {
       token: string;
       payment_method_id: string;
       issuer_id: string;
-    }
+    },
+    coupon: string,
+    wallet: boolean
   ) => Promise<void>;
 }
 
@@ -37,7 +42,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
   isLoading: false,
   payment: [],
   error: false,
-
+  payId: "",
   setPaymentCreate: async (raffleId: number, raffle: any) => {
     set({ isLoading: true });
 
@@ -70,16 +75,25 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       });
     }
   },
-  setPaymentCapture: async (raffleId: number, price: number, order: string) => {
+  setPaymentCapture: async (
+    raffleId: number,
+    price: number,
+    order: string,
+    coupon: string,
+    wallet: boolean
+  ) => {
     try {
       set({ isLoading: true });
 
-      const payload = { price, order };
+      const payload = { price, order, coupon, wallet };
+
+      const priceResult = await getPrice(raffleId);
 
       await setPaypalCapture(raffleId, payload);
 
       set({
         isLoading: false,
+        payId: order,
       });
     } catch (error) {
       set({
@@ -95,27 +109,35 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       token: string;
       payment_method_id: string;
       issuer_id: string;
-    }
+    },
+    coupon: string,
+    wallet: boolean
   ) => {
-    set({ isLoading: true });
+    try {
+      set({ isLoading: true });
 
-    const priceResult = await getPrice(raffleId);
-    console.log("testt", priceResult);
+      const priceResult = await getPrice(raffleId);
 
-    const payload = {
-      email: payment_data.payer.email,
-      token: payment_data.token,
-      price: price,
-      payment_method_id: payment_data.payment_method_id,
-      issuer_id: payment_data.issuer_id,
-      type: "",
-      number: "",
-    };
+      const payload = {
+        email: payment_data.payer.email,
+        token: payment_data.token,
+        price: price,
+        payment_method_id: payment_data.payment_method_id,
+        issuer_id: payment_data.issuer_id,
+        type: "",
+        number: "",
+      };
 
-    await setMercadopago(raffleId, payload);
+      await setMercadopago(raffleId, payload);
 
-    set({
-      isLoading: false,
-    });
+      set({
+        isLoading: false,
+        payId: payment_data.token,
+      });
+    } catch (error) {
+      set({
+        error: true,
+      });
+    }
   },
 }));

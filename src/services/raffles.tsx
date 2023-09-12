@@ -11,6 +11,24 @@ export const getRaffles = () => {
     method: "GET",
   });
 };
+export const getRafflesFeatures = () => {
+  return Api({
+    endpoint: "/raffles/featured/",
+    method: "GET",
+  });
+};
+export const getRafflesDate = () => {
+  return Api({
+    endpoint: "/raffles_dates",
+    method: "GET",
+  });
+};
+export const getTestimonies = () => {
+  return Api({
+    endpoint: "/testimonies/",
+    method: "GET",
+  });
+};
 export const getRaffle = (id: String | string[]) => {
   return Api({
     endpoint: `/raffles/${id}`,
@@ -45,7 +63,8 @@ export const createDonations = (donation: any) => {
   formData.append("category", donation.category);
   formData.append("status", donation.status);
   formData.append("value", donation.value);
-  formData.append("association", donation.association);
+  if (donation.association)
+    formData.append("association", donation.association);
   if (donation.image[0]) formData.append("image", donation.image[0]);
 
   return axios.post(baseUrl + "/prizes/", formData, {

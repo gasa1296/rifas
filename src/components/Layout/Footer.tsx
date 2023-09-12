@@ -53,8 +53,18 @@ export default function Footer() {
           <div>
             <h6 className=".footer-title">Nosotros</h6>
             <ul className=" list-unstyled footer-information">
-              <li>Conocenos</li>
-              <li>¿Como funciona?</li>
+              <li
+                onClick={() => router.push("/nosotros")}
+                className="button-contacto"
+              >
+                Conocenos
+              </li>
+              <li
+                onClick={() => router.push("/faq")}
+                className="button-contacto"
+              >
+                ¿Como funciona?
+              </li>
               <li
                 onClick={() => router.push("/contacto")}
                 className="button-contacto"
@@ -70,7 +80,12 @@ export default function Footer() {
               <li>Terminos y condiciones</li>
               <li>Aviso de privacidad</li>
               <li>Preguntan frecuentes</li>
-              <li>Reportar rifa</li>
+              <li
+                onClick={() => router.push("/contacto")}
+                className="button-contacto"
+              >
+                Reportar rifa
+              </li>
             </ul>
           </div>{" "}
           <div>

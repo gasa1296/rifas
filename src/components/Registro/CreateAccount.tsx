@@ -49,7 +49,7 @@ export default function CreateAccount({ nextStep }: any) {
     },
     {
       label: "Confirma que no eres un robot",
-      name: "captchap",
+      name: "token",
       required: true,
       type: "captchap",
     },

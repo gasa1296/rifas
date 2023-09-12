@@ -18,10 +18,16 @@ export interface RafflesI {
   ticket_number: string;
   ticket_price: string;
   category: string;
+  raised: number;
+  status: number;
+  categories: Category[];
 }
 
 export interface Cause {
   image: string | null;
+  id: number;
+}
+export interface Category {
   id: number;
 }
 export interface Prize {

@@ -25,6 +25,7 @@ export const Raffles = createAsyncThunk(
   async (Profile: any, thunkAPI): Promise<{} | undefined> => {
     try {
       const result = await getRaffles();
+
       return result.data.results;
     } catch (error) {
       handleError(error);
@@ -83,7 +84,11 @@ export const Donations = createAsyncThunk(
 
       dataDonation.association = Number(dataDonation.association);
 
-      if (dataDonation.association === 0) delete dataDonation.association;
+      if (
+        dataDonation.association === 0 ||
+        dataDonation.association === undefined
+      )
+        delete dataDonation.association;
 
       dataDonation.category = Number(dataDonation.category);
       const result = await createDonations(dataDonation);
@@ -118,7 +123,10 @@ export const createRafflesPrize = createAsyncThunk(
 
       prize.association = Number(prize.association);
 
-      if (prize.association === 0) delete prize.association;
+      if (prize.association === 0 || prize.association === undefined)
+        delete prize.association;
+
+      console.log("Tea2");
 
       prize.category = Number(prize.category);
 

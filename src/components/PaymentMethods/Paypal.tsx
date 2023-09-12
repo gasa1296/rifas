@@ -16,7 +16,7 @@ export default function Paypal({
     (state) => state.setPaymentCapture
   );
 
-  const { raffle, selectedWallet, selectedTickets } =
+  const { raffle, selectedTickets, selectedWallet, coupon } =
     useSelector(selectRaffleState);
 
   const createOrder = (data: any, actions: any) => {
@@ -43,7 +43,9 @@ export default function Paypal({
         const result = await setPaymentCapture(
           raffle?.id || 0,
           totalPay,
-          data.orderID
+          data.orderID,
+          coupon?.id || "",
+          selectedWallet
         );
         console.log("Test", result);
         setSuccess(true);

@@ -29,15 +29,7 @@ export default function RifasDescription() {
           ¿Cómo voy a utilizar el dinero?
         </h5>
         <p className="col-12 col-lg-6 text-rifaDescription opacity-75 text-center text-lg-start">
-          Cada centavo recaudado durante esta rifa será destinado a APAC, para
-          proporcionar asistencia médica, apoyo emocional y recursos necesarios
-          para pacientes con cáncer y sus familias. Queremos asegurarnos de que
-          nadie enfrente esta batalla solo y que cada persona afectada reciba el
-          amor y el apoyo que necesita. Esperamos contar con tu valiosa
-          presencia en nuestra rifa benéfica. Tu participación marcará una
-          diferencia significativa en la vida de aquellos que necesitan
-          esperanza y fuerza para vencer al cáncer. ¡Juntos, podemos hacer
-          posible el cambio!
+          {raffle?.description || ""}
         </p>
         <div className=" border-bottom border-1  my-2 w-100 w-lg-50   "></div>
         <h5 className="subtitle-rifDescription text-center text-lg-start  z-2 ">

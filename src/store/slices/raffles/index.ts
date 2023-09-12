@@ -55,6 +55,7 @@ export const rafflesSlice = createSlice({
       state.selectedPaymentMethod = null;
       state.selectedWallet = false;
       state.coupon = null;
+      state.raffle = null;
     },
   },
   extraReducers: (builder) => {

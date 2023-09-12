@@ -6,3 +6,15 @@ export const getCausesStore = (pagination: number) => {
     method: "GET",
   });
 };
+export const getSeachCause = (search: string) => {
+  return Api({
+    endpoint: `/causes/search/?name=${search}`,
+    method: "GET",
+  });
+};
+export const getSeachPremios = (search: string) => {
+  return Api({
+    endpoint: `/prizes/search/?name=${search}`,
+    method: "GET",
+  });
+};

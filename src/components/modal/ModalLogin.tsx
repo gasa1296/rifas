@@ -82,7 +82,13 @@ export default function ModalLogin({ show, handleClose }: any) {
         >
           ¿No tienes una cuenta? Registrate aqui
         </h6>
-        <h6 className="fw-bold text-center mb-3">
+        <h6
+          onClick={() => {
+            handleClose();
+            router.push("/faq");
+          }}
+          className="fw-bold text-center mb-3"
+        >
           ¿Porque necesito una cuenta?{" "}
         </h6>
       </Modal.Body>

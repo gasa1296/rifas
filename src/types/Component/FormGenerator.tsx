@@ -15,6 +15,7 @@ export interface Field {
   marks?: any;
   maxRange?: number;
   customChange?: any;
+  minDate?: string;
 }
 
 export interface FieldType {
