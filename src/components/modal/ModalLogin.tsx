@@ -68,28 +68,33 @@ export default function ModalLogin({ show, handleClose }: any) {
         <p onClick={() => { handleClose(); setShowModal(true) }} className="text-center mb-3 fw-medium  password" >¿Olvidaste tu contraseña?</p>
 
         <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
-          <div className="my-2 my-md-0 mx-3">   <LoginWithFacebook /></div>
+          <div className="my-2 my-md-0 mx-3">  {/*  <LoginWithFacebook /> */}</div>
 
 
+          <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4 p-0">
+            <div className="my-2 my-md-0 mx-2">
+              <LoginWithFacebook />
+            </div>
 
-          <div className=" mt-1 mt-md-0 mx-2 ">
-            <LoginWithGoogle handleClose={() => { }} />
+            <div className=" mt-1 mt-md-0 mx-2 ">
+              <LoginWithGoogle handleClose={() => { }} />
+            </div>
           </div>
+          <div className=" border-bottom border-2 my-3  "></div>
+          <h6
+            onClick={() => {
+              handleClose();
+              router.push("/registro");
+            }}
+            className="fw-bold  text-center registroAqui"
+            style-={{ cursor: "pointer" }}
+          >
+            ¿No tienes una cuenta? Registrate aqui
+          </h6>
+          <h6 className="fw-bold text-center mb-3">
+            ¿Porque necesito una cuenta?{" "}
+          </h6>
         </div>
-        <div className=" border-bottom border-2 my-3  "></div>
-        <h6
-          onClick={() => {
-            handleClose();
-            router.push("/registro");
-          }}
-          className="fw-bold  text-center registroAqui"
-          style-={{ cursor: "pointer" }}
-        >
-          ¿No tienes una cuenta? Registrate aqui
-        </h6>
-        <h6 className="fw-bold text-center mb-3">
-          ¿Porque necesito una cuenta?{" "}
-        </h6>
       </Modal.Body>
     </Modal>
   );

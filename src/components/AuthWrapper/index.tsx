@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { validateAuthPath } from "./helper";
 import { useNotificationStore } from "@/store/zustand/NotificationStore";
+import { Raffles, getCategories } from "@/store/slices/raffles";
 
 interface Props {
   children: JSX.Element;
@@ -36,7 +37,11 @@ export default function AuthWrapper({ children }: Props) {
   }, [router.pathname, authenticated]);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => getAuthSession(), 200);
+    const timeoutId = setTimeout(() => {
+      dispatch(getCategories({}) as any);
+      dispatch(Raffles({}) as any);
+      getAuthSession();
+    }, 200);
 
     return () => clearTimeout(timeoutId);
 
@@ -54,8 +59,6 @@ export default function AuthWrapper({ children }: Props) {
 
     //eslint-disable-next-line
   }, [authenticated]);
-
-  console.log("loading", loading);
 
   if (loading) return <> </>;
 

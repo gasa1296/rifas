@@ -1,5 +1,10 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { GetAssociations, Raffles, createRaffle } from "../thunks";
+import {
+  GetAssociations,
+  Raffles,
+  createRaffle,
+  validateCoupon,
+} from "../thunks";
 
 export const RAFFLES_EXTRA_REDUCERS = (
   builder: ActionReducerMapBuilder<any>
@@ -28,5 +33,11 @@ export const RAFFLES_EXTRA_REDUCERS = (
 
   builder.addCase(createRaffle.fulfilled, (state, action) => {
     state.loading = false;
+  });
+
+  builder.addCase(validateCoupon.fulfilled, (state, action) => {
+    if (action.payload) {
+      state.coupon = action.payload;
+    }
   });
 };

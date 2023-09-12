@@ -10,21 +10,20 @@ export default function ModalNotification({
   showNotification,
   setShowNotification,
 }: any) {
-  const modalRef = useRef();
+  const modalRef = useRef<any>();
   const isLoading = useNotificationStore((state) => state.isLoading);
   const error = useNotificationStore((state) => state.error);
   const notifications = useNotificationStore((state) => state.notifications);
 
   useEffect(() => {
-    function handleOutsideClick(event) {
+    function handleOutsideClick(event: any) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setShowNotification(false); // llamada a la función de cierre del modal
+        setShowNotification(false);
       }
     }
 
     document.addEventListener("mousedown", handleOutsideClick);
 
-    // Limpiar la escucha de evento antes de desmontar el componente:
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import ModalForgotPassword from "../modal/ModalForgotPassword";
+import ModalRecoverPassword from "../modal/ModalRecoverPassword";
 $white: "#0000";
 export default function Layout({ children, home }: any) {
   return (

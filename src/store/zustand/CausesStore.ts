@@ -24,7 +24,8 @@ export const useCausesStore = create<CausesStore>((set) => ({
     const nextPagination = data.next ? pagination + 1 : null;
 
     set((state) => ({
-      causes: pagination === 1 ? data : [...state.causes, ...data],
+      causes:
+        pagination === 1 ? data.results : [...state.causes, ...data.results],
       isLoading: false,
       paginacion: nextPagination,
     }));

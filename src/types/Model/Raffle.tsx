@@ -14,8 +14,10 @@ export interface RafflesI {
   delivery_type: string;
   short_description: string;
   price: string;
+  prizeData: null | Prize;
   ticket_number: string;
   ticket_price: string;
+  category: string;
 }
 
 export interface Cause {
@@ -24,4 +26,7 @@ export interface Cause {
 }
 export interface Prize {
   id: number;
+  name: string;
+  description: string;
+  image: string | null;
 }

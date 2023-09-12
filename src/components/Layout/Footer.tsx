@@ -3,9 +3,17 @@ import Image from "next/image";
 import logo from "@/assets/img/logo-rifa-footer.png";
 
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectAuthState } from "@/store/slices/auth";
 
 export default function Footer() {
   const router = useRouter();
+
+  const { authenticated } = useSelector(selectAuthState);
+
+  const routeCreate = authenticated ? "/rifas/crear_rifas" : "/registro";
+  const routeRifas = authenticated ? "/rifas" : "/registro";
+  const routeDonations = authenticated ? "/donaciones" : "/registro";
   return (
     <div>
       <footer className=" mt-5 footer-fondo p-4  ">
@@ -16,10 +24,30 @@ export default function Footer() {
           <div className="">
             <h6 className=".footer-title mt-5 mt-md-0 ">¡Rífate!</h6>
             <ul className=" list-unstyled footer-information ">
-              <li className="listas-footer" onClick={() => router.push("/rifas")}>Inicia una rifa</li>
-              <li className="listas-footer" onClick={() => router.push(`/rifas`)} >Comprar boletos</li>
-              <li className="listas-footer" onClick={() => router.push("/donaciones")}>Haz una donacion</li>
-              <li className="listas-footer" onClick={() => router.push("/registro")}>Crear una cuenta</li>
+              <li
+                className="listas-footer"
+                onClick={() => router.push(routeCreate)}
+              >
+                Inicia una rifa
+              </li>
+              <li
+                className="listas-footer"
+                onClick={() => router.push(routeRifas)}
+              >
+                Comprar boletos
+              </li>
+              <li
+                className="listas-footer"
+                onClick={() => router.push(routeDonations)}
+              >
+                Haz una donacion
+              </li>
+              <li
+                className="listas-footer"
+                onClick={() => router.push("/registro")}
+              >
+                Crear una cuenta
+              </li>
             </ul>
           </div>
           <div>
@@ -39,9 +67,9 @@ export default function Footer() {
           <div>
             <h6 className=".footer-title">Legal</h6>
             <ul className=" list-unstyled footer-information">
-              <li>Terminos y condiciones</li>
-              <li>Aviso de privacidad</li>
-              <li>Preguntan frecuentes</li>
+              <li onClick={() => router.push("/terminosCondiciones")}>Terminos y condiciones</li>
+              <li onClick={() => router.push("/privacyNotice")}>Aviso de privacidad</li>
+              <li onClick={() => router.push("/frequentQuestions")}>Preguntan frecuentes</li>
               <li>Reportar rifa</li>
             </ul>
           </div>{" "}

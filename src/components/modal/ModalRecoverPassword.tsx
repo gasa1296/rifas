@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Login, selectAuthState } from "@/store/slices/auth";
 import { Modal } from 'react-bootstrap';
+import { ForgotPasswordStore } from '@/store/zustand/ForgotPassword';
 
 export default function ModalRecoverPassword({ handleClose, show }: any) {
     const dispatch = useDispatch();

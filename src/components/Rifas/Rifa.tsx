@@ -16,33 +16,24 @@ import { MdEmail } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-import { useState } from "react";
+import LogoRifas from "@/assets/img/logoRifas.svg";
+import { parseNumber } from "@/utils/ParseNumber";
+import { getDays } from "@/utils/getDays";
 export default function Rifa({ all }: { all?: boolean }) {
   const { raffles, loading } = useSelector(selectRaffleState);
-  const [isVisible, setIsVisible] = useState(true);
-
-  const handleClick = () => {
-    setIsVisible(false);
-  };
 
   const router = useRouter();
 
-  if (loading) {
-    return <div></div>;
-  }
-  const getRouter = (): string => {
-    if (router.pathname === "/rifas") return `/rifas/${raffle.id}`;
-    return "/rifas";
-  };
   const raffle = raffles[0];
 
-  if (!raffle) return <div className="my-4"></div>;
+  if (!raffle || loading) return <div className="my-4"></div>;
 
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
       <section
-        className={` mt-5 mb-5 mx-0 ${!all && "mx-lg-5"
-          } container-destacada position-relative p-4`}
+        className={` mt-5 mb-5 mx-0 ${
+          !all && "mx-lg-5"
+        } container-destacada position-relative p-4`}
       >
         {!all && (
           <Image
@@ -56,7 +47,13 @@ export default function Rifa({ all }: { all?: boolean }) {
         <p className=" raffe-text mt-2 mb-3   ">{raffle.name}</p>
         <div className="d-flex justify-content-between row m-0">
           <div className="col-lg-6  position-relative m-0 ">
-            <Image src={fondo} alt="fondo" className=" w-100 h-100 " />
+            <Image
+              src={raffle.image || LogoRifas}
+              alt="fondo"
+              className=" w-100 h-100 "
+              width={100}
+              height={100}
+            />
           </div>
           <div className=" col-lg-6  ">
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
@@ -75,7 +72,10 @@ export default function Rifa({ all }: { all?: boolean }) {
             </div>
             <p className="raffle-container-title   fs-3">
               La meta es de{" "}
-              {Number(raffle.ticket_number) * Number(raffle.ticket_price)} MXN
+              {parseNumber(
+                Number(raffle.ticket_number) * Number(raffle.ticket_price)
+              )}{" "}
+              MXN
             </p>
 
             <div className=" border-bottom border-2  my-2 position-relative "></div>
@@ -108,7 +108,7 @@ export default function Rifa({ all }: { all?: boolean }) {
 
               <button
                 className="btn btn-border-pink btn-sm col-6 ms-1   button-rifaDestacada "
-                onClick={() => router.push(getRouter())}
+                onClick={() => router.push(`/rifas/detalles/${raffle.id}`)}
               >
                 Ver detalles
               </button>
@@ -121,7 +121,8 @@ export default function Rifa({ all }: { all?: boolean }) {
                   La rifa termina en:
                 </h6>
                 <p className=" raffle-container-value lh-1  m-0 fw-bold">
-                  <LuCalendarDays color="#5C5C5C" className="mb-1" /> 59 dias
+                  <LuCalendarDays color="#5C5C5C" className="mb-1" />{" "}
+                  {getDays(raffle.end_date)} dias
                 </p>
               </div>
               <div>

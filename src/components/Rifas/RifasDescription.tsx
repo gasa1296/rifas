@@ -1,11 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import logo from "@/assets/img/fondoPremio.svg";
-import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
 
-import imagenRifaDesceiption from "@/assets/img/Premio-donar.jpg";
+import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
+import LogoRifas from "@/assets/img/logoRifas.svg";
+
+import { useSelector } from "react-redux";
+import { selectRaffleState } from "@/store/slices/raffles";
 
 export default function RifasDescription() {
+  const { raffle } = useSelector(selectRaffleState);
+
   return (
     <div className="row m-0 d-block  justify-content-lg-center  overflow-hidden   position-relative mt-5 ">
       <div>
@@ -19,7 +23,6 @@ export default function RifasDescription() {
         <h3 className="title-RifaDescription   text-center text-lg-start z-2   ">
           Acerca de la rifa
         </h3>
-
 
         <div className=" border-bottom border-1  z-2  my-2 w-100 w-lg-50 text-center text-lg-start "></div>
         <h5 className="subtitle-rifDescription text-center text-lg-start  z-2 ">
@@ -43,24 +46,19 @@ export default function RifasDescription() {
         <div className="d-block  justify-content-between d-md-flex  row col-12 col-lg-10 ">
           <div className="col-12  col-lg-4  z-2 ">
             <Image
-              src={imagenRifaDesceiption}
+              src={raffle?.prizeData?.image || LogoRifas}
               alt="fondoDescription"
               className="w-100 h-75 d-block mx-auto mx-lg-0"
+              width={100}
+              height={100}
             />
           </div>
           <p className="col-12 col-lg-8 mt-4 mt-md-0 opacity-75 text-rifaDescription mb-5 ">
-            ¡El Gran Premio de nuestra rifa benéfica es un espectacular iPhone
-            de última generación! El afortunado ganador tendrá en sus manos el
-            codiciado iPhone, un dispositivo de vanguardia que combina la
-            elegancia del diseño con el rendimiento excepcional. Este iPhone
-            cuenta con lo último en tecnología, ofreciendo una experiencia única
-            a su usuario. ¡El Gran Premio de nuestra rifa benéfica es un
-            espectacular iPhone de última generación! El afortunado ganador
-            tendrá en sus manos el codiciado iPhone, un dispositivo de
-            vanguardia que combina la elegancia del diseño con el rendimiento
-            excepcional. Este iPhone cuenta con lo último en tecnología,
-            ofreciendo una experiencia única a su usuario.
+            {raffle?.prizeData?.name || ""}
+            <br />
+            {raffle?.prizeData?.description || ""}
           </p>
+          <p className="col-12 col-lg-8 mt-4 mt-md-0 opacity-75 text-rifaDescription mb-5 "></p>
         </div>
       </div>
     </div>
