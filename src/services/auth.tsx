@@ -49,6 +49,16 @@ export const refreshToken = (refresh: String) => {
   });
 };
 
+export const postEmail = (email: String) => {
+  return Api({
+    endpoint: `/resert_password/`,
+    method: "POST",
+    _data: {
+      email,
+    },
+  });
+};
+
 export const createAsociacion = (asociacion: any) => {
   const formData = new FormData();
   formData.append("address", asociacion.address);

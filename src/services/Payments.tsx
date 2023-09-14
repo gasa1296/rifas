@@ -41,6 +41,7 @@ export const getPrice = (raffleId: number) => {
     method: "POST",
   });
 };
+
 export const deleteReservedTickets = (
   raffleId: number,
   reservedTickets: number[]
