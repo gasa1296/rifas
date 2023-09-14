@@ -14,6 +14,13 @@ export const setPaypalCapture = (raffleId: number, details: any) => {
     _data: details,
   });
 };
+export const setWalletCapture = (raffleId: number, details: any) => {
+  return Api({
+    endpoint: `/buying/${raffleId}/wallet/`,
+    method: "PUT",
+    _data: details,
+  });
+};
 export const setMercadopago = (raffleId: number, details: any) => {
   return Api({
     endpoint: `/buying/${raffleId}/mercadopago/`,

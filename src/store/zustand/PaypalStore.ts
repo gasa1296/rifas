@@ -6,6 +6,7 @@ import {
   setMercadopago,
   setPaypalCapture,
   setReserveTickets,
+  setWalletCapture,
 } from "@/services/Payments";
 
 import { create } from "zustand";
@@ -22,6 +23,11 @@ interface PaypalPayment {
     order: string,
     coupon: string,
     wallet: boolean
+  ) => Promise<void>;
+  setWalletCapture: (
+    raffleId: number,
+
+    coupon: string
   ) => Promise<void>;
   getPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setMercadopagoCapture: (
@@ -83,17 +89,37 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
     wallet: boolean
   ) => {
     try {
-      set({ isLoading: true });
+      set({ isLoading: true, error: false });
 
-      const payload = { price, order, coupon, wallet };
+      const payload: any = { price, order, coupon, wallet };
 
-      const priceResult = await getPrice(raffleId);
+      if (payload.coupon === "") delete payload.coupon;
 
       await setPaypalCapture(raffleId, payload);
 
       set({
         isLoading: false,
         payId: order,
+      });
+    } catch (error) {
+      set({
+        error: true,
+      });
+    }
+  },
+  setWalletCapture: async (raffleId: number, coupon: string) => {
+    try {
+      set({ isLoading: true, error: false });
+
+      const payload: any = { coupon };
+
+      if (payload.coupon === "") delete payload.coupon;
+
+      const result = await setWalletCapture(raffleId, payload);
+
+      set({
+        isLoading: false,
+        payId: "",
       });
     } catch (error) {
       set({
@@ -114,11 +140,8 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
     wallet: boolean
   ) => {
     try {
-      set({ isLoading: true });
-
-      const priceResult = await getPrice(raffleId);
-
-      const payload = {
+      set({ isLoading: true, error: false });
+      const payload: any = {
         email: payment_data.payer.email,
         token: payment_data.token,
         price: price,
@@ -126,7 +149,11 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
         issuer_id: payment_data.issuer_id,
         type: "",
         number: "",
+        coupon,
+        wallet,
       };
+
+      if (payload.coupon === "") delete payload.coupon;
 
       await setMercadopago(raffleId, payload);
 

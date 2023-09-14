@@ -1,13 +1,14 @@
 import {
   createAsociacion,
   getUserProfile,
+  loginFacebookUser,
   loginGoogleUser,
   loginUser,
   refreshToken,
   registerUser,
 } from "@/services/auth";
 import { RootState } from "@/store";
-import { Auth, GoogleAuth, Profile } from "@/types/Model/Profile";
+import { Auth, FacebookAuth, GoogleAuth, Profile } from "@/types/Model/Profile";
 import { handleError } from "@/utils/handleError";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 const PREFIX: string = "auth";
@@ -55,6 +56,25 @@ export const LoginGoogle = createAsyncThunk(
   ): Promise<{ test: boolean } | undefined> => {
     try {
       const { data } = await loginGoogleUser(auth);
+      await localStorage.setItem("sessionToken", data.access);
+      await localStorage.setItem("sessionTokenRefresh", data.refresh);
+
+      const profile = await getUserProfile();
+
+      return { ...data, ...profile.data };
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+export const LoginFacebook = createAsyncThunk(
+  `${PREFIX}/login`,
+  async (
+    auth: FacebookAuth,
+    thunkAPI
+  ): Promise<{ test: boolean } | undefined> => {
+    try {
+      const { data } = await loginFacebookUser(auth);
       await localStorage.setItem("sessionToken", data.access);
       await localStorage.setItem("sessionTokenRefresh", data.refresh);
 

@@ -92,7 +92,7 @@ export default function CreateAccount({ nextStep }: any) {
 
             <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4">
               <div className="my-2 my-md-0 mx-3">
-                <LoginWithFacebook />
+                <LoginWithFacebook handleClose={() => {}} />
               </div>
 
               <div className=" mt-1 mt-md-0 mx-2 ">

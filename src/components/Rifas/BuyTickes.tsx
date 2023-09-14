@@ -1,13 +1,6 @@
 import React, { use } from "react";
-import fondo from "@/assets/img/Rifa-destacada-portada.jpg";
-import { BiLoaderAlt } from "react-icons/bi";
-import LogoRifas from "@/assets/img/logoRifas.svg";
-import {
-  BsFacebook,
-  BsTwitter,
-  BsWhatsapp,
-  BsFillShareFill,
-} from "react-icons/bs";
+
+import { BsFacebook, BsTwitter, BsWhatsapp } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -15,11 +8,21 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { parseNumber } from "@/utils/ParseNumber";
 import PercentChart from "../Chart/PercentChart";
 
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+  WhatsappShareButton,
+} from "react-share";
+
 export default function BuyTickes() {
   const { raffle } = useSelector(selectRaffleState);
 
   const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
   const raisedPercent = ((raffle?.raised || 0) * 100) / meta;
+
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/rifas/detalles/${raffle?.id}`;
+  const title = raffle?.name;
 
   return (
     <div className="text-secondary position-relative   col-12 ">
@@ -69,21 +72,54 @@ export default function BuyTickes() {
           </div>
         </div>
         <p className="share-buyTickes m-0 lh-lg ">Compartir</p>
-        <BsFacebook
-          color=" #FFFFFF"
-          size={25}
-          className="mx-2 iconos-buyTickes "
-        />
-        <BsTwitter
-          color=" #FFFFFF"
-          size={25}
-          className="mx-2  iconos-buyTickes"
-        />
-        <MdEmail
-          color=" #FFFFFF"
-          size={25}
-          className="mx-2  iconos-buyTickes"
-        />
+        <FacebookShareButton
+          url={shareUrl}
+          quote={title}
+          className="Demo__some-network__share-button"
+        >
+          <BsFacebook
+            color=" #FFFFFF"
+            size={25}
+            className="mx- position-relative 2"
+          />
+        </FacebookShareButton>
+
+        <TwitterShareButton
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <BsTwitter
+            color=" #FFFFFF"
+            size={25}
+            className="mx-2  position-relative "
+          />
+        </TwitterShareButton>
+
+        <EmailShareButton
+          url={shareUrl}
+          subject={title}
+          body="body"
+          className="Demo__some-network__share-button"
+        >
+          <MdEmail
+            color=" #FFFFFF"
+            size={25}
+            className="mx-2  position-relative "
+          />
+        </EmailShareButton>
+
+        <WhatsappShareButton
+          url={shareUrl}
+          title={title}
+          className="Demo__some-network__share-button"
+        >
+          <BsWhatsapp
+            color=" #FFFFFF"
+            size={25}
+            className="mx-2  position-relative "
+          />
+        </WhatsappShareButton>
       </div>
     </div>
   );

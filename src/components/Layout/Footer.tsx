@@ -77,9 +77,24 @@ export default function Footer() {
           <div>
             <h6 className=".footer-title">Legal</h6>
             <ul className=" list-unstyled footer-information">
-              <li>Terminos y condiciones</li>
-              <li>Aviso de privacidad</li>
-              <li>Preguntan frecuentes</li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/terminosCondiciones")}
+              >
+                Terminos y condiciones
+              </li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/privacyNotice")}
+              >
+                Aviso de privacidad
+              </li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/frequentQuestions")}
+              >
+                Preguntan frecuentes
+              </li>
               <li
                 onClick={() => router.push("/contacto")}
                 className="button-contacto"

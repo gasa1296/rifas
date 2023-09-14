@@ -5,9 +5,11 @@ import { Profile } from "@/types/Model/Profile";
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import logo from "../../assets/img/logo-contacto.png";
+import FondoContacto from "../../assets/img/Contacto-bg.jpg";
 import Image from "next/image";
 import { setContacto } from "@/services/notification";
 import { toast } from "react-hot-toast";
+
 
 export default function Contacto() {
   const [loading, setLoading] = useState(false);
@@ -52,11 +54,14 @@ export default function Contacto() {
     },
   ];
   return (
-    <div className="mx-4 ">
-      <div className="container-contacto mx-0 mx-lg-5 mt-3">
-        <h3 className="contacto">Contacto</h3>
+    <div className="mx-4 position-relative   ">
+      <div className="position-absolute top-0 overflow-hidden fondoContacto ">
+        <Image src={FondoContacto} alt="fondo-contacto" className="w-100 h-100 " />
       </div>
-      <div className="row m-0 d-flex justify-content-center mt-5   ">
+      <div className=" mx-0 mx-lg-5 mt-3 mt-lg-3 position-relative pt-3  text-center ">
+        <h3 className="contacto mx-auto ">Contacto</h3>
+      </div>
+      <div className="row m-0 d-flex justify-content-center mt-3 mt-lg-5 pt-3  ">
         <div className="col-12 col-lg-5  shadow rounded p-4">
           <FormGenerator
             buttonText="Contactanos"

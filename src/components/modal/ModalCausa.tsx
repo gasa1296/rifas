@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -18,7 +18,8 @@ export default function ModalCausa({
   activeSelect,
 }: any) {
   const dispatch = useDispatch();
-  const { loading } = useSelector(selectAuthState);
+  const [loading, setLoading] = useState(false);
+
   const { causesCategories, associations } = useSelector(selectRaffleState);
 
   const fields: Field[] = [
@@ -69,6 +70,7 @@ export default function ModalCausa({
   ];
 
   const submitData = async (data: any) => {
+    setLoading(true);
     const { payload } = await dispatch(createRafflesCause(data) as any);
     if (payload) {
       return handleSubmit({
@@ -76,6 +78,7 @@ export default function ModalCausa({
         ...payload,
       });
     }
+    setLoading(false);
   };
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">

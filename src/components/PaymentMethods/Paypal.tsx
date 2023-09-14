@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { usePaypalPayment } from "@/store/zustand/PaypalStore";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { selectRaffleState } from "@/store/slices/raffles";
+import { ValidateSession } from "@/store/slices/auth";
 export default function Paypal({
   totalPay,
   setSuccess,
@@ -11,6 +12,8 @@ export default function Paypal({
   totalPay: number;
   setSuccess: any;
 }) {
+  const dispatch = useDispatch();
+
   const getPaymentCreate = usePaypalPayment((state) => state.getPaymentCreate);
   const setPaymentCapture = usePaypalPayment(
     (state) => state.setPaymentCapture
@@ -47,7 +50,7 @@ export default function Paypal({
           coupon?.id || "",
           selectedWallet
         );
-        console.log("Test", result);
+        dispatch(ValidateSession({}) as any);
         setSuccess(true);
       } catch (error) {
         toast.error("Error al procesar el pago");

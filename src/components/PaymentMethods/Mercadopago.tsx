@@ -2,8 +2,9 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { usePaypalPayment } from "@/store/zustand/PaypalStore";
 import { initMercadoPago, CardPayment } from "@mercadopago/sdk-react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import { ValidateSession } from "@/store/slices/auth";
 
 export function MercadoPagoButton({
   totalPay,
@@ -12,6 +13,7 @@ export function MercadoPagoButton({
   totalPay: number;
   setSuccess: any;
 }) {
+  const dispatch = useDispatch();
   initMercadoPago("TEST-18bdd1a9-b7d0-49be-98ba-4697332e1d3f");
   const getPaymentCreate = usePaypalPayment((state) => state.getPaymentCreate);
   const setMercadopagoCapture = usePaypalPayment(
@@ -33,7 +35,6 @@ export function MercadoPagoButton({
   };
   const onSubmit = async (props: any) => {
     try {
-      console.log("Testtt", props);
       await setMercadopagoCapture(
         raffle?.id || 0,
         totalPay,
@@ -41,6 +42,7 @@ export function MercadoPagoButton({
         coupon?.id || "",
         selectedWallet
       );
+      dispatch(ValidateSession({}) as any);
       setSuccess(true);
     } catch (error) {
       toast.error("Error al procesar el pago");

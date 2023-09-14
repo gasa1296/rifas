@@ -24,6 +24,7 @@ import {
   EmailShareButton,
   WhatsappShareButton,
 } from "react-share";
+import Wallet from "../PaymentMethods/Wallet";
 
 export default function PaySuccessful({ initialStep }: any) {
   const router = useRouter();
@@ -31,15 +32,27 @@ export default function PaySuccessful({ initialStep }: any) {
   const [success, setSuccess] = React.useState(false);
   const { raffle, selectedPaymentMethod, selectedTickets } =
     useSelector(selectRaffleState);
-  const { profile } = useSelector(selectAuthState);
 
   const payId = usePaypalPayment((state) => state.payId);
   const error = usePaypalPayment((state) => state.error);
 
-  const { totalPay } = useTotalValue();
+  const { totalPay, selectedWallet } = useTotalValue();
 
   const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/rifas/detalles/${raffle?.id}`;
   const title = raffle?.name;
+
+  if (!success && totalPay === 0 && selectedWallet) {
+    return (
+      <div className="  d-block justify-content-center d-lg-flex mt-5 mx-3 mx-lg-0 ">
+        <div className=" col-12 col-lg-6   ">
+          <BuyTickes />
+        </div>
+        <div className="col-lg-6 col-12 mt-3 mt-md-0 text-center px-5 mx-auto">
+          <Wallet setSuccess={setSuccess} />
+        </div>
+      </div>
+    );
+  }
 
   if (!success && selectedPaymentMethod === "paypal")
     return (

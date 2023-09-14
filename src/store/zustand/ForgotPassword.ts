@@ -1,5 +1,3 @@
-import { getAllNotifications } from "@/services/notification";
-import { getCausesStore, getSeachCause } from "@/services/getCauses";
 import { create } from "zustand";
 
 interface ForgotPasswordStoreI {

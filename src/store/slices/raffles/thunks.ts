@@ -1,5 +1,6 @@
 import {
   createCause,
+  createCauseGallery,
   createDonations,
   createNewRaffle,
   getAssociationsApproveds,
@@ -107,6 +108,13 @@ export const createRafflesCause = createAsyncThunk(
       cause.association = Number(cause.association);
 
       const result = await createCause(cause);
+
+      const petitions: any[] = [];
+      cause.image.map((gallery: any) =>
+        petitions.push(createCauseGallery(gallery))
+      );
+
+      await Promise.all(petitions);
 
       return result.data;
     } catch (error) {

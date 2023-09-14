@@ -1141,6 +1141,7 @@ cursor: pointer;
   letter-spacing: 0px;
 color: #8D8D8D;
 opacity: 1;
+cursor: pointer;
 }
 
 .footer-text{
@@ -1156,11 +1157,17 @@ opacity: 1;
 }
 
 /*contacto*/
-.container-contacto{
-  background: #C3286D;
-  border-radius:5px;
-text-align: center;
-padding: 20px;
+
+.fondoContacto{
+  
+}
+@media (max-width: 968px) {
+  .fondoContacto{
+    height: 8%;
+  }
+  .contacto{
+    font-size: 25px;
+  }
 }
 
 .contacto{
@@ -1169,6 +1176,7 @@ color: #FFFFFF;
 opacity: 1;
 font-size: 46px;
 font-weight: 600;
+
 }
 
 .help-contacto{
@@ -1300,6 +1308,11 @@ font-size: 14px;
   font-size: 12px;
 }
 
+/*modal contacto*/
+.password{
+  cursor: pointer;
+}
+
 /* 
 .size-imagenNotifications{
   width: 100px;
@@ -1381,7 +1394,6 @@ font-size: 14px;
   top: -5px;
   text-align: center;
 }
-
 .single-chart {
   width: 40px;
 }
@@ -1415,4 +1427,17 @@ font-size: 14px;
 .circular-chart.orange .circle {
   stroke: #d63384;
 }
+/*css del slider*/
+.slick-dots li{
+  border-radius: 50% !important;
 
+}
+
+.buttonSlider .slick-dots li button{
+  border-radius: 50% !important;
+}
+.slick-dots li button::before{
+  color: #C3286D !important;
+  background-color: #C3286D  !important;
+  border-radius: 50% !important;
+}

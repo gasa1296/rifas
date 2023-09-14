@@ -98,6 +98,17 @@ export const createCause = (cause: any) => {
     },
   });
 };
+export const createCauseGallery = (image: any) => {
+  const formData = new FormData();
+  if (image) formData.append("image", image);
+
+  return axios.post(baseUrl + "/causes_gallery/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
 
 export const getCausesCategories = () => {
   return Api({
