@@ -5,7 +5,7 @@ export default function frequentQuestions() {
   return (
     <Layout>
       <div className=" col-12 text-center row container-Pivacy pt-5 m-auto pb-5 ">
-        <div className="col-8 m-auto text-start ">
+        <div className="col-11 col-lg-8  m-auto text-start ">
           <h5 className="title-preguntasFrecuentes">Preguntas frecuentes</h5>
           <p className="text-Questions">
             Esta es una lista de las preguntas que más recibimos frecuentemente.

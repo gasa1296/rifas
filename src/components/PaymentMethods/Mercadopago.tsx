@@ -14,7 +14,7 @@ export function MercadoPagoButton({
   setSuccess: any;
 }) {
   const dispatch = useDispatch();
-  initMercadoPago("TEST-18bdd1a9-b7d0-49be-98ba-4697332e1d3f");
+  initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO || "");
   const getPaymentCreate = usePaypalPayment((state) => state.getPaymentCreate);
   const setMercadopagoCapture = usePaypalPayment(
     (state) => state.setMercadopagoCapture

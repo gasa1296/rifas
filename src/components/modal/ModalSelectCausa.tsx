@@ -33,7 +33,7 @@ export default function ModalSelectCausa({ handleSubmit }: any) {
   return (
     <section className="">
       <div className="">
-        {!!isLoading && <p className="m-0">Cargando...</p>}
+        {!!isLoading && !causes.length && <p className="m-0">Cargando...</p>}
         {!!error && (
           <p className="m-0 text-danger ">Error al cargar las notificaciones</p>
         )}

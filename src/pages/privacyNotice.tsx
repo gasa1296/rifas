@@ -7,7 +7,7 @@ export default function privacyNotice() {
   return (
     <Layout>
       <div className=" col-12 text-center row container-Pivacy pt-5 m-auto pb-5">
-        <div className="col-8 m-auto ">
+        <div className="col-11 col-lg-8 m-auto ">
           <div className=" mw-100 d-flex justify-content-start m-auto pt-4 ">
             <Image src={logo} alt="fondo" className=" me-3 " />
             <p className=" container-title ms-3">

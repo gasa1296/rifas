@@ -3,6 +3,7 @@ import {
   createCauseGallery,
   createDonations,
   createNewRaffle,
+  createPrizeGallery,
   getAssociationsApproveds,
   getCausesCategories,
   getPrizebyId,
@@ -10,6 +11,8 @@ import {
   getRaffle,
   getRaffleTickets,
   getRaffles,
+  updateGalleryCause,
+  updateGalleryPrize,
   validateApplyCoupon,
 } from "@/services/raffles";
 import { RootState } from "@/store";
@@ -93,6 +96,20 @@ export const Donations = createAsyncThunk(
 
       dataDonation.category = Number(dataDonation.category);
       const result = await createDonations(dataDonation);
+
+      const petitions: any[] = [];
+      dataDonation.image.map((gallery: any) =>
+        petitions.push(createPrizeGallery(gallery))
+      );
+
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryPrize(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        name: dataDonation.name,
+        value: dataDonation.value,
+      });
+
       return result.data;
     } catch (error) {
       handleError(error);
@@ -114,7 +131,15 @@ export const createRafflesCause = createAsyncThunk(
         petitions.push(createCauseGallery(gallery))
       );
 
-      await Promise.all(petitions);
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryCause(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        goal: cause.goal,
+        association: cause.association,
+        name: cause.name,
+        categories: cause.categories,
+      });
 
       return result.data;
     } catch (error) {
@@ -134,11 +159,22 @@ export const createRafflesPrize = createAsyncThunk(
       if (prize.association === 0 || prize.association === undefined)
         delete prize.association;
 
-      console.log("Tea2");
-
       prize.category = Number(prize.category);
 
       const result = await createDonations(prize);
+
+      const petitions: any[] = [];
+      prize.image.map((gallery: any) =>
+        petitions.push(createPrizeGallery(gallery))
+      );
+
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryPrize(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        name: prize.name,
+        value: prize.value,
+      });
 
       return result.data;
     } catch (error) {

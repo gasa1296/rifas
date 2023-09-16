@@ -34,6 +34,7 @@ export default function PaySuccessful({ initialStep }: any) {
     useSelector(selectRaffleState);
 
   const payId = usePaypalPayment((state) => state.payId);
+  const totalPayResult = usePaypalPayment((state) => state.totalPayResult);
   const error = usePaypalPayment((state) => state.error);
 
   const { totalPay, selectedWallet } = useTotalValue();
@@ -125,7 +126,7 @@ export default function PaySuccessful({ initialStep }: any) {
           Total pagado:{" "}
           <p className="value-paySucessful m-0 ps-1">
             {" "}
-            ${parseNumber(totalPay)} MXN
+            ${parseNumber(totalPayResult)} MXN
           </p>
         </p>
         <p className=" m-0 d-flex justify-content-center  text-paySucessful">

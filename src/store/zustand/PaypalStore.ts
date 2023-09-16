@@ -16,6 +16,7 @@ interface PaypalPayment {
   payment: any;
   error: boolean;
   payId: string;
+  totalPayResult: number;
   setPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setPaymentCapture: (
     raffleId: number,
@@ -49,6 +50,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
   payment: [],
   error: false,
   payId: "",
+  totalPayResult: 0,
   setPaymentCreate: async (raffleId: number, raffle: any) => {
     set({ isLoading: true });
 
@@ -100,6 +102,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       set({
         isLoading: false,
         payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
       });
     } catch (error) {
       set({
@@ -120,6 +123,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       set({
         isLoading: false,
         payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
       });
     } catch (error) {
       set({
@@ -160,6 +164,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       set({
         isLoading: false,
         payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
       });
     } catch (error) {
       set({

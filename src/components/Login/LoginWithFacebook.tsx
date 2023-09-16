@@ -15,8 +15,7 @@ export default function LoginWithFacebook({ handleClose }: Props) {
   const handleFacebookResponse = async (response: any) => {
     const { payload } = await dispatch(
       LoginFacebook({
-        token:
-          "EAAJpxPvmZA8UBO8XlnZBlct4H0BJl6zc8ceTKg5hF333lAS2VMgMp64KogSvc736lsukZAnZBS4bUALwAW62if9x7DPQNhWQBtX2Ec2oIbvCl9NqMyVNGPXhQ92qhV5tpoW0PtTZABTa0z39HkoSN8cybkgokREZAbCSsW8sviQXFkGOnTuOQc2TZCFH3qy0IRrm8SHyS0elN9Oa7UcOcoHbhch23mq",
+        token: response.accessToken,
       }) as any
     );
     if (payload) {

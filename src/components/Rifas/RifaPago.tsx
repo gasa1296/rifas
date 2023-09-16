@@ -31,8 +31,12 @@ export default function RifaPago({ nextStep, backStep }: any) {
         <p className=" donaciones-title">3 / 3 Efectua el pago</p>
         <p className="subtitle-boletosaRifa m-0">Confirma y paga tus boletos</p>
         <div className="d-flex text-secondary  mt-3 ">
-          <p className="m-0 ">Paga con</p>
-          <Image src={Icon} alt="" className="ms-2" />
+          <p className="m-0 ">Paga con: </p>
+          {selectedPaymentMethod ? (
+            <Image src={Icon} alt="" className="ms-2" />
+          ) : (
+            <div className="ps-1 ">Billetera</div>
+          )}
         </div>
         <div className=" border-bottom my-2 w-100"></div>
 

@@ -82,11 +82,11 @@ export default function ModalLogin({ show, handleClose }: any) {
 
           <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4 p-0">
             <div className="my-2 my-md-0 mx-2">
-              <LoginWithFacebook handleClose={() => {}} />
+              <LoginWithFacebook handleClose={handleClose} />
             </div>
 
             <div className=" mt-1 mt-md-0 mx-2 ">
-              <LoginWithGoogle handleClose={() => {}} />
+              <LoginWithGoogle handleClose={handleClose} />
             </div>
           </div>
           <div className=" border-bottom border-2 my-3  "></div>

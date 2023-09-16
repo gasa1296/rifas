@@ -55,6 +55,20 @@ export const validateApplyCoupon = (coupon: String, raffleId: Number) => {
     _data: { coupon },
   });
 };
+export const updateGalleryCause = (causeId: string, cause: object) => {
+  return Api({
+    endpoint: `/causes/${causeId}/`,
+    method: "PUT",
+    _data: cause,
+  });
+};
+export const updateGalleryPrize = (prizeId: string, prize: object) => {
+  return Api({
+    endpoint: `/prizes/${prizeId}/`,
+    method: "PUT",
+    _data: prize,
+  });
+};
 
 export const createDonations = (donation: any) => {
   const formData = new FormData();
@@ -100,9 +114,20 @@ export const createCause = (cause: any) => {
 };
 export const createCauseGallery = (image: any) => {
   const formData = new FormData();
-  if (image) formData.append("image", image);
+  if (image) formData.append("file", image);
 
   return axios.post(baseUrl + "/causes_gallery/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
+export const createPrizeGallery = (image: any) => {
+  const formData = new FormData();
+  if (image) formData.append("file", image);
+
+  return axios.post(baseUrl + "/prize_gallery/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
