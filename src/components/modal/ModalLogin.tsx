@@ -34,7 +34,6 @@ export default function ModalLogin({ show, handleClose }: any) {
       required: true,
       type: "password",
     },
-
   ];
 
   const submitData = async (data: Auth) => {
@@ -65,19 +64,29 @@ export default function ModalLogin({ show, handleClose }: any) {
           submitData={submitData}
           loading={loading}
         />
-        <p onClick={() => { handleClose(); setShowModal(true) }} className="text-center mb-3 fw-medium  password" >¿Olvidaste tu contraseña?</p>
+        <p
+          onClick={() => {
+            handleClose();
+            setShowModal(true);
+          }}
+          className="text-center mb-3 fw-medium  password"
+        >
+          ¿Olvidaste tu contraseña?
+        </p>
 
         <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
-          <div className="my-2 my-md-0 mx-3">  {/*  <LoginWithFacebook /> */}</div>
-
+          <div className="my-2 my-md-0 mx-3">
+            {" "}
+            {/*  <LoginWithFacebook /> */}
+          </div>
 
           <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4 p-0">
             <div className="my-2 my-md-0 mx-2">
-              <LoginWithFacebook />
+              <LoginWithFacebook handleClose={handleClose} />
             </div>
 
             <div className=" mt-1 mt-md-0 mx-2 ">
-              <LoginWithGoogle handleClose={() => { }} />
+              <LoginWithGoogle handleClose={handleClose} />
             </div>
           </div>
           <div className=" border-bottom border-2 my-3  "></div>
@@ -91,7 +100,13 @@ export default function ModalLogin({ show, handleClose }: any) {
           >
             ¿No tienes una cuenta? Registrate aqui
           </h6>
-          <h6 className="fw-bold text-center mb-3">
+          <h6
+            onClick={() => {
+              handleClose();
+              router.push("/faq");
+            }}
+            className="fw-bold text-center mb-3"
+          >
             ¿Porque necesito una cuenta?{" "}
           </h6>
         </div>

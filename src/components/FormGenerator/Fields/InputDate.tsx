@@ -5,6 +5,8 @@ interface Props {
   name: string;
   required?: boolean;
   error?: any;
+  minDate?: string;
+  watch: any;
 }
 export default function InputDate({
   register,
@@ -12,7 +14,11 @@ export default function InputDate({
   name,
   required,
   error,
+  minDate = "",
+  watch,
 }: Props) {
+  const values: any = watch();
+
   return (
     <div className="col-5">
       <label
@@ -26,8 +32,10 @@ export default function InputDate({
         <div className="col-5 col-md-7 d-md-flex d-flex ">
           <input
             type="datetime-local"
-            className={`w-100 form-control my-2 fs-5 m-0 ${error && "border-danger "
-              }`}
+            min={new Date(values[minDate] || null).toISOString().slice(0, 16)}
+            className={`w-100 form-control my-2 fs-5 m-0 ${
+              error && "border-danger "
+            }`}
             {...register(name, { required })}
           />
         </div>

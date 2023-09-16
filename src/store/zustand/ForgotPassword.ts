@@ -19,18 +19,18 @@ export const ForgotPasswordStore = create<ForgotPasswordStoreI>((set) => ({
     try {
       set({ isLoading: true });
 
-       await postEmail(email);
+      await postEmail(email);
 
       set({
         isLoading: false,
       });
-      return true
+      return true;
     } catch (error) {
       set({
         isLoading: false,
         error: true,
       });
-      return false
+      return false;
     }
   },
 

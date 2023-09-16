@@ -25,12 +25,6 @@ export default function InputCaptchap({
     setValue(name, response);
   }
 
-  console.log(
-    "Test",
-    process.env.NEXT_PUBLIC_CAPTCHAP_ID ||
-      "6LcJZeknAAAAAJEh6etuQLE26rqlnjRWAdPjw9ic"
-  );
-
   return (
     <div>
       <label
@@ -42,10 +36,7 @@ export default function InputCaptchap({
         {label}
       </label>
       <ReCAPTCHA
-        sitekey={
-          process.env.NEXT_PUBLIC_CAPTCHAP_ID ||
-          "6LcJZeknAAAAAJEh6etuQLE26rqlnjRWAdPjw9ic"
-        }
+        sitekey={process.env.NEXT_PUBLIC_CAPTCHAP_ID || ""}
         onChange={handleCaptcha}
       />
       <input

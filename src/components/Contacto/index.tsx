@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
-import { useDispatch, useSelector } from "react-redux";
-import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import logo from "../../assets/img/logo-contacto.png";
 import FondoContacto from "../../assets/img/Contacto-bg.jpg";
 import Image from "next/image";
+import { setContacto } from "@/services/notification";
+import { toast } from "react-hot-toast";
 
 
 export default function Contacto() {
-  const { loading } = useSelector(selectAuthState);
-  const [sucess, setSucces] = useState(false);
-  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const submitData = async (data: Profile) => {
-    const { payload } = await dispatch(Register(data) as any);
-
-    if (payload) {
-      setSucces(true);
+    setLoading(true);
+    try {
+      const result = await setContacto(data);
+      toast.success("Mensaje enviado con exito");
+    } catch (error) {
+      toast.error("Error al enviar el mensaje");
     }
+
+    setLoading(false);
   };
 
   const fields: Field[] = [
@@ -36,7 +38,7 @@ export default function Contacto() {
       required: true,
       type: "text",
     },
-    { label: "Empresa (Opcional)", name: "company_contact0", type: "text" },
+    { label: "Empresa (Opcional)", name: "company_contact", type: "text" },
 
     {
       label: "Mensaje",
@@ -46,7 +48,7 @@ export default function Contacto() {
     },
     {
       label: "Confirma que no eres un robot",
-      name: "captchap",
+      name: "token",
       required: true,
       type: "captchap",
     },

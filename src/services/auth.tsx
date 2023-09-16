@@ -1,4 +1,4 @@
-import { Auth, GoogleAuth, Profile } from "@/types/Model/Profile";
+import { Auth, FacebookAuth, GoogleAuth, Profile } from "@/types/Model/Profile";
 import { Api } from ".";
 
 import axios from "axios";
@@ -32,7 +32,15 @@ export const loginGoogleUser = (auth: GoogleAuth) => {
     },
   });
 };
-
+export const loginFacebookUser = (auth: FacebookAuth) => {
+  return Api({
+    endpoint: "/profile/facebook/",
+    method: "POST",
+    _data: {
+      ...auth,
+    },
+  });
+};
 export const getUserProfile = () => {
   return Api({
     endpoint: "/profile/show_profile",

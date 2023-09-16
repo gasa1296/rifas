@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import LogoRifas from "@/assets/img/logoRifas.svg";
 import Image from "next/image";
@@ -8,8 +8,16 @@ import { parseNumber } from "@/utils/ParseNumber";
 import { useInView } from "react-intersection-observer";
 
 export default function ModalSelectPremio({ handleSubmit }: any) {
-  const { isLoading, error, premio, getPremio, paginacion } = usePremioStore();
-
+  const {
+    isLoading,
+    error,
+    premio,
+    getPremio,
+    paginacion,
+    setFilterPremios,
+    filterPremios,
+  } = usePremioStore();
+  const [search, setSearch] = useState("");
   const [ref, inView] = useInView({
     triggerOnce: false, // Cambia a false si necesitas que se dispare más de una vez
   });
@@ -21,6 +29,7 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
 
     //eslint-disable-next-line
   }, [inView]);
+  const allPremios = search === "" ? premio : filterPremios;
 
   return (
     <section>
@@ -29,8 +38,20 @@ export default function ModalSelectPremio({ handleSubmit }: any) {
         {!!error && (
           <p className="m-0 text-danger ">Error al cargar las notificaciones</p>
         )}
+        <input
+          placeholder="Buscar causa"
+          type="text"
+          value={search}
+          onChange={(e) => {
+            setFilterPremios(e.target.value);
+            setSearch(e.target.value);
+          }}
+          className={`w-100 form-control my-2 fs-5 m-0 ${
+            error && "border-danger "
+          }`}
+        />
         {!error &&
-          premio.map((premio: any, index: number) => (
+          allPremios.map((premio: any, index: number) => (
             <div key={index} className="d-flex row mt-3 mt-lg-4 ">
               <div className="col-10 col-sm-4  mx-auto mx-sm-0    p-0 ">
                 <Image

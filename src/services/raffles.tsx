@@ -11,6 +11,24 @@ export const getRaffles = () => {
     method: "GET",
   });
 };
+export const getRafflesFeatures = () => {
+  return Api({
+    endpoint: "/raffles/featured/",
+    method: "GET",
+  });
+};
+export const getRafflesDate = () => {
+  return Api({
+    endpoint: "/raffles_dates",
+    method: "GET",
+  });
+};
+export const getTestimonies = () => {
+  return Api({
+    endpoint: "/testimonies/",
+    method: "GET",
+  });
+};
 export const getRaffle = (id: String | string[]) => {
   return Api({
     endpoint: `/raffles/${id}`,
@@ -37,6 +55,20 @@ export const validateApplyCoupon = (coupon: String, raffleId: Number) => {
     _data: { coupon },
   });
 };
+export const updateGalleryCause = (causeId: string, cause: object) => {
+  return Api({
+    endpoint: `/causes/${causeId}/`,
+    method: "PUT",
+    _data: cause,
+  });
+};
+export const updateGalleryPrize = (prizeId: string, prize: object) => {
+  return Api({
+    endpoint: `/prizes/${prizeId}/`,
+    method: "PUT",
+    _data: prize,
+  });
+};
 
 export const createDonations = (donation: any) => {
   const formData = new FormData();
@@ -45,7 +77,8 @@ export const createDonations = (donation: any) => {
   formData.append("category", donation.category);
   formData.append("status", donation.status);
   formData.append("value", donation.value);
-  formData.append("association", donation.association);
+  if (donation.association)
+    formData.append("association", donation.association);
   if (donation.image[0]) formData.append("image", donation.image[0]);
 
   return axios.post(baseUrl + "/prizes/", formData, {
@@ -73,6 +106,28 @@ export const createCause = (cause: any) => {
   if (cause.image[0]) formData.append("image", cause.image[0]);
 
   return axios.post(baseUrl + "/causes/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
+export const createCauseGallery = (image: any) => {
+  const formData = new FormData();
+  if (image) formData.append("file", image);
+
+  return axios.post(baseUrl + "/causes_gallery/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
+export const createPrizeGallery = (image: any) => {
+  const formData = new FormData();
+  if (image) formData.append("file", image);
+
+  return axios.post(baseUrl + "/prize_gallery/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,

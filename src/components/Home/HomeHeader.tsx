@@ -8,6 +8,14 @@ import Image from "next/image";
 import HomeHistory from "./HomeHistory";
 
 export default function HomeHeader() {
+  const openWhatsApp = () => {
+    let message = encodeURIComponent(
+      "¡Hola! Me gustaría hacer una consulta sobre Rifa con causa."
+    );
+    let phoneNumber = "+584121243793";
+    let url = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(url, "_blank");
+  };
   return (
     <section className="mt-4">
       <div className="position-relative">
@@ -32,7 +40,7 @@ export default function HomeHeader() {
           <p className=" home-header-title  lh-1 m-0 ">
             enfocada en apoyar causas sociales
           </p>
-          <div className="icon-whatsapp ">
+          <div onClick={openWhatsApp} className="icon-whatsapp ">
             <BsWhatsapp color=" white" size={30} className="header-icono " />
           </div>
         </section>

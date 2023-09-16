@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -9,9 +9,14 @@ import { selectAuthState } from "@/store/slices/auth";
 import { createRafflesPrize, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectPremio from "./ModalSelectPremio";
 
-export default function ModalPremio({ show, handleClose, handleSubmit, activeSelect }: any) {
+export default function ModalPremio({
+  show,
+  handleClose,
+  handleSubmit,
+  activeSelect,
+}: any) {
   const dispatch = useDispatch();
-  const { loading } = useSelector(selectAuthState);
+  const [loading, setLoading] = useState(false);
   const { prizesCategories } = useSelector(selectRaffleState);
   const { associations } = useSelector(selectRaffleState);
 
@@ -73,6 +78,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit, activeSel
   ];
 
   const submitData = async (data: any) => {
+    setLoading(true);
     const { payload } = await dispatch(createRafflesPrize(data) as any);
     if (payload) {
       return handleSubmit({
@@ -80,6 +86,7 @@ export default function ModalPremio({ show, handleClose, handleSubmit, activeSel
         ...payload,
       });
     }
+    setLoading(false);
   };
 
   return (
@@ -96,48 +103,48 @@ export default function ModalPremio({ show, handleClose, handleSubmit, activeSel
         >
           X
         </div>
-        {!activeSelect && <div className="mt-4">
-          <FormGenerator
-            fields={fields}
-            submitData={submitData}
-            loading={loading}
-            renderButton={(handleSend) => (
-              <section className="row w-100 mx-auto mt-5   ">
-                <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
-                <div className="d-flex justify-content-end mt-3">
-                  <div className="col-3 p-0 pe-2   ">
-                    <Button
-                      disabled={loading}
-                      variant="secondary"
-                      onClick={handleClose}
-                      className="w-100 text-dark bg-light"
-                    >
-                      Cerrar
-                    </Button>
+        {!activeSelect && (
+          <div className="mt-4">
+            <FormGenerator
+              fields={fields}
+              submitData={submitData}
+              loading={loading}
+              renderButton={(handleSend) => (
+                <section className="row w-100 mx-auto mt-5   ">
+                  <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
+                  <div className="d-flex justify-content-end mt-3">
+                    <div className="col-3 p-0 pe-2   ">
+                      <Button
+                        disabled={loading}
+                        variant="secondary"
+                        onClick={handleClose}
+                        className="w-100 text-dark bg-light"
+                      >
+                        Cerrar
+                      </Button>
+                    </div>
+                    <div className="col-4 p-0 ps-2 ">
+                      <Button
+                        disabled={loading}
+                        variant="secondary"
+                        type="submit"
+                        className="w-100 btn btn-pink"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleSend();
+                        }}
+                      >
+                        Guardar premio
+                      </Button>
+                    </div>
                   </div>
-                  <div className="col-4 p-0 ps-2 ">
-                    <Button
-                      disabled={loading}
-                      variant="secondary"
-                      type="submit"
-                      className="w-100 btn btn-pink"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleSend();
-                      }}
-                    >
-                      Guardar premio
-                    </Button>
-                  </div>
-                </div>
-              </section>
-            )}
-          />
-        </div>}
+                </section>
+              )}
+            />
+          </div>
+        )}
 
         {activeSelect && <ModalSelectPremio handleSubmit={handleSubmit} />}
-
-
       </Modal.Body>
     </Modal>
   );

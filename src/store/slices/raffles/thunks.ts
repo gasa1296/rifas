@@ -1,7 +1,9 @@
 import {
   createCause,
+  createCauseGallery,
   createDonations,
   createNewRaffle,
+  createPrizeGallery,
   getAssociationsApproveds,
   getCausesCategories,
   getPrizebyId,
@@ -9,6 +11,8 @@ import {
   getRaffle,
   getRaffleTickets,
   getRaffles,
+  updateGalleryCause,
+  updateGalleryPrize,
   validateApplyCoupon,
 } from "@/services/raffles";
 import { RootState } from "@/store";
@@ -25,6 +29,7 @@ export const Raffles = createAsyncThunk(
   async (Profile: any, thunkAPI): Promise<{} | undefined> => {
     try {
       const result = await getRaffles();
+
       return result.data.results;
     } catch (error) {
       handleError(error);
@@ -83,10 +88,28 @@ export const Donations = createAsyncThunk(
 
       dataDonation.association = Number(dataDonation.association);
 
-      if (dataDonation.association === 0) delete dataDonation.association;
+      if (
+        dataDonation.association === 0 ||
+        dataDonation.association === undefined
+      )
+        delete dataDonation.association;
 
       dataDonation.category = Number(dataDonation.category);
       const result = await createDonations(dataDonation);
+
+      const petitions: any[] = [];
+      dataDonation.image.map((gallery: any) =>
+        petitions.push(createPrizeGallery(gallery))
+      );
+
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryPrize(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        name: dataDonation.name,
+        value: dataDonation.value,
+      });
+
       return result.data;
     } catch (error) {
       handleError(error);
@@ -103,6 +126,21 @@ export const createRafflesCause = createAsyncThunk(
 
       const result = await createCause(cause);
 
+      const petitions: any[] = [];
+      cause.image.map((gallery: any) =>
+        petitions.push(createCauseGallery(gallery))
+      );
+
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryCause(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        goal: cause.goal,
+        association: cause.association,
+        name: cause.name,
+        categories: cause.categories,
+      });
+
       return result.data;
     } catch (error) {
       handleError(error);
@@ -118,11 +156,25 @@ export const createRafflesPrize = createAsyncThunk(
 
       prize.association = Number(prize.association);
 
-      if (prize.association === 0) delete prize.association;
+      if (prize.association === 0 || prize.association === undefined)
+        delete prize.association;
 
       prize.category = Number(prize.category);
 
       const result = await createDonations(prize);
+
+      const petitions: any[] = [];
+      prize.image.map((gallery: any) =>
+        petitions.push(createPrizeGallery(gallery))
+      );
+
+      const resultGallery = await Promise.all(petitions);
+
+      await updateGalleryPrize(result.data.id, {
+        gallery: resultGallery.map((gallery) => gallery.data.id),
+        name: prize.name,
+        value: prize.value,
+      });
 
       return result.data;
     } catch (error) {

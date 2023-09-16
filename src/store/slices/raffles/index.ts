@@ -17,6 +17,7 @@ const initialState: RaffleInitialState = {
   selectedPaymentMethod: null,
   selectedWallet: false,
   coupon: null,
+  reserveTime: 600,
 };
 
 export const rafflesSlice = createSlice({
@@ -50,11 +51,16 @@ export const rafflesSlice = createSlice({
     setSelectedWallet: (state, action) => {
       state.selectedWallet = action.payload;
     },
+    setReserveTime: (state, action) => {
+      state.reserveTime = action.payload;
+    },
     resetBuyRaffle: (state) => {
       state.selectedTickets = [];
       state.selectedPaymentMethod = null;
       state.selectedWallet = false;
       state.coupon = null;
+      state.raffle = null;
+      state.reserveTime = 600;
     },
   },
   extraReducers: (builder) => {
@@ -64,6 +70,7 @@ export const rafflesSlice = createSlice({
 
 export const {
   setRaffle,
+  setReserveTime,
   setSelectedTicket,
   setDonationsForm1,
   setDonationsForm2,

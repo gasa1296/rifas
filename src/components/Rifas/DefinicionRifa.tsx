@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Field } from "@/types/Component/FormGenerator";
 import FormGenerator from "../FormGenerator";
 
 import { Profile } from "@/types/Model/Profile";
+import { useRaffleStore } from "@/store/zustand/RaffleStore";
 
 export default function DefinicionRifa({ handleChangeRaffle }: any) {
   const submitData = async (data: Profile) => {
     handleChangeRaffle(data);
   };
+  const setRaffleDate = useRaffleStore((state) => state.setRaffleDate);
+  const raffleDate = useRaffleStore((state) => state.raffleDate);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setRaffleDate();
+    }, 200);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+
+    //eslint-disable-next-line
+  }, []);
 
   const fields: Field[] = [
     {
@@ -21,13 +36,21 @@ export default function DefinicionRifa({ handleChangeRaffle }: any) {
       label: " Fecha de inicio",
       name: "start_date",
       required: true,
-      type: "date",
+      type: "select",
+      options: raffleDate?.map((date) => ({
+        label: new Date(date.date).toLocaleDateString(),
+        value: date.date,
+      })),
+      customChange: ({ setValue }: any) => {
+        setValue("end_date", undefined);
+      },
     },
     {
       label: " Fecha de Fin",
       name: "end_date",
       required: true,
       type: "date",
+      minDate: "start_date",
     },
 
     {
