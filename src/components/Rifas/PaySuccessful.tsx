@@ -116,20 +116,22 @@ export default function PaySuccessful({ initialStep }: any) {
         <p className=" m-0  d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de boletos adquiridos:{" "}
-          <p className="value-paySucessful m-0">{selectedTickets.length}</p>
+          <p className="value-paySucessful m-0 ps-1">
+            {selectedTickets.length}
+          </p>
         </p>
         <p className=" m-0  d-flex justify-content-center  text-paySucessful m-0 ">
           {" "}
           Total pagado:{" "}
-          <p className="value-paySucessful m-0">
+          <p className="value-paySucessful m-0 ps-1">
             {" "}
-            $ {parseNumber(totalPay)} MXN
+            ${parseNumber(totalPay)} MXN
           </p>
         </p>
         <p className=" m-0 d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de referencia:{" "}
-          <p className="value-paySucessful m-0">{payId}.</p>
+          <p className="value-paySucessful m-0 ps-1">{payId}.</p>
         </p>
         <p className=" mt-3 mb-0  text-paySucessful ">
           Ayúdanos a compartir en tus redes sociales y más gente se una a la

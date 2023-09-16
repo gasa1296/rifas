@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { Login, selectAuthState } from "@/store/slices/auth";
 import { Field } from "@/types/Component/FormGenerator";
 import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
+import toast from "react-hot-toast";
 
 export default function ModalForgotPassword() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ export default function ModalForgotPassword() {
 
   const setShowModal = ForgotPasswordStore((state) => state.setShowModal);
   const showModal = ForgotPasswordStore((state) => state.showModal);
+  const postEmail = ForgotPasswordStore((state) => state.postEmail);
+  const isLoading = ForgotPasswordStore((state) => state.isLoading);
 
   const handleClose = () => {
     setShowModal(false);
@@ -31,10 +34,12 @@ export default function ModalForgotPassword() {
   ];
 
   const submitData = async (data: any) => {
-    const { payload } = await dispatch(Login(data) as any);
-    if (payload) {
+    const result = await postEmail(data.email);
+    if (result) {
       handleClose();
       router.push("/");
+    } else {
+      toast.error("Ocurrio un error al enviar el correo");
     }
   };
   return (
@@ -43,7 +48,7 @@ export default function ModalForgotPassword() {
         <Modal.Body className="px-4">
           <div className="m-auto mb-4">
             <h4 className="text-secondary text-center m-0">
-              Olvidaste tu Contraseña
+              Olvidaste tu contrasena
             </h4>
           </div>
           <div
@@ -57,7 +62,7 @@ export default function ModalForgotPassword() {
             buttonText="Enviar"
             fields={fields}
             submitData={submitData}
-            loading={loading}
+            loading={isLoading}
           />
         </Modal.Body>
       </Modal>

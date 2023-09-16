@@ -95,11 +95,11 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
 
       if (payload.coupon === "") delete payload.coupon;
 
-      await setPaypalCapture(raffleId, payload);
+      const result: any = await setPaypalCapture(raffleId, payload);
 
       set({
         isLoading: false,
-        payId: order,
+        payId: result.data.invoice.order_id,
       });
     } catch (error) {
       set({
@@ -119,7 +119,7 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
 
       set({
         isLoading: false,
-        payId: "",
+        payId: result.data.invoice.order_id,
       });
     } catch (error) {
       set({
@@ -155,11 +155,11 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
 
       if (payload.coupon === "") delete payload.coupon;
 
-      await setMercadopago(raffleId, payload);
+      const result = await setMercadopago(raffleId, payload);
 
       set({
         isLoading: false,
-        payId: payment_data.token,
+        payId: result.data.invoice.order_id,
       });
     } catch (error) {
       set({
