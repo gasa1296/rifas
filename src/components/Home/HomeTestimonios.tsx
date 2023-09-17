@@ -38,11 +38,12 @@ export default function HomeTestimonios() {
 
   const testimonies = useRaffleStore((state) => state.testimonies);
 
-  console.log("test", testimonies);
-
   return (
     <div className="pt-5 ">
-      <section className="row m-0 mx-0 mx-lg-5  position-relative  rounded pb-5">
+      <section
+        className="row m-0 mx-0 mx-lg-5  position-relative  rounded pb-5"
+        style={{ overflow: "hidden" }}
+      >
         <Image
           src={testimnialesFondo}
           alt="fondoTestimoniales"

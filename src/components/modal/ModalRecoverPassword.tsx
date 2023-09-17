@@ -2,26 +2,22 @@ import React from "react";
 import { Field } from "@/types/Component/FormGenerator";
 import FormGenerator from "../FormGenerator";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { Login, selectAuthState } from "@/store/slices/auth";
+import { useSelector } from "react-redux";
+import { selectAuthState } from "@/store/slices/auth";
 import { Modal } from "react-bootstrap";
 import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
 
 export default function ModalRecoverPassword({ handleClose, show }: any) {
-  const dispatch = useDispatch();
+  const postEmailRecover = ForgotPasswordStore(
+    (state) => state.postEmailRecover
+  );
   const { loading } = useSelector(selectAuthState);
   const router = useRouter();
 
   const fields: Field[] = [
     {
-      label: "Codigo",
-      name: "email",
-      required: true,
-      type: "email",
-    },
-    {
       label: "Contraseña",
-      name: "paswword",
+      name: "password",
       required: true,
       type: "password",
     },
@@ -34,10 +30,15 @@ export default function ModalRecoverPassword({ handleClose, show }: any) {
   ];
 
   const submitData = async (data: any) => {
-    const { payload } = await dispatch(Login(data) as any);
-    if (payload) {
-      handleClose();
-      router.push("/");
+    if (typeof router?.query?.recoverPassword === "string") {
+      const result = await postEmailRecover(
+        router?.query?.recoverPassword || "",
+        data.password
+      );
+      if (result) {
+        handleClose();
+        router.push("/");
+      }
     }
   };
   return (

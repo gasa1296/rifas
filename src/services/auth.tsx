@@ -66,6 +66,15 @@ export const postEmail = (email: String) => {
     },
   });
 };
+export const postEmailRecover = (id: String, password: String) => {
+  return Api({
+    endpoint: `/resert_password/${id}/reset/`,
+    method: "PUT",
+    _data: {
+      password,
+    },
+  });
+};
 
 export const createAsociacion = (asociacion: any) => {
   const formData = new FormData();

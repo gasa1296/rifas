@@ -1,19 +1,15 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import FormGenerator from "../FormGenerator";
-import { useDispatch, useSelector } from "react-redux";
+
 import { useRouter } from "next/router";
-import { Login, selectAuthState } from "@/store/slices/auth";
+
 import { Field } from "@/types/Component/FormGenerator";
 import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
 import toast from "react-hot-toast";
 
 export default function ModalForgotPassword() {
-  const dispatch = useDispatch();
-  const { loading } = useSelector(selectAuthState);
   const router = useRouter();
-  /*    const handleClose = () => setShow(false);
-       const handleShow = () => setShow(true); */
 
   const setShowModal = ForgotPasswordStore((state) => state.setShowModal);
   const showModal = ForgotPasswordStore((state) => state.showModal);

@@ -15,7 +15,7 @@ export default function Layout({ children, home }: any) {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    if (router?.query?.recoverPassword === "true") setShow(true);
+    if (router?.query?.recoverPassword) setShow(true);
 
     //eslint-disable-next-line
   }, []);

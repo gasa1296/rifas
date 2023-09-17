@@ -47,23 +47,25 @@ export default function DonacionesValidacion({
             ¿Cuales son los siguientes pasos?
           </p>
 
-          <div className="d-flex justify-content-start  my-3 ">
+          <div className="d-flex justify-content-start   my-3 ">
             <BsFillCheckCircleFill
-              size={21}
+              size={20}
               className="m-0 "
-              color={" 313131"}
+              style={{ position: "absolute" }}
+              color={"#313131"}
             />
-            <p className="m-0  text-donaciones-validacion ms-2">
+            <p className="m-0  text-donaciones-validacion ms-4">
               Tu premio será sometido a un proceso de revisión
             </p>
           </div>
-          <div className="d-flex justify-content-start  my-3 ">
+          <div className="d-flex justify-content-start   my-3 ">
             <BsFillCheckCircleFill
-              size={30}
+              size={20}
+              style={{ position: "absolute" }}
               className="m-0 "
-              color={" 313131"}
+              color={"#313131"}
             />
-            <p className="m-0  text-donaciones-validacion ms-2">
+            <p className="m-0  text-donaciones-validacion ms-4">
               Una vez autorizado, te enviaremos un mensaje de confirmación y tu
               premio ya será parte del catálogo.
             </p>
@@ -71,11 +73,12 @@ export default function DonacionesValidacion({
 
           <div className="d-flex justify-content-start  my-3 ">
             <BsFillCheckCircleFill
-              size={30}
+              size={20}
+              style={{ position: "absolute" }}
               className="m-0 "
-              color={" 313131"}
+              color={"#313131"}
             />
-            <p className="m-0  text-donaciones-validacion ms-2  ">
+            <p className="m-0  text-donaciones-validacion ms-4 ">
               Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.
             </p>
@@ -89,7 +92,7 @@ export default function DonacionesValidacion({
             ¡Sigue Rifandote!
           </p>
 
-          <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
+          <div className="d-flex justify-content-center  mw-md-50  mt-5 ">
             {/*  <button className="btn btn-border-pink btn-sm w-50 mx-2 fs-6">
               {" "}
               Ver catálogo de premios

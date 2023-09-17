@@ -60,7 +60,7 @@ export default function RifasActivas({ all }: { all?: boolean }) {
   };
 
   return (
-    <div className="mt-3  ">
+    <div className="mt-3 " style={{ overflow: "hidden" }}>
       <section
         className={` mx-3 ${!all && "mx-lg-5"} `}
         style={{ marginBottom: "120px" }}
