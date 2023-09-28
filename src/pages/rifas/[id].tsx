@@ -19,7 +19,7 @@ export default function RifasDetails() {
   const router = useRouter();
 
   const { id } = router.query;
-  const { raffle } = useSelector(selectRaffleState);
+  const { raffle, loading } = useSelector(selectRaffleState);
   const dispatch = useDispatch();
 
   const tabs = [
@@ -43,6 +43,8 @@ export default function RifasDetails() {
 
     //eslint-disable-next-line
   }, []);
+
+  if (loading) return <></>;
 
   return (
     <div>

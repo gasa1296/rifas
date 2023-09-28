@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 export default function ConfirmacionRifa({ raffle, resetRaffle }: any) {
   const router = useRouter();
-  console.log("first", raffle);
+
   return (
     <section className=" shadow  px-3">
       <p className="title-confirmacionRifa mb-0 mt-3">
@@ -43,7 +43,6 @@ export default function ConfirmacionRifa({ raffle, resetRaffle }: any) {
             </p>
             <p className=" textInformatinRifa  d-flex m-0 lh-sm">
               La meta es de:{" "}
-              {/*  {Number(raffle.ticket_number) * Number(raffle.ticket_price)}  MXN  */}
               <p className="fw-bold m-0">
                 {" $"}
                 {parseNumber(raffle?.price) || ""} MXN.

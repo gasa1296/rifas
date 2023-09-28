@@ -1,32 +1,43 @@
 import Image from "next/image";
-import fondo from "@/assets/img/Rifa-destacada-portada.jpg";
+
 import fondoDestacada from "@/assets/img/bg-iconos-rifa-destacada.jpg";
 
 import { BiLoaderAlt } from "react-icons/bi";
-import {
-  BsFacebook,
-  BsTwitter,
-  BsWhatsapp,
-  BsFillShareFill,
-} from "react-icons/bs";
+import { BsFacebook, BsTwitter, BsWhatsapp } from "react-icons/bs";
 import { LuCalendarDays } from "react-icons/lu";
 
 import { MdEmail } from "react-icons/md";
 
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { selectRaffleState } from "@/store/slices/raffles";
+
 import LogoRifas from "@/assets/img/logoRifas.svg";
 import { parseNumber } from "@/utils/ParseNumber";
 import { getDays } from "@/utils/getDays";
+import { useRaffleStore } from "@/store/zustand/RaffleStore";
+
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import PercentageChart from "../Chart/PercentChart";
 export default function Rifa({ all }: { all?: boolean }) {
-  const { raffles, loading } = useSelector(selectRaffleState);
+  const raffleFeature = useRaffleStore((state) => state.raffleFeature);
+  const isLoading = useRaffleStore((state) => state.isLoading);
 
   const router = useRouter();
 
-  const raffle = raffles[0];
+  const raffle = raffleFeature;
 
-  if (!raffle || loading) return <div className="my-4"></div>;
+  if (!raffle || isLoading) return <div className="my-4"></div>;
+
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/rifas/detalles/${raffle.id}`;
+
+  const title = raffle.name;
+
+  const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
+  const raisedPercent = ((raffle?.raised || 0) * 100) / meta;
 
   return (
     <div className=" " style={{ marginBottom: "100px" }}>
@@ -59,23 +70,17 @@ export default function Rifa({ all }: { all?: boolean }) {
             <p className="fs-3 mt-4 mt-md-0 raffle-container-title">
               Recaudado
             </p>
-            <div className="d-lg-flex d-block mb-0">
-              <BiLoaderAlt
-                size={46}
-                className=" mt-2 me-2 position-relative "
-                color={"#00C851"}
-              />
-              <p className=" raffle-container-textinformation  ">30%</p>
-              <p className=" ms-0 ms-lg-4 raffle-container-textinformation  ">
-                $24,409.00
+            <div className="raffle-container-textinformation3">
+              <PercentageChart percentage={raisedPercent} />
+              <p className="ps-2 m-0 raffle-container-textinformation  ">
+                {raisedPercent}%
+              </p>
+              <p className="m-0 ms-0 ms-lg-4 raffle-container-textinformation  ">
+                $ {parseNumber(raffle?.raised || 0)}
               </p>
             </div>
             <p className="raffle-container-title   fs-3">
-              La meta es de{" "}
-              {parseNumber(
-                Number(raffle.ticket_number) * Number(raffle.ticket_price)
-              )}{" "}
-              MXN
+              La meta es de {parseNumber(meta)} MXN
             </p>
 
             <div className=" border-bottom border-2  my-2 position-relative "></div>
@@ -128,31 +133,37 @@ export default function Rifa({ all }: { all?: boolean }) {
               <div>
                 <h6 className="raffle-container-finish">Compartir:</h6>
 
-                <BsFacebook
-                  color=" #C3286D"
-                  size={25}
-                  className="mx- position-relative 2"
-                />
-                <BsTwitter
-                  color=" #C3286D"
-                  size={25}
-                  className="mx-2  position-relative "
-                />
-                <MdEmail
-                  color=" #C3286D"
-                  size={25}
-                  className="mx-2  position-relative "
-                />
-                <BsWhatsapp
-                  color=" #C3286D"
-                  size={25}
-                  className="mx-2  position-relative "
-                />
-                <BsFillShareFill
-                  color=" #C3286D"
-                  size={25}
-                  className="mx-2  position-relative "
-                />
+                <FacebookShareButton url={shareUrl} quote={title}>
+                  <BsFacebook
+                    color=" #C3286D"
+                    size={25}
+                    className="mx- position-relative 2"
+                  />
+                </FacebookShareButton>
+
+                <TwitterShareButton url={shareUrl} title={title}>
+                  <BsTwitter
+                    color=" #C3286D"
+                    size={25}
+                    className="mx-2  position-relative "
+                  />
+                </TwitterShareButton>
+
+                <EmailShareButton url={shareUrl} subject={title} body="body">
+                  <MdEmail
+                    color="#C3286D"
+                    size={25}
+                    className="mx-2  position-relative "
+                  />
+                </EmailShareButton>
+
+                <WhatsappShareButton url={shareUrl} title={title}>
+                  <BsWhatsapp
+                    color="#C3286D"
+                    size={25}
+                    className="mx-2  position-relative "
+                  />
+                </WhatsappShareButton>
               </div>
             </div>
           </div>

@@ -7,11 +7,12 @@ import Image from "next/image";
 import fondoRifasActivas from "@/assets/img/gal-microsite-apac2.jpg";
 import { MdAccessTime } from "react-icons/md";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
+import LogoRifas from "@/assets/img/logoRifas.svg";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
 import { RafflesI } from "@/types/Model/Raffle";
+import { parseNumber } from "@/utils/ParseNumber";
 
 export default function RifasActivas({ all }: { all?: boolean }) {
   const slider = React.useRef<any>(null);
@@ -47,8 +48,16 @@ export default function RifasActivas({ all }: { all?: boolean }) {
   };
 
   const filterRaffles = raffles.filter(
-    (raffle) => !selectedCategory || raffle.category === selectedCategory
+    (raffle) =>
+      (!selectedCategory || raffle.categories[0].id === selectedCategory) &&
+      raffle.status === 1
   );
+
+  const getPercetRaised = (raffle: RafflesI) => {
+    const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
+    const raisedPercent = ((raffle?.raised || 0) * 100) / meta;
+    return raisedPercent;
+  };
 
   return (
     <div className="mt-3 mx-3 mx-lg-0  ">
@@ -98,12 +107,7 @@ export default function RifasActivas({ all }: { all?: boolean }) {
             <IoIosArrowBack color="#C3286D" className="iconPreviousNext" />
           </button>
           <Slider ref={slider} {...settings} className=" ">
-            {[
-              ...filterRaffles,
-              ...filterRaffles,
-              ...filterRaffles,
-              ...filterRaffles,
-            ].map((raffle: RafflesI, index: number) => (
+            {filterRaffles.map((raffle: RafflesI, index: number) => (
               <div
                 key={index}
                 className="col-3 col-lg-2   mt-4 mt-md-0 py-3  "
@@ -111,7 +115,9 @@ export default function RifasActivas({ all }: { all?: boolean }) {
               >
                 <div className="mx-2 shadow">
                   <Image
-                    src={fondoRifasActivas}
+                    width={100}
+                    height={100}
+                    src={raffle.image || LogoRifas}
                     className="w-100 h-50"
                     alt=""
                   />
@@ -126,7 +132,8 @@ export default function RifasActivas({ all }: { all?: boolean }) {
                         size={20}
                         className="mb-1 me-2 opacity-75 "
                       />
-                      20% 8,040.00 recaudado
+                      {getPercetRaised(raffle)}%{" "}
+                      {parseNumber(raffle?.raised || 0)} recaudado
                     </p>
                     <button
                       onClick={() => router.push(`/rifas/${raffle.id}`)}

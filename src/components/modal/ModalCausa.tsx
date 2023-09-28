@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -18,11 +18,9 @@ export default function ModalCausa({
   activeSelect,
 }: any) {
   const dispatch = useDispatch();
-  const { loading } = useSelector(selectAuthState);
+  const [loading, setLoading] = useState(false);
+
   const { causesCategories, associations } = useSelector(selectRaffleState);
-
-
-
 
   const fields: Field[] = [
     {
@@ -72,6 +70,7 @@ export default function ModalCausa({
   ];
 
   const submitData = async (data: any) => {
+    setLoading(true);
     const { payload } = await dispatch(createRafflesCause(data) as any);
     if (payload) {
       return handleSubmit({
@@ -79,64 +78,69 @@ export default function ModalCausa({
         ...payload,
       });
     }
+    setLoading(false);
   };
   return (
     <Modal show={show} onHide={handleClose} className="custom-modal ">
       <Modal.Body className="px-4">
         <Modal.Header>
-          {!activeSelect && <h4 className="title-Modal mx-0 ">Crear una causa</h4>}
-          {activeSelect && <h4 className="title-Modal mx-0 ">Seleccionar causa</h4>}
+          {!activeSelect && (
+            <h4 className="title-Modal mx-0 ">Crear una causa</h4>
+          )}
+          {activeSelect && (
+            <h4 className="title-Modal mx-0 ">Seleccionar causa</h4>
+          )}
         </Modal.Header>
         <div
           style={{ cursor: "pointer" }}
           className="fs-4 text-secondary position-absolute top-0 end-0 mx-3 my-2"
           onClick={handleClose}
         >
-          {" "}
           X
         </div>
-        {!activeSelect && <div className="mt-4">
-          <FormGenerator
-            fields={fields}
-            submitData={submitData}
-            loading={loading}
-            renderButton={(handleSend) => (
-              <section className="row w-100 mx-auto mt-5   ">
-                <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
-                <div className="d-flex justify-content-end mt-3">
-                  <div className="col-3 p-0 pe-2   ">
-                    <Button
-                      disabled={loading}
-                      variant="secondary"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleClose();
-                      }}
-                      className="w-100 text-dark bg-light"
-                    >
-                      Cerrar
-                    </Button>
+        {!activeSelect && (
+          <div className="mt-4">
+            <FormGenerator
+              fields={fields}
+              submitData={submitData}
+              loading={loading}
+              renderButton={(handleSend) => (
+                <section className="row w-100 mx-auto mt-5   ">
+                  <div className="border-bottom  border border-dark opacity-50 w-100 "></div>
+                  <div className="d-flex justify-content-end mt-3">
+                    <div className="col-3 p-0 pe-2   ">
+                      <Button
+                        disabled={loading}
+                        variant="secondary"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleClose();
+                        }}
+                        className="w-100 text-dark bg-light"
+                      >
+                        Cerrar
+                      </Button>
+                    </div>
+                    <div className="col-4 p-0 ps-2 ">
+                      <Button
+                        disabled={loading}
+                        variant="secondary"
+                        type="submit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleSend();
+                        }}
+                        className="w-100 btn btn-pink"
+                      >
+                        Guardar causa
+                      </Button>
+                    </div>
                   </div>
-                  <div className="col-4 p-0 ps-2 ">
-                    <Button
-                      disabled={loading}
-                      variant="secondary"
-                      type="submit"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleSend();
-                      }}
-                      className="w-100 btn btn-pink"
-                    >
-                      Guardar causa
-                    </Button>
-                  </div>
-                </div>
-              </section>
-            )}
-          />
-
-        </div>}
+                </section>
+              )}
+            />
+          </div>
+        )}
 
         {activeSelect && <ModalSelectCausa handleSubmit={handleSubmit} />}
       </Modal.Body>

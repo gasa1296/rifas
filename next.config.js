@@ -6,4 +6,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withTM = require("next-transpile-modules")([
+  "@mercadopago/sdk-react", // insert the name of the package here
+]);
+
+module.exports = withTM(nextConfig);

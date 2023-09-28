@@ -6,6 +6,7 @@ import {
   setMercadopago,
   setPaypalCapture,
   setReserveTickets,
+  setWalletCapture,
 } from "@/services/Payments";
 
 import { create } from "zustand";
@@ -14,11 +15,20 @@ interface PaypalPayment {
   isLoading: boolean;
   payment: any;
   error: boolean;
+  payId: string;
+  totalPayResult: number;
   setPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setPaymentCapture: (
     raffleId: number,
     price: number,
-    order: string
+    order: string,
+    coupon: string,
+    wallet: boolean
+  ) => Promise<void>;
+  setWalletCapture: (
+    raffleId: number,
+
+    coupon: string
   ) => Promise<void>;
   getPaymentCreate: (id: number, raffle: any) => Promise<void>;
   setMercadopagoCapture: (
@@ -29,7 +39,9 @@ interface PaypalPayment {
       token: string;
       payment_method_id: string;
       issuer_id: string;
-    }
+    },
+    coupon: string,
+    wallet: boolean
   ) => Promise<void>;
 }
 
@@ -37,7 +49,8 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
   isLoading: false,
   payment: [],
   error: false,
-
+  payId: "",
+  totalPayResult: 0,
   setPaymentCreate: async (raffleId: number, raffle: any) => {
     set({ isLoading: true });
 
@@ -70,16 +83,47 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       });
     }
   },
-  setPaymentCapture: async (raffleId: number, price: number, order: string) => {
+  setPaymentCapture: async (
+    raffleId: number,
+    price: number,
+    order: string,
+    coupon: string,
+    wallet: boolean
+  ) => {
     try {
-      set({ isLoading: true });
+      set({ isLoading: true, error: false });
 
-      const payload = { price, order };
+      const payload: any = { price, order, coupon, wallet };
 
-      await setPaypalCapture(raffleId, payload);
+      if (payload.coupon === "") delete payload.coupon;
+
+      const result: any = await setPaypalCapture(raffleId, payload);
 
       set({
         isLoading: false,
+        payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
+      });
+    } catch (error) {
+      set({
+        error: true,
+      });
+    }
+  },
+  setWalletCapture: async (raffleId: number, coupon: string) => {
+    try {
+      set({ isLoading: true, error: false });
+
+      const payload: any = { coupon };
+
+      if (payload.coupon === "") delete payload.coupon;
+
+      const result = await setWalletCapture(raffleId, payload);
+
+      set({
+        isLoading: false,
+        payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
       });
     } catch (error) {
       set({
@@ -95,27 +139,37 @@ export const usePaypalPayment = create<PaypalPayment>((set) => ({
       token: string;
       payment_method_id: string;
       issuer_id: string;
-    }
+    },
+    coupon: string,
+    wallet: boolean
   ) => {
-    set({ isLoading: true });
+    try {
+      set({ isLoading: true, error: false });
+      const payload: any = {
+        email: payment_data.payer.email,
+        token: payment_data.token,
+        price: price,
+        payment_method_id: payment_data.payment_method_id,
+        issuer_id: payment_data.issuer_id,
+        type: "",
+        number: "",
+        coupon,
+        wallet,
+      };
 
-    const priceResult = await getPrice(raffleId);
-    console.log("testt", priceResult);
+      if (payload.coupon === "") delete payload.coupon;
 
-    const payload = {
-      email: payment_data.payer.email,
-      token: payment_data.token,
-      price: price,
-      payment_method_id: payment_data.payment_method_id,
-      issuer_id: payment_data.issuer_id,
-      type: "",
-      number: "",
-    };
+      const result = await setMercadopago(raffleId, payload);
 
-    await setMercadopago(raffleId, payload);
-
-    set({
-      isLoading: false,
-    });
+      set({
+        isLoading: false,
+        payId: result.data.invoice.order_id,
+        totalPayResult: result.data.price,
+      });
+    } catch (error) {
+      set({
+        error: true,
+      });
+    }
   },
 }));

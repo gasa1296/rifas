@@ -1,3 +1,4 @@
+import useTimer from "@/hooks/useTimer";
 import useTotalValue from "@/hooks/useTotalValue";
 import { parseNumber } from "@/utils/ParseNumber";
 import React from "react";
@@ -6,10 +7,13 @@ export default function MethodReview() {
   const { coupon, totalPrice, totalPay, selectedWallet, walletAccount } =
     useTotalValue();
 
+  const { displayTime } = useTimer();
+
   return (
     <section>
       <p className="boletos m-0 d-flex">
-        Boletos reservados por: <p className="time-boletos">10:00min</p>
+        Boletos reservados por:{" "}
+        <p className="time-boletos">{displayTime} min</p>
       </p>
       <div className="d-flex justify-content-between ">
         <p className="subtitle-boletosaRifa m-0">Total</p>

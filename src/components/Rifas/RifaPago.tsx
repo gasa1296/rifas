@@ -11,6 +11,7 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { parseNumber } from "@/utils/ParseNumber";
 
 import useTotalValue from "@/hooks/useTotalValue";
+import useTimer from "@/hooks/useTimer";
 export default function RifaPago({ nextStep, backStep }: any) {
   const { selectedPaymentMethod, selectedTickets } =
     useSelector(selectRaffleState);
@@ -19,6 +20,7 @@ export default function RifaPago({ nextStep, backStep }: any) {
     selectedPaymentMethod === "paypal" ? logoPaypal : logoMercadoPago;
 
   const { totalPay } = useTotalValue();
+  const { displayTime } = useTimer();
 
   return (
     <div className="d-block justify-content-center d-lg-flex  mt-5 mx-3 mx-lg-0   ">
@@ -29,8 +31,12 @@ export default function RifaPago({ nextStep, backStep }: any) {
         <p className=" donaciones-title">3 / 3 Efectua el pago</p>
         <p className="subtitle-boletosaRifa m-0">Confirma y paga tus boletos</p>
         <div className="d-flex text-secondary  mt-3 ">
-          <p className="m-0 ">Paga con</p>
-          <Image src={Icon} alt="" className="ms-2" />
+          <p className="m-0 ">Paga con: </p>
+          {selectedPaymentMethod ? (
+            <Image src={Icon} alt="" className="ms-2" />
+          ) : (
+            <div className="ps-1 ">Billetera</div>
+          )}
         </div>
         <div className=" border-bottom my-2 w-100"></div>
 
@@ -58,7 +64,10 @@ export default function RifaPago({ nextStep, backStep }: any) {
             </ul>
           </div>
         </div>
-        <p className="boletos"> Boletos reservados por: 10:00 min</p>
+        <p className="boletos m-0 d-flex">
+          Boletos reservados por:{" "}
+          <p className="time-boletos">{displayTime} min</p>
+        </p>
 
         <div className="d-flex justify-content-between mt-4   ">
           <button

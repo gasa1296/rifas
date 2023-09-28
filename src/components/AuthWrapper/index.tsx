@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { validateAuthPath } from "./helper";
 import { useNotificationStore } from "@/store/zustand/NotificationStore";
 import { Raffles, getCategories } from "@/store/slices/raffles";
+import { useRaffleStore } from "@/store/zustand/RaffleStore";
 
 interface Props {
   children: JSX.Element;
@@ -15,6 +16,9 @@ export default function AuthWrapper({ children }: Props) {
   const getNotifications = useNotificationStore(
     (state) => state.getNotifications
   );
+
+  const setTestimonies = useRaffleStore((state) => state.setTestimonies);
+  const setRaffleFeature = useRaffleStore((state) => state.setRaffleFeature);
 
   const router = useRouter();
 
@@ -40,6 +44,8 @@ export default function AuthWrapper({ children }: Props) {
     const timeoutId = setTimeout(() => {
       dispatch(getCategories({}) as any);
       dispatch(Raffles({}) as any);
+      setTestimonies();
+      setRaffleFeature();
       getAuthSession();
     }, 200);
 

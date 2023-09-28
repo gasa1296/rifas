@@ -318,6 +318,18 @@ z-index: 10;
 }
 
 
+.raffle-container-textinformation3{
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-784b5f);
+text-align: left;
+font-weight: 600;
+font-size: 44px;
+opacity: 1;
+position: relative;
+z-index: 10;
+display: flex; 
+align-items: center ;
+}
 .raffle-container-textinformation{
 letter-spacing: var(--unnamed-character-spacing-0);
 color: var(--unnamed-color-784b5f);
@@ -587,6 +599,7 @@ color: #FFFDFD;
 opacity: 1;
 font-size: 28px;
 font-weight: 600;
+margin-bottom: 0px;
 }
 
 .container-butTickes{
@@ -597,6 +610,17 @@ font-weight: 600;
   letter-spacing: 0px;
 color: #FFFFFF;
 opacity: 1;
+display: flex; 
+align-items: center;
+
+
+}
+.container-butTickes p {
+
+  margin: 0px;
+  padding-left: 10px;
+
+
 }
 
 .container-costoBoletos {
@@ -1641,7 +1665,39 @@ font-size: 14px;
   top: -5px;
   text-align: center;
 }
+.single-chart {
+  width: 40px;
+}
 
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 40px;
+  
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #d63384;
+}
 /*css del slider*/
 .slick-dots li{
   border-radius: 50% !important;

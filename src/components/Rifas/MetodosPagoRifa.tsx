@@ -15,9 +15,12 @@ import {
 } from "@/store/slices/raffles";
 import { validateCoupon } from "@/store/slices/raffles";
 import { toast } from "react-hot-toast";
+import useTotalValue from "@/hooks/useTotalValue";
 
 type Imethods = "paypal" | "mercadopago";
 export default function MetodosPagoRifa({ nextStep, backStep }: any) {
+  const { totalPay } = useTotalValue();
+
   const { profile } = useSelector(selectAuthState);
   const dispatch = useDispatch();
   const { selectedPaymentMethod, selectedWallet } =
@@ -34,7 +37,7 @@ export default function MetodosPagoRifa({ nextStep, backStep }: any) {
 
     if (payload) return toast.success("Cupon aplicado");
   };
-  const disableButton = selectedPaymentMethod === null;
+  const disableButton = selectedPaymentMethod === null && totalPay !== 0;
 
   return (
     <section>

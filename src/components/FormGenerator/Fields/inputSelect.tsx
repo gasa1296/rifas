@@ -6,6 +6,9 @@ interface Props {
   required?: boolean;
   error?: string;
   options?: { label: string; value: string }[];
+  setValue: any;
+  customChange: any;
+  watch: any;
 }
 export default function InputSelect({
   register,
@@ -14,7 +17,11 @@ export default function InputSelect({
   required,
   error,
   options,
+  setValue,
+  customChange,
+  watch,
 }: Props) {
+  const values: any = watch();
   return (
     <div>
       <label
@@ -26,8 +33,14 @@ export default function InputSelect({
 
       <select
         {...register(name, { required })}
-        className={`form-select form-select-md my-2 fs-5 w-100 ${error && "border-danger "
-          }`}
+        className={`form-select form-select-md my-2 fs-5 w-100 ${
+          error && "border-danger "
+        }`}
+        onChange={(e) => {
+          setValue(name, e.target.value);
+          customChange &&
+            customChange({ setValue, newValue: e.target.value, values });
+        }}
       >
         <option selected></option>
         {options?.map((option, index) => (

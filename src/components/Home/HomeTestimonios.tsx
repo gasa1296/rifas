@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import testimnialesFondo from "@/assets/img/bg-testomoniales.png";
 import Image from "next/image";
+import { useRaffleStore } from "@/store/zustand/RaffleStore";
+import LogoRifas from "@/assets/img/logoRifas.svg";
 
 export default function HomeTestimonios() {
   const settings = {
@@ -34,35 +36,9 @@ export default function HomeTestimonios() {
     ],
   };
 
-  const testimonios = [
-    {
-      title:
-        "Decidieron cambiar una realidad y lograron resultados inesperados",
-      label: "Ayudame a escuchar",
-      subtitle: "Mas de $350.000 pesos recaudados",
-      information:
-        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
-      footer: "APAC A.C",
-    },
-    {
-      title:
-        "Decidieron cambiar una realidad y lograron resultados inesperados",
-      label: "Ayudame a escuchar",
-      subtitle: "hhhh",
-      information:
-        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
-      footer: "APAC A.C",
-    },
-    {
-      title:
-        "Decidieron cambiar una realidad y lograron resultados inesperados",
-      label: "Ayudame a escuchar",
-      subtitle: "Mas de $3",
-      information:
-        "Hoy, me siento profundamente agradecido por cada uno de ustedes que donó o compartió mi historia Sin su ayuda, no estaría aquí, disfrutando nuevamente de los sonidos que dan color a mi vida.",
-      footer: "APAC A.C",
-    },
-  ];
+  const testimonies = useRaffleStore((state) => state.testimonies);
+
+  console.log("test", testimonies);
 
   return (
     <div className="pt-5 mx-2 mxl-g-0 ">
@@ -74,29 +50,37 @@ export default function HomeTestimonios() {
         />
         <h5 className=" home-title-testimonios pt-5 ps-5">Testimoniales</h5>
         <Slider {...settings}>
-          {testimonios.map((testimonio, index) => (
+          {testimonies?.map((testimonio, index) => (
             <div key={index} className="py-3 p-5">
-              <p className="home-subtitle-testimonios ">{testimonio.title}</p>
+              <p className="home-subtitle-testimonios ">
+                {testimonio.raffle.short_description}
+              </p>
 
               <div className=" d-flex justify-content-between row ">
                 <div className=" col-12 col-lg-5 mt-4 me-5  text-start ">
                   <p className="home-title-container-testimonios">
-                    {testimonio.label}
+                    {testimonio.raffle.name}
                   </p>
 
                   <p className="home-subtitle-container-testimonios">
-                    {testimonio.subtitle}
+                    Mas de $ {testimonio.raffle.raised} pesos recaudados
                   </p>
                   <p className="home-information-container-testimonios">
-                    {testimonio.information}
+                    {testimonio.raffle.description}
                   </p>
                   <p className="home-subtitle-container-testimonios">
-                    {testimonio.footer}
+                    {testimonio.association.association_name}
                   </p>
                 </div>
                 <div className="col-10 col-lg-5 mt-4  ">
                   <div className="">
-                    <Image src={fondo} alt="fondo" className="w-100 h-75 " />
+                    <Image
+                      width={100}
+                      height={100}
+                      src={testimonio.raffle.image || LogoRifas}
+                      alt="fondo"
+                      className="w-100 h-75 "
+                    />
                   </div>
                 </div>
               </div>

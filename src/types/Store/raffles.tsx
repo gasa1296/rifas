@@ -16,4 +16,5 @@ export interface RaffleInitialState {
   selectedPaymentMethod: Imethods | null;
   selectedWallet: boolean;
   coupon: null | CouponI;
+  reserveTime: number;
 }

@@ -28,54 +28,77 @@ export default function DonacionesValidacion({
             3 / 3 Premio en validacion
           </h4>
 
-          <BiHeartCircle size={55} className="mx-auto d-block mt-3" color={"C3286D"} />
+          <BiHeartCircle
+            size={55}
+            className="mx-auto d-block mt-3"
+            color={"C3286D"}
+          />
 
-          <p className="m-0 tanks-donaciones-validacion text-center ">Gracias</p>
-          <p className="m-0  information-donacionesValidacion text-center">Estamos muy contentos de </p>
-          <p className="m-0 fs-3  information-donacionesValidacion text-center">Conseguir tu valiso apoyo</p>
-          <p className=" mb-4  stepsToFollow-donaciones mt-3 ">¿Cuales son los siguientes pasos?</p>
+          <p className="m-0 tanks-donaciones-validacion text-center ">
+            Gracias
+          </p>
+          <p className="m-0  information-donacionesValidacion text-center">
+            Estamos muy contentos de{" "}
+          </p>
+          <p className="m-0 fs-3  information-donacionesValidacion text-center">
+            Conseguir tu valiso apoyo
+          </p>
+          <p className=" mb-4  stepsToFollow-donaciones mt-3 ">
+            ¿Cuales son los siguientes pasos?
+          </p>
 
-          {/*    <div className="d-flex justify-content-start iconos-donaciones  my-3  ">
-            <BsFillCheckCircleFill size={30} className="m-0 border " color={" 313131"} />
-            <p className="m-0  text-donaciones-validacion ms-2 ">
-              Tu premio será sometido a un proceso de revisión
-            </p>
-          </div> */}
-          <div className="d-flex justify-content-start iconos-donaciones  my-3 col-7 ">
-            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
-            <p className="m-0  text-donaciones-validacion ms-2 ">
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill
+              size={21}
+              className="m-0 "
+              color={" 313131"}
+            />
+            <p className="m-0  text-donaciones-validacion ms-2">
               Tu premio será sometido a un proceso de revisión
             </p>
           </div>
-
-          <div className="d-flex justify-content-start iconos-donaciones  my-3  col-12  ">
-            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
-            <p className="m-0  text-donaciones-validacion ms-2 ">
-              Una vez autorizado, te enviaremos un mensaje de consfirmación y tu premio ya será parte del catálogo.
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill
+              size={30}
+              className="m-0 "
+              color={" 313131"}
+            />
+            <p className="m-0  text-donaciones-validacion ms-2">
+              Una vez autorizado, te enviaremos un mensaje de confirmación y tu
+              premio ya será parte del catálogo.
             </p>
           </div>
 
-
-          <div className="d-flex justify-content-start iconos-donaciones my-3 col-12 ">
-            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
+          <div className="d-flex justify-content-start  my-3 ">
+            <BsFillCheckCircleFill
+              size={30}
+              className="m-0 "
+              color={" 313131"}
+            />
             <p className="m-0  text-donaciones-validacion ms-2  ">
               Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.
             </p>
           </div>
-          <p className="m-0 text-donaciones-validacion text-center mt-4" > Sabrás de nosotros en un máximo de 48 hrs</p>
-          <p className="m-0 text-donaciones-validacion  text-center"> ¡Sigue Rifandote!</p>
+          <p className="m-0 text-donaciones-validacion text-center mt-4">
+            {" "}
+            Sabrás de nosotros en un máximo de 48 hrs
+          </p>
+          <p className="m-0 text-donaciones-validacion  text-center">
+            {" "}
+            ¡Sigue Rifandote!
+          </p>
 
           <div className="d-flex justify-content-between  mw-md-50  mt-5 ">
-            <button className="btn btn-border-pink btn-sm w-50 mx-2 fs-6">
+            {/*  <button className="btn btn-border-pink btn-sm w-50 mx-2 fs-6">
               {" "}
               Ver catálogo de premios
-            </button>
+            </button> */}
             <button
               className="btn btn-pink btn-sm w-50 mx-2 fs-6"
               onClick={() => initialStep()}
             >
-              Ir a  donar otro premio
+              Ir a donar otro premio
             </button>
           </div>
         </div>

@@ -53,8 +53,18 @@ export default function Footer() {
           <div>
             <h6 className=".footer-title">Nosotros</h6>
             <ul className=" list-unstyled footer-information">
-              <li>Conocenos</li>
-              <li>¿Como funciona?</li>
+              <li
+                onClick={() => router.push("/nosotros")}
+                className="button-contacto"
+              >
+                Conocenos
+              </li>
+              <li
+                onClick={() => router.push("/faq")}
+                className="button-contacto"
+              >
+                ¿Como funciona?
+              </li>
               <li
                 onClick={() => router.push("/contacto")}
                 className="button-contacto"
@@ -67,18 +77,54 @@ export default function Footer() {
           <div>
             <h6 className=".footer-title">Legal</h6>
             <ul className=" list-unstyled footer-information">
-              <li onClick={() => router.push("/terminosCondiciones")}>Terminos y condiciones</li>
-              <li onClick={() => router.push("/privacyNotice")}>Aviso de privacidad</li>
-              <li onClick={() => router.push("/frequentQuestions")}>Preguntan frecuentes</li>
-              <li>Reportar rifa</li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/terminosCondiciones")}
+              >
+                Terminos y condiciones
+              </li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/privacyNotice")}
+              >
+                Aviso de privacidad
+              </li>
+              <li
+                className="button-contacto"
+                onClick={() => router.push("/frequentQuestions")}
+              >
+                Preguntan frecuentes
+              </li>
+              <li
+                onClick={() => router.push("/contacto")}
+                className="button-contacto"
+              >
+                Reportar rifa
+              </li>
             </ul>
           </div>{" "}
           <div>
             <h6 className=".footer-title">Redes</h6>
             <ul className=" list-unstyled footer-information">
-              <li>Facebook</li>
-              <li>Twitter</li>
-              <li>Youtube</li>
+              <li
+                onClick={() =>
+                  router.push("https://www.instagram.com/rifaconcausa/")
+                }
+                className="button-contacto"
+              >
+                Instagram
+              </li>
+              <li
+                onClick={() =>
+                  router.push(
+                    "https://www.facebook.com/profile.php?id=100094965330971"
+                  )
+                }
+                className="button-contacto"
+              >
+                Facebook
+              </li>
+              {/*   <li>Youtube</li> */}
             </ul>
           </div>
         </div>

@@ -16,21 +16,44 @@ import { selectRaffleState } from "@/store/slices/raffles";
 import { selectAuthState } from "@/store/slices/auth";
 import { MercadoPagoButton } from "../PaymentMethods/Mercadopago";
 import { parseNumber } from "@/utils/ParseNumber";
+import { usePaypalPayment } from "@/store/zustand/PaypalStore";
+import useTotalValue from "@/hooks/useTotalValue";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import Wallet from "../PaymentMethods/Wallet";
 
 export default function PaySuccessful({ initialStep }: any) {
   const router = useRouter();
 
   const [success, setSuccess] = React.useState(false);
-  const { raffle, selectedPaymentMethod, selectedTickets, selectedWallet } =
+  const { raffle, selectedPaymentMethod, selectedTickets } =
     useSelector(selectRaffleState);
-  const { profile } = useSelector(selectAuthState);
 
-  const walletAccount = selectedWallet ? Number(profile?.wallet.value) : 0;
+  const payId = usePaypalPayment((state) => state.payId);
+  const totalPayResult = usePaypalPayment((state) => state.totalPayResult);
+  const error = usePaypalPayment((state) => state.error);
 
-  const totalPrice =
-    selectedTickets.length * (Number(raffle?.ticket_price) || 0);
+  const { totalPay, selectedWallet } = useTotalValue();
 
-  const totalPay = walletAccount > totalPrice ? 0 : totalPrice - walletAccount;
+  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/rifas/detalles/${raffle?.id}`;
+  const title = raffle?.name;
+
+  if (!success && totalPay === 0 && selectedWallet) {
+    return (
+      <div className="  d-block justify-content-center d-lg-flex mt-5 mx-3 mx-lg-0 ">
+        <div className=" col-12 col-lg-6   ">
+          <BuyTickes />
+        </div>
+        <div className="col-lg-6 col-12 mt-3 mt-md-0 text-center px-5 mx-auto">
+          <Wallet setSuccess={setSuccess} />
+        </div>
+      </div>
+    );
+  }
 
   if (!success && selectedPaymentMethod === "paypal")
     return (
@@ -55,6 +78,30 @@ export default function PaySuccessful({ initialStep }: any) {
       </div>
     );
 
+  if (error) {
+    return (
+      <div className="  d-block justify-content-center d-lg-flex mt-5 mx-3 mx-lg-0 ">
+        <div className=" col-12 col-lg-6   ">
+          <BuyTickes />
+        </div>
+        <div className="col-lg-6 col-12 mt-3 mt-md-0 text-center mx-auto ">
+          <BiHeartCircle size={60} color="#C3286D" />
+          <h3 className="my-2 tank-paySucessfull"> Error al hacer el pago </h3>
+          <p className=" m-0  text-paySucessful ">
+            Tuvimos un error al procesar el pago, porfavor intentalo de nuevo
+          </p>
+
+          <button
+            onClick={() => router.push("/rifas")}
+            className="mt-3 btn btn-border-pink  w-50 "
+          >
+            Intentar de nuevo
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="  d-block justify-content-center d-lg-flex mt-5 mx-3 mx-lg-0 ">
       <div className=" col-12 col-lg-6   ">
@@ -70,32 +117,77 @@ export default function PaySuccessful({ initialStep }: any) {
         <p className=" m-0  d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de boletos adquiridos:{" "}
-          <p className="value-paySucessful m-0">{selectedTickets.length}</p>
+          <p className="value-paySucessful m-0 ps-1">
+            {selectedTickets.length}
+          </p>
         </p>
         <p className=" m-0  d-flex justify-content-center  text-paySucessful m-0 ">
           {" "}
           Total pagado:{" "}
-          <p className="value-paySucessful m-0">
+          <p className="value-paySucessful m-0 ps-1">
             {" "}
-            $ {parseNumber(totalPay)} MXN
+            ${parseNumber(totalPayResult)} MXN
           </p>
         </p>
-        {/* <p className=" m-0 d-flex justify-content-center  text-paySucessful">
+        <p className=" m-0 d-flex justify-content-center  text-paySucessful">
           {" "}
           Número de referencia:{" "}
-          <p className="value-paySucessful m-0">t8zbvmk6.</p>
-        </p> */}
+          <p className="value-paySucessful m-0 ps-1">{payId}.</p>
+        </p>
         <p className=" mt-3 mb-0  text-paySucessful ">
           Ayúdanos a compartir en tus redes sociales y más gente se una a la
           causa.
         </p>
         <div>
           <h6 className=" text-center share-paySucessfull my-2 ">Compartir:</h6>
-          <BsFacebook color=" #C3286D" size={25} className="mx-2 mt-2" />
-          <BsTwitter color=" #C3286D" size={25} className="mx-2" />
-          <MdEmail color=" #C3286D" size={25} className="mx-2" />
-          <BsWhatsapp color=" #C3286D" size={25} className="mx-2" />
-          <BsFillShareFill color=" #C3286D" size={25} className="mx-2" />
+          <FacebookShareButton
+            url={shareUrl}
+            quote={title}
+            className="Demo__some-network__share-button"
+          >
+            <BsFacebook
+              color=" #C3286D"
+              size={25}
+              className="mx- position-relative 2"
+            />
+          </FacebookShareButton>
+
+          <TwitterShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button"
+          >
+            <BsTwitter
+              color=" #C3286D"
+              size={25}
+              className="mx-2  position-relative "
+            />
+          </TwitterShareButton>
+
+          <EmailShareButton
+            url={shareUrl}
+            subject={title}
+            body="body"
+            className="Demo__some-network__share-button"
+          >
+            <MdEmail
+              color=" #C3286D"
+              size={25}
+              className="mx-2  position-relative "
+            />
+          </EmailShareButton>
+
+          <WhatsappShareButton
+            url={shareUrl}
+            title={title}
+            className="Demo__some-network__share-button"
+          >
+            <BsWhatsapp
+              color=" #C3286D"
+              size={25}
+              className="mx-2  position-relative "
+            />
+          </WhatsappShareButton>
         </div>
         <button
           onClick={() => router.push("/rifas")}
