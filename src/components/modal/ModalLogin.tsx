@@ -66,6 +66,7 @@ export default function ModalLogin({ show, handleClose }: any) {
           loading={loading}
         />
         <p onClick={() => { handleClose(); setShowModal(true) }} className="text-center mb-3 fw-medium  password" >¿Olvidaste tu contraseña?</p>
+        <p onClick={() => { handleClose(); setShowModal(true) }} className="text-center mb-3 fw-medium  password" >¿ tu contraseña?</p>
 
         <div className=" mx-0 mx-md-auto d-flex flex-lg-wrap flex-wrap  justify-content-center mb-4">
           <div className="my-2 my-md-0 mx-3">  {/*  <LoginWithFacebook /> */}</div>

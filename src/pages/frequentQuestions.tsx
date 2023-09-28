@@ -8,7 +8,7 @@ export default function frequentQuestions() {
 
 
                 <div className='col-8 m-auto text-start '>
-                    <h5 className='title-preguntasFrecuentes'>Preguntas frecuentes</h5>
+                    <p className='title-preguntasFrecuentes'>Preguntas frecuentes</p>
                     <p className='text-Questions'>Esta es una lista de las preguntas que más recibimos frecuentemente. Para mayor información, o si necesitas soporte técnico, por favor utiliza nuestro servicio de Ayuda en Línea.</p>
 
 

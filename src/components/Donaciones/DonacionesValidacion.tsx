@@ -23,7 +23,7 @@ export default function DonacionesValidacion({
             className="w-100 h-auto mx-0 "
           />
         </div>
-        <div className=" col-lg-5 col-12   text-secondary ms-3 ">
+        <div className=" col-lg-5 col-12   text-secondary ms-0 ms-lg-3 ">
           <h4 className=" lh-sm m-0 text-lg-start mt-3 mt-lg-0 donaciones-title">
             3 / 3 Premio en validacion
           </h4>
@@ -35,22 +35,29 @@ export default function DonacionesValidacion({
           <p className="m-0 fs-3  information-donacionesValidacion text-center">Conseguir tu valiso apoyo</p>
           <p className=" mb-4  stepsToFollow-donaciones mt-3 ">¿Cuales son los siguientes pasos?</p>
 
-          <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={21} className="m-0 " color={" 313131"} />
-            <p className="m-0  text-donaciones-validacion ms-2">
+          {/*    <div className="d-flex justify-content-start iconos-donaciones  my-3  ">
+            <BsFillCheckCircleFill size={30} className="m-0 border " color={" 313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2 ">
+              Tu premio será sometido a un proceso de revisión
+            </p>
+          </div> */}
+          <div className="d-flex justify-content-start iconos-donaciones  my-3 col-7 ">
+            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2 ">
               Tu premio será sometido a un proceso de revisión
             </p>
           </div>
-          <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={30} className="m-0 " color={" 313131"} />
-            <p className="m-0  text-donaciones-validacion ms-2">
-              Una vez autorizado, te enviaremos un mensaje de confirmación y tu premio ya será parte del catálogo.
+
+          <div className="d-flex justify-content-start iconos-donaciones  my-3  col-12  ">
+            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
+            <p className="m-0  text-donaciones-validacion ms-2 ">
+              Una vez autorizado, te enviaremos un mensaje de consfirmación y tu premio ya será parte del catálogo.
             </p>
           </div>
 
 
-          <div className="d-flex justify-content-start  my-3 ">
-            <BsFillCheckCircleFill size={30} className="m-0 " color={" 313131"} />
+          <div className="d-flex justify-content-start iconos-donaciones my-3 col-12 ">
+            <BsFillCheckCircleFill size={30} className="m-0" color={"#313131"} />
             <p className="m-0  text-donaciones-validacion ms-2  ">
               Si seleccionaste alguna asociación será asignado a dicha
               asociación para ser elegido en una rifa.

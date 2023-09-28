@@ -65,7 +65,7 @@ export default function HomeTestimonios() {
   ];
 
   return (
-    <div className="pt-5 ">
+    <div className="pt-5 mx-2 mxl-g-0 ">
       <section className="row m-0 mx-0 mx-lg-5  position-relative  rounded pb-5">
         <Image
           src={testimnialesFondo}

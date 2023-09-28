@@ -7,10 +7,18 @@ import { Login, selectAuthState } from "@/store/slices/auth";
 import { Modal } from 'react-bootstrap';
 import { ForgotPasswordStore } from '@/store/zustand/ForgotPassword';
 
-export default function ModalRecoverPassword({ handleClose, show }: any) {
+export default function ModalRecoverPassword({ show }: any) {
     const dispatch = useDispatch();
-    const { loading } = useSelector(selectAuthState);
+    const setShowModal = ForgotPasswordStore((state) => state.setShowModal);
+    const showModal = ForgotPasswordStore((state) => state.showModal);
+    const postEmail = ForgotPasswordStore((state) => state.postEmail);
+    const isLoading = ForgotPasswordStore((state) => state.isLoading);
+
+
     const router = useRouter();
+    const handleClose = () => {
+        setShowModal(false);
+    }
 
     const fields: Field[] = [
         {
@@ -43,7 +51,7 @@ export default function ModalRecoverPassword({ handleClose, show }: any) {
     };
     return (
         <div>
-            <Modal className="custom-modal" show={show} onHide={handleClose}>
+            <Modal className="custom-modal" show={showModal} onHide={handleClose}>
 
                 <Modal.Body className="px-4">
                     <div className="m-auto mb-4">
@@ -60,7 +68,7 @@ export default function ModalRecoverPassword({ handleClose, show }: any) {
                         buttonText="Enviar"
                         fields={fields}
                         submitData={submitData}
-                        loading={loading}
+                        loading={isLoading}
                     />
                 </Modal.Body>
             </Modal>

@@ -130,7 +130,20 @@ color: var(--unnamed-color-707070);}
 /* pages del navbar*/
 
 
+/* pages  de profile*/
 
+.container-Profile{
+  position: absolute;
+  top: 0px;
+  right: 0;
+  max-width: 313px;
+  width: 15%;
+  height: 100px;
+  z-index: 1000;
+  margin-top: 60px;
+  background: #F6F7F8 0% 0% no-repeat padding-box;
+  border: 1px solid #70707026;
+}
 
 .home-navbar{
 letter-spacing: var(--unnamed-character-spacing-0);
@@ -900,6 +913,7 @@ opacity: 1;
 color: #784B5F;
 opacity: 1;
 }
+
 .information-donacionesValidacion{
   font-size: 28px;
   font-weight: 500;
@@ -925,6 +939,11 @@ text-align: center;
 color: #212121;
 opacity: 1;
 }
+
+.iconos-donaciones{
+width: 100%;
+}
+
 
 /*Resgistro*/
 
@@ -1094,6 +1113,90 @@ color: #707070;
 opacity: 1;
 }
 
+
+/*pages Dashboard*/
+.background-dashboard{
+  opacity: 1;
+  background: #F1ECEF 0% 0% no-repeat padding-box !important;
+border-radius: 8px;
+opacity: 1;
+
+}
+
+.container-sidebar{
+  background: #F1ECEF 0% 0% no-repeat padding-box;
+opacity: 1;
+cursor: pointer;
+}
+.container-boxSidebar {
+  background: #784B5F 0% 0% no-repeat padding-box;
+border: 1px solid #B2B2B2;
+border-radius: 4px;
+opacity: 1;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+}
+.title-dashboard{
+  letter-spacing: 0px;
+color: #373A3C;
+opacity: 1;
+font-size: 24px;
+font-weight: normal;
+}
+
+.button-dashboard{
+  letter-spacing: 0px;
+  color: #FCFCFC;
+  opacity: 1;
+  font-size: 20px;
+  font-weight: normal;
+  background: var(--unnamed-color-b19aa4) 0% 0% no-repeat padding-box;
+border: none;
+border-radius: 5px;
+
+}
+/*dasboardh resumen*/
+.container-resumen{
+  border: 1px solid var(--unnamed-color-dddddd);
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #DDDDDD;
+border-radius: 0px 0px 4px 4px;
+opacity: 1;
+}
+
+
+.title-resumen{
+  letter-spacing: 0px;
+color: #C3286D;
+opacity: 1;
+font-size: 24px;
+font-weight: bold;
+}
+
+.informationRaffle-resumen{
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.button-Resumen{
+  background: #784B5F 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  opacity: 1;
+  letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+font-size: 16px;
+font-weight: normal;
+border: none;
+}
+
+
+
+
 /*footer*/
 
 .footer-fondo{
@@ -1131,10 +1234,178 @@ opacity: 1;
 .button-contacto{
   cursor: pointer;
 }
+.fondoProfile{
+  width: 100%;
+}
+
+
+
+
+/*dashboar cartera*/
+
+.container-cartera{
+  border: 1px solid var(--unnamed-color-dddddd);
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #DDDDDD;
+border-radius: 0px 0px 4px 4px;
+opacity: 1;
+}
+.value-Cartera{
+  text-align: center;
+font: normal normal medium 25px/30px Helvetica Neue;
+letter-spacing: 0px;
+color: #C3286D;
+opacity: 1;
+font-size: 26px;
+font-weight: 600;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.saldo-Cartera{
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+font-size: 16px;
+font-weight: bold;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.information-Saldo{
+  letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+font-size: 16px;
+font-weight: normal;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+.details-Cartera{
+  letter-spacing: 0px;
+color: #373A3C;
+opacity: 1;
+font-family: 'Montserrat', sans-serif !important;
+font-size: 24px;
+font-weight: normal;
+}
+.select-cartera{
+  letter-spacing: 0px;
+color: #141414;
+opacity: 1;
+font-size: 16px;
+font-weight:medium;
+font-family: 'Montserrat', sans-serif !important;
+
+
+}
+
+
+.text-cartera{
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-size: 14px;
+font-weight: bold;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+.parraf-cartera{
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-size: 14px;
+font-weight: normal;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.number-cartera{
+  font-size: 12px;
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.borderLateral-cartera {
+opacity: 1;
+border-left: 8px solid #784B5F;
+}
+
+.borderLateral-cartera2{
+  opacity: 1;
+  border-left: 8px solid #00A650;
+}
+
+.table > thead {
+   vertical-align: none; 
+}
+
+
+
+/* dashboard rifas*/
+
+
+.border-input{
+  border: 1px solid #4c4a4a81 !important;
+  opacity: 2;
+  border-radius: 8px;
+}
+
+
+.select-DashboarRifas{
+  letter-spacing: 0px;
+color: #141414;
+opacity: 1;
+font-size: 16px !important;
+font-weight: 500 !important;
+font-family: 'Montserrat', sans-serif !important;
+
+
+}
+.number-dashboardRifas{
+  font-size: 13px;
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-family: 'Montserrat', sans-serif !important;
+}
+
+.fondo-table{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
+
+
+.table > :not(caption) > * > * {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+.icon-dashboarRifas{
+  cursor: pointer;
+}
+
+.borderLateral-Rifas{
+  opacity: 1;
+  border-left: 8px solid #00A650 !important;
+}
+
+.borderLateral-vigente{
+  border-left: 8px solid #FF8800 !important;
+opacity: 1;
+}
+
+
+
 
 /*contacto*/
 
 .fondoContacto{
+  width: 100%;
   
 }
 @media (max-width: 968px) {
@@ -1420,7 +1691,7 @@ opacity: 1;
 /*pages quiestions*/
 .title-preguntasFrecuentes{
 font-family: 'Montserrat', sans-serif  !important;
-font-size: 40;
+font-size: 38px  !important;
   font-weight: bold;
   text-align: left;
 letter-spacing: 0px;

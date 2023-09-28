@@ -13,7 +13,7 @@ export default function Home() {
     <div className="">
       <HomeHeader />
       <Rifa />
-      <RifasActivas />
+      {/*  <RifasActivas /> */}
       <HomeCreateRifa />
       <HomeParticipating />
       <HomeTestimonios />

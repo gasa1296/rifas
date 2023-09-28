@@ -5,18 +5,20 @@ import ModalLogin from "../modal/ModalLogin";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthState, setLogout } from "@/store/slices/auth";
-import { IoIosNotifications } from "react-icons/io";
+import { IoIosNotifications, IoIosArrowDown } from "react-icons/io";
 
 import ModalNotification from "../modal/ModalNotification";
-
+import ModalProfile from "../modal/ModalProfile";
 import ResponsiveNav from "./ResponsiveNav";
 import { useNotificationStore } from "@/store/zustand/NotificationStore";
+
 
 export default function Nav() {
   const router = useRouter();
   const dispatch = useDispatch();
   const { authenticated, profile } = useSelector(selectAuthState);
   const [showNotification, setShowNotification] = useState(false);
+  const [showprofile, setShowProfile] = useState(false);
   const notificationsSize = useNotificationStore(
     (state) => state.notificationsSize
   );
@@ -43,7 +45,7 @@ export default function Nav() {
       Icon: IoIosNotifications,
       onClick: () => setShowNotification(!showNotification),
     },
-    { label: "Cerrar sesion", path: "/", onClick: () => dispatch(setLogout()) },
+    { label: "hola caulti", path: "/", onClick: () => setShowProfile(!showprofile), }
   ];
 
   const selectOptions = authenticated ? authOptions : options;
@@ -54,11 +56,12 @@ export default function Nav() {
         showNotification={showNotification}
         setShowNotification={setShowNotification}
       />
+      <ModalProfile setShowProfile={setShowProfile} showprofile={showprofile} />
 
       <ModalLogin show={show} handleClose={handleClose} />
       <nav className="d-md-flex justify-content-between align-items-center mt-2">
         <div
-          className="mx-2"
+          className="mx-0 mx-lg-2"
           style={{ cursor: "pointer" }}
           onClick={() => router.push("/")}
         >
