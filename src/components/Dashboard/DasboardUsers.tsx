@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaBriefcase, FaImage, FaRegEdit, FaInfoCircle, FaDownload, FaTrash } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
+import ModalAddUser from '../modal/ModalAddUser';
+import ModalDeleteUser from '../modal/ModalDeleteUser';
 
 export default function DasboardUsers() {
+    const [showScreen, setShowScreen] = useState(false)
+    const [showScreenDelete, setShowScreenDelete] = useState(false);
+    const handleClose = () => setShowScreen(false);
+    const handleCloseDelete = () => setShowScreenDelete(false);
+
     return (
 
         <section className='mx-0 mx-lg-3'>
+            <ModalAddUser setShowScreen={setShowScreen} showScreen={showScreen} handleClose={handleClose} />
+            <ModalDeleteUser setShowScreenDelete={setShowScreenDelete} showScreenDelete={showScreenDelete} handleCloseDelete={handleCloseDelete} />
             <div className="input-group mb-3 w-50  border-input mt-3" >
                 <input type="text" className="form-control" placeholder="Buscar por nombre, correo " />
                 <button className="btn btn-btn-outline-light  " type="button" id="button-addon2"><BsSearch /></button>
@@ -37,7 +46,7 @@ export default function DasboardUsers() {
                             <td className='number-dashboardRifas px-4'>Liliana</td>
                             <td className='number-dashboardRifas'>Fernandez Estrada</td>
                             <td className='number-dashboardRifas px-5'>liliana1fernandez@yahoo.com</td>
-                            <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} className='mx-1' /> <FaTrash size={18} className='' color="#2161BD" /></td>
+                            <td className='icon-dashboarRifas px-3'><FaRegEdit onClick={() => { setShowScreen(true) }} color="#2161BD" size={18} className='mx-1' /> <FaTrash onClick={() => { setShowScreenDelete(true) }} size={18} className='' color="#2161BD" /></td>
                         </tr>
 
                     </tbody>
