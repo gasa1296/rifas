@@ -29,11 +29,11 @@ export default function ModalDeleteUser({ showScreenDelete, setShowScreenDelete,
 
                             <div className='text-center'>
                                 <AiFillInfoCircle size={30} color='#FFBB33' className='mx-auto ' />
-                                <h6>¿Estas seguro que deseas eliminar el usuario?</h6>
-                                <p>Daniel Nieto</p>
-                                <p>daniel@keepintouch.mx</p>
-                                <p>Atención esta acción no se puede revertir, eliminaras el usuario y todos sus datos</p>
-                                <p>Si das clic en “borrar” aceptas Borrar toda la información</p>
+                                <p className='title-deleteUser px-5 lh-sm '>¿Estas seguro que deseas eliminar el usuario?</p>
+                                <p className='infoUser-deleteUser m-0'>Daniel Nieto</p>
+                                <p className='infoUser-deleteUser '>daniel@keepintouch.mx</p>
+                                <p className='text-deleteUser'>Atención esta acción no se puede revertir, eliminaras el usuario y todos sus datos</p>
+                                <p className='text-deleteUser'>Si das clic en “borrar” aceptas Borrar toda la información</p>
                             </div>
                         </Modal.Body>
 

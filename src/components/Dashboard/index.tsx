@@ -84,16 +84,16 @@ export default function index() {
 
                 </div>
                 <div className='col-12 col-lg-10 mt-2 mt-md-0   m-0'>
-                    <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3  col-12'>
+                    {/*     <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3  col-12'>
                         <div className=' d-block d-md-flex '>
                             <p className='title-dashboard ms-3  '>APAC, A.C. /</p>
                             <p className='title-dashboard ms-3 '>Resumen</p>
                         </div>
 
                         <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>
-                    </div>
+                    </div> */}
 
-                    <div className='mt-3 background-dashboard  pt-2'>
+                    <div className=''>
                         <Component />
 
                     </div>

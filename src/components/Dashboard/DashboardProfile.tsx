@@ -4,6 +4,7 @@ import FormGenerator from "../FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from '@/types/Model/Profile';
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function DashboardProfile({ nextStep }: any) {
     const { loading } = useSelector(selectAuthState);
@@ -81,13 +82,25 @@ export default function DashboardProfile({ nextStep }: any) {
         },
     ];
     return (
-        <section className=' mx-0 mx-lg-4'>
-            <FormGenerator
-                buttonText="Actualizar Perfil"
-                submitData={submitData}
-                fields={fields}
-                loading={loading}
-            />
+        <section className=' '>
+            <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center py-3 col-12'>
+                <div className=' d-block d-md-flex '>
+                    <p className='title-dashboard ms-3  '>APAC, A.C. /</p>
+                    <p className='title-dashboard ms-3 '>Mi perfil</p>
+                </div>
+
+                <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>
+            </div>
+            <div className='pt-3 background-dashboard mt-3 px-3'>
+
+                <FormGenerator
+                    buttonText="Actualizar Perfil"
+                    submitData={submitData}
+                    fields={fields}
+                    loading={loading}
+                />
+            </div>
+
 
         </section>
     )

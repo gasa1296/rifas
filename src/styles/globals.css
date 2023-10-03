@@ -1435,6 +1435,36 @@ opacity: 1;
 
 
 
+
+
+/*modal delete user*/
+
+
+.title-deleteUser{
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-size: 29px;
+font-weight: normal;
+}
+
+.infoUser-deleteUser{
+  letter-spacing: 0px;
+color: #C3286D;
+opacity: 1;
+font-size: 24px;
+font-weight: normal;
+}
+
+
+.text-deleteUser{
+  letter-spacing: 0px;
+color: #4B4B4B;
+opacity: 1;
+font-size: 19px;
+font-weight: normal;
+}
+
 /*contacto*/
 
 .fondoContacto{
