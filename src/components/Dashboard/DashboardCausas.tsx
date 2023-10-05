@@ -41,14 +41,14 @@ export default function DashboardCausas() {
 
                     <table className="table ">
                         <thead className='container-cartera '>
-                            <tr className=''>
-                                <th className='select-DashboarRifas px-2' scope="col">Imagen</th>
-                                <th className='select-DashboarRifas ' scope="col">Titulo</th>
+                            <tr className=' '>
+                                <th className='select-DashboarRifas px-3' scope="col">Imagen</th>
+                                <th className='select-DashboarRifas px-3 ' scope="col">Titulo</th>
                                 <th className='select-DashboarRifas px-3' scope="col">Recaudado</th>
-                                <th className='select-DashboarRifas px-3' scope="col">Fecha Rifa</th>
-                                <th className='select-DashboarRifas px-3' scope="col">Precio boleto</th>
-                                <th className='select-DashboarRifas px-2' scope="col">Estado</th>
-                                <th className='select-DashboarRifas px-2' scope="col">Acciones</th>
+                                <th className='select-DashboarRifas px-4' scope="col">Fecha Rifa</th>
+                                <th className='select-DashboarRifas px-4' scope="col">Precio boleto</th>
+                                <th className='select-DashboarRifas px-3' scope="col">Estado</th>
+                                <th className='select-DashboarRifas px-3' scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@ export default function DashboardCausas() {
                                 <td className='number-dashboardRifas'>07-12-2023</td>
                                 <td className='number-dashboardRifas'>$890.00</td>
                                 <td className='number-dashboardRifas'>Vigente</td>
-                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} /> <FaInfoCircle color="#2161BD" size={18} /> </td>
+                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} className='mx-2' /> <FaInfoCircle color="#2161BD" size={18} /> </td>
                             </tr>
                             <tr className='fondo-table borderLateral-Rifas'>
                                 <th scope="row">  <FaImage size={30} className=' mt-3 mx-2' /></th>
@@ -74,7 +74,7 @@ export default function DashboardCausas() {
                                 <td className='number-dashboardRifas'>07-12-2023</td>
                                 <td className='number-dashboardRifas'>$890.00</td>
                                 <td className='number-dashboardRifas'>Vigente</td>
-                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} /> <FaInfoCircle color="#2161BD" size={18} /> </td>
+                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} className='mx-2' /> <FaInfoCircle color="#2161BD" size={18} /> </td>
                             </tr>
                             <tr className='table-secondary  borderLateral-vigente'>
                                 <th scope="row">  <FaImage size={30} className=' mt-3 mx-2' /></th>
@@ -86,7 +86,7 @@ export default function DashboardCausas() {
                                 <td className='number-dashboardRifas'>07-12-2023</td>
                                 <td className='number-dashboardRifas'>$890.00</td>
                                 <td className='number-dashboardRifas px-2 '>Proceso</td>
-                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} /> <FaInfoCircle color="#2161BD" size={18} /> </td>
+                                <td className='icon-dashboarRifas px-3'><FaRegEdit color="#2161BD" size={18} className='mx-2' /> <FaInfoCircle color="#2161BD" size={18} /> </td>
                             </tr>
                         </tbody>
                     </table>
