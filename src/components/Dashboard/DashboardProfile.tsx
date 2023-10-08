@@ -83,10 +83,10 @@ export default function DashboardProfile({ nextStep }: any) {
     ];
     return (
         <section className=' '>
-            <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center py-3 col-12'>
-                <div className=' d-block d-md-flex '>
-                    <p className='title-dashboard ms-3  '>APAC, A.C. /</p>
-                    <p className='title-dashboard ms-3 '>Mi perfil</p>
+            <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3 col-12'>
+                <div className=' d-block d-md-flex mt-2'>
+                    <p className='title-dashboard mx-2  '>APAC, A.C. /</p>
+                    <p className='title-dashboard '>Mi perfil</p>
                 </div>
 
                 <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>

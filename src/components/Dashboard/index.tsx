@@ -63,6 +63,7 @@ export default function index() {
 
     return (
         <section className="mx-0 mx-md-5 position-relative   ">
+
             <div className="position-absolute top-0 overflow-hidden fondoContacto  ">
                 <Image src={FondoProfile} alt="fondoProfile" className="w-100 h-100 " />
             </div>
@@ -84,17 +85,8 @@ export default function index() {
 
                 </div>
                 <div className='col-12 col-lg-10 mt-2 mt-md-0   m-0'>
-                    {/*     <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3  col-12'>
-                        <div className=' d-block d-md-flex '>
-                            <p className='title-dashboard ms-3  '>APAC, A.C. /</p>
-                            <p className='title-dashboard ms-3 '>Resumen</p>
-                        </div>
-
-                        <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>
-                    </div> */}
-
                     <div className=''>
-                        <Component />
+                        <Component setShowScreen={setShowScreen} />
 
                     </div>
 

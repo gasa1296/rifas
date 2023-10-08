@@ -1,14 +1,38 @@
+import { getStatusOptions } from '@/utils/getStatusOptions';
 import React from 'react'
 import { FaBriefcase, FaImage, FaRegEdit, FaInfoCircle, FaDownload } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 function DashboardCartera() {
+
+    const options = [
+
+
+        {
+            icon: <FaImage size={30} className='mt-3 mx-2' />,
+            titulo: "¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!",
+            informacion: "Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.",
+            fecha: "04-10-2023",
+            precio: "$890.00",
+            estado: "Canjeado",
+        },
+        {
+            icon: <FaImage size={30} className='mt-3 mx-2' />,
+            titulo: "¡Hola! ¡Soy Emiliano, ayúdame a vencer el cáncer!",
+            informacion: "Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.",
+            fecha: "04-10-2023",
+            precio: "$890.00",
+            estado: "Abonado",
+        }
+    ]
+
+
     return (
         <section className=' '>
-            <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center py-3 col-12'>
-                <div className=' d-block d-md-flex '>
-                    <p className='title-dashboard ms-3  '>APAC, A.C. /</p>
-                    <p className='title-dashboard ms-3 '>Cartera</p>
+            <div className='background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3 col-12'>
+                <div className=' d-block d-md-flex mt-2 '>
+                    <p className='title-dashboard mx-2  '>APAC, A.C. /</p>
+                    <p className='title-dashboard  '>Cartera</p>
                 </div>
 
                 <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>
@@ -38,34 +62,33 @@ function DashboardCartera() {
                             <tr className=''>
                                 <th className='select-DashboarRifas px-2' scope="col">Imagen</th>
                                 <th className='select-DashboarRifas px-2 ' scope="col">Titulo</th>
-                                <th className='select-DashboarRifas px-3' scope="col">Fecha Rifa</th>
-                                <th className='select-DashboarRifas px-4' scope="col">Monto</th>
+                                <th style={{ width: "120px" }} className='select-DashboarRifas ' scope="col">Fecha Rifa</th>
+                                <th className='select-DashboarRifas ' scope="col">Monto</th>
                                 <th className='select-DashboarRifas' scope="col">Estado</th>
                             </tr>
                         </thead>
-                        <tbody className=''>
-                            <tr className='table-secondary  borderLateral-Rifas '>
-                                <th scope="row ps-2" >  <FaImage size={30} className='' /></th>
-                                <td>
-                                    <h6 className='text-carteramt mt- '>¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!</h6>
-                                    <p className="parraf-cartera">Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.</p>
-                                </td>
-                                <td className='number-dashboardRifas'>04-10-2023</td>
-                                <td className='number-dashboardRifas'>-$ 890.003</td>
-                                <td className='number-dashboardRifas'>Canjeado</td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr className='table-secondary  borderLateral-Rifas'>
-                                <th scope="row ps-2" >  <FaImage size={30} className='' /></th>
-                                <td>
-                                    <h6 className='text-cartera mt-3'>¡Hola! ¡Soy Emiliano, ayúdame a vencer el cáncer!</h6>
-                                    <p className="parraf-cartera">Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.</p>
-                                </td>
-                                <td className='number-dashboardRifas '>04-10-2023</td>
-                                <td className='number-dashboardRifas '>-$ 890.003</td>
-                                <td className='number-dashboardRifas'>Canjeado</td>
-                            </tr>
+
+
+                        <tbody >
+
+                            {options.map((option, index) => (
+
+                                <tr className='table-secondary   position-relative  '  >
+
+                                    <th scope="row ps-2" >
+                                        <div className='position-absolute top-0 start-0 borderLateral-Rifas ' style={{ backgroundColor: getStatusOptions(option.estado) }}></div>
+                                        <div className='  d-flex justify-content-center  align-items-center bg-light  icon mt-4 p-2 ms-2 '>{option.icon}</div>
+                                    </th>
+                                    <td>
+                                        <h6 className='text-carteramt mt- '>{option.titulo}</h6>
+                                        <p className="parraf-cartera">{option.informacion}</p>
+                                    </td>
+                                    <td className='number-dashboardRifas'>{option.fecha}</td>
+                                    <td style={{ width: "120px" }} className='number-dashboardRifas '>{option.precio}</td>
+                                    <td style={{ color: getStatusOptions(option.estado) }} className='number-dashboardRifas'>{option.estado}</td>
+                                </tr>
+                            ))}
+
                         </tbody>
                     </table>
 
