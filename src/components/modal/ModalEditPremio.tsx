@@ -37,7 +37,7 @@ export default function ModalEditPremio({ show, setShow }: any) {
       required: true,
       type: "number",
     },
-    ,
+
     {
       label: "¿Quieres asignar tu premio a alguna Asociación?",
       name: "association",
