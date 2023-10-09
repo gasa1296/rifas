@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import {
   FaGift,
@@ -13,6 +13,8 @@ import PremioOptions from "./Components/PremioOptions";
 import DashboardTable from "./Components/DashboardTable";
 import ModalInformationPremio from "../modal/ModalInformationPremio";
 import ModalEditPremio from "../modal/ModalEditPremio";
+import { usePrizeStoreDashboard } from "@/store/zustand/DashboardStore";
+import { useRouter } from "next/router";
 
 export default function DashboardPremios() {
   const [showScreen, setShowScreen] = useState(false);
@@ -20,6 +22,25 @@ export default function DashboardPremios() {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+
+  const isLoading = usePrizeStoreDashboard((state) => state.isLoading);
+  const error = usePrizeStoreDashboard((state) => state.error);
+  const prize = usePrizeStoreDashboard((state) => state.prize);
+  const getPrize = usePrizeStoreDashboard((state) => state.getPrize);
+  const router = useRouter();
+
+  console.log(prize)
+
+
+
+  console.log(prize, "prize")
+  useEffect(() => {
+
+
+    getPrize()
+  }, []);
+
+
 
   const options = [
     {
@@ -84,7 +105,7 @@ export default function DashboardPremios() {
           <p className="title-dashboard ">Premios</p>
         </div>
         <div className="d-flex justify-content-between align-items-center">
-          <button className=" p-2 me-3 button-dashboard m-0 ">
+          <button className=" p-2 me-3 button-dashboard m-0 " onClick={() => router.push("/dashboard/")}>
             <MdKeyboardArrowLeft />
             Mis asociaciones{" "}
           </button>

@@ -1195,7 +1195,25 @@ border: none;
 
 
 
+/*DASBOARD ASOSATION*/
 
+.title-dashboardAsosation{
+text-align: left;
+letter-spacing: 0px;
+color: #373A3C;
+opacity: 1;
+font-size: 48px;
+font-weight: medium;
+
+}
+.subtitle-DashboarAsociation{
+text-align: left;
+letter-spacing: 0px;
+color: #373A3C;
+opacity: 1;
+font-size: 20px;
+font-weight: normal;
+}
 
 
 

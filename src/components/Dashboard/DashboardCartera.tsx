@@ -9,8 +9,12 @@ import {
 } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import DashboardTable from "./Components/DashboardTable";
+import { useRouter } from "next/router";
 
 function DashboardCartera() {
+
+  const router = useRouter();
+
   const options = [
     {
       icon: <FaImage size={30} className="mt-3 mx-2" />,
@@ -87,7 +91,7 @@ function DashboardCartera() {
           <p className="title-dashboard  ">Cartera</p>
         </div>
 
-        <button className="me-0 me-3 button-dashboard m-0 p-2 ">
+        <button className="me-0 me-3 button-dashboard m-0 p-2 " onClick={() => router.push("/dashboard/")}>
           <MdKeyboardArrowLeft />
           Mis asociaciones{" "}
         </button>

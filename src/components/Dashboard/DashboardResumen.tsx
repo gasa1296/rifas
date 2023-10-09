@@ -12,7 +12,11 @@ import {
 } from "react-icons/fa";
 import { BsWindowSidebar } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { useRouter } from "next/router";
 export default function DashboardResumen({ setShowScreen }: any) {
+
+  const router = useRouter();
+
   return (
     <section className="">
       <div className="background-dashboard  d-block d-lg-flex justify-content-between align-items-center py-3 col-12">
@@ -21,9 +25,9 @@ export default function DashboardResumen({ setShowScreen }: any) {
           <p className="title-dashboard ms-3 ">Resumen</p>
         </div>
 
-        <button className="me-0 me-3 button-dashboard m-0 p-2 ">
+        <button className="me-0 me-3 button-dashboard m-0 p-2 " onClick={() => router.push("/dashboard/")}>
           <MdKeyboardArrowLeft />
-          Mis asociaciones{" "}
+          Mis asociaciones
         </button>
       </div>
       <div className="row m-0 d-flex flex-wrap mt-3 background-dashboard  py-2">

@@ -10,6 +10,7 @@ import DashboarMicrositioCaracteristicas from './DashboarMicrositioCaracteristic
 import { createRaffle } from "@/store/slices/raffles";
 import DashboardMicrositioBanners from './DashboardMicrositioBanners';
 import DashboarMicrositioNetworks from './DashboarMicrositioNetworks';
+import { useRouter } from 'next/router';
 
 
 
@@ -17,6 +18,7 @@ export default function DashboardMicrositio() {
 
     const [step, setStep] = useState(1);
     const [raffle, setRaffle] = useState({});
+    const router = useRouter();
 
     const StepIcon = (step: number, currentStep: number) => {
         if (step === currentStep) return <MdKeyboardArrowUp size={30} />;
@@ -39,7 +41,7 @@ export default function DashboardMicrositio() {
                     <p className='title-dashboard '>Micrositio</p>
                 </div>
                 <div className='d-flex justify-content-between align-items-center '>
-                    <button className=' p-2 me-3 button-dashboard m-0 '><MdKeyboardArrowLeft />Mis asociaciones </button>
+                    <button onClick={() => router.push("/dashboard/")} className=' p-2 me-3 button-dashboard m-0 '><MdKeyboardArrowLeft />Mis asociaciones </button>
                     <button className='me-3 button-dashboard  m-0 p-2  '><FaBriefcase className='mx-2' />Vista previa </button>
                 </div>
 

@@ -9,6 +9,7 @@ import ModalAsociarUser from "../modal/ModalAsociarUser";
 import ModalEditUser from "../modal/ModalEditUser";
 import DashboardTable from "./Components/DashboardTable";
 import UserOption from "./Components/UserOption";
+import { useRouter } from "next/router";
 
 export default function DasboardUsers() {
   const [showScreen, setShowScreen] = useState(false);
@@ -19,6 +20,7 @@ export default function DasboardUsers() {
   const handleCloseDelete = () => setShowScreenDelete(false);
   const handleCloseAsociacion = () => setShowAsociarUsuario(false);
   const handleCloseEdit = () => setShowEditUser(false);
+  const router = useRouter();
 
   const options = [
     {
@@ -77,7 +79,7 @@ export default function DasboardUsers() {
           <p className="title-dashboard ">Usuarios</p>
         </div>
         <div className="d-flex justify-content-between align-items-center ">
-          <button className=" button-dashboard m-0 p-1  ">
+          <button className=" button-dashboard m-0 p-1  " onClick={() => router.push("/dashboard/")}>
             <MdKeyboardArrowLeft size={20} className="" />
             Mis asociaciones{" "}
           </button>

@@ -8,10 +8,12 @@ import RifaOption from "./Components/RifaOption";
 import DashboardTable from "./Components/DashboardTable";
 import ModalEditRifas from "../modal/ModalEditRifas";
 import ModalInformationRifa from "../modal/ModalInformationRifa";
+import { useRouter } from "next/router";
 
 export default function DashboadrRifas() {
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const router = useRouter();
 
   const options = [
     {
@@ -75,7 +77,7 @@ export default function DashboadrRifas() {
           <p className="title-dashboard  ">Rifas</p>
         </div>
         <div className="d-flex justify-content-between align-items-center">
-          <button className=" p-2 me-3 button-dashboard m-0 ">
+          <button className=" p-2 me-3 button-dashboard m-0 " onClick={() => router.push("/dashboard/")}>
             <MdKeyboardArrowLeft />
             Mis asociaciones
           </button>

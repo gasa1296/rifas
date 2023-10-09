@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from '@/types/Model/Profile';
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { useRouter } from 'next/router';
 
 export default function DashboardProfile({ nextStep }: any) {
     const { loading } = useSelector(selectAuthState);
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const submitData = async (data: Profile) => {
         const { payload } = await dispatch(Register(data) as any);
@@ -89,7 +91,7 @@ export default function DashboardProfile({ nextStep }: any) {
                     <p className='title-dashboard '>Mi perfil</p>
                 </div>
 
-                <button className='me-0 me-3 button-dashboard m-0 p-2 '><MdKeyboardArrowLeft />Mis asociaciones </button>
+                <button className='me-0 me-3 button-dashboard m-0 p-2 ' onClick={() => router.push("/dashboard/")}><MdKeyboardArrowLeft />Mis asociaciones </button>
             </div>
             <div className='pt-3 background-dashboard mt-3 px-3'>
 
