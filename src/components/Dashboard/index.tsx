@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import FondoProfile from "../../assets/img/Contacto-bg.jpg";
 import {
@@ -22,9 +22,13 @@ import DashboardCartera from "./DashboardCartera";
 import DashboardMicrositio from "./DashboardMicrositio";
 import DasboardUsers from "./DasboardUsers";
 import DashboardProfile from "./DashboardProfile";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 
 export default function Dashboard() {
   const [showScreen, setShowScreen] = useState<string>("1");
+  const getAsociations = useAsociatonsStoreDashboard(
+    (state) => state.getAsociations
+  );
 
   const options = [
     {
@@ -81,6 +85,10 @@ export default function Dashboard() {
   };
 
   const Component = optionScreen[showScreen];
+
+  useEffect(() => {
+    getAsociations();
+  }, []);
 
   return (
     <section className="mx-0 mx-md-4 position-relative    ">

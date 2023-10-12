@@ -67,6 +67,13 @@ export const postEmail = (email: String) => {
   });
 };
 
+export const postValidateAccount = (code: String) => {
+  return Api({
+    endpoint: `/activation/${code}/activate`,
+    method: "GET",
+  });
+};
+
 export const createAsociacion = (asociacion: any) => {
   const formData = new FormData();
   formData.append("address", asociacion.address);

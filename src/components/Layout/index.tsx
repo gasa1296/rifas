@@ -11,11 +11,15 @@ import { useRouter } from "next/router";
 export default function Layout({ children, home }: any) {
   const router = useRouter();
   const [show, setShow] = useState(false);
+  const [code, setCode] = useState<string>("");
 
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    if (router?.query?.recoverPassword === "true") setShow(true);
+    if (router?.query?.recoverPassword) {
+      setShow(true);
+      setCode(router?.query?.recoverPassword as any);
+    }
 
     //eslint-disable-next-line
   }, []);
@@ -26,7 +30,7 @@ export default function Layout({ children, home }: any) {
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <ModalForgotPassword />
-      <ModalRecoverPassword handleClose={handleClose} show={show} />
+      <ModalRecoverPassword handleClose={handleClose} show={show} code={code} />
       <div>
         <Nav />
         <div className="">{children}</div>
