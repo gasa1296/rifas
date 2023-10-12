@@ -32,16 +32,16 @@ export default function CausasOption({ option, index, actions }: any) {
       </th>
 
       <td>
-        <h6 className="text-cartera px-2 ">{option.titulo}</h6>
-        <p className="parraf-cartera px-2">{option.informacion}</p>
+        <h6 className="text-cartera px-2 ">{option.name}</h6>
+        <p className="parraf-cartera px-2">{option.descripcion}</p>
       </td>
-      <td className="number-dashboardRifas ">{option.fecha}</td>
-      <td className="number-dashboardRifas">{option.precio}</td>
+      <td className="number-dashboardRifas ">{option.created_at}</td>
+      <td className="number-dashboardRifas">{option.goal}</td>
       <td
-        style={{ width: "110px", color: getStatusColor(option.estado) }}
+        style={{ width: "110px", color: getStatusColor(option.status) }}
         className="number-dashboardRifas"
       >
-        {option.estado}
+        {option.status}
       </td>
       <td className="icon-dashboarRifas">
         <FaRegEdit

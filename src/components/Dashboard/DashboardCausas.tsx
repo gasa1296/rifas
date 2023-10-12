@@ -33,51 +33,6 @@ export default function DashboardCausas() {
   const getCause = useCauseStoreDashboard((state) => state.getCause);
   const router = useRouter();
 
-  useEffect(() => {
-
-    getCause()
-
-  }, []);
-
-  const options = [
-    {
-      icon: <FaImage size={30} className="mt-3 mx-2" />,
-      titulo: "¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!",
-      informacion:
-        "iPhone un dispositivo de vanguardia que combina la elegancia del diseño con el rendimiento excepcional, cuenta con lo último en tecnología.",
-      fecha: "04-10-2023",
-      precio: "$890.00",
-      estado: "Vigente",
-    },
-
-    {
-      icon: <FaImage size={30} className="mt-3 mx-2" />,
-      titulo: "¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!",
-      informacion:
-        "Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.",
-      fecha: "07-12-2023",
-      precio: "$960.00",
-      estado: "En proceso",
-    },
-    {
-      icon: <FaImage size={30} className="mt-3 mx-2" />,
-      titulo: "¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!",
-      informacion:
-        "Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.",
-      fecha: "04-10-2022",
-      precio: "$960.00",
-      estado: "Cancelada",
-    },
-    {
-      icon: <FaImage size={30} className="mt-3 mx-2" />,
-      titulo: "¡Ayúdanos a concluir la Biblioteca del Centro EcoDiálogo!",
-      informacion:
-        "Tú apoyo es muy importante para nuestro Centro de Educación para la Vida, ya que así lograremos concluir nuestra Biblioteca-Área Administrativa.",
-      fecha: "07-10-2022",
-      precio: "$4.960.00",
-      estado: "Finalizada",
-    },
-  ];
 
   const head = [
     { label: "Imagen" },
@@ -87,7 +42,11 @@ export default function DashboardCausas() {
     { label: "Estado" },
     { label: "Acciones" },
   ];
+  useEffect(() => {
 
+    getCause(router.query.id as string)
+
+  }, []);
   return (
     <section className="">
       <ModalCausasDashboard
@@ -113,7 +72,7 @@ export default function DashboardCausas() {
             className="me-3 button-user m-0 p-2  "
           >
             <FaHandHoldingHeart size={20} className="mx-2" />
-            Nueva causa{" "}
+            Nueva causa
           </button>
         </div>
       </div>
@@ -123,7 +82,7 @@ export default function DashboardCausas() {
 
       <DashboardTable
         head={head}
-        options={options}
+        options={cause}
         Component={CausasOption}
         actions={{ setShowEdit, setShowInfo }}
       />

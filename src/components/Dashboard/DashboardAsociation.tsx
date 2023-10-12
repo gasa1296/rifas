@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from "next/image";
 import FondoProfile from "../../assets/img/Contacto-bg.jpg";
 import { Field } from "@/types/Component/FormGenerator";
@@ -7,48 +7,42 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Register, selectAuthState } from '@/store/slices/auth';
 import { Profile } from '@/types/Model/Profile';
 import { useRouter } from 'next/router';
+import { useAsociatonsStoreDashboard } from '@/store/zustand/DashboardStore';
 
 
 export default function DashboardAsociation() {
     const dispatch = useDispatch();
     const { loading } = useSelector(selectAuthState);
     const router = useRouter();
+    const isLoading = useAsociatonsStoreDashboard((state) => state.isLoading);
+    const error = useAsociatonsStoreDashboard((state) => state.error);
+    const asociations = useAsociatonsStoreDashboard((state) => state.asociations);
+    const getAsociations = useAsociatonsStoreDashboard((state) => state.getAsociations);
+    const submitData = async (data: { association: string }) => {
 
-    const submitData = async (data: Profile) => {
 
-
-        router.push(`/dashboard/${data.name}`);
+        router.push(`/dashboard/${data.association}`);
 
     };
 
     const fields: Field[] = [
         {
             label: "Selecciona una asociación",
-            name: "name",
+            name: "association",
             required: true,
             type: "select",
-            options: [
-                {
-                    label: "APAC A.C",
-                    value: "1"
-                },
-                {
-                    label: "Casa Hogar A.C",
-                    value: "2"
-                },
-                {
-
-                    label: "Rifa con causa",
-                    value: "3"
-                }
-
-
-
-            ]
+            options: asociations?.map((association) => ({
+                label: association.association_name,
+                value: association.id,
+            })),
 
         },
 
     ];
+
+    useEffect(() => {
+        getAsociations()
+    }, []);
     return (
 
         <section className="mx-0 mx-md-5 position-relative   ">
@@ -69,7 +63,8 @@ export default function DashboardAsociation() {
                         buttonText='Seleccionar Asociacion'
                         submitData={submitData}
                         fields={fields}
-                        loading={loading}
+                        loading={isLoading}
+
 
                     />
                 </div>

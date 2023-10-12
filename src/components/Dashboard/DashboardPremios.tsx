@@ -33,14 +33,6 @@ export default function DashboardPremios() {
 
 
 
-  console.log(prize, "prize")
-  useEffect(() => {
-
-
-    getPrize()
-  }, []);
-
-
 
   const options = [
     {
@@ -91,6 +83,16 @@ export default function DashboardPremios() {
     { label: "Acciones", width: "115px" },
   ];
 
+
+
+
+  useEffect(() => {
+
+
+    getPrize(router.query.id as string)
+  }, []);
+
+
   return (
     <section className=" ">
       <ModalPremioDashboard
@@ -126,7 +128,7 @@ export default function DashboardPremios() {
 
       <DashboardTable
         head={head}
-        options={options}
+        options={prize}
         Component={PremioOptions}
         actions={{ setShowEdit, setShowInfo }}
       />

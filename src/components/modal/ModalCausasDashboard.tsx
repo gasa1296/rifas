@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
-import { Auth } from "@/types/Model/Profile";
+import { Auth, Profile } from "@/types/Model/Profile";
 import { selectAuthState } from "@/store/slices/auth";
-import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
+import { createRafflesCause, getCategories, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectCausa from "./ModalSelectCausa";
+import { useCreateCausesStoreDashboard } from "@/store/zustand/DashboardStore";
 
 export default function ModalCausasDashboard({ show,
     showScreenCausa,
@@ -18,6 +19,8 @@ export default function ModalCausasDashboard({ show,
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
 
+
+    const createCause = useCreateCausesStoreDashboard((state) => state.createCause);
     const { causesCategories, associations } = useSelector(selectRaffleState);
 
     const fields: Field[] = [
@@ -44,6 +47,16 @@ export default function ModalCausasDashboard({ show,
             })),
         },
         {
+            label: "¿Quieres asignar tu premio a alguna Asociación?",
+            name: "association",
+            required: true,
+            type: "select",
+            options: associations.map((association) => ({
+                label: association.association_name,
+                value: association.id,
+            })),
+        },
+        {
             label: "¿Cual es el monto a recaudar (pesos MXN)?*",
             name: "goal",
             required: true,
@@ -58,17 +71,15 @@ export default function ModalCausasDashboard({ show,
         },
     ];
 
-    const submitData = async (data: any) => {
-        setLoading(true);
-        const { payload } = await dispatch(createRafflesCause(data) as any);
-        if (payload) {
-            return handleSubmit({
-                type: "cause",
-                ...payload,
-            });
-        }
-        setLoading(false);
+    const submitData = async (data: Profile) => {
+        await createCause(data)
+        setShowScreenCausa(false)
     };
+
+    useEffect(() => {
+        dispatch(getCategories({}) as any);
+        //eslint-disable-next-line
+    }, []);
     return (
         <Modal show={showScreenCausa} onHide={handleClose} className="custom-modal ">
             <Modal.Body className="px-4">

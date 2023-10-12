@@ -1,22 +1,30 @@
 import { Api } from ".";
 
-export const getDashboardCause = () => {
+export const getDashboardCause = (id: string) => {
     return Api({
-        endpoint: `/causes/`,
+        endpoint: `/associations/${id}/causes/`,
         method: "GET",
     });
 };
 
-export const getDashboardRaffle = () => {
+export const getDashboardPrize = (id: string) => {
     return Api({
-        endpoint: `/raffles/`,
+        endpoint: `/associations/${id}/prizes/`,
         method: "GET",
     });
 };
 
-export const getDashboardPrize = () => {
+export const getDashboardRaffle = (id: string) => {
     return Api({
-        endpoint: `/prizes/`,
+        endpoint: `/associations/${id}/raffles/`,
         method: "GET",
+    });
+};
+
+export const setEditCauses = (id: string) => {
+    return Api({
+        endpoint: `/causes/${id}/`,
+        method: "PUT",
+        _data: {},
     });
 };

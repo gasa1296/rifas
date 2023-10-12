@@ -1,48 +1,76 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-
+import { useAsociatonsStoreDashboard, useCreateCausesStoreDashboard } from "@/store/zustand/DashboardStore";
+import { getCategories, setDonationsForm1, } from "@/store/slices/raffles";
 export default function ModalEditCausa({ show, setShow }: any) {
+
+  const createCause = useCreateCausesStoreDashboard((state) => state.createCause);
+  const asociations = useAsociatonsStoreDashboard((state) => state.asociations);
+
+  const { causesCategories } = useSelector(selectRaffleState);
+
+  const dispatch = useDispatch();
+
   const submitData = async (data: Profile) => {
-    //handleChangeRaffle(data);
+    await createCause(data)
+    setShow(false)
   };
   const { loading } = useSelector(selectRaffleState);
   const fields: Field[] = [
     {
       label: "¿Cuál es el nombre de la causa? ",
-      name: "name-cause",
+      name: "name",
       required: true,
       type: "text",
     },
     {
       label: "¿Cuál es la descripción de la causa?*",
-      name: "descriptions-cause",
+      name: "description",
       required: true,
       type: "text",
     },
     {
       label: "¿Qué categoría describe mejor tu causa?*",
-      name: "category-cause",
+      name: "categories",
       required: true,
       type: "select",
+      options: causesCategories.map((prize) => ({
+        label: prize.name,
+        value: prize.id,
+      })),
     },
     {
       label: "¿Cuál es el monto a recaudar (pesos MXN)?*",
-      name: "phone",
+      name: "goal",
       required: true,
       type: "number",
     },
     {
+      label: "¿Quieres asignar tu premio a alguna Asociación?",
+      name: "association",
+      required: true,
+      type: "select",
+      options: asociations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
+    },
+    {
       label: "Agrega las fotos de tu causa",
-      name: "photo",
+      name: "image",
       required: false,
       type: "file",
     },
   ];
+  useEffect(() => {
+    dispatch(getCategories({}) as any);
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <>

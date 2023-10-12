@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FaImage } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -9,11 +9,21 @@ import DashboardTable from "./Components/DashboardTable";
 import ModalEditRifas from "../modal/ModalEditRifas";
 import ModalInformationRifa from "../modal/ModalInformationRifa";
 import { useRouter } from "next/router";
+import { useRaffleStoreDashboard } from "@/store/zustand/DashboardStore";
+import ModalNewRaffleDashboard from "../modal/ModalNewRaffleDashboard";
+import { set } from "react-hook-form";
 
 export default function DashboadrRifas() {
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [showModalRaffle, setShowModalRaffle] = useState(false);
   const router = useRouter();
+
+  const handleClose = () => setShowModalRaffle(false);
+  const isLoading = useRaffleStoreDashboard((state) => state.isLoading);
+  const error = useRaffleStoreDashboard((state) => state.error);
+  const raffle = useRaffleStoreDashboard((state) => state.raffle);
+  const getRaffle = useRaffleStoreDashboard((state) => state.getRaffle);
 
   const options = [
     {
@@ -69,6 +79,12 @@ export default function DashboadrRifas() {
     { label: "Acciones" },
   ];
 
+  useEffect(() => {
+    getRaffle(router.query.id as string)
+  }, []);
+
+  console.log(raffle)
+
   return (
     <section className="">
       <div className="background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3 col-12 ">
@@ -81,7 +97,7 @@ export default function DashboadrRifas() {
             <MdKeyboardArrowLeft />
             Mis asociaciones
           </button>
-          <button className="me-3 button-user  m-0 p-2  ">
+          <button className="me-3 button-user  m-0 p-2  " onClick={() => { setShowModalRaffle(true); }} >
             <AiFillDollarCircle size={20} className="mx-2" />
             Nueva Rifa
           </button>
@@ -90,10 +106,11 @@ export default function DashboadrRifas() {
 
       <ModalEditRifas show={showEdit} setShow={setShowEdit} />
       <ModalInformationRifa show={showInfo} setShow={setShowInfo} />
+      <ModalNewRaffleDashboard showModalRaffle={showModalRaffle} handleClose={handleClose} />
 
       <DashboardTable
         head={head}
-        options={options}
+        options={raffle}
         Component={RifaOption}
         actions={{ setShowEdit, setShowInfo }}
       />
