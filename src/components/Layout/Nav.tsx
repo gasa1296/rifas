@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "@/assets/img/logo-rifa-menu.png";
 import ModalLogin from "../modal/ModalLogin";
@@ -11,16 +11,19 @@ import ModalNotification from "../modal/ModalNotification";
 import ModalProfile from "../modal/ModalProfile";
 import ResponsiveNav from "./ResponsiveNav";
 import { useNotificationStore } from "@/store/zustand/NotificationStore";
-
+import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
 
 export default function Nav() {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const { authenticated, profile } = useSelector(selectAuthState);
+  const { authenticated } = useSelector(selectAuthState);
   const [showNotification, setShowNotification] = useState(false);
   const [showprofile, setShowProfile] = useState(false);
   const notificationsSize = useNotificationStore(
     (state) => state.notificationsSize
+  );
+
+  const postValidateAccount = ForgotPasswordStore(
+    (state) => state.postValidateAccount
   );
 
   const [show, setShow] = useState(false);
@@ -45,10 +48,27 @@ export default function Nav() {
       Icon: IoIosNotifications,
       onClick: () => setShowNotification(!showNotification),
     },
-    { label: "hola caulti", path: "/", onClick: () => setShowProfile(!showprofile), }
+    {
+      label: "hola caulti",
+      path: "/",
+      onClick: () => setShowProfile(!showprofile),
+    },
   ];
 
   const selectOptions = authenticated ? authOptions : options;
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (router?.query?.validateAccount) {
+        postValidateAccount(router?.query?.validateAccount as string);
+        handleShow();
+      }
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <div className="position-absolute top-0 w-100 ">

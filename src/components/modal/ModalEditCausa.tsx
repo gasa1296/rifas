@@ -3,36 +3,45 @@ import { Modal } from "react-bootstrap";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-import { useAsociatonsStoreDashboard, useCreateCausesStoreDashboard } from "@/store/zustand/DashboardStore";
-import { getCategories, setDonationsForm1, } from "@/store/slices/raffles";
-export default function ModalEditCausa({ show, setShow }: any) {
+import {
+  useAsociatonsStoreDashboard,
+  useCreateCausesStoreDashboard,
+} from "@/store/zustand/DashboardStore";
+import { useRouter } from "next/router";
 
-  const createCause = useCreateCausesStoreDashboard((state) => state.createCause);
+export default function ModalEditCausa({ show, setShow }: any) {
+  const router = useRouter();
+  const updateCause = useCreateCausesStoreDashboard(
+    (state) => state.updateCause
+  );
+
+  const getCause = useCreateCausesStoreDashboard((state) => state.getCause);
   const asociations = useAsociatonsStoreDashboard((state) => state.asociations);
+  const isLoading = useCreateCausesStoreDashboard((state) => state.isLoading);
 
   const { causesCategories } = useSelector(selectRaffleState);
 
-  const dispatch = useDispatch();
-
   const submitData = async (data: Profile) => {
-    await createCause(data)
-    setShow(false)
+    await updateCause(show.id, data);
+    await getCause(router.query.id as string);
+    setShow(false);
   };
-  const { loading } = useSelector(selectRaffleState);
   const fields: Field[] = [
     {
       label: "¿Cuál es el nombre de la causa? ",
       name: "name",
       required: true,
       type: "text",
+      default: show?.name,
     },
     {
       label: "¿Cuál es la descripción de la causa?*",
       name: "description",
       required: true,
       type: "text",
+      default: show?.description,
     },
     {
       label: "¿Qué categoría describe mejor tu causa?*",
@@ -43,12 +52,14 @@ export default function ModalEditCausa({ show, setShow }: any) {
         label: prize.name,
         value: prize.id,
       })),
+      default: show.categories && show?.categories[0],
     },
     {
       label: "¿Cuál es el monto a recaudar (pesos MXN)?*",
       name: "goal",
       required: true,
       type: "number",
+      default: show?.goal,
     },
     {
       label: "¿Quieres asignar tu premio a alguna Asociación?",
@@ -59,6 +70,7 @@ export default function ModalEditCausa({ show, setShow }: any) {
         label: association.association_name,
         value: association.id,
       })),
+      default: show?.association,
     },
     {
       label: "Agrega las fotos de tu causa",
@@ -67,10 +79,6 @@ export default function ModalEditCausa({ show, setShow }: any) {
       type: "file",
     },
   ];
-  useEffect(() => {
-    dispatch(getCategories({}) as any);
-    //eslint-disable-next-line
-  }, []);
 
   return (
     <>
@@ -96,7 +104,7 @@ export default function ModalEditCausa({ show, setShow }: any) {
                 buttonText="Guardar Causa"
                 fields={fields}
                 submitData={submitData}
-                loading={loading}
+                loading={isLoading}
               />
             </Modal.Body>
           </Modal>

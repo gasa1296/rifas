@@ -7,18 +7,12 @@ import { Login, selectAuthState } from "@/store/slices/auth";
 import { Modal } from "react-bootstrap";
 import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
 
-export default function ModalRecoverPassword({ handleClose, show }: any) {
+export default function ModalRecoverPassword({ handleClose, show, code }: any) {
   const dispatch = useDispatch();
   const { loading } = useSelector(selectAuthState);
   const router = useRouter();
 
   const fields: Field[] = [
-    {
-      label: "Codigo",
-      name: "email",
-      required: true,
-      type: "email",
-    },
     {
       label: "Contraseña",
       name: "paswword",
@@ -34,7 +28,7 @@ export default function ModalRecoverPassword({ handleClose, show }: any) {
   ];
 
   const submitData = async (data: any) => {
-    const { payload } = await dispatch(Login(data) as any);
+    const { payload } = await dispatch(Login({ ...data, code }) as any);
     if (payload) {
       handleClose();
       router.push("/");

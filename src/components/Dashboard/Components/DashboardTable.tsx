@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-
+import { useInView } from "react-intersection-observer";
 interface Props {
   head: { label: String; width?: string }[];
   options: any;
@@ -9,6 +9,9 @@ interface Props {
   disableFilter?: boolean;
   title?: string;
   disablePagination?: boolean;
+  pagination?: number | null;
+  getRequest?: any;
+  loading?: boolean;
 }
 
 export default function DashboardTable({
@@ -18,7 +21,21 @@ export default function DashboardTable({
   actions,
   disableFilter,
   title,
+  pagination,
+  getRequest,
+  loading,
 }: Props) {
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Cambia a false si necesitas que se dispare más de una vez
+  });
+
+  useEffect(() => {
+    if (inView) {
+      pagination && getRequest && getRequest(pagination);
+    }
+
+    //eslint-disable-next-line
+  }, [inView]);
   return (
     <div className="pt-3 background-dashboard mt-3 ">
       {title && <p className="mt-3 ps-3 details-Cartera ">{title}</p>}
@@ -60,7 +77,7 @@ export default function DashboardTable({
               {head.map((item, index) => (
                 <th
                   key={index}
-                  className="select-DashboarRifas px-2"
+                  className="select-DashboarRifas px-2 text-center"
                   scope="col"
                   style={item.width ? { width: item.width } : {}}
                 >
@@ -81,6 +98,8 @@ export default function DashboardTable({
             ))}
           </tbody>
         </table>
+        {loading && <div style={{ height: "1000px" }} />}
+        <div ref={ref} />
       </div>
     </div>
   );
