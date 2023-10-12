@@ -83,21 +83,23 @@ export default function Dashboard() {
   const Component = optionScreen[showScreen];
 
   return (
-    <section className="mx-0 mx-md-5 position-relative   ">
-      <div className="position-absolute top-0 overflow-hidden fondoContacto  ">
-        <Image src={FondoProfile} alt="fondoProfile" className="w-100 h-100 " />
+    <section className="mx-0 mx-md-4 position-relative    ">
+
+      <div className="position-absolute top-0 overflow-hidden mx-auto mt-2">
+        <Image src={FondoProfile} alt="fondo-Profile" className="w-100  fondo-Profile" />
       </div>
-      <div className=" mx-0 mx-lg-5 mt-3 mt-lg-3  position-relative pt-3  text-center ">
-        <h3 className="contacto mx-auto ">Mi cuenta</h3>
+      <div className=" mx-0 mx-lg-5 mt-3 mt-lg-2 position-relative pt-4  text-center ">
+        <h3 className="contacto w-100  mt-2 "> Mi Cuenta</h3>
       </div>
 
-      <section className="row d-flex z-3 mt-5 container-Dashboard justify-content-between  m-0">
-        <div className="col-12 col-lg-2   container-sidebar px-3">
+
+      <section className="row d-flex z-3 mt-5 pt-4 pt-md-0 container-Dashboard justify-content-between   m-0">
+        <div className="col-12 col-lg-2 mt-3  container-sidebar px-3">
           {options.map((option, index) => (
             <div
               key={index}
               onClick={() => setShowScreen(option.value)}
-              className="d-flex justify-content-start mx-auto   py-2  container-boxSidebar my-2 "
+              className="d-flex justify-content-start mx-auto   py-2   container-boxSidebar my-2 "
             >
               <p className="m-0 ms-2 "> {option.icon} </p>
               <p className=" m-0 ms-2">{option.label}</p>

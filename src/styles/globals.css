@@ -1144,6 +1144,7 @@ opacity: 1;
   background: #F1ECEF 0% 0% no-repeat padding-box !important;
 border-radius: 8px;
 opacity: 1;
+margin-top: 20px;
 
 }
 
@@ -1151,6 +1152,8 @@ opacity: 1;
   background: #F1ECEF 0% 0% no-repeat padding-box;
 opacity: 1;
 cursor: pointer;
+margin-top: 20px;
+
 }
 .container-boxSidebar {
   background: #784B5F 0% 0% no-repeat padding-box;
@@ -1537,6 +1540,17 @@ font-weight: normal;
     font-size: 25px;
   }
 }
+
+
+.fondo-Profile {
+  max-height: 120px;
+  width: 100%;
+  
+}
+
+
+
+
 
 .contacto{
   letter-spacing: 0px;
