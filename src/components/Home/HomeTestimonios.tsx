@@ -38,15 +38,13 @@ export default function HomeTestimonios() {
 
   const testimonies = useRaffleStore((state) => state.testimonies);
 
-  console.log("test", testimonies);
-
   return (
-    <div className="pt-5 mx-2 mxl-g-0 ">
-      <section className="row m-0 mx-0 mx-lg-5  position-relative  rounded pb-5">
+    <div className="pt-5 mx-2 mx-lg-0 ">
+      <section className="row m-0 mx-0 mx-lg-0  position-relative  rounded pb-5">
         <Image
           src={testimnialesFondo}
           alt="fondoTestimoniales"
-          className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded"
+          className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded p-0"
         />
         <h5 className=" home-title-testimonios pt-5 ps-5">Testimoniales</h5>
         <Slider {...settings}>

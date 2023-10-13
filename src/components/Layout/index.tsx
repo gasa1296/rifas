@@ -33,7 +33,7 @@ export default function Layout({ children, home }: any) {
       <ModalRecoverPassword handleClose={handleClose} show={show} code={code} />
       <div>
         <Nav />
-        <div className="">{children}</div>
+        <div className="mx-3 mx-lg-0">{children}</div>
         <Footer />
       </div>
     </main>

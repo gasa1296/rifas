@@ -13,12 +13,12 @@ export default function HomeCreateRifa() {
   const route = authenticated ? "/rifas/crear_rifas" : "/registro";
 
   return (
-    <div className=" mx-3 mx-lg-5">
+    <div className=" mx-3 mx-lg-0">
       <section
-        className="row m-0 d-flex justify-align-content-between"
+        className="row m-0 d-flex justify-content-between"
         style={{ marginBottom: "120px" }}
       >
-        <div className="col-12 col-lg-4  text-secondary  ">
+        <div className="col-12 col-lg-5  text-secondary p-0 ">
           <h5 className=" home-title-createRaffle">
             ¡Aqui comienza la esperanza!
           </h5>
@@ -47,7 +47,7 @@ export default function HomeCreateRifa() {
             Iniciar Rifa
           </button>
         </div>
-        <div className="col-12 col-lg-7 mt-4 mt-lg-1  ">
+        <div className="col-12 col-lg-6 mt-4 mt-lg-1 p-0  ">
           <div className="col-md-12">
             <Image
               src={fondo}

@@ -83,7 +83,7 @@ export default function ModalCausasDashboard({
     const { payload } = await dispatch(createRafflesCause(data) as any);
     if (payload) {
       setShowScreenCausa(false);
-      await getCause(router.query.id as string);
+      //await getCause(router.query.id as string);
     }
     setLoading(false);
   };

@@ -20,7 +20,7 @@ export default function HomeParticipating() {
   ];
 
   return (
-    <section className="  mx-3 mx-lg-5" style={{ marginTop: "70px" }}>
+    <section className="  mx-3 mx-lg-0" style={{ marginTop: "70px" }}>
       <h5 className=" title-participating text-center">Rífate participando</h5>
       <p className=" subtitle-participating text-center m-0 lh-1">
         Ganes o pierdas, el simple hecho de ayudar
@@ -29,7 +29,7 @@ export default function HomeParticipating() {
         ¡te convierte en un ganador!
       </p>
 
-      <div className="d-flex justify-content-center  flex-wrap row mt-5 ">
+      <div className="d-flex justify-content-between  flex-wrap row mt-5 ">
         {options.map((option, index) => (
           <div
             key={index}

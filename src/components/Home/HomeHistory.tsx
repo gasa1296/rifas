@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function HomeHistory() {
   return (
-    <section className="row  mt-5   d-block  d-lg-flex justify-content-center  text-center text-lg-start mx-2 mx-lg-0  ">
-      <div className="col-12 col-lg-4  p-0 mx-0 mx-lg-5  ">
+    <section className="row  mt-5   d-block  d-lg-flex justify-content-center  text-center text-lg-start mx-0 mx-lg-0  ">
+      <div className="col-12 col-lg-6  p-0 mx-0 mx-lg-0  ">
         <h4 className=" home-header-subtitle text-center text-lg-start">
           ¡Historias increibles Personas como tu!
         </h4>
@@ -16,7 +16,7 @@ export default function HomeHistory() {
         </p>
       </div>
 
-      <div className="col-12 col-lg-5    p-0 ">
+      <div className="col-12 col-lg-6    p-0 ">
         <Image
           src={historiasFondo}
           alt="fondo"

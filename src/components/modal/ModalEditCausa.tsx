@@ -25,7 +25,7 @@ export default function ModalEditCausa({ show, setShow }: any) {
 
   const submitData = async (data: Profile) => {
     await updateCause(show.id, data);
-    await getCause(router.query.id as string);
+    //await getCause(router.query.id as string);
     setShow(false);
   };
   const fields: Field[] = [
