@@ -15,7 +15,7 @@ import { ForgotPasswordStore } from "@/store/zustand/ForgotPassword";
 
 export default function Nav() {
   const router = useRouter();
-  const { authenticated } = useSelector(selectAuthState);
+  const { authenticated, profile } = useSelector(selectAuthState);
   const [showNotification, setShowNotification] = useState(false);
   const [showprofile, setShowProfile] = useState(false);
   const notificationsSize = useNotificationStore(
@@ -49,7 +49,7 @@ export default function Nav() {
       onClick: () => setShowNotification(!showNotification),
     },
     {
-      label: "hola caulti",
+      label: `Hola ${profile?.full_name}`,
       path: "/",
       onClick: () => setShowProfile(!showprofile),
     },

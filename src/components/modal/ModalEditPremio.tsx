@@ -5,44 +5,69 @@ import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
+import { usePrizeStoreDashboard } from "@/store/zustand/PrizesDashboardStore";
+import { useRouter } from "next/router";
 
 export default function ModalEditPremio({ show, setShow }: any) {
-  const submitData = async (data: Profile) => {
-    //handleChangeRaffle(data);
-  };
   const { loading } = useSelector(selectRaffleState);
+  const router = useRouter();
+  const getPrize = usePrizeStoreDashboard((state) => state.getPrize);
+  const updatePrize = usePrizeStoreDashboard((state) => state.updatePrize);
+  const { prizesCategories } = useSelector(selectRaffleState);
+  const associations = useAsociatonsStoreDashboard(
+    (state) => state.asociations
+  );
+
+  const submitData = async (data: Profile) => {
+    await updatePrize(show.id, data);
+    await getPrize(router.query.id as string, 1);
+    setShow(false);
+  };
 
   const fields: Field[] = [
     {
-      label: "¿Cuál es el nombre de la premio? ",
-      name: "name-cause",
+      label: " ¿Cuál es el nombre del premio?",
+      name: "name",
       required: true,
       type: "text",
+      default: show?.name,
     },
     {
-      label: "¿Cuál es la descripción de tu premio?",
-      name: "descriptions-cause",
+      label: "¿Cuál es la descripción del  premio?*",
+      name: "description",
       required: true,
-      type: "text",
+      type: "textarea",
+      default: show?.description,
     },
     {
-      label: "¿Qué categoría describe mejor tu producto?*",
-      name: "category-cause",
+      label: "¿Qué categoría describe tu producto?*",
+      name: "category",
       required: true,
       type: "select",
+      options: prizesCategories.map((prize) => ({
+        label: prize.name,
+        value: prize.id,
+      })),
+      default: show?.category,
     },
     {
-      label: "¿Cuál es el precio de tu producto(pesos MXN)?*",
-      name: "phone",
+      label: "¿Cuál es el precio de tu producto (pesos MXN)?*",
+      name: "value",
       required: true,
       type: "number",
+      default: show?.value,
     },
-
     {
       label: "¿Quieres asignar tu premio a alguna Asociación?",
       name: "association",
       required: false,
       type: "select",
+      options: associations.map((association) => ({
+        label: association.association_name,
+        value: association.id,
+      })),
+      default: show?.association,
     },
     {
       label: "¿Cuál es la condición de tu producto?*",
@@ -53,6 +78,7 @@ export default function ModalEditPremio({ show, setShow }: any) {
         { label: "Nuevo", value: "nuevo" },
         { label: "Usado", value: "usado" },
       ],
+      default: "nuevo",
     },
     {
       label: "Agrega las fotos de tu premio",

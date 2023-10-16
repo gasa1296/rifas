@@ -70,7 +70,7 @@ export default function InputFile({
         style={{ display: "none" }}
         ref={fileRef}
       />
-      <div className="mt-4 w-100 d-flex flex-wrap ">
+      <div className="mt-4 w-100 d-flex flex-wrap mb-4">
         {previews.map((preview, index) => (
           <div className="me-2 mb-2 position-relative " key={index}>
             <Image

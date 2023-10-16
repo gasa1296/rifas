@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaArrowLeft, FaCheck, FaArrowUp } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
-
 import { useRouter } from "next/router";
 
 interface Props {
@@ -41,7 +40,7 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
     <div className="mx-0 mx-md-4 mt-4">
       {hasHeader && (
         <div className="border-bottom  position-relative ">
-          <div className=" title-tabs d-flex align-items-center position-absolute  ">
+          <div className=" title-tabs3 d-flex align-items-center position-absolute  ">
             <MdKeyboardArrowLeft size={30} className="mt-1" />
             <p
               style={{ cursor: "pointer" }}
@@ -55,10 +54,9 @@ export default function Tabs({ tabs, hasHeader = true }: Props) {
             {tabs.map((tab, index) => (
               <li
                 key={index}
-                className={`mx-3 opacity-75  ${index < step
-                  ? "title-tabs  "
-                  : "Title-tabs2 opacity-50 "
-                  } fs-5 d-flex align-items-center  `}
+                className={`mx-3 opacity-75  ${
+                  index < step ? "title-tabs  " : "Title-tabs2 opacity-50 "
+                } fs-5 d-flex align-items-center  `}
               >
                 <FaCheck size={17} />
                 <p className="m-0 px-2">

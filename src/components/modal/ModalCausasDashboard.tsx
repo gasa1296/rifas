@@ -9,11 +9,9 @@ import { Profile } from "@/types/Model/Profile";
 
 import { createRafflesCause, selectRaffleState } from "@/store/slices/raffles";
 import ModalSelectCausa from "./ModalSelectCausa";
-import {
-  useAsociatonsStoreDashboard,
-  useCreateCausesStoreDashboard,
-} from "@/store/zustand/DashboardStore";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 import { useRouter } from "next/router";
+import { useCauseDashboardStore } from "@/store/zustand/CauseDashboardStore";
 
 export default function ModalCausasDashboard({
   show,
@@ -28,7 +26,7 @@ export default function ModalCausasDashboard({
   const dispatch = useDispatch();
   const { causesCategories } = useSelector(selectRaffleState);
   const asociations = useAsociatonsStoreDashboard((state) => state.asociations);
-  const getCause = useCreateCausesStoreDashboard((state) => state.getCause);
+  const getCause = useCauseDashboardStore((state) => state.getCause);
 
   const fields: Field[] = [
     {
@@ -81,9 +79,10 @@ export default function ModalCausasDashboard({
   const submitData = async (data: Profile) => {
     setLoading(true);
     const { payload } = await dispatch(createRafflesCause(data) as any);
+
     if (payload) {
       setShowScreenCausa(false);
-      //await getCause(router.query.id as string);
+      await getCause(router.query.id as string, 1);
     }
     setLoading(false);
   };

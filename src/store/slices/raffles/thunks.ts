@@ -127,19 +127,21 @@ export const createRafflesCause = createAsyncThunk(
       const result = await createCause(cause);
 
       const petitions: any[] = [];
-      cause.image.map((gallery: any) =>
-        petitions.push(createCauseGallery(gallery))
-      );
+      if (cause.image && cause.image.length > 1) {
+        cause.image.map((gallery: any) =>
+          petitions.push(createCauseGallery(gallery))
+        );
 
-      const resultGallery = await Promise.all(petitions);
+        const resultGallery = await Promise.all(petitions);
 
-      await updateGalleryCause(result.data.id, {
-        gallery: resultGallery.map((gallery) => gallery.data.id),
-        goal: cause.goal,
-        association: cause.association,
-        name: cause.name,
-        categories: cause.categories,
-      });
+        await updateGalleryCause(result.data.id, {
+          gallery: resultGallery.map((gallery) => gallery.data.id),
+          goal: cause.goal,
+          association: cause.association,
+          name: cause.name,
+          categories: cause.categories,
+        });
+      }
 
       return result.data;
     } catch (error) {
@@ -163,18 +165,20 @@ export const createRafflesPrize = createAsyncThunk(
 
       const result = await createDonations(prize);
 
-      const petitions: any[] = [];
-      prize.image.map((gallery: any) =>
-        petitions.push(createPrizeGallery(gallery))
-      );
+      if (prize.image && prize.image.length > 1) {
+        const petitions: any[] = [];
+        prize.image.map((gallery: any) =>
+          petitions.push(createPrizeGallery(gallery))
+        );
 
-      const resultGallery = await Promise.all(petitions);
+        const resultGallery = await Promise.all(petitions);
 
-      await updateGalleryPrize(result.data.id, {
-        gallery: resultGallery.map((gallery) => gallery.data.id),
-        name: prize.name,
-        value: prize.value,
-      });
+        await updateGalleryPrize(result.data.id, {
+          gallery: resultGallery.map((gallery) => gallery.data.id),
+          name: prize.name,
+          value: prize.value,
+        });
+      }
 
       return result.data;
     } catch (error) {

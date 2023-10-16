@@ -4,6 +4,7 @@ export interface authSliceModel {
     role: number;
     full_name: string;
     wallet: { value: number };
+    email: string;
   };
   loading: boolean;
   authenticated: boolean;

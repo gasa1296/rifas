@@ -2,34 +2,11 @@ import { create } from "zustand";
 import {
   getDashboardCause,
   getDashboardRaffle,
+  getDashboardWallet,
   setEditCauses,
 } from "@/services/dashboard";
 import { getDashboardPrize } from "@/services/dashboard";
 import { createCause, getAssociationsApproveds } from "@/services/raffles";
-
-interface PrizeStoreDasboard {
-  isLoading: boolean;
-  prize: any[];
-  error: boolean;
-  getPrize: (id: string) => Promise<void>;
-}
-
-export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
-  isLoading: false,
-  prize: [],
-  error: false,
-
-  getPrize: async (id: string) => {
-    set({ isLoading: true });
-
-    const { data } = await getDashboardPrize(id);
-
-    set({
-      prize: data.results,
-      isLoading: false,
-    });
-  },
-}));
 
 interface RaffleStoreDasboard {
   isLoading: boolean;
@@ -60,6 +37,9 @@ interface AsociationsStoreDasboard {
   asociations: any[];
   error: boolean;
   getAsociations: () => Promise<void>;
+  getWallet: (id: string, pagination: number) => Promise<void>;
+  pagination: number | null;
+  wallets: any[];
 }
 
 export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
@@ -67,6 +47,8 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
     isLoading: false,
     asociations: [],
     error: false,
+    wallets: [],
+    pagination: 1,
 
     getAsociations: async () => {
       set({ isLoading: true });
@@ -77,60 +59,18 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
         isLoading: false,
       });
     },
-  })
-);
-
-interface CreateCausesStoreDasboard {
-  isLoading: boolean;
-  cause: any[];
-  error: boolean;
-  getCause: (id: string, pagination: number) => Promise<void>;
-  createCause: (cause: any) => Promise<void>;
-  updateCause: (causeId: number, cause: any) => Promise<void>;
-  pagination: number | null;
-}
-
-export const useCreateCausesStoreDashboard = create<CreateCausesStoreDasboard>(
-  (set) => ({
-    isLoading: false,
-    cause: [],
-    error: false,
-    pagination: 1,
-
-    getCause: async (id: string, pagination: number) => {
+    getWallet: async (id: string, pagination: number) => {
       set({ isLoading: true });
 
-      const { data } = await getDashboardCause(id, pagination);
+      const { data } = await getDashboardWallet(id, pagination);
       const nextPagination = data.next ? pagination + 1 : null;
 
       set((state) => ({
-        cause:
-          pagination === 1 ? data.results : [...state.cause, ...data.results],
+        wallets:
+          pagination === 1 ? data.results : [...state.wallets, ...data.results],
         isLoading: false,
         pagination: nextPagination,
       }));
-    },
-
-    createCause: async (cause: any) => {
-      set({ isLoading: true });
-      const { data } = await createCause(cause);
-      set({
-        cause: data,
-        isLoading: false,
-      });
-    },
-
-    updateCause: async (causeId: number, cause: any) => {
-      set({ isLoading: true });
-
-      cause.categories = [Number(cause.categories)];
-      cause.association = Number(cause.association);
-      await setEditCauses(causeId, cause);
-
-      set({
-        //cause: data,
-        isLoading: false,
-      });
     },
   })
 );

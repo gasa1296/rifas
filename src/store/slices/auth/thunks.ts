@@ -6,6 +6,7 @@ import {
   loginUser,
   refreshToken,
   registerUser,
+  updateAsociacion,
 } from "@/services/auth";
 import { RootState } from "@/store";
 import { Auth, FacebookAuth, GoogleAuth, Profile } from "@/types/Model/Profile";
@@ -21,9 +22,9 @@ export const Register = createAsyncThunk(
     try {
       const { data } = await registerUser(Profile);
 
-      await thunkAPI.dispatch(
+      /* await thunkAPI.dispatch(
         Login({ email: Profile.email, password: Profile.password })
-      );
+      ); */
 
       return data;
     } catch (error) {
@@ -98,6 +99,24 @@ export const CreateAsociacion = createAsyncThunk(
       const result = await createAsociacion(Asociacion);
 
       return {};
+    } catch (error) {
+      handleError(error);
+    }
+  }
+);
+
+export const UpdateAsociacion = createAsyncThunk(
+  `${PREFIX}/asociacion`,
+  async (Asociacion: any, thunkAPI): Promise<{} | undefined> => {
+    try {
+      const { auth } = thunkAPI.getState() as RootState;
+      const { id } = auth.profile || { id: null };
+
+      Asociacion.user = id?.toString();
+
+      const result = await updateAsociacion(Asociacion);
+
+      return result.data;
     } catch (error) {
       handleError(error);
     }

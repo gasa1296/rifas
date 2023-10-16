@@ -1,31 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal } from "react-bootstrap";
 import FormGenerator from "../FormGenerator";
 import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
-import {
-  useAsociatonsStoreDashboard,
-  useCreateCausesStoreDashboard,
-} from "@/store/zustand/DashboardStore";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 import { useRouter } from "next/router";
+import { useCauseDashboardStore } from "@/store/zustand/CauseDashboardStore";
 
 export default function ModalEditCausa({ show, setShow }: any) {
   const router = useRouter();
-  const updateCause = useCreateCausesStoreDashboard(
-    (state) => state.updateCause
-  );
-
-  const getCause = useCreateCausesStoreDashboard((state) => state.getCause);
+  const updateCause = useCauseDashboardStore((state) => state.updateCause);
+  const getCause = useCauseDashboardStore((state) => state.getCause);
+  const isLoading = useCauseDashboardStore((state) => state.isLoading);
   const asociations = useAsociatonsStoreDashboard((state) => state.asociations);
-  const isLoading = useCreateCausesStoreDashboard((state) => state.isLoading);
 
   const { causesCategories } = useSelector(selectRaffleState);
 
   const submitData = async (data: Profile) => {
     await updateCause(show.id, data);
-    //await getCause(router.query.id as string);
+    await getCause(router.query.id as string, 1);
     setShow(false);
   };
   const fields: Field[] = [

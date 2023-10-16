@@ -17,10 +17,10 @@ export default function RegistroCuenta({ nextStep, backStep }: any) {
   return (
     <section className="text-secondary row  ">
       <div className="col-md-8  col-12 mx-auto mt-5">
-        <h2 className="text-center text-secondary fw-normal mx-md-5 ">
+        <h3 className="tittle-registroSucessfull text-center">
           Gracias por registrar tu usuario. Ayúdanos a completar los datos de tu
           asociación.
-        </h2>
+        </h3>
         <p className="text-center fw-light  fs-5 mt-3 mx-md-5">
           Para poder crear rifas es necesario completar este paso.
         </p>
