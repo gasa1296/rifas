@@ -2,6 +2,7 @@ import { create } from "zustand";
 import {
   getDashboardCause,
   getDashboardRaffle,
+  getDashboardResumen,
   getDashboardWallet,
   setEditCauses,
 } from "@/services/dashboard";
@@ -38,14 +39,18 @@ interface AsociationsStoreDasboard {
   error: boolean;
   getAsociations: () => Promise<void>;
   getWallet: (id: string, pagination: number) => Promise<void>;
+  getResumen: (id: string) => Promise<void>;
   pagination: number | null;
   wallets: any[];
+  resumen: any;
+
 }
 
 export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
   (set) => ({
     isLoading: false,
     asociations: [],
+    resumen:[],
     error: false,
     wallets: [],
     pagination: 1,
@@ -72,5 +77,16 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
         pagination: nextPagination,
       }));
     },
+
+    getResumen: async (id: string) => {
+      set({ isLoading: true });
+  
+      const { data } = await getDashboardResumen(id);
+  
+      set({
+        resumen: data,
+        isLoading: false,
+      });
+    }, 
   })
 );

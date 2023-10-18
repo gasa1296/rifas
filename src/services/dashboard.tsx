@@ -23,6 +23,13 @@ export const getDashboardPrize = (id: string, pagination: number) => {
   });
 };
 
+export const getDashboardResumen = (id: string) => {
+  return Api({
+    endpoint: `/associations/${id}/counts/`,
+    method: "GET",
+  });
+};
+
 export const getDashboardRaffle = (id: string) => {
   return Api({
     endpoint: `/associations/${id}/raffles/`,

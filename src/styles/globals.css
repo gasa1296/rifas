@@ -1501,6 +1501,42 @@ opacity: 1;
 
 
 
+/* pages associations micrositio*/
+
+.logo-micrositio{
+  width: 62px !important;
+  height: 62px !important;
+}
+
+
+.fondoHeader-micrositio{
+  background: #CEA2B61A 0% 0% no-repeat padding-box;
+  border: 1px solid #70707000;
+  opacity: 1;
+}
+
+.title-headerMicrositio{
+  text-align: left;
+letter-spacing: 0px;
+color: #784B5F;
+opacity: 1;
+font-size: 25px;
+font-weight: 600;
+
+}
+
+.parragraph-headerMicrositio{
+  text-align: left;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+
+
 
 /*modal delete user*/
 

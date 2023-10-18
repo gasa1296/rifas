@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AiOutlineMenu,
   AiFillDollarCircle,
@@ -13,10 +13,17 @@ import {
 import { BsWindowSidebar } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from "next/router";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 export default function DashboardResumen({ setShowScreen }: any) {
 
   const router = useRouter();
+  const getResumen = useAsociatonsStoreDashboard((state) => state.getResumen);
+  const resumen = useAsociatonsStoreDashboard((state) => state.resumen);
 
+  useEffect(() => {
+    getResumen(router.query.id as string);
+
+  }, []);
   return (
     <section className="">
       <div className="background-dashboard  d-block d-lg-flex justify-content-between align-items-center py-3 col-12">
@@ -35,7 +42,7 @@ export default function DashboardResumen({ setShowScreen }: any) {
           <AiFillDollarCircle color="#784B5F" size={30} />
           <p className="title-resumen m-0">Rifas</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            73 rifas creadas
+            {resumen.raffles} creadas
           </p>
           <button
             onClick={() => {
@@ -50,7 +57,7 @@ export default function DashboardResumen({ setShowScreen }: any) {
           <FaHandHoldingHeart color="#784B5F" size={30} />
           <p className="title-resumen m-0">Causas</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            22 causas creadas
+            {resumen.causes} creadas
           </p>
           <button
             onClick={() => {
@@ -63,9 +70,9 @@ export default function DashboardResumen({ setShowScreen }: any) {
         </div>
         <div className="container-resumen col-9 col-md-3 mx-4 my-2 text-center py-3">
           <FaGift color="#784B5F" size={30} />
-          <p className="title-resumen m-0">premios</p>
+          <p className="title-resumen m-0">Premios</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            62 Premios creados
+            {resumen.prizes} creadas
           </p>
           <button
             onClick={() => {
@@ -79,7 +86,7 @@ export default function DashboardResumen({ setShowScreen }: any) {
         <div className="container-resumen col-9 col-md-3 mx-4 my-2 text-center py-3">
           <FaBriefcase color="#784B5F" size={30} />
           <p className="title-resumen m-0">Cartera</p>
-          <p className="informationRaffle-resumen m-0 mb-2 ">0 creadas</p>
+          <p className="informationRaffle-resumen m-0 mb-2 ">{resumen.raffles} creadas</p>
           <button
             onClick={() => {
               setShowScreen(5);
@@ -93,7 +100,7 @@ export default function DashboardResumen({ setShowScreen }: any) {
           <BsWindowSidebar color="#784B5F" size={30} />
           <p className="title-resumen m-0">Micrositios</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            12 usuarios creados
+            {resumen.raffles} creadas
           </p>
           <button
             onClick={() => {
