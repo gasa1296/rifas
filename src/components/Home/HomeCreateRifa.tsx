@@ -4,6 +4,7 @@ import fondo from "@/assets/img/Comienza-la-historia.png";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectAuthState } from "@/store/slices/auth";
+import HomeCreateRifaStep from "./HomeCreateRifaSteps";
 
 export default function HomeCreateRifa() {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function HomeCreateRifa() {
   const route = authenticated ? "/rifas/crear_rifas" : "/registro";
 
   return (
-    <div className=" mx-3 mx-lg-0">
+    <div className=" mx-3 mx-lg-0 mt-5">
       <section
         className="row m-0 d-flex justify-content-between"
         style={{ marginBottom: "120px" }}
@@ -25,23 +26,9 @@ export default function HomeCreateRifa() {
           <p className="home-subtitle-create">
             Sigue las instrucciones para crear tu rifa
           </p>
-          <p className=" home-sub-title-create">paso 1</p>
-          <p className="fs-6">
-            Registrate contesta el formulario. Agrega el premio que ganaran los
-            participantes.¿No cuentas con un premio?, puedes elegir entre los
-            donados por nuestros benefactores
-          </p>
-          <p>
-            De acuerdo al premio elegido nuestra plataforma cuenta con una
-            calculadores que te indicara la cantidad y precios de los boletos
-            que necesitas para recaudar el monto
-          </p>
-          <p>
-            Una vez enviada sera revisada por nuestro equipo para hacer
-            recomendaciones o si esta lista para publicarse
-          </p>
+          <HomeCreateRifaStep />
           <button
-            className="btn fs-6 btn-pink w-100 fw-normal mt-5 mx-auto"
+            className="btn fs-6 btn-pink w-50 fw-normal  mx-auto"
             onClick={() => router.push(route)}
           >
             Iniciar Rifa

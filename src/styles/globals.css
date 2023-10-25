@@ -242,6 +242,61 @@ margin-top: 280px;
 }
 
 
+.title-home-header{
+  text-align: left;
+font: normal normal bold 101px/126px Quicksand;
+letter-spacing: 0px;
+color: #C3286D;
+opacity: 1;
+font-size: 102px;
+font-weight: bold;
+}
+
+
+
+
+.subtitle-home-header{
+  text-align: left;
+letter-spacing: 0px;
+color: #784B5F;
+opacity: 1;
+font-size: 42px;
+font-weight: bold;
+}
+
+.text-home-header{
+  text-align: left;
+letter-spacing: 0px;
+color: #707070;
+opacity: 1;
+font-size: 28px;
+font-weight: 600;
+}
+@media (max-width: 500px) {
+  .title-home-header {
+    font-size: 60px;
+    text-align: start;
+  } 
+
+  .subtitle-home-header{
+    font-size: 25px;
+  }
+  
+  .text-home-header{
+    font-size: 19px;
+  }
+}
+
+.recent-raffles{
+  text-align: left;
+letter-spacing: 0px;
+color: #C3286D;
+opacity: 1;
+font-size: 19px;
+font-weight: 600;
+margin-top: 50px;
+}
+
 .home-header-title{
 letter-spacing: var(--unnamed-character-spacing-0);
 text-align: center;
@@ -264,7 +319,8 @@ font-weight: 600;
 font-family: 'Montserrat', sans-serif  !important;
 letter-spacing: 0px;
 color: #707070;
-font-size: 30px;
+font-size: 28px;
+
 font-weight: lighter !important ;
 }
 
@@ -765,17 +821,10 @@ opacity: 1;
   font-weight: 600;
 
   letter-spacing: 0px;
-color: #707070;
-opacity: 1;
+  color: #784B5F;
+  opacity: 1;
 }
-.home-sub-title-create{
-  font-size: 22px;
-  font-weight: bold;
-text-align: left;
-letter-spacing: 0px;
-color: #707070;
 
-}
 .home-parragraph-create{
   font-size: 14px;
   font-weight: normal;
@@ -786,21 +835,30 @@ color: #707070;
 }
 
 
-
-
-/* home participating*/
-
-.title-participating{
-  font-size: 40px;
+.home-subtitle-CreateRifa{
+  font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0px;
-  color: #784B5F;
-opacity: 1;
-font-family: 'Montserrat', sans-serif !important;
+text-align: left;
+letter-spacing: 0px;
+color: #C3286D;
 
 }
+.title-homeCreateRifa{
+  letter-spacing: 0px;
+  color: #262626;
+  opacity: 2 !important;
+font-size: 16px;
+font-weight: bold;
+}
 
-.subtitle-participating{
+.text-homeCreateRifa{
+  text-align: left;
+letter-spacing: 0px;
+color: #707070;
+font-size: 14px;
+}
+
+.subtitle-CreateRifa{
   font-size: 24px;
   font-weight: lighter;
 font-family: 'Montserrat', sans-serif !important;
@@ -817,6 +875,20 @@ letter-spacing: 0px;
 color: #707070;
 opacity: 1
 }
+
+
+/* home participating*/
+
+.title-participating{
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #784B5F;
+opacity: 1;
+font-family: 'Montserrat', sans-serif !important;
+
+}
+
 
 
 
