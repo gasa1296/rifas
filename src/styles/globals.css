@@ -137,12 +137,18 @@ color: var(--unnamed-color-707070);}
   top: 0px;
   right: 0;
   max-width: 313px;
-  width: 15%;
+  width: 30%;
   height: 100px;
   z-index: 1000;
   margin-top: 60px;
   background: #F6F7F8 0% 0% no-repeat padding-box;
   border: 1px solid #70707026;
+}
+@media (min-width: 1000px) {
+.container-Profile{
+  width: 15%;
+
+}
 }
 
 .home-navbar{
@@ -1949,6 +1955,10 @@ font-size: 14px;
   background: #F7F7F7 0% 0% no-repeat padding-box;
 font-family: 'Montserrat', sans-serif  !important;
 
+}
+.row > *{
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }
 
 .container-title{

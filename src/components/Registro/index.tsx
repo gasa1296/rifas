@@ -15,7 +15,7 @@ export default function Registro() {
   ];
 
   return (
-    <section>
+    <section className="">
       <Tabs tabs={tabs} />
     </section>
   );

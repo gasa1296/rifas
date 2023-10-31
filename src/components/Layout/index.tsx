@@ -26,7 +26,7 @@ export default function Layout({ children, home }: any) {
 
   return (
     <main
-      className=" position-relative mx-auto"
+      className=" position-relative mx-auto "
       style={{ maxWidth: "1440px", paddingTop: "62px" }}
     >
       <ModalForgotPassword />

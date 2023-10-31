@@ -18,12 +18,12 @@ export default function ModalProfile({ showprofile, setShowProfile }: any) {
         <>
             {showprofile && (
 
-                <div className='container-Profile me-1 rounded-3 shadow p-2'>
+                <div className='container-Profile me-0 me-md-1 rounded-3 shadow p-0  p-md-2'>
 
                     {authOptions.map((Options: any, index: number) => (
                         <p
                             key={index}
-                            className=" mx-3 my-2"
+                            className=" mx-2 mx-md-3 my-2 "
                             style={{ cursor: "pointer" }}
                             onClick={() => {
                                 setShowProfile(false)
@@ -32,7 +32,7 @@ export default function ModalProfile({ showprofile, setShowProfile }: any) {
                             }
                         >
                             {Options.Icon ? (
-                                <div className="position-relative">
+                                <div className="position-relative ">
                                     <div className="notification-active">{ }</div>
                                     <Options.Icon className=" size-icon m-0" />
                                 </div>

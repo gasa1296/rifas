@@ -4,10 +4,11 @@ import { Field } from "@/types/Component/FormGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { Register, selectAuthState } from "@/store/slices/auth";
 import { Profile } from "@/types/Model/Profile";
+import Image from "next/image";
 
 import { LoginWithGoogle } from "../Login/LoginWithGoogle";
 import LoginWithFacebook from "../Login/LoginWithFacebook";
-
+import fondoRegistro from "@/assets/img/fondoRegistro.png";
 export default function CreateAccount({ nextStep }: any) {
   const { loading } = useSelector(selectAuthState);
 
@@ -56,7 +57,14 @@ export default function CreateAccount({ nextStep }: any) {
   ];
 
   return (
-    <section className="text-secondary row m-0">
+    <section className="text-secondary row m-0   position-relative">
+      <div>
+        <Image
+          src={fondoRegistro}
+          alt="fondoRifaDescriptions"
+          className="img-fluid position-absolute top-0 start-0  fondoRifaDescriptions"
+        />
+      </div>
       <div className="col-md-8  col-12 mx-0 mx-md-auto mt-5 ">
         <h2 className="text-center title-CreateAccount mx-md-5 mx-0">
           Para comenzar a rifarte necesitas crear una cuenta.
@@ -92,11 +100,11 @@ export default function CreateAccount({ nextStep }: any) {
 
             <div className=" mx-0 mx-md-auto d-flex flex-wrap  justify-content-center mb-4">
               <div className="my-2 my-md-0 mx-3">
-                <LoginWithFacebook handleClose={() => {}} />
+                <LoginWithFacebook handleClose={() => { }} />
               </div>
 
               <div className=" mt-1 mt-md-0 mx-2 ">
-                <LoginWithGoogle handleClose={() => {}} />
+                <LoginWithGoogle handleClose={() => { }} />
               </div>
             </div>
           </div>

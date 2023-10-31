@@ -6,17 +6,17 @@ import logo from "@/assets/img/logo-rifa-footer.png";
 export default function privacyNotice() {
   return (
     <Layout>
-      <div className=" col-12 text-center row container-Pivacy pt-5 m-auto pb-5">
-        <div className="col-11 col-lg-8 m-auto ">
-          <div className=" mw-100 d-flex justify-content-start m-auto pt-4 ">
-            <Image src={logo} alt="fondo" className=" me-3 " />
-            <p className=" container-title ms-3">
+      <div className=" col-12 text-center row container-Pivacy pt-2 pt-md-5 m-0 pb-5 p-0 mt-3 mt-md-0">
+        <div className="col-12 col-lg-8 m-auto  ">
+          <div className=" d-flex justify-content-start m-auto pt-4 row ">
+            <Image src={logo} alt="fondo" className=" me-3 col-11 col-md-2" />
+            <p className=" container-title ms-3 mt-3 mt-lg-0 col-12 col-md-7 ">
               AVISO DE PRIVACIDAD relacionado con los datos personales,
               recabados por ACMEAYUDA, A.C. (en adelante denominadas en conjunto
               como “ACMEAYUDA”
             </p>
           </div>
-          <div className=" container-text c m-auto   mt-4   p-5 ">
+          <div className=" container-text  m-auto mt-4 p-3 p-md-5 ">
             <h4 className="fw-bold"> 1.Generales</h4>
             <p className="mt-3">
               1.1.ACMEAYUDA ES UNA ASOCIACIÓN CIVIL COMPROMETIDA Y RESPETUOSA DE

@@ -28,8 +28,8 @@ export default function About() {
         <div className=" col-12 col-lg-6 pt-2 ">
           <Image
             src={imagenNosotros}
-            className=" w-75 h-100 mx-auto d-block "
-            alt="..."
+            className=" w-100 h-100 mx-auto d-block "
+            alt="fonfo-nosotros"
           />
         </div>
         <div className=" col-12 col-lg-6 pt-2 ">

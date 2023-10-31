@@ -4,8 +4,8 @@ import React from "react";
 export default function frequentQuestions() {
   return (
     <Layout>
-      <div className=" col-12 text-center row container-Pivacy pt-5 m-auto pb-5 ">
-        <div className="col-11 col-lg-8  m-auto text-start ">
+      <div className=" col-12 text-center row container-Pivacy pt-4 m-auto pb-5 mt-3 mt-md-0 ">
+        <div className="col-12 col-lg-8  m-auto text-start ">
           <h5 className="title-preguntasFrecuentes">Preguntas frecuentes</h5>
           <p className="text-Questions">
             Esta es una lista de las preguntas que más recibimos frecuentemente.
@@ -13,7 +13,7 @@ export default function frequentQuestions() {
             utiliza nuestro servicio de Ayuda en Línea.
           </p>
 
-          <div className="  m-auto containerText-questions  mt-2   p-5 ">
+          <div className="  m-auto containerText-questions  mt-2   p-3 p-md-5 ">
             <h5 className="subtitle-questions lh-1">Información General</h5>
             <div className="horizontal-bar mb-2"></div>
 

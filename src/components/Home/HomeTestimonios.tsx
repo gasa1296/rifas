@@ -46,7 +46,7 @@ export default function HomeTestimonios() {
           alt="fondoTestimoniales"
           className="img-fluid position-absolute top-0 start-0 w-100 h-100 rounded p-0"
         />
-        <h5 className=" home-title-testimonios pt-5 ps-5">Testimoniales</h5>
+        <h5 className=" home-title-testimonios pt-5 ps-4 ps-lg-5">Testimoniales</h5>
         <Slider {...settings}>
           {testimonies?.map((testimonio, index) => (
             <div key={index} className="py-3 p-5">
