@@ -1,0 +1,23 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/associations/[id]": "pages/associations/[id].html",
+  "/dashboard/[id]": "pages/dashboard/[id].html",
+  "/donaciones": "pages/donaciones.html",
+  "/contacto": "pages/contacto.html",
+  "/dashboard": "pages/dashboard.html",
+  "/frequentQuestions": "pages/frequentQuestions.html",
+  "/login": "pages/login.html",
+  "/nosotros": "pages/nosotros.html",
+  "/": "pages/index.html",
+  "/privacyNotice": "pages/privacyNotice.html",
+  "/profile": "pages/profile.html",
+  "/registro": "pages/registro.html",
+  "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
+  "/rifas/[id]": "pages/rifas/[id].html",
+  "/rifas": "pages/rifas.html",
+  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
+  "/terminosCondiciones": "pages/terminosCondiciones.html",
+  "/404": "pages/404.html"
+}

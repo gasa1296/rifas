@@ -1,0 +1,13 @@
+{
+  "pages": {
+    "/associations/[id]": [],
+    "/nosotros": [],
+    "/": [],
+    "/rifas/[id]": [],
+    "/rifas": [],
+    "/rifas/detalles/[id]": []
+  },
+  "app": {},
+  "appUsingSizeAdjust": false,
+  "pagesUsingSizeAdjust": false
+}

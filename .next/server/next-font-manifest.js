@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST={pages:{"/associations/[id]":[],"/nosotros":[],"/":[],"/rifas/[id]":[],"/rifas":[],"/rifas/detalles/[id]":[]},app:{},appUsingSizeAdjust:!1,pagesUsingSizeAdjust:!1};
