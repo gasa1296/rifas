@@ -83,12 +83,11 @@ export default function DashboardMicrositio() {
         <div className="  mb-3 col-12 col-lg-12 m-auto mt-4  ">
           <div
             className=" d-flex justify-content-between align-items-center    "
-            onClick={() => {}}
+            onClick={() => { }}
           >
             <button
-              className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
-                step === 1 ? " opacity-50 " : " opacity-100  "
-              }`}
+              className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${step === 1 ? " opacity-50 " : " opacity-100  "
+                }`}
             >
               <div className="text-fondo-container">
                 <AiOutlineMenu size={25} className="me-2" />
@@ -104,9 +103,8 @@ export default function DashboardMicrositio() {
         </div>
         <div className=" d-flex justify-content-between align-items-center  mt-2 ">
           <button
-            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
-              step === 2 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 2 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               <FaRegImage className="mx-2" />
@@ -120,11 +118,10 @@ export default function DashboardMicrositio() {
           />
         )}
 
-        <div className=" d-flex justify-content-around align-items-center   mt-2   ">
+        <div className=" d-flex justify-content-around align-items-center   mt-2  pb-4  ">
           <button
-            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
-              step === 3 ? " opacity-50 " : " opacity-100  "
-            }`}
+            className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${step === 3 ? " opacity-50 " : " opacity-100  "
+              }`}
           >
             <div>
               {" "}

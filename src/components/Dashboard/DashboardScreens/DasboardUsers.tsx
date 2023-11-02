@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaImage, FaUsers } from "react-icons/fa";
 import { BsLink45Deg } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -11,6 +11,7 @@ import DashboardTable from "../Components/DashboardTable";
 
 import { useRouter } from "next/router";
 import UserOption from "../Components/TableComponents/UserOption";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 
 export default function DasboardUsers() {
   const [showScreen, setShowScreen] = useState(false);
@@ -22,6 +23,9 @@ export default function DasboardUsers() {
   const handleCloseAsociacion = () => setShowAsociarUsuario(false);
   const handleCloseEdit = () => setShowEditUser(false);
   const router = useRouter();
+  const getUser = useAsociatonsStoreDashboard((state) => state.getUser);
+  const user = useAsociatonsStoreDashboard((state) => state.user);
+  const pagination = useAsociatonsStoreDashboard((state) => state.pagination);
 
   const options = [
     {
@@ -112,9 +116,12 @@ export default function DasboardUsers() {
       <DashboardTable
         title="Detalle de movimientos"
         disableFilter
-        disablePagination
+        pagination={pagination}
         head={head}
-        options={options}
+        getRequest={(pagination: number) => {
+          getUser(router.query.id as string, pagination);
+        }}
+        options={user}
         Component={UserOption}
         actions={{ setShowEditUser, setShowScreenDelete }}
       />

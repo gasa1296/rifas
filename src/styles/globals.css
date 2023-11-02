@@ -1576,6 +1576,16 @@ color: #707070;
 opacity: 1;
 }
 
+.email-microsition{
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+ 
+  .email-microsition{
+font-size: 13px;
+
+  }
+}
 
 
 

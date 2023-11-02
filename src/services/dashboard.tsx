@@ -37,6 +37,21 @@ export const getDashboardRaffle = (id: string) => {
   });
 };
 
+export const getDashboardUser = (id: string, pagination: number) => {
+  return Api({
+    endpoint: `/associations/${id}/list_helpers/?page=${pagination}`,
+    method: "GET",
+  });
+};
+export const setDashboardAddUser = (id: string, payload: any,) => {
+  return Api({
+    endpoint: `/associations/${id}/add_helper/`,
+    method: "POST",
+    _data: payload,
+  });
+};
+
+
 export const setEditCauses = (id: number, cause: any) => {
   const formData = new FormData();
   formData.append("name", cause.name);

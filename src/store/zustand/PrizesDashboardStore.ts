@@ -29,6 +29,8 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
       pagination: nextPagination,
     }));
   },
+
+  
   updatePrize: async (prizeId: number, prize: any) => {
     set({ isLoading: true });
 

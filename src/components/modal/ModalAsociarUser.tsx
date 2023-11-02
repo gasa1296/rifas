@@ -1,8 +1,32 @@
 import React from 'react'
 import { Modal } from "react-bootstrap";
 import { AiFillInfoCircle } from 'react-icons/ai';
+import { Field } from "@/types/Component/FormGenerator";
+import { Profile } from "@/types/Model/Profile";
+import FormGenerator from "@/components/FormGenerator";
+import { useAsociatonsStoreDashboard } from '@/store/zustand/DashboardStore';
+import { useRouter } from 'next/router';
 
-export default function ModalAsociarUser({ showAsociarusuario, setShowAsociarUsuario, handleCloseAsociacion }: any) {
+export default function ModalAsociarUser({ showAsociarusuario, setShowAsociarUsuario, handleCloseAsociacion, handleChangeRaffle }: any) {
+    const router = useRouter();
+
+
+    const setAddUser = useAsociatonsStoreDashboard((state) => state.setAddUser);
+    const isLoading = useAsociatonsStoreDashboard((state) => state.isLoading);
+
+    const submitData = async (data: Profile) => {
+        console.log("data", submitData)
+        setAddUser(router.query.id as string, data)
+    };
+
+    const fields: Field[] = [
+        {
+            label: "Correo electronico",
+            name: "about",
+            required: true,
+            type: "email",
+        }
+    ];
     return (
         <div>
 
@@ -24,17 +48,23 @@ export default function ModalAsociarUser({ showAsociarusuario, setShowAsociarUsu
 
                                 <div className=''>
                                     <p className='text-deleteUser  text-center lh-sm '>Captura el correo electrónico del usuario que deseas asociar a tu cuenta</p>
-                                    <label>Correo electronico</label>
-                                    <input type='text' className='w-100 rounded-1  form-control mt-1' />
+                                    <FormGenerator
+                                        renderButton={(handleSend) => {
+                                            return (<div className="modal-footer">
+                                                <button disabled={isLoading} onClick={handleCloseAsociacion} type="button" className="btn btn-border-pink" data-bs-dismiss="modal">Cerrar</button>
+                                                <button disabled={isLoading} type="button" onClick={handleSend} className="btn btn-pink">Asociar usuario</button>
+                                            </div>)
+                                        }}
+                                        submitData={submitData}
+                                        fields={fields}
+                                        loading={isLoading}
+                                    />
                                 </div>
                             </Modal.Body>
 
 
 
-                            <div className="modal-footer">
-                                <button onClick={handleCloseAsociacion} type="button" className="btn btn-border-pink" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" className="btn btn-pink">Asociar usuario</button>
-                            </div>
+
 
                         </Modal >
                     </div >

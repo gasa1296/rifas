@@ -1,11 +1,11 @@
 import React from "react";
-import historiasFondo from "@/assets/img/Historias-img.jpg";
+import historiasFondo from "@/assets/img/gente-rifada.png";
 import Image from "next/image";
 
 export default function HomeHistory() {
   return (
-    <section className="row  mt-5   d-block  d-lg-flex justify-content-center  text-center text-lg-start mx-0 mx-lg-0  ">
-      <div className="col-12 col-lg-6  p-0 mx-0 mx-lg-0 mt-2  ">
+    <section className="row  mt-5   d-block  d-lg-flex justify-content-between align-items-center   text-center text-lg-start mx-0 mx-lg-0  ">
+      <div className="col-12 col-lg-6  p-0 mx-0 mx-lg-0    ">
         <h4 className=" home-header-subtitle text-center text-lg-start">
           ¡Gente rifada como tú!
         </h4>
@@ -15,11 +15,11 @@ export default function HomeHistory() {
         </p>
       </div>
 
-      <div className="col-12 col-lg-6    p-0 ">
+      <div className="col-12 col-lg-6     p-0 ">
         <Image
           src={historiasFondo}
           alt="fondo"
-          className="w-100 h-100  rounded "
+          className="  mx-auto d-block rounded "
         />
       </div>
     </section>

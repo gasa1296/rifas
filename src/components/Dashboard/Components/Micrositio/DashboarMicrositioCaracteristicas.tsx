@@ -64,14 +64,14 @@ export default function DashboarMicrositioCaracteristicas({
     },
   ];
   return (
-    <section className="px-4 py-3 container-cartera ">
+    <section className="px-2 px-md-4 py-3 container-cartera  ">
       <h6 className="title-micrositio">
         1. Información general de tu Asociación
       </h6>
       <p className="">¿Cómo quieres acceder a tu micrositio?</p>
 
-      <div className="d-flex">
-        <p className="m-0">https://www.rifaconcausa.org/sitios/</p>
+      <div className="d-md-flex d-block">
+        <p className="m-0 email-microsition">https://www.rifaconcausa.org/sitios/</p>
         <input type="text" placeholder="asociacion" />
       </div>
 
