@@ -1,43 +1,41 @@
 import { getStatusOptions } from "@/utils/getStatusOptions";
+import Image from "next/image";
 import React from "react";
 import { FaRegEdit, FaTrash } from "react-icons/fa";
+import LogoRifas from "@/assets/img/logoRifas.svg";
 
 export default function UserOption({ option, index, actions }: any) {
   const { setShowEditUser, setShowScreenDelete } = actions;
   return (
     <tr
-      className="table-secondary position-relative border  "
+      className="table-secondary position-relative   text-left "
       style={{ background: index % 2 === 0 ? "#F2F2F2" : "#fff" }}
     >
       <th scope="row " className="  ">
-        <div
-          className="position-absolute top-0 start-0 borderLateral-Rifas "
-          style={{
-            backgroundColor: getStatusOptions(option.estado),
-          }}
-        ></div>
-        <div
-          style={{ width: "42px", height: "42px" }}
-          className="  d-flex justify-content-center  align-items-center bg-white  icon ms-3 "
-        >
-          {option.icon}
+        <div className="  d-flex justify-content-start align-items-center  icon ms-3 w-full">
+          <Image
+            width={50}
+            height={50}
+            src={option.image || LogoRifas}
+            alt={option.name}
+            className="rounded"
+          />
         </div>
       </th>
-      <td className="number-dashboardRifas ">{option.nombre}</td>
-      <td className="number-dashboardRifas ">{option.apellido}</td>
-      <td className="number-dashboardRifas ">{option.correo}</td>
-      <td className="icon-dashboarRifas ">
+      <td className="number-dashboardRifas ">{option.full_name}</td>
+      <td className="number-dashboardRifas ">{option.email}</td>
+      <td className="icon-dashboarRifas  ">
         <FaRegEdit
           onClick={() => {
-            setShowEditUser(true);
+            setShowEditUser(option);
           }}
-          color="#2161BD"
           size={18}
-          className="mx-1"
-        />{" "}
+          className="me-2"
+          color="#2161BD"
+        />
         <FaTrash
           onClick={() => {
-            setShowScreenDelete(true);
+            setShowScreenDelete(option);
           }}
           size={18}
           className=""

@@ -13,7 +13,7 @@ export default function PremioOptions({ option, index, actions }: any) {
 
   return (
     <tr
-      className="border position-relative  text-center"
+      className="border position-relative text-left"
       style={{ background: index % 2 === 0 ? "#F2F2F2" : "#fff" }}
     >
       <th scope="row text-center ">
@@ -21,7 +21,7 @@ export default function PremioOptions({ option, index, actions }: any) {
           className="position-absolute top-0 start-0 borderLateral-Rifas "
           style={{ backgroundColor: getStatusColorPrizes(option.status) }}
         ></div>
-        <div className="  d-flex justify-content-center  align-items-center  icon ms-3 w-full">
+        <div className="  d-flex justify-content-start align-items-center  icon ms-3 w-full">
           <Image
             width={50}
             height={50}
@@ -37,12 +37,11 @@ export default function PremioOptions({ option, index, actions }: any) {
         <p className="parraf-cartera px-2">{option.informacion}</p>
       </td>
       <td className="number-dashboardRifas ">
-        {" "}
         {new Date(option.created_at).toLocaleDateString()}
       </td>
       <td className="number-dashboardRifas ">{option.value}</td>
       <td
-        style={{ width: "110px", color: getStatusColorPrizes(option.status) }}
+        style={{ color: getStatusColorPrizes(option.status) }}
         className="number-dashboardRifas px-3"
       >
         {getStatusValuePrizes(option.status)}

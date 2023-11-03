@@ -41,6 +41,8 @@ export default function CreateAccount({ nextStep }: any) {
       name: "confirmarContrasena",
       required: true,
       type: "password",
+      validate: (value: string, payload: any) =>
+        value === payload.password || "Las contraseña no coinciden",
     },
     {
       label: "He leido y aceptado los terminos",

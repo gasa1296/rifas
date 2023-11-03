@@ -21,7 +21,7 @@ const StepIcon = (step: number, currentStep: number) => {
   return <MdKeyboardArrowDown size={30} />;
 };
 
-export default function CreateRifa({ nextStep, backStep }: any) {
+export default function CreateRifa({ nextStep, backStep, disable }: any) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [raffle, setRaffle] = useState({});
@@ -51,7 +51,7 @@ export default function CreateRifa({ nextStep, backStep }: any) {
     setRaffle({});
   };
 
-  if (!canCreateRaffle) return <CreateAsociacion />;
+  if (!canCreateRaffle && !disable) return <CreateAsociacion />;
 
   return (
     <div className="mx-4">

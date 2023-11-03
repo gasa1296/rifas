@@ -25,6 +25,7 @@ import DashboardMicrositioBanners from "../Components/Micrositio/DashboardMicros
 import { useRouter } from "next/router";
 import DashboarMicrositioCaracteristicas from "../Components/Micrositio/DashboarMicrositioCaracteristicas";
 import DashboarMicrositioNetworks from "../Components/Micrositio/DashboarMicrositioNetworks";
+import HeaderDashboard from "../Components/HeaderDashboard";
 
 export default function DashboardMicrositio() {
   const [step, setStep] = useState(1);
@@ -45,25 +46,17 @@ export default function DashboardMicrositio() {
   };
   return (
     <section className=" ">
-      <div className="background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3 col-12 ">
-        <div className=" d-block d-md-flex mt-2 ">
-          <p className="title-dashboard mx-2 ">APAC, A.C. /</p>
-          <p className="title-dashboard ">Micrositio</p>
-        </div>
-        <div className="d-flex justify-content-between align-items-center ">
-          <button
-            onClick={() => router.push("/dashboard/")}
-            className=" p-2 me-3 button-dashboard m-0 "
-          >
-            <MdKeyboardArrowLeft />
-            Mis asociaciones{" "}
-          </button>
-          <button className="me-3 button-dashboard  m-0 p-2  ">
-            <FaBriefcase className="mx-2" />
-            Vista previa{" "}
-          </button>
-        </div>
-      </div>
+      <HeaderDashboard
+        screen="Micrositio"
+        renderButton={() => (
+          <>
+            <button className="me-3 button-dashboard  m-0 p-2  ">
+              <FaBriefcase className="mx-2" />
+              Vista previa{" "}
+            </button>
+          </>
+        )}
+      />
 
       <div className="pt-3 background-dashboard mt-3 px-3">
         <div className="d-flex container-cartera  p-3 mt-2">
@@ -120,7 +113,7 @@ export default function DashboardMicrositio() {
           />
         )}
 
-        <div className=" d-flex justify-content-around align-items-center   mt-2   ">
+        <div className=" d-flex justify-content-around align-items-center   mt-2 pb-4  ">
           <button
             className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
               step === 3 ? " opacity-50 " : " opacity-100  "

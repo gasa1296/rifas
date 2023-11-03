@@ -36,11 +36,79 @@ export const getDashboardResumen = (id: string) => {
     method: "GET",
   });
 };
+export const getDashboardResumenProfile = () => {
+  return Api({
+    endpoint: `/prizes/get_counts/`,
+    method: "GET",
+  });
+};
 
 export const getDashboardRaffle = (id: string) => {
   return Api({
     endpoint: `/associations/${id}/raffles/`,
     method: "GET",
+  });
+};
+
+export const getDashboardUser = (id: string, pagination: number) => {
+  return Api({
+    endpoint: `/associations/${id}/list_helpers/?page=${pagination}`,
+    method: "GET",
+  });
+};
+export const setDashboardAddUser = (id: string, payload: any) => {
+  return Api({
+    endpoint: `/associations/${id}/add_helper/?email=${payload.email}`,
+    method: "POST",
+    _data: payload,
+  });
+};
+export const setDashboardCreateUser = (id: string, payload: any) => {
+  const formData = new FormData();
+  formData.append("company_name", payload.company_name);
+  formData.append("full_name", payload.full_name);
+  formData.append("email", payload.email);
+  formData.append("password", payload.password);
+
+  if (payload.image[0]) formData.append("image", payload.image[0]);
+
+  return axios.post(
+    baseUrl + `/associations/${id}/create_helper/?email=${payload.email}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+      },
+    }
+  );
+};
+
+export const setDashboardUpdateUser = (id: string, payload: any) => {
+  const formData = new FormData();
+  formData.append("company_name", payload.company_name);
+  formData.append("full_name", payload.full_name);
+  formData.append("email", payload.email);
+  if (payload.password) formData.append("password", payload.password);
+
+  if (payload.image[0]) formData.append("image", payload.image[0]);
+
+  return axios.put(
+    baseUrl + `/associations/${id}/update_helper/?user_id=${payload.id}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+      },
+    }
+  );
+};
+
+export const setDashboardDeleteUser = (id: string, userId: string) => {
+  return Api({
+    endpoint: `/associations/${id}/delete_helper/?user_id=${userId}`,
+    method: "DELETE",
   });
 };
 

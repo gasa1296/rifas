@@ -83,8 +83,6 @@ export default function DashboadrRifas() {
     getRaffle(router.query.id as string);
   }, []);
 
-  console.log(raffle);
-
   return (
     <section className="">
       <div className="background-dashboard  d-block d-lg-flex justify-content-between align-items-center p-3 col-12 ">

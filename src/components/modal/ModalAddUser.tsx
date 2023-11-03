@@ -5,6 +5,8 @@ import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
+import { useRouter } from "next/router";
 
 export default function ModalAddUser({
   handleClose,
@@ -12,84 +14,63 @@ export default function ModalAddUser({
   showScreen,
   setShowScreen,
 }: any) {
+  const router = useRouter();
+
+  const setCreateUser = useAsociatonsStoreDashboard(
+    (state) => state.setCreateUser
+  );
+  const getUser = useAsociatonsStoreDashboard((state) => state.getUser);
+  const isLoading = useAsociatonsStoreDashboard((state) => state.isLoading);
+
   const submitData = async (data: Profile) => {
-    //handleChangeRaffle(data);
+    const result = await setCreateUser(router.query.id as string, data);
+    if (result) {
+      getUser(router.query.id as string, 1);
+      handleClose();
+    }
   };
-  const { loading } = useSelector(selectRaffleState);
 
   const fields: Field[] = [
     {
-      label: "Nombre",
-      name: "name",
+      label: "Nombre completo",
+      name: "full_name",
       required: true,
-      type: "text",
-    },
-    {
-      label: "Apellido Paterno",
-      name: "last-name",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Apellido Materno",
-      name: "mother-lastname",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Numero de celular",
-      name: "phone",
-      required: false,
-      type: "text",
-    },
-    {
-      label: "Numero de telefono",
-      name: "phoneNumber",
-      required: false,
       type: "text",
     },
     {
       label: "Correo electronico",
       name: "email",
       required: true,
-      type: "email",
+      type: "text",
     },
-
+    { label: "Empresa (Opcional)", name: "company_name", type: "text" },
+    { label: "Contraseña", name: "password", required: true, type: "password" },
     {
-      label: "Sexo",
-      name: "sex",
+      label: "Confirmar Contraseña",
+      name: "confirmarContrasena",
       required: true,
-      type: "subtitle",
+      type: "password",
+      validate: (value: string, payload: any) =>
+        value === payload.password || "Las contraseña no coinciden",
     },
     {
-      label: "femenino",
-      name: "sex",
-      required: true,
-      type: "checkbox",
-    },
-    {
-      label: "masculino",
-      name: "sex",
-      required: true,
-      type: "checkbox",
-    },
-    {
-      label: "Agregar foto de perfil",
-      name: "photo",
+      label: "Perfil",
       required: false,
+      name: "image",
       type: "file",
+      maxFile: 1,
     },
     {
-      label: "Contraseña",
-      name: "resetPassword",
+      label: "He leido y aceptado los terminos",
+      name: "accepted",
       required: true,
-      type: "password",
+      type: "checkbox",
     },
     {
-      label: "Confirmar contraseña",
-      name: "resetPassword",
+      label: "Confirma que no eres un robot",
+      name: "token",
       required: true,
-      type: "password",
+      type: "captchap",
     },
   ];
   return (
@@ -117,7 +98,7 @@ export default function ModalAddUser({
               buttonText="Enviar"
               fields={fields}
               submitData={submitData}
-              loading={loading}
+              loading={isLoading}
             />
           </Modal.Body>
         </Modal>

@@ -17,8 +17,6 @@ export default function DashboardProfile({ nextStep }: any) {
     (state) => state.asociations
   );
 
-  console.log("TEst", associations, associations);
-
   const filterAssociation = associations.find(
     (association) => association.id === Number(router.query.id)
   );

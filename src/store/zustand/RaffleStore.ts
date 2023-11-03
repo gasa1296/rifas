@@ -9,6 +9,7 @@ import { create } from "zustand";
 interface RaffleStore {
   isLoading: boolean;
   raffleFeature: RafflesI | null;
+  rafflesFeature: RafflesI[];
   testimonies: any[];
   raffleDate: any[];
   error: boolean;
@@ -20,6 +21,7 @@ interface RaffleStore {
 export const useRaffleStore = create<RaffleStore>((set) => ({
   isLoading: false,
   raffleFeature: null,
+  rafflesFeature: [],
   testimonies: [],
   raffleDate: [],
 
@@ -45,6 +47,7 @@ export const useRaffleStore = create<RaffleStore>((set) => ({
 
       set({
         raffleFeature: data.results[0] || null,
+        rafflesFeature: data.results,
         isLoading: false,
       });
     } catch (error) {}

@@ -46,15 +46,21 @@ export default function HomeRifate() {
         {...settings}
         className="d-flex justify-content-between mx-0 mx-lg-0 "
       >
-        <Image
-          src={fondo}
-          className="w-50 h-25  ms-4 ms-lg-4 mx-auto"
-          alt="..."
-        />
-        <Image src={fondo1} className="w-50 h-25 " alt="..." />
-        <Image src={fondo2} className="w-50 h-25" alt="..." />
-        <Image src={fondo3} className="w-50 h-25" alt="..." />
-        <Image src={fondo4} className="w-50 h-25" alt="..." />
+        <div className="w-100">
+          <Image src={fondo} className="w-50 h-25   mx-auto" alt="..." />{" "}
+        </div>
+        <div className="w-100">
+          <Image src={fondo1} className="w-50 h-25   mx-auto" alt="..." />{" "}
+        </div>
+        <div className="w-100">
+          <Image src={fondo2} className="w-50 h-25   mx-auto" alt="..." />{" "}
+        </div>
+        <div className="w-100">
+          <Image src={fondo3} className="w-50 h-25   mx-auto" alt="..." />{" "}
+        </div>
+        <div className="w-100">
+          <Image src={fondo4} className="w-50 h-25   mx-auto" alt="..." />{" "}
+        </div>
       </Slider>
     </section>
   );

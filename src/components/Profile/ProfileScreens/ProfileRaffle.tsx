@@ -26,10 +26,11 @@ export default function ProfileRaffle() {
   const head = [
     { label: "Imagen" },
     { label: "Titulo" },
+    { label: "Tickets comprados" },
     { label: "Recaudado" },
-    { label: "Fecha Rifa", width: "115px" },
-    { label: "Precio boleto", width: "115px" },
-    { label: "Estado" },
+    { label: "Precio boleto" },
+    { label: "Fecha de finalizacion" },
+    { label: "Ganador" },
   ];
 
   return (

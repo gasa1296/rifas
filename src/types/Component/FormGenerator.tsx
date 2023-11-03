@@ -18,6 +18,7 @@ export interface Field {
   minDate?: string;
   tooltip?: string;
   disabled?: boolean;
+  validate?: (value: string, payload: any) => void;
 }
 
 export interface FieldType {

@@ -77,7 +77,7 @@ export default function DashboardTable({
               {head.map((item, index) => (
                 <th
                   key={index}
-                  className="select-DashboarRifas px-2 text-center"
+                  className="select-DashboarRifas px-2 text-left"
                   scope="col"
                   style={item.width ? { width: item.width } : {}}
                 >

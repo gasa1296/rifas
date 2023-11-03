@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AiOutlineMenu,
   AiFillDollarCircle,
@@ -13,8 +13,20 @@ import {
 import { BsWindowSidebar } from "react-icons/bs";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from "next/router";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 export default function ProfileResume({ setShowScreen }: any) {
   const router = useRouter();
+
+  const getResumenProfile = useAsociatonsStoreDashboard(
+    (state) => state.getResumenProfile
+  );
+  const resumenProfile = useAsociatonsStoreDashboard(
+    (state) => state.resumenProfile
+  );
+
+  useEffect(() => {
+    getResumenProfile();
+  }, []);
 
   return (
     <section className="">
@@ -28,7 +40,7 @@ export default function ProfileResume({ setShowScreen }: any) {
           <AiFillDollarCircle color="#784B5F" size={30} />
           <p className="title-resumen m-0">Rifas</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            73 rifas creadas
+            {resumenProfile.raffles} rifas creadas
           </p>
           <button
             onClick={() => {
@@ -43,7 +55,7 @@ export default function ProfileResume({ setShowScreen }: any) {
           <FaGift color="#784B5F" size={30} />
           <p className="title-resumen m-0">Premios</p>
           <p className="informationRaffle-resumen m-0 mb-2 ">
-            62 Premios creados
+            {resumenProfile.prizes} Premios creados
           </p>
           <button
             onClick={() => {

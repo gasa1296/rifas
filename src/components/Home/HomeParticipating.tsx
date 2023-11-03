@@ -33,7 +33,7 @@ export default function HomeParticipating() {
         {options.map((option, index) => (
           <div
             key={index}
-            className=" mx-0 mx-lg-2 mt-2 col-12 col-sm-6 col-lg-2 "
+            className=" mx-0 mx-lg-2 mt-5 col-12 col-sm-6 col-lg-2 "
           >
             <Image
               src={option.icon}

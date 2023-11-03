@@ -5,74 +5,70 @@ import { Field } from "@/types/Component/FormGenerator";
 import { Profile } from "@/types/Model/Profile";
 import { useSelector } from "react-redux";
 import { selectRaffleState } from "@/store/slices/raffles";
+import { useRouter } from "next/router";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 export default function ModalEditUser({
   showEditUser,
   setShowEditUser,
   handleCloseEdit,
 }: any) {
+  const router = useRouter();
+
+  const setEditUser = useAsociatonsStoreDashboard((state) => state.setEditUser);
+  const getUser = useAsociatonsStoreDashboard((state) => state.getUser);
+  const isLoading = useAsociatonsStoreDashboard((state) => state.isLoading);
+
   const submitData = async (data: Profile) => {
-    // handleChangeRaffle(data);
+    const result = await setEditUser(router.query.id as string, {
+      ...showEditUser,
+      ...data,
+    });
+    if (result) {
+      getUser(router.query.id as string, 1);
+      handleCloseEdit();
+    }
   };
-  const { loading } = useSelector(selectRaffleState);
+
   const fields: Field[] = [
     {
-      label: "Nombre (s) ",
-      name: "name",
+      label: "Nombre completo",
+      name: "full_name",
       required: true,
       type: "text",
-    },
-    {
-      label: "Apellido Paterno",
-      name: "last-name",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Apellido Materno",
-      name: "mother-lastname",
-      required: true,
-      type: "text",
-    },
-    {
-      label: "Numero de celular",
-      name: "phone",
-      required: false,
-      type: "text",
-    },
-    {
-      label: "Numero de telefono",
-      name: "phoneNumber",
-      required: false,
-      type: "text",
+      default: showEditUser.full_name || "",
     },
     {
       label: "Correo electronico",
       name: "email",
       required: true,
-      type: "email",
-    },
-
-    {
-      label: "Sexo",
-      name: "status",
-      required: true,
-      type: "radioButton",
-      options: [
-        { label: "femenino", value: "femenino" },
-        { label: "Masculino", value: "Masculino" },
-      ],
+      type: "text",
+      default: showEditUser.email || "",
     },
     {
-      label: "Agregar foto de perfil",
-      name: "photo",
-      required: false,
-      type: "file",
+      label: "Empresa (Opcional)",
+      name: "company_name",
+      type: "text",
+      default: showEditUser.company_name || "",
     },
     {
-      label: "Cambiar contraseña",
-      name: "resetPassword",
-      required: true,
+      label: "Nueva Contraseña",
+      name: "password",
       type: "password",
+    },
+    {
+      label: "Confirmar Nueva Contraseña",
+      name: "confirmarContrasena",
+      type: "password",
+      validate: (value: string, payload: any) =>
+        value === payload.password || "Las contraseña no coinciden",
+    },
+    {
+      label: "Perfil",
+      required: false,
+      name: "image",
+      type: "file",
+      maxFile: 1,
+      default: showEditUser?.image ? [showEditUser?.image || ""] : [],
     },
   ];
   return (
@@ -101,7 +97,7 @@ export default function ModalEditUser({
                 buttonText="Guardar"
                 fields={fields}
                 submitData={submitData}
-                loading={loading}
+                loading={isLoading}
               />
             </Modal.Body>
           </Modal>

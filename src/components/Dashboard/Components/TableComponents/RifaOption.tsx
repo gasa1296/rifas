@@ -8,10 +8,9 @@ import { FaRegEdit } from "react-icons/fa";
 export default function RifaOption({ option, index, actions }: any) {
   const { setShowEdit, setShowInfo } = actions;
 
-  console.log("TEst", option);
   return (
     <tr
-      className=" position-relative border text-center "
+      className=" position-relative border text-left "
       style={{ background: index % 2 === 0 ? "#F2F2F2" : "#fff" }}
     >
       <th scope="row ">
@@ -19,7 +18,7 @@ export default function RifaOption({ option, index, actions }: any) {
           className="position-absolute top-0 start-0 borderLateral-Rifas  "
           style={{ backgroundColor: getStatusColor(option.estado) }}
         ></div>
-        <div className="  d-flex justify-content-center  align-items-center  icon ms-3 w-full">
+        <div className="  d-flex justify-content-start align-items-center  icon ms-3 w-full">
           <Image
             width={50}
             height={50}

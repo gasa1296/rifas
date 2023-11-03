@@ -5,7 +5,7 @@ export default function CarteraOption({ option, index }: any) {
   return (
     <tr
       key={index}
-      className="table-secondary   position-relative border text-center "
+      className="table-secondary   position-relative border text-left "
       style={{ background: index % 2 === 0 ? "#F2F2F2" : "#fff" }}
     >
       <th scope="row ps-2">

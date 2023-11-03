@@ -8,7 +8,7 @@ export default function CausasOption({ option, index, actions }: any) {
 
   return (
     <tr
-      className="border position-relative text-center "
+      className="border position-relative text-left "
       style={{ background: index % 2 === 0 ? "#F2F2F2" : "#fff" }}
     >
       <th scope="row">
@@ -16,7 +16,7 @@ export default function CausasOption({ option, index, actions }: any) {
           className="position-absolute top-0 start-0 borderLateral-Rifas "
           style={{ backgroundColor: getStatusColor(option.status) }}
         ></div>
-        <div className="  d-flex justify-content-center  align-items-center  icon ms-3 w-full">
+        <div className="  d-flex justify-content-start  align-items-center  icon ms-3 w-full">
           <Image
             width={50}
             height={50}
