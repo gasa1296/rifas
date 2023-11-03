@@ -1,5 +1,12 @@
 {
-  "pages": {},
+  "pages": {
+    "/associations/[id]": [],
+    "/": [],
+    "/nosotros": [],
+    "/rifas/[id]": [],
+    "/rifas/detalles/[id]": [],
+    "/rifas": []
+  },
   "app": {},
   "appUsingSizeAdjust": false,
   "pagesUsingSizeAdjust": false

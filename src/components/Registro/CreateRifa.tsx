@@ -56,7 +56,7 @@ export default function CreateRifa({ nextStep, backStep, disable }: any) {
   return (
     <div className="mx-4">
       <h2 className="title-page-rifaRegistro my-4">
-        ¡Es momento de rifarnos {profile.full_name}!
+        ¡Es momento de rifarnos {profile?.full_name}!
       </h2>
 
       <div className="  bg-white mb-3 col-12 col-lg-8 m-auto  ">
