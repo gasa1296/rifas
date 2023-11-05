@@ -9,15 +9,15 @@
   "/": "pages/index.html",
   "/login": "pages/login.html",
   "/nosotros": "pages/nosotros.html",
+  "/privacyNotice": "pages/privacyNotice.html",
   "/profile": "pages/profile.html",
   "/registro": "pages/registro.html",
-  "/privacyNotice": "pages/privacyNotice.html",
-  "/_error": "pages/_error.js",
   "/rifas/[id]": "pages/rifas/[id].html",
   "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
   "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
   "/rifas": "pages/rifas.html",
   "/sitios/[id]": "pages/sitios/[id].html",
   "/terminosCondiciones": "pages/terminosCondiciones.html",
+  "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }

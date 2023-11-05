@@ -27,7 +27,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([___W
 ([___WEBPACK_IMPORTED_MODULE_0__, axios__WEBPACK_IMPORTED_MODULE_1__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
-const baseUrl = "https://gasa1296.pythonanywhere.com" || 0;
+const baseUrl = "https://www.api.rifaconcausa.org/" || 0;
 const registerUser = (profile)=>{
     return (0,___WEBPACK_IMPORTED_MODULE_0__/* .Api */ .V)({
         endpoint: "/profile/register_profile/",
