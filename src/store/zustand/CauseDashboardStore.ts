@@ -55,17 +55,18 @@ export const useCauseDashboardStore = create<CreateCausesStoreDasboard>(
       cause.association = Number(cause.association);
       await setEditCauses(causeId, cause);
 
-      const petitions: any[] = [];
-      if (cause.image && cause.image.length > 1) {
-        oldData.images.map((image: any) =>
-          petitions.push(deleteImageGalleryRaffle(image.id))
-        );
+      /////
+
+      let resultGallery = [];
+
+      if (cause.image && cause.image.length > 0) {
+        const petitions: any[] = [];
 
         cause.image.map((gallery: any) =>
           petitions.push(createCauseGallery(gallery, causeId.toString()))
         );
 
-        const resultGallery = await Promise.all(petitions);
+        resultGallery = await Promise.all(petitions);
 
         await updateGalleryCause(causeId.toString(), {
           gallery: resultGallery.map((gallery) => gallery.data.id),
@@ -75,6 +76,13 @@ export const useCauseDashboardStore = create<CreateCausesStoreDasboard>(
           categories: cause.categories,
         });
       }
+
+      const petitionsOld: any[] = [];
+
+      oldData.images.map((image: any) =>
+        petitionsOld.push(deleteImageGalleryRaffle(image.id))
+      );
+      await Promise.all(petitionsOld);
 
       set({
         //cause: data,

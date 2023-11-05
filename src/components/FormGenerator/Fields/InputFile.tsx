@@ -64,6 +64,7 @@ export default function InputFile({
     if (!values[name]) return;
     const files = await handleGetFiles(values[name]);
     setFiles(files as any);
+    setValue(name, files);
 
     const previews = values[name].map((image: string) =>
       isHttp(image) ? image : `${process.env.NEXT_PUBLIC_BASE_URL}${image}`

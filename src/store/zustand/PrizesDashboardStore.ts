@@ -71,18 +71,16 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
 
     await editPrize(prizeId, prize);
 
-    if (prize.image && prize.image.length > 1) {
-      const petitions: any[] = [];
+    let resultGallery = [];
 
-      oldData.images.map((image: any) =>
-        petitions.push(deleteImageGallery(image.id))
-      );
+    if (prize.image && prize.image.length > 0) {
+      const petitions: any[] = [];
 
       prize.image.map((gallery: any) =>
         petitions.push(createPrizeGallery(gallery, prizeId.toString()))
       );
 
-      const resultGallery = await Promise.all(petitions);
+      resultGallery = await Promise.all(petitions);
 
       await updateGalleryPrize(prizeId.toString(), {
         gallery: resultGallery.map((gallery) => gallery.data.id),
@@ -90,6 +88,13 @@ export const usePrizeStoreDashboard = create<PrizeStoreDasboard>((set) => ({
         value: prize.value,
       });
     }
+
+    const petitionsOld: any[] = [];
+
+    oldData.images.map((image: any) =>
+      petitionsOld.push(deleteImageGallery(image.id))
+    );
+    await Promise.all(petitionsOld);
 
     set({
       //prize: data,

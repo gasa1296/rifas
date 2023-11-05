@@ -1,12 +1,11 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/associations/[id]": "pages/associations/[id].html",
   "/contacto": "pages/contacto.html",
-  "/dashboard/[id]": "pages/dashboard/[id].html",
   "/dashboard": "pages/dashboard.html",
-  "/donaciones": "pages/donaciones.html",
+  "/dashboard/[id]": "pages/dashboard/[id].html",
   "/frequentQuestions": "pages/frequentQuestions.html",
+  "/donaciones": "pages/donaciones.html",
   "/": "pages/index.html",
   "/login": "pages/login.html",
   "/nosotros": "pages/nosotros.html",
@@ -14,10 +13,11 @@
   "/profile": "pages/profile.html",
   "/registro": "pages/registro.html",
   "/rifas/[id]": "pages/rifas/[id].html",
-  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
-  "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
   "/_error": "pages/_error.js",
+  "/rifas/crear_rifas": "pages/rifas/crear_rifas.html",
+  "/rifas/detalles/[id]": "pages/rifas/detalles/[id].html",
   "/rifas": "pages/rifas.html",
+  "/sitios/[id]": "pages/sitios/[id].html",
   "/terminosCondiciones": "pages/terminosCondiciones.html",
   "/404": "pages/404.html"
 }

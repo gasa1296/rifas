@@ -11,6 +11,11 @@ import {
   setDashboardDeleteUser,
   setDashboardCreateUser,
   setDashboardUpdateUser,
+  getMicrosite,
+  updateMicrosite,
+  createImagesGallery,
+  deleteImagesGallery,
+  getSite,
 } from "@/services/dashboard";
 import { getDashboardPrize } from "@/services/dashboard";
 import {
@@ -20,6 +25,7 @@ import {
 } from "@/services/raffles";
 
 import { handleError } from "@/utils/handleError";
+import toast from "react-hot-toast";
 
 interface RaffleStoreDasboard {
   isLoading: boolean;
@@ -76,6 +82,9 @@ interface AsociationsStoreDasboard {
   getAsociations: () => Promise<void>;
   getWallet: (id: string, pagination: number) => Promise<void>;
   getResumen: (id: string) => Promise<void>;
+  getMicrosite: (id: string) => Promise<void>;
+  getSite: (id: string) => Promise<void>;
+  updateMicrosite: (id: string, payload: any) => Promise<void>;
   getResumenProfile: () => Promise<void>;
   getUser: (id: string, pagination: number) => Promise<void>;
   setAddUser: (id: string, payload: any) => Promise<boolean>;
@@ -84,6 +93,8 @@ interface AsociationsStoreDasboard {
   setRemoveUser: (id: string, email: string) => Promise<boolean>;
   pagination: number | null;
   wallets: any[];
+  microsite: any;
+  site: any;
   resumen: any;
   resumenProfile: any;
   user: any;
@@ -99,6 +110,8 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
     pagination: 1,
     user: [],
     resumenProfile: [],
+    microsite: null,
+    site: null,
 
     getAsociations: async () => {
       set({ isLoading: true });
@@ -230,6 +243,65 @@ export const useAsociatonsStoreDashboard = create<AsociationsStoreDasboard>(
 
         set({
           resumenProfile: data,
+          isLoading: false,
+        });
+      } catch (error) {}
+    },
+
+    getSite: async (slug: string) => {
+      try {
+        set({ isLoading: true });
+
+        const { data } = await getSite(slug);
+
+        set({
+          site: data,
+          isLoading: false,
+        });
+      } catch (error) {}
+    },
+
+    getMicrosite: async (asociationId: string) => {
+      try {
+        set({ isLoading: true });
+
+        const { data } = await getMicrosite(asociationId);
+
+        set({
+          microsite: data,
+          isLoading: false,
+        });
+      } catch (error) {}
+    },
+    updateMicrosite: async (asociationId: string, payload: any) => {
+      try {
+        set({ isLoading: true });
+
+        if (payload.images.length > 0) {
+          const petitions: any[] = [];
+
+          payload.images.map((gallery: any) =>
+            petitions.push(createImagesGallery(gallery, payload.id.toString()))
+          );
+
+          const resultGallery = await Promise.all(petitions);
+
+          payload.images = resultGallery.map((gallery) => gallery.data.id);
+        }
+
+        const petitionsOld: any[] = [];
+
+        payload.oldImages.map((image: any) =>
+          petitionsOld.push(deleteImagesGallery(image.id))
+        );
+        await Promise.all(petitionsOld);
+
+        const { data } = await updateMicrosite(asociationId, payload);
+
+        toast.success("Se actualizo el micrositio con exito!!");
+
+        set({
+          microsite: data,
           isLoading: false,
         });
       } catch (error) {}

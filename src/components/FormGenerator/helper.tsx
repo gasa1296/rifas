@@ -17,6 +17,7 @@ import InputDate from "./Fields/InputDate";
 import InputCustom from "./Fields/InputCustom";
 import InputRange from "./Fields/InputRange";
 import InputCaptchap from "./Fields/Captchap";
+import InputTextSlug from "./Fields/InputTextSlug";
 
 export const getDefaultValues = (fields: Field[]) => {
   const defaultValues: any = {};
@@ -34,6 +35,7 @@ export const getDefaultValues = (fields: Field[]) => {
 };
 
 export const FieldComponents: FieldType = {
+  textSlug: InputTextSlug,
   text: InputText,
   email: InputEmail,
   checkbox: InputCheckbox,

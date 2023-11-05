@@ -27,8 +27,6 @@ export default function ModalEditPremio({ show, setShow, handleReset }: any) {
   const gallery =
     show?.images && show?.images?.length > 0
       ? show?.images?.map((image: any) => image.file)
-      : show?.image
-      ? [show?.image]
       : [];
 
   const fields: Field[] = [

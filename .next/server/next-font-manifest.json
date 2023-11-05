@@ -1,11 +1,11 @@
 {
   "pages": {
-    "/associations/[id]": [],
     "/": [],
     "/nosotros": [],
     "/rifas/[id]": [],
     "/rifas/detalles/[id]": [],
-    "/rifas": []
+    "/rifas": [],
+    "/sitios/[id]": []
   },
   "app": {},
   "appUsingSizeAdjust": false,

@@ -118,7 +118,7 @@ export default function DashboardProfile({ nextStep }: any) {
       name: "image",
       type: "file",
       maxFile: 1,
-      default: [filterAssociation?.image],
+      default: filterAssociation?.image ? [filterAssociation?.image] : [],
     },
     {
       label: " 2 / 2 Dirección Fiscal",

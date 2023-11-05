@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaBriefcase,
   FaImage,
@@ -26,24 +26,36 @@ import { useRouter } from "next/router";
 import DashboarMicrositioCaracteristicas from "../Components/Micrositio/DashboarMicrositioCaracteristicas";
 import DashboarMicrositioNetworks from "../Components/Micrositio/DashboarMicrositioNetworks";
 import HeaderDashboard from "../Components/HeaderDashboard";
+import { useAsociatonsStoreDashboard } from "@/store/zustand/DashboardStore";
 
 export default function DashboardMicrositio() {
   const [step, setStep] = useState(1);
-  const [raffle, setRaffle] = useState({});
   const router = useRouter();
+
+  const getMicrosite = useAsociatonsStoreDashboard(
+    (state) => state.getMicrosite
+  );
 
   const StepIcon = (step: number, currentStep: number) => {
     if (step === currentStep) return <MdKeyboardArrowUp size={30} />;
     return <MdKeyboardArrowDown size={30} />;
   };
-  const handleChangeRaffle = (data: any) => {
-    setRaffle({ ...raffle, ...data });
-    setStep((prev) => prev + 1);
+
+  const handleStep = (currentStep: number) => {
+    if (currentStep === step) return setStep(0);
+    setStep(currentStep);
   };
-  const resetRaffle = () => {
-    setStep(1);
-    setRaffle({});
-  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      getMicrosite(router.query.id as string);
+    }, 200);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section className=" ">
       <HeaderDashboard
@@ -74,11 +86,11 @@ export default function DashboardMicrositio() {
         </div>
 
         <div className="  mb-3 col-12 col-lg-12 m-auto mt-4  ">
-          <div
-            className=" d-flex justify-content-between align-items-center    "
-            onClick={() => {}}
-          >
+          <div className=" d-flex justify-content-between align-items-center    ">
             <button
+              onClick={() => {
+                handleStep(1);
+              }}
               className={` fs-4 text-light  fondo-crear-rifa  d-flex justify-content-between align-item-center  ${
                 step === 1 ? " opacity-50 " : " opacity-100  "
               }`}
@@ -100,6 +112,9 @@ export default function DashboardMicrositio() {
             className={` fs-4  text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
               step === 2 ? " opacity-50 " : " opacity-100  "
             }`}
+            onClick={() => {
+              handleStep(2);
+            }}
           >
             <div>
               <FaRegImage className="mx-2" />
@@ -118,6 +133,9 @@ export default function DashboardMicrositio() {
             className={` fs-4 text-light fondo-crear-rifa d-flex justify-content-between align-item-center ${
               step === 3 ? " opacity-50 " : " opacity-100  "
             }`}
+            onClick={() => {
+              handleStep(3);
+            }}
           >
             <div>
               {" "}

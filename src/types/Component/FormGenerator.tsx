@@ -23,6 +23,7 @@ export interface Field {
 
 export interface FieldType {
   text: any;
+  textSlug: any;
   email: any;
   checkbox: any;
   password: any;
@@ -42,6 +43,7 @@ export interface FieldType {
 }
 export type FieldTypeString =
   | "text"
+  | "textSlug"
   | "email"
   | "checkbox"
   | "password"

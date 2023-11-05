@@ -1521,12 +1521,35 @@ border-left: 8px solid #784B5F;
 
 /* dashboard rifas*/
 
-
-.border-input{
-  border: 1px solid #4c4a4a81 !important;
+.input-search{
   opacity: 2;
   border-radius: 8px;
+  overflow: hidden;
+  display:flex;
+  height: 40px;
+  background-color: #fff;
+  
 }
+
+.input-search input{
+  border-radius: 0px;
+  border: 1px solid #fff !important;
+}
+.input-search input:focus{
+  border-radius: 0px;
+  border: 1px solid #fff !important;
+  box-shadow: none !important;
+
+}
+
+.btn-search{
+  background: #ffffff 0% 0% no-repeat padding-box !important;
+  border-radius: 0px !important;
+  opacity: 1;
+  letter-spacing: 0px;
+}
+
+
 
 
 .select-DashboarRifas{

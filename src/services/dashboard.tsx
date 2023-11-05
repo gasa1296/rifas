@@ -42,6 +42,79 @@ export const getDashboardResumenProfile = () => {
     method: "GET",
   });
 };
+export const getMicrosite = (asociationId: string) => {
+  return Api({
+    endpoint: `/associations/${asociationId}/`,
+    method: "GET",
+  });
+};
+
+export const getSite = (slug: string) => {
+  return Api({
+    endpoint: `/associations/microsite/?slug=${slug}`,
+    method: "GET",
+  });
+};
+
+export const createImagesGallery = (image: any, associationId: string) => {
+  const formData = new FormData();
+  formData.append("association", associationId);
+  if (image) formData.append("file", image);
+
+  return axios.post(baseUrl + "/association_gallery/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
+
+export const deleteImagesGallery = (id: number) => {
+  return Api({
+    endpoint: `/association_gallery/${id}`,
+    method: "DELETE",
+  });
+};
+
+export const updateMicrosite = (asociationId: string, asociacion: any) => {
+  const formData = new FormData();
+  formData.append("association_name", asociacion.association_name);
+  formData.append("first_name", asociacion.first_name);
+  formData.append("last_name", asociacion.last_name);
+  formData.append("last_name2", asociacion.last_name2);
+  formData.append("rfc", asociacion.rfc);
+  formData.append("slug", asociacion.slug);
+  formData.append("who", asociacion.who);
+  formData.append("what", asociacion.what);
+  formData.append("address", asociacion.address);
+  formData.append("zip", asociacion.zip);
+  formData.append("state", asociacion.state);
+  formData.append("province", asociacion.province);
+  formData.append("email", asociacion.email);
+  formData.append("phone", asociacion.phone);
+
+  formData.append("facebook", asociacion.facebook);
+  formData.append("twitter", asociacion.twitter);
+  formData.append("instagram", asociacion.instagram);
+  formData.append("tiktok", asociacion.tiktok);
+  formData.append("youtube", asociacion.youtube);
+  formData.append("vimeo", asociacion.vimeo);
+  formData.append("linkedin", asociacion.linkedin);
+  formData.append("pinterest", asociacion.pinterest);
+
+  if (asociacion.image[0] && typeof asociacion.image[0] !== "string")
+    formData.append("image", asociacion.image[0]);
+
+  if (asociacion.main_image[0] && typeof asociacion.main_image[0] !== "string")
+    formData.append("main_image", asociacion.main_image[0]);
+
+  return axios.put(baseUrl + `/associations/${asociationId}/`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("sessionToken")}`,
+    },
+  });
+};
 
 export const getDashboardRaffle = (id: string) => {
   return Api({
