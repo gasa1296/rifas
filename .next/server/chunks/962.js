@@ -9,7 +9,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/logoRifas.106db5b6.svg","height":114,"width":130,"blurWidth":0,"blurHeight":0});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/logoRifas.e773a98f.svg","height":114,"width":130,"blurWidth":0,"blurHeight":0});
 
 /***/ }),
 
@@ -262,7 +262,7 @@ function InputFile({ label , name , error , setValue , maxFile , subLabel , watc
         const files = await (0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .handleGetFiles */ .wf)(values[name]);
         setFiles(files);
         setValue(name, files);
-        const previews = values[name].map((image)=>(0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org/"}${image}`);
+        const previews = values[name].map((image)=>(0,_helper__WEBPACK_IMPORTED_MODULE_5__/* .isHttp */ .ek)(image) ? image : `${"https://www.api.rifaconcausa.org"}${image}`);
         setPreviews(previews);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
@@ -1215,7 +1215,7 @@ function isHttp(url) {
     return url?.startsWith("http://") || url?.startsWith("https://");
 }
 async function urlToFile(url, mimeType) {
-    const httpUrl = isHttp(url) ? url : `${"https://www.api.rifaconcausa.org/"}${url}`;
+    const httpUrl = isHttp(url) ? url : `${"https://www.api.rifaconcausa.org"}${url}`;
     const res = await fetch(httpUrl);
     const buf = await res.arrayBuffer();
     const file = new File([

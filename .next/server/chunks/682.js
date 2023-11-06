@@ -53,7 +53,7 @@ function Rifa({ all  }) {
     if (!raffle || isLoading) return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
         className: "my-4"
     });
-    const shareUrl = `${"https://www.rifaconcausa.org/"}/rifas/detalles/${raffle.id}`;
+    const shareUrl = `${"https://www.rifaconcausa.org"}/rifas/detalles/${raffle.id}`;
     const title = raffle.name;
     const meta = Number(raffle?.ticket_number) * Number(raffle?.ticket_price);
     const raisedPercent = (raffle?.raised || 0) * 100 / meta;

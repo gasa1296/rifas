@@ -34,12 +34,12 @@ const PercentageChart = ({ percentage =50  })=>{
             children: [
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("path", {
                     className: "circle-bg",
-                    d: "M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    d: "M18 2.0845   a 15.9155 15.9155 0 0 1 0 31.831   a 15.9155 15.9155 0 0 1 0 -31.831"
                 }),
                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("path", {
                     className: "circle",
                     "stroke-dasharray": `${percentage}, 100`,
-                    d: "M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    d: "M18 2.0845   a 15.9155 15.9155 0 0 1 0 31.831   a 15.9155 15.9155 0 0 1 0 -31.831"
                 })
             ]
         })

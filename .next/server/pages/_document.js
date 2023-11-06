@@ -19,7 +19,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Document() {
-    const url = `${"https://www.rifaconcausa.org/"}`;
+    const url = `${"https://www.rifaconcausa.org"}`;
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(next_document__WEBPACK_IMPORTED_MODULE_1__.Html, {
         lang: "en",
         children: [

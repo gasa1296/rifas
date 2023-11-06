@@ -14,7 +14,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_0__]);
 axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
-const baseUrl = "https://www.api.rifaconcausa.org/";
+const baseUrl = "https://www.api.rifaconcausa.org";
 const Api = (props)=>{
     const { endpoint , method , _data , tokenUse , params , urlParams  } = {
         method: "GET",
